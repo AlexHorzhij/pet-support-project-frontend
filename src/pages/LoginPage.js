@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
+import LoginForm from 'components/LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
 
-export default function LoginPage() {
+function LoginPage() {
   return (
-    <div>LoginPage</div>
-  )
+    <div>
+      <LoginForm />
+      <p>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
+    </div>
+  );
 }
+
+export default LoginPage;
