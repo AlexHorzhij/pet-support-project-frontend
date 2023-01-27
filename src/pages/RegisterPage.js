@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
+import RegisterForm from 'components/RegisterForm/RegisterForm';
+import { Link } from 'react-router-dom';
 
-export default function RegisterPage() {
+function RegisterPage() {
   return (
-    <div>RegisterPage</div>
-  )
+    <div>
+      <RegisterForm />
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </div>
+  );
 }
+
+export default RegisterPage;
