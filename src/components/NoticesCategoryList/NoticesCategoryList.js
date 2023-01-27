@@ -1,18 +1,15 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { useEffect, useState } from 'react';
-// import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-// import { selectorIsLoggedIn } from 'redux/auth/authSelectors';
+import { getAuth } from 'redux/auth/authSelectors';
 
 import { Button } from '@material-ui/core';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
 
-  // const isLoggedIn = useSelector(selectorIsLoggedIn)
-  const isLoggedIn = true; //заглушка
+  const {isLoggedIn} = useSelector(getAuth)
 
   return (
     <>

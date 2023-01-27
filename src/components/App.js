@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
-import { Loader } from './Loader/Loader';
+import { Loader } from 'components';
 import { PrivateRoute, PublicRoute } from '../RouteManager/RouteManager';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));

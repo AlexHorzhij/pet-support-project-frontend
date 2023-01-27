@@ -1,4 +1,4 @@
-import SharedLayout from './Loader/Loader'
+import SharedLayout from './SharedLayout/SharedLayout'
 import Loader from './Loader/Loader'
 import NoticesCategoryList from './NoticesCategoryList/NoticesCategoryList'
 import NoticesFilter from './NoticesFilter/NoticesFilter'
