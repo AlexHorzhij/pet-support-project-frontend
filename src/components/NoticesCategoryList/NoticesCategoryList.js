@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router';
 // import { selectorIsLoggedIn } from 'redux/auth/authSelectors';
 
 import { Button } from '@material-ui/core';
-// import Button from '@material-ui/core/Button'
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
