@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 export default function SharedLayout() {
   return (
     <div>
-      <div>Header</div>
+      <div></div>
       <Outlet />
     </div>
   );
