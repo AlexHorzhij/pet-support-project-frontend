@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/605.294cb266.chunk.js","mappings":"iNAEe,SAASA,IACtB,OACE,yBAAK,cAET,C","sources":["pages/NoticePage.js"],"sourcesContent":["import React from 'react'\n\nexport default function NoticePage() {\n  return (\n    <div>NoticePage</div>\n  )\n}\n"],"names":["NoticePage"],"sourceRoot":""}

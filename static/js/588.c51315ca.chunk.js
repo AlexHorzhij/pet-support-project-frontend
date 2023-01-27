@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpet_support_project_frontend=self.webpackChunkpet_support_project_frontend||[]).push([[588],{588:function(e,n,t){t.r(n),t.d(n,{default:function(){return u}});t(791);var r=t(184);function u(){return(0,r.jsx)("div",{children:"LoginPage"})}}}]);
+//# sourceMappingURL=588.c51315ca.chunk.js.map
