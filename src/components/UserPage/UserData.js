@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import UserDataItem from './UserDataItem';
+import Logout from './Logout';
 function UserData() {
   return (
     <>
@@ -69,24 +69,13 @@ function UserData() {
           </IconButton>
         </Box>
         <Box sx={{ width: '100%' }}>
-          <UserDataItem title={'Name'} value={'Anna'} />
+          <UserDataItem title={'Name'} value={'Anna'} disabled={true} />
           <UserDataItem title={'Email'} value={'anna00@gmail.com'} />
           <UserDataItem title={'Birthday'} value={'00.00.0000'} />
           <UserDataItem title={'Phone'} value={'+38000000000'} />
           <UserDataItem title={'City'} value={'Kyiv'} />
         </Box>
-        <IconButton
-          sx={{
-            borderRadius: '5px',
-            height: '26px',
-            alignSelf: 'start',
-            p: '0',
-            mt: '10px',
-          }}
-        >
-          <LogoutRoundedIcon sx={{ width: '20px', color: '#F59256' }} />
-          <Typography sx={{ fontSize: '12px' }}>Log Out</Typography>
-        </IconButton>
+        <Logout />
       </Box>
     </>
   );

@@ -3,10 +3,11 @@ import { Box, IconButton, Typography } from '@mui/material';
 import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 
-function UserDataItem({ title = '', value }) {
-  const [inputState, setInputState] = useState(true);
+function UserDataItem({ title = '', value = '', disabled = true }) {
+  const [inputState, setInputState] = useState(disabled);
   const [inputValue, setInputValue] = useState(value);
-  const changeInputState = () => {
+
+  const changeInputState = e => {
     setInputState(prev => !prev);
   };
   const changeInputValue = e => {
@@ -31,6 +32,7 @@ function UserDataItem({ title = '', value }) {
         <Typography>{title}:</Typography>
       </Box>
       <input
+        id={title}
         style={{
           borderColor: inputState ? 'transparent' : '#F59256',
           backgroundColor: inputState ? 'transparent' : '#FDF7F2',
