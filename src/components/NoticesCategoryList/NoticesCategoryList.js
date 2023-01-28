@@ -9,7 +9,7 @@ import { Button } from '@material-ui/core';
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
 
-  const {isLoggedIn} = useSelector(getAuth)
+  const { isLoggedIn } = useSelector(getAuth)
 
   return (
     <>

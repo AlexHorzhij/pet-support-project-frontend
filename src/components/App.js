@@ -27,7 +27,7 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/news" element={<NewsPage />} />
               <Route path="/friends" element={<OurFriendsPage />} />
-              <Route path="/notices:categoryName" element={<NoticePage />} />
+              <Route path="/notices/:categoryName" element={<NoticePage />} />
             </Route>
 
             <Route element={<PrivateRoute />}>
