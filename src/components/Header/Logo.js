@@ -1,8 +1,11 @@
 import React from 'react';
+import { LogoWrapper, LogoInfo, Span } from './Logo.styled';
 export default function Logo() {
   return (
-    <div>
-      <img src="images/logo/petly.png" alt="Petly" width="82" height="42" />
-    </div>
+    <LogoWrapper>
+      <LogoInfo>
+        pe<Span>t</Span>ly
+      </LogoInfo>
+    </LogoWrapper>
   );
 }
