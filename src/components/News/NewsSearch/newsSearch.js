@@ -1,4 +1,4 @@
-import { Title } from '@mui/icons-material';
+
 import React from 'react';
 
 const NewsSearch = () => {
