@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { register, login, logout, fetchCurrent } from '../../API/api';
 
 export const registerUser = createAsyncThunk(
-  'register',
+  'register', // з чим повинна співпадати ця строка?
   async (data, { rejectWithValue }) => {
     try {
       const user = await register(data);
