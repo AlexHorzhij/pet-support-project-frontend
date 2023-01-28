@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
@@ -6,9 +6,13 @@ import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 function UserDataItem({ title = '', value = '', disabled = true }) {
   const [inputState, setInputState] = useState(disabled);
   const [inputValue, setInputValue] = useState(value);
+  const inputRef = useRef(null);
 
   const changeInputState = e => {
     setInputState(prev => !prev);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 100);
   };
   const changeInputValue = e => {
     setInputValue(e.currentTarget.value);
@@ -32,6 +36,7 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
         <Typography>{title}:</Typography>
       </Box>
       <input
+        ref={inputRef}
         id={title}
         style={{
           borderColor: inputState ? 'transparent' : '#F59256',

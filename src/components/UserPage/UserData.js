@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import UserDataItem from './UserDataItem';
-import Logout from './Logout';
+import Logout from './Logout/Logout';
 function UserData() {
   return (
     <>
@@ -19,6 +19,7 @@ function UserData() {
           padding: '20px 16px',
           width: '411px',
           ml: '-24px',
+          boxShadow: '4px 4px 8px 0px rgba(34, 60, 80, 0.2)',
         }}
       >
         <Box
@@ -69,7 +70,7 @@ function UserData() {
           </IconButton>
         </Box>
         <Box sx={{ width: '100%' }}>
-          <UserDataItem title={'Name'} value={'Anna'} disabled={true} />
+          <UserDataItem title={'Name'} value={'Anna'} />
           <UserDataItem title={'Email'} value={'anna00@gmail.com'} />
           <UserDataItem title={'Birthday'} value={'00.00.0000'} />
           <UserDataItem title={'Phone'} value={'+38000000000'} />
