@@ -12,6 +12,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { authSlice } from "./auth/authSlice";
+import { noticesSlice } from 'redux/notices/noticesSlice'
 
 const authPersistConfig = {
   key: "auth",
@@ -19,9 +20,11 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice.reducer),
+    notices: noticesSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

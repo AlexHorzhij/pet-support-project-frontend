@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
 
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
