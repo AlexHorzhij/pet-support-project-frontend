@@ -1,9 +1,9 @@
 import SharedLayout from './SharedLayout/SharedLayout'
 import Loader from './Loader/Loader'
-import NoticesCategoryList from './NoticesCategoryList/NoticesCategoryList'
-import NoticesFilter from './NoticesFilter/NoticesFilter'
-import NoticesGallery from './NoticesGallery/NoticesGallery'
-import AddPetBtn from './AddPetBtn/AddPetBtn'
+import NoticesCategoryList from './NoticesPageComponents/NoticesCategoryList'
+import NoticesFilter from './NoticesPageComponents/NoticesFilter'
+import NoticesGallery from './NoticesPageComponents/NoticesGallery'
+import AddPetBtn from './NoticesPageComponents/AddPetBtn'
 
 export {
     Loader,
