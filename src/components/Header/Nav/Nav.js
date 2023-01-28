@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthNav from './AuthNav';
+import AuthNav from '../AuthNav/AuthNav';
 import { Navigation, NavList, ListItem, NavLink } from './Nav.styled';
 export default function Nav() {
   return (

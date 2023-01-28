@@ -18,6 +18,11 @@ export const NavLink = styled.a`
     line-height: 27px;
     letter-spacing: 0.04em;
   }
+  &:hover,
+  &:focus {
+    color: rgba(245, 146, 86, 1);
+  }
+  text-decoration: none;
 `;
 export const NavList = styled.ul`
   display: flex;

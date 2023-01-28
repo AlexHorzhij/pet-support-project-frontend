@@ -26,4 +26,9 @@ export const AuthLink = styled.a`
     align-items: center;
     letter-spacing: 0.04em;
   }
+  &:hover,
+  &:focus {
+    color: rgba(245, 146, 86, 1);
+  }
+  text-decoration: none;
 `;

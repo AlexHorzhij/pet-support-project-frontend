@@ -10,6 +10,7 @@ export const HeaderStyled = styled.header`
     width: 280px;
     height: 42px;
   }
+
   @media screen and (min-width: 768px) {
     width: 768px;
     height: 48px;
@@ -29,8 +30,16 @@ export const HeaderWrapper = styled.div`
 export const Button = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
+  @media screen and (max-width: 767px) {
+    margin-left: 163px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 25px;
+  }
   @media screen and (min-width: 1280px) {
     display: none;
   }
