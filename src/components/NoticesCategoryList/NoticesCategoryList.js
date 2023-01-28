@@ -5,8 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getAuth } from 'redux/auth/authSelectors';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button } from '@material-ui/core';
-
+import { Button } from '@mui/material';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -14,8 +13,6 @@ export default function NoticesCategoryList() {
   const category = useParams()
 
   useEffect(() => {
-    
-    console.log(category)
     dispatch(fetchNotices(category))
   }, [category, dispatch])
 
@@ -25,48 +22,41 @@ export default function NoticesCategoryList() {
     <>
       <Button
         variant="contained"
-        color="default"
-        onClick={() => navigate('/notices/sell')}
         style={{ margin: '5px' }}
+        onClick={() => navigate('/notices/sell')}
       >
         sell
       </Button>
       <Button
         variant="contained"
-        color="default"
-        onClick={() => navigate('/notices/lost-found')}
         style={{ margin: '5px' }}
+        onClick={() => navigate('/notices/lost-found')}
       >
         lost/found
       </Button>
       <Button
         variant="contained"
-        color="default"
-        onClick={() => navigate('/notices/for-free')}
         style={{ margin: '5px' }}
+        onClick={() => navigate('/notices/for-free')}
       >
         in good hands
       </Button>
-      {isLoggedIn && (
-        <>
-          <Button
-            variant="contained"
-            color="default"
-            onClick={() => navigate('/notices/favorite')}
-            style={{ margin: '5px' }}
-          >
-            favorite ads
-          </Button>
-          <Button
-            variant="contained"
-            color="default"
-            onClick={() => navigate('/notices/my-ads')}
-            style={{ margin: '5px' }}
-          >
-            my ads
-          </Button>
-        </>
-      )}
+      {isLoggedIn && <>
+        <Button
+          variant="contained"
+        style={{ margin: '5px' }}
+        onClick={() => navigate('/notices/favorite')}
+        >
+          favorite ads
+        </Button>
+        <Button
+          variant="contained"
+        style={{ margin: '5px' }}
+        onClick={() => navigate('/notices/my-ads')}
+        >
+          my ads
+        </Button>
+      </>}
     </>
   );
 }
