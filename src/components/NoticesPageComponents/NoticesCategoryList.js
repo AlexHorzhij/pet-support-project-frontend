@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getAuth } from 'redux/auth/authSelectors';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button } from '@mui/material';
+import { Btn } from './NoticesCategoryList.styled';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -20,42 +20,42 @@ export default function NoticesCategoryList() {
   // const isLoggedIn = true
   return (
     <>
-      <Button
+      <Btn
         variant="contained"
         style={{ margin: '5px' }}
         onClick={() => navigate('/notices/sell')}
       >
         sell
-      </Button>
-      <Button
+      </Btn>
+      <Btn
         variant="contained"
         style={{ margin: '5px' }}
         onClick={() => navigate('/notices/lost-found')}
       >
         lost/found
-      </Button>
-      <Button
+      </Btn>
+      <Btn
         variant="contained"
         style={{ margin: '5px' }}
         onClick={() => navigate('/notices/for-free')}
       >
         in good hands
-      </Button>
+      </Btn>
       {isLoggedIn && <>
-        <Button
+        <Btn
           variant="contained"
         style={{ margin: '5px' }}
         onClick={() => navigate('/notices/favorite')}
         >
           favorite ads
-        </Button>
-        <Button
+        </Btn>
+        <Btn
           variant="contained"
         style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/my-ads')}
+        onClick={() => navigate('/notices/own')}
         >
           my ads
-        </Button>
+        </Btn>
       </>}
     </>
   );
