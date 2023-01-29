@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/283.39b160bb.chunk.js","mappings":"oNAEe,SAASA,IACtB,OACE,yBAAK,kBAET,C","sources":["pages/OurFriendsPage.js"],"sourcesContent":["import React from 'react'\n\nexport default function OurFriendsPage() {\n  return (\n    <div>OurFriendsPage</div>\n  )\n}\n"],"names":["OurFriendsPage"],"sourceRoot":""}
