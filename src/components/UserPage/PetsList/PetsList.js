@@ -1,7 +1,7 @@
 import React from 'react';
-import cat from '../../images/myPets/cat.png';
-import dog from '../../images/myPets/dog.png';
-import PetItem from './PetItem';
+import cat from '../../../images/myPets/cat.png';
+import dog from '../../../images/myPets/dog.png';
+import PetItem from '../PetItem/PetItem';
 function PetsList() {
   return (
     <li style={{ listStyle: 'none' }}>

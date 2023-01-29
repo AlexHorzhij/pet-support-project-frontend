@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import UserData from 'components/UserPage/UserData';
-import PetsData from 'components/UserPage/PetsData';
+import UserData from 'components/UserPage/UserData/UserData';
+import PetsData from 'components/UserPage/PetsData/PetsData';
 import { IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Modal from 'components/Modal/Modal';
-import ModalAddsPet from 'components/UserPage/ModalAddsPet';
+import ModalAddsPet from 'components/UserPage/ModalAddsPet/ModalAddsPet';
 function UserPage() {
   const [modalIsShown, setModalIsShown] = useState(true);
 
