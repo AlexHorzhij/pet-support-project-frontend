@@ -1,10 +1,9 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import UserNav from '../UserNav';
-import { HeaderStyled } from './Header.styled';
-import { HeaderWrapper } from './Header.styled';
+// import UserNav from '../UserNav';
+import { HeaderStyled, HeaderWrapper } from './Header.styled';
+import {} from './Header.styled';
 import { Button } from './Header.styled';
 
 export default function Header() {
@@ -13,10 +12,9 @@ export default function Header() {
       <HeaderWrapper>
         <Logo />
         <Nav />
-        <Button type="button">
-          <GiHamburgerMenu />
-        </Button>
+        <Button type="button"></Button>
       </HeaderWrapper>
     </HeaderStyled>
   );
 }
+//emotion.container

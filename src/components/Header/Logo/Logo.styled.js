@@ -12,7 +12,6 @@ export const LogoInfo = styled.p`
     font-weight: 700;
     font-size: 32px;
     line-height: 48px;
-    /* identical to box height */
 
     letter-spacing: 0.07em;
   }
