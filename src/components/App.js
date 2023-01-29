@@ -33,7 +33,7 @@ function App() {
               <Route path="/notices/for-free" element={<NoticesCategoryList />} /> */}
             </Route>
 
-            <Route element={<PublicRoute />}>
+            <Route element={<PrivateRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>
 
