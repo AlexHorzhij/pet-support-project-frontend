@@ -2,7 +2,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 import css from './Loader.module.css';
 
 // лоудер як приклад (щоб правильно працювала логіка, красивий буде пізніше)
-export const Loader = () => {
+const Loader = () => {
   return (
     <div className={css.loader}>
       <ThreeCircles
@@ -20,3 +20,5 @@ export const Loader = () => {
     </div>
   );
 };
+
+export default Loader

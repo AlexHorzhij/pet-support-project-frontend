@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components';
 
 const schema = yup.object().shape({
   name: yup.string().required(),

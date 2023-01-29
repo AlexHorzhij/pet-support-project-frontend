@@ -35,6 +35,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+
       .addCase(loginUser.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -49,6 +50,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+
       .addCase(logoutUser.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -63,6 +65,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+      
       .addCase(fetchCurrentUser.pending, state => {
         state.isLoadingUser = true;
         state.error = null;

@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
-import { Loader } from './Loader/Loader';
+import { Loader } from 'components';
 import { PrivateRoute, PublicRoute } from '../RouteManager/RouteManager';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
@@ -27,10 +27,9 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/news" element={<NewsPage />} />
               <Route path="/friends" element={<OurFriendsPage />} />
-              <Route path="/notices:categoryName" element={<NoticePage />} />
-              {/* <Route path="/notices/sell" element={<NoticesCategoryList />} />
-              <Route path="/notices/lost-found" element={<NoticesCategoryList />} />
-              <Route path="/notices/for-free" element={<NoticesCategoryList />} /> */}
+              <Route path="/notices/:categoryName" element={<NoticePage />}>
+                {/* <Route path="notices/:categoryName" element={<NoticePage />} /> */}
+              </Route>
             </Route>
 
             <Route element={<PrivateRoute />}>

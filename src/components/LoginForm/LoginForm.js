@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
 
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components';
 
 const schema = yup.object().shape({
   email: yup

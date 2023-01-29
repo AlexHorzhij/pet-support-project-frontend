@@ -71,3 +71,24 @@ export async function logout() {
   //   return data.data;
   return 'logout';
 }
+
+export async function requestNotices(category) {
+  // try {
+  //   const { data } = await instance.get('/notices', category)
+  //   return data
+  // } catch (error) {
+  //   throw error
+  // }
+  return [{
+    title: 'good dog',
+    breed: 'taxa',
+    place: 'Dnipro',
+    bithday: '2022.05.10'
+  }, {
+    title: 'white cat',
+    breed: 'siam',
+    place: 'Odesa',
+    bithday: '2021.12.06'
+  },
+  ]
+}
