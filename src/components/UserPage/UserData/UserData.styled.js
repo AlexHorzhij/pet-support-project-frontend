@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { IconButton, Typography, Box } from '@mui/material';
+import { IconButton, Box } from '@mui/material';
 
 export const BoxWrapper = styled(Box)({
   boxSizing: 'border-box',
