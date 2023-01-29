@@ -1,4 +1,4 @@
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components';
 import OurFriendsItem from './OurFriendsItem';
 import css from './OurFriendsList.module.css';
 
