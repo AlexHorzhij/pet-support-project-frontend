@@ -1,0 +1,12 @@
+.partnersList {
+  list-style: none;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .partnersList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
