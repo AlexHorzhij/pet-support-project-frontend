@@ -1,6 +1,6 @@
 .partnerItem {
   width: 280px;
-  background-color: green;
+  background-color: lightblue;
   color: #111111;
   border-radius: 20px;
   padding: 12px 4px;
@@ -29,18 +29,21 @@
   margin-right: 12px;
 }
 
-.partnerLogo {
+/* .partnerLogo {
   display: block;
   width: 100%;
-}
+} */
 
 .partnerContactsList {
-  width: 150px;
   list-style: none;
   padding: 0;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+}
+
+.partnerContactsItem {
+  width: 150px;
 }
 
 .partnerContactsItem:not(:last-child) {
@@ -49,7 +52,10 @@
 
 .contactLink {
   display: block;
+  overflow: hidden;
+  white-space: nowrap;
   color: inherit;
+  text-overflow: ellipsis;
 }
 
 .contactLink:hover,
@@ -87,6 +93,11 @@
     line-height: 19px;
   }
 
+  .partnerContactsItem {
+    width: 181px;
+    overflow: hidden;
+  }
+
   .partnerContactsItem:not(:last-child) {
     margin-bottom: 8px;
   }
@@ -94,7 +105,7 @@
 
 @media screen and (min-width: 1280px) {
   .partnerItem {
-    width: 392px;
+    width: 395px;
   }
 
   .partnerTitle {
@@ -110,6 +121,11 @@
   .partnerContactsList {
     font-size: 16px;
     line-height: 22px;
+  }
+
+  .partnerContactsItem {
+    width: 206px;
+    overflow: hidden;
   }
 
   .partnerContactsItem:not(:last-child) {
