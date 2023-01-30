@@ -14,7 +14,9 @@ function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
   const updatedPetList = useSelector(state => state.petsData.pets);
   const formSumbitHandler = async (values, onSubmitProps) => {
-    values.picture = cat;
+    const preview = URL.createObjectURL(values.picture);
+    console.log('preview: ', preview);
+    values.picture = preview;
     values.id = nanoid();
 
     dispatch(addPetToList(values));

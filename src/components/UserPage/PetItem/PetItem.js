@@ -24,7 +24,11 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
       }}
     >
       <Box>
-        <img src={imgSrc} alt="my pet" />
+        <img
+          style={{ width: '161px', height: '161px', borderRadius: '40px' }}
+          src={imgSrc}
+          alt="my pet"
+        />
       </Box>
       <Box sx={{ ml: '10px', mr: 'auto' }}>
         <Box>
