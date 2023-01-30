@@ -5,7 +5,8 @@ import { useNavigate, useParams } from 'react-router';
 import { getAuth } from 'redux/auth/authSelectors';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
+// import useTheme from '@mui/material';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -18,24 +19,39 @@ export default function NoticesCategoryList() {
 
   const { isLoggedIn } = useSelector(getAuth)
   // const isLoggedIn = true
+  const { palette } = useTheme()
+  const pitchColor = palette.primary.main
+
   return (
     <>
       <Button
-        variant="contained"
-        style={{ margin: '5px' }}
+        sx={{
+          textTransform: 'lowercase',
+          color: pitchColor,
+          backgroundColor: 'background.paper',
+        }}
+        variant="outlined"
         onClick={() => navigate('/notices/sell')}
       >
         sell
       </Button>
       <Button
-        variant="contained"
-        style={{ margin: '5px' }}
+        sx={{
+          textTransform: 'lowercase',
+          color: 'ButtonText'
+        }}
+        color='primary'
+        variant="outlined"
         onClick={() => navigate('/notices/lost-found')}
       >
         lost/found
       </Button>
       <Button
-        variant="contained"
+        sx={{
+          textTransform: 'lowercase',
+          color: 'ButtonText'
+        }}
+        variant="outlined"
         style={{ margin: '5px' }}
         onClick={() => navigate('/notices/for-free')}
       >
@@ -43,16 +59,24 @@ export default function NoticesCategoryList() {
       </Button>
       {isLoggedIn && <>
         <Button
-          variant="contained"
-        style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/favorite')}
+          sx={{
+            textTransform: 'lowercase',
+            color: 'ButtonText'
+          }}
+          variant="outlined"
+          style={{ margin: '5px' }}
+          onClick={() => navigate('/notices/favorite')}
         >
           favorite ads
         </Button>
         <Button
-          variant="contained"
-        style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/my-ads')}
+          sx={{
+            textTransform: 'lowercase',
+            color: 'ButtonText'
+          }}
+          variant="outlined"
+          style={{ margin: '5px' }}
+          onClick={() => navigate('/notices/own')}
         >
           my ads
         </Button>
