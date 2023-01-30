@@ -1,20 +1,32 @@
 import React from 'react'
 
 import {
+  Main,
+  DivFlexSpaceBetween
+} from './NoticePage.styled'
+
+import {
   NoticesFilter,
   NoticesCategoryList,
-  AddPetBtn,
+  AddNoticeBtn,
   NoticesGallery
 } from 'components'
+
 
 export default function NoticePage() {
 
   return (
-    <>
+    <Main>
       <NoticesFilter />
-      <NoticesCategoryList />
-      <AddPetBtn />
+      <DivFlexSpaceBetween>
+        <div>
+          <NoticesCategoryList />
+        </div>
+        <DivFlexSpaceBetween>
+          <AddNoticeBtn />
+        </DivFlexSpaceBetween>
+      </DivFlexSpaceBetween>
       <NoticesGallery />
-    </>
+    </Main>
   )
 }
