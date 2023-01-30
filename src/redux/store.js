@@ -28,6 +28,8 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authSlice.reducer),
     notices: noticesSlice.reducer,
     [newsApi.reducerPath]: newsApi.reducer,
+    userData: fetchUserDataSlice.reducer,
+    petsData: fetchPetsDataSlice.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
@@ -37,8 +39,6 @@ export const store = configureStore({
     }),
     newsApi.middleware,
   ],
-  userData: fetchUserDataSlice.reducer,
-  petsData: fetchPetsDataSlice.reducer,
 });
 
 export const persistor = persistStore(store);
