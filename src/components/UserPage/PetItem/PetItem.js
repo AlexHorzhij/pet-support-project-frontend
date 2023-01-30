@@ -1,8 +1,16 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useDispatch, useSelector } from 'react-redux';
+import { deletePetFromList } from 'redux/petsData/petsOperations';
 
-function PetItem({ imgSrc, name, birthDate, breed, comments }) {
+function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
+  const dispatch = useDispatch();
+
+  const handlePetDelete = petId => {
+    dispatch(deletePetFromList(petId));
+  };
+
   return (
     <ul
       style={{
@@ -16,9 +24,13 @@ function PetItem({ imgSrc, name, birthDate, breed, comments }) {
       }}
     >
       <Box>
-        <img src={imgSrc} alt="my pet" />
+        <img
+          style={{ width: '161px', height: '161px', borderRadius: '40px' }}
+          src={imgSrc}
+          alt="my pet"
+        />
       </Box>
-      <Box sx={{ ml: '10px' }}>
+      <Box sx={{ ml: '10px', mr: 'auto' }}>
         <Box>
           <Typography>Name: {name}</Typography>
         </Box>
@@ -29,10 +41,13 @@ function PetItem({ imgSrc, name, birthDate, breed, comments }) {
           <Typography>Breed: {breed}</Typography>
         </Box>
         <Box>
-          <Typography>Comments: {comments}</Typography>
+          <Typography>Comments: {comment}</Typography>
         </Box>
       </Box>
-      <IconButton sx={{ backgroundColor: '#FDF7F2' }}>
+      <IconButton
+        onClick={() => handlePetDelete(id)}
+        sx={{ backgroundColor: '#FDF7F2' }}
+      >
         <DeleteIcon />
       </IconButton>
     </ul>
