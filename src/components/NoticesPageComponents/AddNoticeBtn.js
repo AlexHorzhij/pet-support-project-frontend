@@ -1,19 +1,34 @@
 import React from 'react'
 
-import { Button} from '@mui/material'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { Typography } from '@mui/material';
+import { DivFlexSpaceBetween } from 'pages/NoticePage.styled';
 
-export default function AddPetBtn() {
+
+
+export default function AddNoticeBtn() {
   const handleBtn = () => {
+    alert('Натиснув? Ну й молодець!')
     return
   }
 
   return (
-    <Button
-      variant="contained"
-      endIcon={<p />}
+    <DivFlexSpaceBetween
       onClick={handleBtn}
     >
-      Send
-    </Button>
+      <Typography
+        sx={{ marginRight: '5px' }}
+      > Add pet
+      </Typography>
+
+      <AddCircleIcon
+        color='primary'
+        fontSize='large'
+      />
+    </DivFlexSpaceBetween>
   )
+}
+
+export {
+  AddNoticeBtn
 }

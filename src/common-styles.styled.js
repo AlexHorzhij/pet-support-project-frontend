@@ -1,5 +1,5 @@
 const accentColor = '#F59256'
-const backgroundColor = '#7F7F7F'
+const backgroundColor = '#FDF7F2'
 
 export {
     accentColor,

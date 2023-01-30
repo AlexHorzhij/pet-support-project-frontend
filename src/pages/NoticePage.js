@@ -8,9 +8,10 @@ import {
 import {
   NoticesFilter,
   NoticesCategoryList,
-  AddPetBtn,
+  AddNoticeBtn,
   NoticesGallery
 } from 'components'
+
 
 export default function NoticePage() {
 
@@ -18,8 +19,12 @@ export default function NoticePage() {
     <Main>
       <NoticesFilter />
       <DivFlexSpaceBetween>
-        <NoticesCategoryList />
-        <AddPetBtn />
+        <div>
+          <NoticesCategoryList />
+        </div>
+        <DivFlexSpaceBetween>
+          <AddNoticeBtn />
+        </DivFlexSpaceBetween>
       </DivFlexSpaceBetween>
       <NoticesGallery />
     </Main>
