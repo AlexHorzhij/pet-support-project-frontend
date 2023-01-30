@@ -17,6 +17,7 @@ export const NavLink = styled.a`
     font-size: 20px;
     line-height: 27px;
     letter-spacing: 0.04em;
+    color: inherit;
   }
   &:hover,
   &:focus {

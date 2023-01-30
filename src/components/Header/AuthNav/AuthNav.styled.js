@@ -18,8 +18,8 @@ export const AuthItem = styled(Button)({
   '&:not(:last-child)': {
     marginRight: '20px',
   },
-  '&:focus, hover': {
-    color: '#FFFFFF',
+  '&:hover, focus': {
+    color: 'white',
     backgroundColor: 'orange',
   },
 });
