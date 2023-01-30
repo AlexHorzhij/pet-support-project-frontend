@@ -1,20 +1,29 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchNews } from "./newsOperations";
 
-export const newsApi = createApi({
-    reducerPath: 'news',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://63d43ddbc52305feff6051b6.mockapi.io/api/v1/', // change baseUrl when backend will be added
-    }),
-    tagTypes: ['News'],
-    endpoints: (builder) => ({
-        getAllNews: builder.query({
-            query: () => "news",
-            url: '/news',
-            method: 'GET',
-            providesTags: ["News"]
-        }),
-    
-    })
+
+const initialState = {
+    news: [],
+    isLoading: false,
+    error: null,
+}
+
+export const newsSlice = createSlice({
+    name: 'news',
+    initialState,
+    reducers: {},
+    extraReducers: builder => {
+        builder
+            .addCase(fetchNews.pending, state => {
+                state.isLoading = true;
+            })
+            .addCase(fetchNews.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.news = payload;
+            })
+            .addCase(fetchNews.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+    }
 })
-
-export const { useGetAllNewsQuery } = newsApi;

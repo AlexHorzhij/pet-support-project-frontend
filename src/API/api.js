@@ -1,12 +1,13 @@
 // дуже чорновий варіант, чекаю бек, поки підставила фейкові дані
+import cat from '../images/myPets/cat.png';
+import dog from '../images/myPets/dog.png';
+import axios from 'axios';
 
-// import axios from 'axios';
+const BASE_URL = 'https://63d43ddbc52305feff6051b6.mockapi.io/api/v1/';
 
-// const BASE_URL = '';
-
-// const instance = axios.create({
-//   baseURL: BASE_URL,
-// });
+const instance = axios.create({
+  baseURL: BASE_URL,
+});
 
 // const setToken = {
 //   set(token) {
@@ -25,8 +26,7 @@
 //   setToken.unset();
 // };
 // user
-import cat from '../images/myPets/cat.png';
-import dog from '../images/myPets/dog.png';
+
 export async function register(signupData) {
   //   const { data } = await instance.post('/signup', signupData);
   //   setToken.set(data.token);
@@ -166,3 +166,14 @@ export async function addPet(pet) {
   newData.push(pet);
   return newData;
 }
+//======================== NEWS START ==========================
+export async function getAllNews() {
+  try {
+    const { data } = await instance.get('/news')
+    return data
+  } catch (error) {
+    throw new Error(error.message) 
+  }
+}
+
+//========================== NEWS END =============================
