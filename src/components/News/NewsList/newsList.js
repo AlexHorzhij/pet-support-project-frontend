@@ -1,4 +1,5 @@
 import { NewsItem } from '../NewsItem/newsItem';
+import { Grid } from '@mui/material';
 
 const news = [
   {
@@ -19,7 +20,8 @@ const news = [
     _id: 1234567893,
     title: 'example 3',
     url: 'url3',
-    description: 'description3',
+    description:
+      'Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
     date: 'date3',
   },
   {
@@ -38,13 +40,35 @@ const news = [
   },
 ];
 
+// export const NewsList = () => {
+//   return (
+//     <ul>
+//       {/* {error && <p>{error.data}</p>} */}
+//       {/* {isLoading ? <Loader /> : ''} */}
+//       {news &&
+//         news.map(({ _id, title, description, date }) => {
+//           return (
+//             <NewsItem
+//               key={_id}
+//               title={title}
+//               date={date}
+//               description={description}
+//               id={_id}
+//             />
+//           );
+//         })}
+//     </ul>
+//   );
+// };
+
 export const NewsList = () => {
   return (
-    <ul>
-      {/* {error && <p>{error.data}</p>} */}
-      {/* {isLoading ? <Loader /> : ''} */}
+    <Grid container spacing={2}>
+      {/* <ul> */}
+      {/* {error && <p>{error.data}</p>} 
+        {isLoading ? <Loader /> : ''}  */}
       {news &&
-        news.map(({ _id, title, description, date }) => {
+        news.map(({ _id, title, description, date, url }) => {
           return (
             <NewsItem
               key={_id}
@@ -52,9 +76,11 @@ export const NewsList = () => {
               date={date}
               description={description}
               id={_id}
+              url={url}
             />
           );
         })}
-    </ul>
+      {/* </ul> */}
+    </Grid>
   );
 };

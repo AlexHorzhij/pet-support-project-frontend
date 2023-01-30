@@ -1,20 +1,24 @@
+import * as React from 'react';
+import { FormSearch } from './newsSearch.styled';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import { InputStyled } from './newsSearch.styled';
 
-import React from 'react';
-
-const NewsSearch = () => {
+export default function NewsSearch() {
   return (
-    <>
-      <input
-        type="text"
-        // name="query"
-        // value={query}
-        // onChange={handleChange}
-        autoComplete="off"
-        autoFocus
-        placeholder="Search news"
+    <FormSearch
+      component="form"
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+    >
+      <InputStyled
+        sx={{ ml: 1, flex: 1 }}
+        placeholder="Search News"
+        inputProps={{ 'aria-label': 'search news' }}
       />
-      <button>search</button>
-    </>
+      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+    </FormSearch>
   );
-};
+}
 export { NewsSearch };

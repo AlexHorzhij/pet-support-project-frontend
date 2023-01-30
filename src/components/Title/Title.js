@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box } from '@mui/material';
+import { PageTitle } from './Title.styled';
 
 export const Title = ({ text }) => {
   return (
-    <>
-      <h1>{text}</h1>
-    </>
+    // <Box >
+    <PageTitle variant="h2">{text}</PageTitle>
+    // </Box>
   );
 };
 
