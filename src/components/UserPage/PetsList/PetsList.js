@@ -1,27 +1,30 @@
 import React from 'react';
+import PetItem from '../PetItem/PetItem';
+
 import cat from '../../../images/myPets/cat.png';
 import dog from '../../../images/myPets/dog.png';
-import PetItem from '../PetItem/PetItem';
 function PetsList() {
   return (
     <li style={{ listStyle: 'none' }}>
       <PetItem
+        key={'1'}
         imgSrc={cat}
         name={'Jack'}
-        birthDate={'22.04.2018'}
-        breed={'Precian cat'}
-        comments={[
-          'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-        ]}
+        birthDate={'20.04.2008'}
+        breed={'Percian cat'}
+        comments={
+          'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent congue erat at massa. Duis vel nibh at velit scelerisque suscipit.'
+        }
       />
       <PetItem
+        key={'2'}
         imgSrc={dog}
         name={'Jack'}
-        birthDate={'22.04.2018'}
+        birthDate={'20.04.2008'}
         breed={'Basenji'}
-        comments={[
-          'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-        ]}
+        comments={
+          'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent congue erat at massa. Duis vel nibh at velit scelerisque suscipit.'
+        }
       />
     </li>
   );

@@ -79,16 +79,42 @@ export async function requestNotices(category) {
   // } catch (error) {
   //   throw error
   // }
-  return [{
-    title: 'good dog',
-    breed: 'taxa',
-    place: 'Dnipro',
-    bithday: '2022.05.10'
-  }, {
-    title: 'white cat',
-    breed: 'siam',
-    place: 'Odesa',
-    bithday: '2021.12.06'
-  },
-  ]
+  return [
+    {
+      title: 'good dog',
+      breed: 'taxa',
+      place: 'Dnipro',
+      bithday: '2022.05.10',
+    },
+    {
+      title: 'white cat',
+      breed: 'siam',
+      place: 'Odesa',
+      bithday: '2021.12.06',
+    },
+  ];
+}
+
+export async function requestUserData() {
+  return {
+    name: 'Anna',
+    email: 'anna00@gmail.com',
+    birthday: '00.00.0000',
+    phone: '+380000000',
+    city: 'Kyiv',
+    picture: '',
+  };
+}
+export async function updateUserData(data) {
+  const userData = await requestUserData();
+
+  Object.keys(userData).forEach(item => {
+    if (item === data.name) {
+      userData[item] = data.value;
+    }
+  });
+
+  const newUserData = { ...userData };
+
+  return newUserData;
 }

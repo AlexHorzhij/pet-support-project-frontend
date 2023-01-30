@@ -1,12 +1,23 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from 'redux/userData/userDataOperations';
 function UserDataItem({ title = '', value = '', disabled = true }) {
+  const dispatch = useDispatch();
+  const updatedUser = useSelector(state => state.user);
+
   const [inputState, setInputState] = useState(disabled);
   const [inputValue, setInputValue] = useState(value);
+  const [inputName, setInputName] = useState(title);
+
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    const name = inputName.toLowerCase();
+    dispatch(updateUser({ name, value: inputValue }));
+  }, [dispatch, inputName, inputValue, value]);
 
   const changeInputState = e => {
     setInputState(prev => !prev);

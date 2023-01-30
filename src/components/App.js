@@ -32,7 +32,7 @@ function App() {
               </Route>
             </Route>
 
-            <Route element={<PrivateRoute />}>
+            <Route element={<PublicRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>
 
