@@ -9,7 +9,7 @@ import {
 const initialState = {
   user: { email: null, name: null },
   token: null,
-  isLoggedIn: false,
+  isLoggedIn: true,
   isLoading: false,
   isLoadingUser: false,
   error: null,
@@ -65,7 +65,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-      
+
       .addCase(fetchCurrentUser.pending, state => {
         state.isLoadingUser = true;
         state.error = null;

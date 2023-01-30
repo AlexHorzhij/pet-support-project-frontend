@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/petsData/petsOperations';
 
 function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
