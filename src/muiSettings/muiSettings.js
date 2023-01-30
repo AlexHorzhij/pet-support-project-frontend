@@ -1,30 +1,33 @@
 
-export const ThemeOptions = {
-  palette: {
-    type: 'light',
-    primary: {
-      main: '#F59256',
-    },
-    secondary: {
-      main: '#FFFFFF',
-      contrastText: '#000000',
-    },
-    background: {
-      default: '#FDF7F2',
-      paper: '#FFFFFF',
-    },
-    warning: {
-      main: '#ff1800',
-    },
-    info: {
-      main: '#3091EB',
-    },
-    text: {
-      primary: '#111111',
-      secondary: '#000000',
-      hint: 'rgba(0,0,0,0.39)',
-    },
+const palette = {
+  type: 'light',
+  primary: {
+    main: '#F59256',
   },
+  secondary: {
+    main: '#FFFFFF',
+    contrastText: '#000000',
+  },
+  background: {
+    default: '#d5d9dd',
+    paper: '#FFFFFF',
+  },
+  warning: {
+    main: '#ff1800',
+  },
+  info: {
+    main: '#3091EB',
+  },
+  text: {
+    primary: '#111111',
+    secondary: '#000',
+    contrast: '#FFFFFF',
+    hint: 'rgba(0,0,0,0.39)',
+  },
+}
+
+export const ThemeOptions = {
+  palette,
   typography: {
     h1: {
       fontFamily: 'Manrope',
@@ -67,21 +70,18 @@ export const ThemeOptions = {
       fontSize: 20,
       lineHeight: 1.37,
       borderRadius: 20,
-      height: 38,
       textTransform: 'capitalize',
-      border: 5,
-      variant: {
-        outlined: {
-          borderRadius: 4,
-          backgroundColor: 'red'
-        }
-      }
+      margin: 4,
     },
     caption: {
       fontSize: 12,
       fontWeight: 500,
       lineHeight: 1.34,
     },
+    card: {
+      backgroundColor: 'red',
+      p: 20,
+    }
   },
   shape: {
     borderRadius: 40,
@@ -92,25 +92,21 @@ export const ThemeOptions = {
         {
           props: { variant: 'outlined' },
           style: {
-            textTransform: 'none',
-            border: `2px dashed red`,
-            backgroundColor: 'green'
+            border: `2px solid ${palette.primary.main}`,
+            backgroundColor: palette.background.paper,
+            color: palette.text.primary,
           },
         },
         {
-          props: { variant: 'dashed' },
+          props: { variant: 'contained' },
           style: {
-            textTransform: 'none',
-            border: `2px dashed red`,
-          },
-        },
-        {
-          props: { variant: 'dashed', color: 'secondary' },
-          style: {
-            border: `4px dashed blue`,
+            color: palette.text.contrast,
           },
         },
       ],
     },
+    MuiCard: {
+      backgroundColor: 'red',
+    }
   },
 };

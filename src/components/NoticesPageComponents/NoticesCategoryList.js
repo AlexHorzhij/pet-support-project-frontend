@@ -5,8 +5,9 @@ import { useNavigate, useParams } from 'react-router';
 import { getAuth } from 'redux/auth/authSelectors';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button, useTheme } from '@mui/material';
-// import useTheme from '@mui/material';
+import { Button } from '@mui/material';
+
+import ActionAreaCard from './card';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -19,68 +20,48 @@ export default function NoticesCategoryList() {
 
   const { isLoggedIn } = useSelector(getAuth)
   // const isLoggedIn = true
-  const { palette } = useTheme()
-  const pitchColor = palette.primary.main
 
   return (
     <>
+    <ActionAreaCard></ActionAreaCard>
       <Button
-        sx={{
-          textTransform: 'lowercase',
-          color: pitchColor,
-          backgroundColor: 'background.paper',
-        }}
         variant="outlined"
+        sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/sell')}
       >
         sell
       </Button>
       <Button
-        sx={{
-          textTransform: 'lowercase',
-          color: 'ButtonText'
-        }}
-        color='primary'
-        variant="outlined"
-        onClick={() => navigate('/notices/lost-found')}
+        variant="contained"
+        sx={{ textTransform: 'lowercase' }}
+        onClick={() => navigate('/notices/sell')}
       >
         lost/found
       </Button>
       <Button
-        sx={{
-          textTransform: 'lowercase',
-          color: 'ButtonText'
-        }}
         variant="outlined"
-        style={{ margin: '5px' }}
+        sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/for-free')}
       >
         in good hands
       </Button>
       {isLoggedIn && <>
         <Button
-          sx={{
-            textTransform: 'lowercase',
-            color: 'ButtonText'
-          }}
           variant="outlined"
-          style={{ margin: '5px' }}
+          sx={{ textTransform: 'lowercase' }}
           onClick={() => navigate('/notices/favorite')}
         >
           favorite ads
         </Button>
         <Button
-          sx={{
-            textTransform: 'lowercase',
-            color: 'ButtonText'
-          }}
           variant="outlined"
-          style={{ margin: '5px' }}
+          sx={{ textTransform: 'lowercase' }}
           onClick={() => navigate('/notices/own')}
         >
           my ads
         </Button>
       </>}
+    
     </>
   );
 }
