@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/userData/userDataOperations';
 function UserDataItem({ title = '', value = '', disabled = true }) {
   const dispatch = useDispatch();
-  const updatedUser = useSelector(state => state.user);
 
   const [inputState, setInputState] = useState(disabled);
   const [inputValue, setInputValue] = useState(value);
-  const [inputName, setInputName] = useState(title);
+  // eslint-disable-next-line no-unused-vars
+  const [inputName, __] = useState(title);
 
   const inputRef = useRef(null);
 

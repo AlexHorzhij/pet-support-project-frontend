@@ -6,13 +6,12 @@ import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import cat from '../../../images/myPets/cat.png';
-import { useDispatch, useSelector } from 'react-redux';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
-  const updatedPetList = useSelector(state => state.petsData.pets);
   const formSumbitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
     console.log('preview: ', preview);
@@ -27,8 +26,9 @@ function ModalAddsPet({ onModalClose }) {
     // formData.append('picturePath', values.picture.name);
     // console.log('formData: ', formData);
 
-    alert(JSON.stringify(values, null, 2));
+    // alert(JSON.stringify(values, null, 2));
     onSubmitProps.resetForm();
+    onModalClose();
   };
 
   return (
@@ -124,17 +124,24 @@ function ModalAddsPet({ onModalClose }) {
                       <Box
                         {...getRootProps()}
                         p="1rem"
-                        sx={{ '&:hover': { cursor: 'pointer' } }}
+                        sx={{
+                          '&:hover': { cursor: 'pointer' },
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          width: '40px',
+                          height: '40px',
+                          m: '0',
+                        }}
                       >
                         <input {...getInputProps()} />
                         {!values.picture ? (
-                          <>
-                            <p>Add Picture Here</p>
+                          <Box>
                             <AddOutlinedIcon />
-                          </>
+                          </Box>
                         ) : (
                           <Box>
-                            <Typography>{values.picture.name}</Typography>
+                            <CheckOutlinedIcon />
                           </Box>
                         )}
                       </Box>

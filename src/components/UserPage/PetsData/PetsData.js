@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PetsList from '../PetsList/PetsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPetsData } from 'redux/petsData/petsOperations';
