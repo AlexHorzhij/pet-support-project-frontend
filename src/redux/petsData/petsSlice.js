@@ -1,22 +1,38 @@
-      // pets: [
-      //   {
-      //     id: '1',
-      //     name: 'Jack',
-      //     dateOfBirth: '22.04.2018',
-      //     breed: 'Precian cat',
-      //     comments:
-      //       'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      //     picture: cat,
-      //     pictureName: '',
-      //   },
-      //   {
-      //     id: '2',
-      //     name: 'Jack',
-      //     dateOfBirth: '22.04.2018',
-      //     breed: 'Basenji',
-      //     comments:
-      //       'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      //     picture: dog,
-      //     pictureName: '',
-      //   },
-      // ],
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchPetsData } from './petsOperations';
+
+const initialState = {
+  pets: [
+    {
+      id: null,
+      name: null,
+      dateOfBirth: null,
+      breed: null,
+      avatarURL: null,
+      comment: null,
+      owner: null,
+    },
+  ],
+  isLoading: false,
+  error: null,
+};
+
+export const fetchPetsDataSlice = createSlice({
+  name: 'petsData',
+  initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchPetsData.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchPetsData.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.pets = payload;
+      })
+      .addCase(fetchPetsData.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      });
+  },
+});

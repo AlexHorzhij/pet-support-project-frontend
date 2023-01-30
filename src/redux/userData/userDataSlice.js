@@ -3,12 +3,12 @@ import { fetchUserData, updateUser } from './userDataOperations';
 
 const initialState = {
   user: {
-    name: '',
-    email: '',
-    birthday: '',
-    phone: '',
-    city: '',
-    picture: '',
+    name: null,
+    email: null,
+    birthday: null,
+    phone: null,
+    city: null,
+    picture: null,
   },
   isLoading: false,
   error: null,

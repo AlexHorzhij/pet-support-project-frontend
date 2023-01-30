@@ -21,7 +21,7 @@ function ModalAddsPet({ onModalClose }) {
   };
 
   return (
-    <Formik>
+    <Formik enctype="multipart/form-data">
       <Card>
         <CardContent sx={{ paddingY: 10, paddingX: 5 }}>
           <Formik

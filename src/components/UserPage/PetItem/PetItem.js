@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function PetItem({ imgSrc, name, birthDate, breed, comments }) {
+function PetItem({ imgSrc, name, birthDate, breed, comment }) {
   return (
     <ul
       style={{
@@ -29,7 +29,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comments }) {
           <Typography>Breed: {breed}</Typography>
         </Box>
         <Box>
-          <Typography>Comments: {comments}</Typography>
+          <Typography>Comments: {comment}</Typography>
         </Box>
       </Box>
       <IconButton sx={{ backgroundColor: '#FDF7F2' }}>

@@ -40,12 +40,12 @@ function UserData() {
           </StyledButton>
         </BoxImageWrapper>
         <Box sx={{ width: '100%' }}>
-          {user.name.length > 0 && (
+          {user.name && (
             <>
               <UserDataItem title={'Name'} value={user.name} />
               <UserDataItem title={'Email'} value={user.email} />
-              <UserDataItem title={'Birthday'} value={user.phone} />
-              <UserDataItem title={'Phone'} value={user.birthday} />
+              <UserDataItem title={'Birthday'} value={user.birthday} />
+              <UserDataItem title={'Phone'} value={user.phone} />
               <UserDataItem title={'City'} value={user.city} />
             </>
           )}

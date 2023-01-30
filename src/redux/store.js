@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/authSlice';
 import { noticesSlice } from 'redux/notices/noticesSlice';
 import { fetchUserDataSlice } from 'redux/userData/userDataSlice';
+import { fetchPetsDataSlice } from 'redux/petsData/petsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,6 +27,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authSlice.reducer),
     notices: noticesSlice.reducer,
     userData: fetchUserDataSlice.reducer,
+    petsData: fetchPetsDataSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

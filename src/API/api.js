@@ -24,9 +24,9 @@
 //   }
 //   setToken.unset();
 // };
-
 // user
-
+import cat from '../images/myPets/cat.png';
+import dog from '../images/myPets/dog.png';
 export async function register(signupData) {
   //   const { data } = await instance.post('/signup', signupData);
   //   setToken.set(data.token);
@@ -105,6 +105,7 @@ export async function requestUserData() {
     picture: '',
   };
 }
+
 export async function updateUserData(data) {
   const userData = await requestUserData();
 
@@ -117,4 +118,29 @@ export async function updateUserData(data) {
   const newUserData = { ...userData };
 
   return newUserData;
+}
+
+export async function requestPetsData(data) {
+  return [
+    {
+      id: '1',
+      name: 'Jack',
+      dateOfBirth: '22.04.2018',
+      breed: 'Precian cat',
+      comment:
+        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
+      picture: cat,
+      avatarURL: '',
+    },
+    {
+      id: '2',
+      name: 'Jack',
+      dateOfBirth: '22.04.2018',
+      breed: 'Basenji',
+      comment:
+        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
+      picture: dog,
+      avatarURL: '',
+    },
+  ];
 }
