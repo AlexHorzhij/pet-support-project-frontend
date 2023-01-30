@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   FLUSH,
@@ -7,20 +7,21 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+} from 'redux-persist';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import { authSlice } from "./auth/authSlice";
 import { noticesSlice } from 'redux/notices/noticesSlice'
 import { newsApi } from "./news/newsSlice";
+import { fetchUserDataSlice } from 'redux/userData/userDataSlice';
+import { fetchPetsDataSlice } from 'redux/petsData/petsSlice';
 
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token"],
+  whitelist: ['token'],
 };
-
 
 export const store = configureStore({
   reducer: {
@@ -37,6 +38,10 @@ export const store = configureStore({
       newsApi.middleware
   ]
 
+    userData: fetchUserDataSlice.reducer,
+    petsData: fetchPetsDataSlice.reducer,
+  },
+ 
 });
 
 export const persistor = persistStore(store);
