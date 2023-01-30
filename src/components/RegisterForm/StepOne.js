@@ -1,10 +1,6 @@
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAuth } from 'redux/auth/authSelectors';
-import { loginUser } from 'redux/auth/authOperations';
-
-import { Loader } from 'components';
 
 const schema = yup.object().shape({
   email: yup
@@ -26,39 +22,40 @@ const schema = yup.object().shape({
       'Password must contain only letters and/or numbers'
     )
     .required(),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .min(7)
+    .max(32)
+    .required(),
 });
 
-const initialValues = {
-  email: '',
-  password: '',
-};
-
-const LoginForm = () => {
-  const dispatch = useDispatch();
-  const { isLoading } = useSelector(getAuth);
-
-  const handleSubmit = (values, { resetForm }) => {
-    const { email, password } = values;
-    dispatch(loginUser({ email: email, password: password }));
-    resetForm();
+const StepOne = ({ next, data }) => {
+  const handleSubmit = values => {
+    next(values);
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={data}
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
       <Form>
         <Field type="email" name="email" placeholder="Email" />
         <ErrorMessage component="div" name="email" />
-        <br />
         <Field type="password" name="password" placeholder="Password" />
         <ErrorMessage component="div" name="password" />
-        <button type="submit">{!isLoading ? 'Login' : <Loader />}</button>
+        <Field
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <ErrorMessage component="div" name="confirmPassword" />
+        <button type="submit">Next</button>
       </Form>
     </Formik>
   );
 };
 
-export default LoginForm;
+export default StepOne;
