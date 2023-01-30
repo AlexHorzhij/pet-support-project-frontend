@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import styles from '@emotion/styled';
 import { AppBar, Container, Typography } from '@mui/material';
 
 export const Header = styled(AppBar)({
@@ -33,3 +34,8 @@ export const LogoInfo = styled(Typography)({
     letterSpacing: `0.07em`,
   },
 });
+
+export const NavWrapper = styles.div`
+display: flex,
+justify-content: space-between,
+`;

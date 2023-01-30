@@ -1,4 +1,4 @@
-import { Header, Wrapper, LogoInfo } from './Header.styled';
+import { Header, Wrapper, LogoInfo } from '../Header/Header.styled';
 import Nav from '../Nav/Nav';
 import { Span } from '../Logo/Logo.styled';
 import SimpleListMenu from '../MobileMenu/MobileMenu';

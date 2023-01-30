@@ -13,12 +13,19 @@ export const AuthNavigation = styled(Box)({
   //   },
 });
 export const AuthItem = styled(Button)({
+  color: '#111111',
+  backgroundColor: 'white',
   '&:not(:last-child)': {
     marginRight: '20px',
+  },
+  '&:focus, hover': {
+    color: '#FFFFFF',
+    backgroundColor: 'orange',
   },
 });
 
 export const AuthLink = styled.a`
+  color: inherit;
   @media screen and (min-width: 768px) {
     font-family: 'Manrope';
     font-style: normal;
@@ -27,10 +34,6 @@ export const AuthLink = styled.a`
     line-height: 27px;
     align-items: center;
     letter-spacing: 0.04em;
-  }
-  &:hover,
-  &:focus {
-    color: rgba(245, 146, 86, 1);
   }
   text-decoration: none;
 `;
