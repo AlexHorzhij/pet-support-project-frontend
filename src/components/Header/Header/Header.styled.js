@@ -1,46 +1,35 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
+import { AppBar, Container, Typography } from '@mui/material';
 
-export const HeaderStyled = styled.header`
-  margin: 0;
-  padding: 0;
-  display: flex;
+export const Header = styled(AppBar)({
+  color: `#111111`,
+  backgroundColor: `rgb(249, 214, 193)`,
+});
 
-  background-color: rgb(249, 214, 193);
-  @media screen and (max-width: 767px) {
-    width: 280px;
-    height: 42px;
-  }
+export const Wrapper = styled(Container)({
+  margin: `0px`,
+  padding: `0px`,
+  display: 'flex',
+  alignItems: `center`,
+  '@media screen and (max-width: 320px)': {
+    justifyContent: 'space-between',
+  },
+  '@media screen and (min-width: 1280px)': {
+    justifyContent: 'space-between',
+  },
+});
 
-  @media screen and (min-width: 768px) {
-    width: 768px;
-    height: 48px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-  }
-`;
-export const HeaderWrapper = styled.div`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  align-items: center;
-`;
+export const LogoInfo = styled(Typography)({
+  margin: `0`,
+  padding: `0`,
 
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  @media screen and (max-width: 767px) {
-    margin-left: 163px;
-  }
+  '@media screen and (min-width: 768px)': {
+    fontFamily: 'Poppins',
+    fontStyle: `normal`,
+    fontWeight: `700`,
+    fontSize: `32px`,
+    lineHeight: `48px`,
 
-  @media screen and (min-width: 768px) {
-    margin-left: 25px;
-  }
-  @media screen and (min-width: 1280px) {
-    display: none;
-  }
-`;
+    letterSpacing: `0.07em`,
+  },
+});

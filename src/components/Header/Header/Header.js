@@ -1,20 +1,20 @@
-import React from 'react';
-import Logo from '../Logo/Logo';
+import { Header, Wrapper, LogoInfo } from './Header.styled';
 import Nav from '../Nav/Nav';
-// import UserNav from '../UserNav';
-import { HeaderStyled, HeaderWrapper } from './Header.styled';
-import {} from './Header.styled';
-import { Button } from './Header.styled';
+import { Span } from '../Logo/Logo.styled';
+import SimpleListMenu from '../MobileMenu/MobileMenu';
+import AuthNav from '../AuthNav/AuthNav';
 
-export default function Header() {
+export default function ApplicationBar() {
   return (
-    <HeaderStyled>
-      <HeaderWrapper>
-        <Logo />
+    <Header position="fixed">
+      <Wrapper>
+        <LogoInfo>
+          pe<Span>t</Span>ly
+        </LogoInfo>
         <Nav />
-        <Button type="button"></Button>
-      </HeaderWrapper>
-    </HeaderStyled>
+        <AuthNav />
+        <SimpleListMenu />
+      </Wrapper>
+    </Header>
   );
 }
-//emotion.container

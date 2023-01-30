@@ -1,14 +1,14 @@
 import React from 'react';
-import { AuthList, ListItem, AuthLink } from './AuthNav.styled';
+import { AuthNavigation, AuthItem, AuthLink } from './AuthNav.styled';
 export default function AuthNav() {
   return (
-    <AuthList>
-      <ListItem>
+    <AuthNavigation>
+      <AuthItem color="inherit" variant="outlined">
         <AuthLink href="">Login</AuthLink>
-      </ListItem>
-      <ListItem>
+      </AuthItem>
+      <AuthItem color="secondary" variant="contained">
         <AuthLink href="">Registration</AuthLink>
-      </ListItem>
-    </AuthList>
+      </AuthItem>
+    </AuthNavigation>
   );
 }

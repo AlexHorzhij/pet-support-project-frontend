@@ -1,21 +1,23 @@
 import styled from '@emotion/styled';
+import { Box, Button } from '@mui/material';
 
-export const AuthList = styled.ul`
-  margin-left: 351px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  list-style: none;
+export const AuthNavigation = styled(Box)({
+  '@media screen and (max-width: 767px)': {
+    display: 'none',
+  },
+  '@media screen and (min-width: 768px)': {
+    marginLeft: '246px',
+  },
+  //   '@media screen and (min-width: 1280px)': {
+  //     marginLeft: '351px',
+  //   },
+});
+export const AuthItem = styled(Button)({
+  '&:not(:last-child)': {
+    marginRight: '20px',
+  },
+});
 
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`;
-export const ListItem = styled.li`
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
-`;
 export const AuthLink = styled.a`
   @media screen and (min-width: 768px) {
     font-family: 'Manrope';

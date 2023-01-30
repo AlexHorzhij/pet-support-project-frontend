@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthNav from '../AuthNav/AuthNav';
 import { Navigation, NavList, ListItem, NavLink } from './Nav.styled';
 export default function Nav() {
   return (
@@ -17,7 +16,6 @@ export default function Nav() {
           </ListItem>
         </NavList>
       </Navigation>
-      <AuthNav />
     </>
   );
 }
