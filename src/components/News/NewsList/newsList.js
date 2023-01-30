@@ -38,6 +38,13 @@ const news = [
     description: 'description5',
     date: 'date5',
   },
+  {
+    _id: 1234567895,
+    title: 'example 6',
+    url: 'url6',
+    description: 'description6',
+    date: 'date6',
+  },
 ];
 
 // export const NewsList = () => {
