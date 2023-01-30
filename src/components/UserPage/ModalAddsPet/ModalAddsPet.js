@@ -6,9 +6,18 @@ import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-
+import cat from '../../../images/myPets/cat.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPetToList } from 'redux/petsData/petsOperations';
+import { nanoid } from 'nanoid';
 function ModalAddsPet({ onModalClose }) {
+  const dispatch = useDispatch();
+  const updatedPetList = useSelector(state => state.petsData.pets);
   const formSumbitHandler = async (values, onSubmitProps) => {
+    values.picture = cat;
+    values.id = nanoid();
+
+    dispatch(addPetToList(values));
     // const formData = new FormData();
     // for (let value in values) {
     //   formData.append(value, values[value]);
@@ -29,8 +38,10 @@ function ModalAddsPet({ onModalClose }) {
               name: '',
               dateOfBirth: '',
               breed: '',
-              comments: '',
+              comment: '',
               picture: '',
+              avatarURL: '',
+              owner: '1',
             }}
             onSubmit={formSumbitHandler}
           >
@@ -132,7 +143,7 @@ function ModalAddsPet({ onModalClose }) {
                       multiline={true}
                       rows={5}
                       fullWidth
-                      name="comments"
+                      name="comment"
                       component={TextField}
                       label="Type comment"
                     />

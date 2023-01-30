@@ -120,7 +120,7 @@ export async function updateUserData(data) {
   return newUserData;
 }
 
-export async function requestPetsData(data) {
+export async function requestPetsData() {
   return [
     {
       id: '1',
@@ -142,5 +142,27 @@ export async function requestPetsData(data) {
       picture: dog,
       avatarURL: '',
     },
+    {
+      id: '3',
+      name: 'Jack',
+      dateOfBirth: '22.04.2018',
+      breed: 'Basenji',
+      comment:
+        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
+      picture: dog,
+      avatarURL: '',
+    },
   ];
+}
+export async function deletePet(id) {
+  const petsData = await requestPetsData();
+  const newData = petsData.filter(value => value.id !== id);
+  await requestPetsData(newData);
+  return newData;
+}
+export async function addPet(pet) {
+  const petsData = await requestPetsData();
+  const newData = [...petsData];
+  newData.push(pet);
+  return newData;
 }

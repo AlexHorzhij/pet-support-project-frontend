@@ -14,6 +14,7 @@ function PetsList({ pets }) {
               birthDate={dateOfBirth}
               breed={breed}
               comment={comment}
+              id={id}
             />
           );
         })}

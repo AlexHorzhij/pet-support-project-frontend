@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPetsData } from './petsOperations';
+import {
+  fetchPetsData,
+  deletePetFromList,
+  addPetToList,
+} from './petsOperations';
 
 const initialState = {
   pets: [
@@ -23,6 +27,7 @@ export const fetchPetsDataSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+      // ============Fetch all pets from DB==================
       .addCase(fetchPetsData.pending, state => {
         state.isLoading = true;
       })
@@ -31,6 +36,30 @@ export const fetchPetsDataSlice = createSlice({
         state.pets = payload;
       })
       .addCase(fetchPetsData.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // ============Delete pet from DB==================
+      .addCase(deletePetFromList.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deletePetFromList.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.pets = payload;
+      })
+      .addCase(deletePetFromList.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // ============Add pet to DB==================
+      .addCase(addPetToList.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addPetToList.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.pets = payload;
+      })
+      .addCase(addPetToList.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

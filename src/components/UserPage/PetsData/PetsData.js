@@ -6,7 +6,6 @@ import { fetchPetsData } from 'redux/petsData/petsOperations';
 function PetsData() {
   const dispatch = useDispatch();
   const pets = useSelector(state => state.petsData.pets);
-  console.log('pets: ', pets);
 
   useEffect(() => {
     dispatch(fetchPetsData());
