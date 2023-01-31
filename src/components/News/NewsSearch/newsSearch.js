@@ -3,12 +3,17 @@ import { FormSearch } from './newsSearch.styled';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputStyled } from './newsSearch.styled';
-
+// , width: 400
 export default function NewsSearch() {
   return (
     <FormSearch
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+      sx={{
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        maxWidth: 400,
+      }}
     >
       <InputStyled
         sx={{ ml: 1, flex: 1 }}
