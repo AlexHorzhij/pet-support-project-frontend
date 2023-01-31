@@ -24,13 +24,13 @@ function App() {
             <Route index element={<HomePage />} />
 
             <Route element={<PublicRoute />}>
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="login" element={<LoginPage />} />
             </Route>
             <Route element={<PublicRoute />}>
               <Route path="/register" element={<RegisterPage />} />
             </Route>
 
-            <Route path="/news" element={<NewsPage />} />
+            <Route path="news" element={<NewsPage />} />
             <Route path="/friends" element={<OurFriendsPage />} />
             <Route
               path="/notices/:categoryName"
