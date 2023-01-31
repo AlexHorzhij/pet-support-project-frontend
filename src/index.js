@@ -1,16 +1,30 @@
+// import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/App';
-import reportWebVitals from './reportWebVitals';
+import { store, persistor } from '../src/redux/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
+import App from 'components/App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import { ThemeProvider } from '@mui/system';
+import { createTheme } from '@mui/material/styles';
+import { ThemeOptions } from 'muiSettings/muiSettings';
+
+const theme = createTheme(ThemeOptions);
+
+console.log(theme)
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter basename="pet-support-project-frontend">
+            <App />
+          </BrowserRouter>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
