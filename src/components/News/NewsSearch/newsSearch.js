@@ -3,7 +3,7 @@ import { FormSearch } from './newsSearch.styled';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputStyled } from './newsSearch.styled';
-// , width: 400
+
 export default function NewsSearch() {
   return (
     <FormSearch
