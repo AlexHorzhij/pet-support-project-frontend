@@ -1,9 +1,9 @@
 import React from 'react';
 import PetItem from '../PetItem/PetItem';
-
+import { List } from '@mui/material';
 function PetsList({ pets }) {
   return (
-    <li style={{ listStyle: 'none' }}>
+    <List style={{ listStyle: 'none' }}>
       {pets &&
         pets.map(({ id, picture, name, dateOfBirth, breed, comment }) => {
           return (
@@ -18,7 +18,7 @@ function PetsList({ pets }) {
             />
           );
         })}
-    </li>
+    </List>
   );
 }
 

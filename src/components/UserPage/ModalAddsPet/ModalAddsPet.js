@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
 import { Card, CardContent, Typography, Grid } from '@mui/material';
 import { TextField } from 'formik-material-ui';
@@ -6,15 +6,17 @@ import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
+import { ModalTyporgaphy } from './ModalAddsPet.styled';
+import { StyledInput } from './ModalPets.styled';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
+  const [images, setImages] = useState([]);
+  // console.log('images: ', images[0].src);
   const formSumbitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
-    console.log('preview: ', preview);
     values.picture = preview;
     values.id = nanoid();
 
@@ -68,12 +70,12 @@ function ModalAddsPet({ onModalClose }) {
                       },
                     }}
                   >
-                    <Typography>Name pet</Typography>
+                    <ModalTyporgaphy>Name pet</ModalTyporgaphy>
                     <Field
-                      fullWidth
+                      type="text"
                       name="name"
-                      component={TextField}
-                      label="Type name"
+                      component={StyledInput}
+                      placeholder="Type name pet"
                     />
                   </Grid>
                   <Grid
@@ -85,13 +87,12 @@ function ModalAddsPet({ onModalClose }) {
                       },
                     }}
                   >
-                    <Typography>Date of birth</Typography>
-
+                    <ModalTyporgaphy>Date of birth</ModalTyporgaphy>
                     <Field
-                      fullWidth
+                      type="text"
+                      component={StyledInput}
                       name="dateOfBirth"
-                      component={TextField}
-                      label="Type date of birth"
+                      placeholder="Type date of birth"
                     />
                   </Grid>
                   <Grid
@@ -103,22 +104,38 @@ function ModalAddsPet({ onModalClose }) {
                       },
                     }}
                   >
-                    <Typography>Breed</Typography>
+                    <ModalTyporgaphy>Breed</ModalTyporgaphy>
                     <Field
-                      fullWidth
+                      type="text"
+                      component={StyledInput}
                       name="breed"
-                      component={TextField}
-                      label="Type breed"
+                      placeholder="Type breed"
                     />
                   </Grid>
                 </Box>
-                <Grid>
+                <Grid
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
                   <Dropzone
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
-                    onDrop={acceptedFiles =>
-                      setFieldValue('picture', acceptedFiles[0])
-                    }
+                    onDrop={acceptedFiles => {
+                      setFieldValue('picture', acceptedFiles[0]);
+
+                      acceptedFiles.map(file => {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                          setImages([{ src: e.target.result }]);
+                        };
+                        reader.readAsDataURL(file);
+                        return file;
+                      });
+                    }}
                   >
                     {({ getRootProps, getInputProps }) => (
                       <Box
@@ -126,11 +143,14 @@ function ModalAddsPet({ onModalClose }) {
                         p="1rem"
                         sx={{
                           '&:hover': { cursor: 'pointer' },
+                          boxSizing: 'border-box',
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
-                          width: '40px',
-                          height: '40px',
+                          width: '182px',
+                          height: '182px',
+                          borderRadius: '40px',
+                          backgroundColor: '#FDF7F2',
                           m: '0',
                         }}
                       >
@@ -140,8 +160,21 @@ function ModalAddsPet({ onModalClose }) {
                             <AddOutlinedIcon />
                           </Box>
                         ) : (
-                          <Box>
-                            <CheckOutlinedIcon />
+                          <Box
+                            sx={{
+                              height: '100%',
+                              borderRadius: '30px',
+                              overflow: 'auto',
+                            }}
+                          >
+                            {images.length > 0 && (
+                              <img
+                                style={{ height: '100%', objectFit: 'cover' }}
+                                alt="preview"
+                                src={images[0]?.src}
+                                className="file-img"
+                              />
+                            )}
                           </Box>
                         )}
                       </Box>
