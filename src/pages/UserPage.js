@@ -9,7 +9,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Modal from 'components/Modal/Modal';
 import ModalAddsPet from 'components/UserPage/ModalAddsPet/ModalAddsPet';
 function UserPage() {
-  const [modalIsShown, setModalIsShown] = useState(true);
+  const [modalIsShown, setModalIsShown] = useState(false);
 
   const toogleModal = () => {
     setModalIsShown(prev => !prev);

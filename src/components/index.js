@@ -3,7 +3,7 @@ import Loader from './Loader/Loader'
 import NoticesCategoryList from './NoticesPageComponents/NoticesCategoryList'
 import NoticesFilter from './NoticesPageComponents/NoticesFilter'
 import NoticesGallery from './NoticesPageComponents/NoticesGallery'
-import AddPetBtn from './NoticesPageComponents/AddPetBtn'
+import AddNoticeBtn from './NoticesPageComponents/AddNoticeBtn'
 
 export {
     Loader,
@@ -11,6 +11,6 @@ export {
     NoticesCategoryList,
     NoticesFilter,
     NoticesGallery,
-    AddPetBtn,
+    AddNoticeBtn,
     
 }

@@ -14,7 +14,7 @@ export const Overlay = styled.div`
 export const ModalWrapper = styled.div`
   position: relative;
   max-width: calc(100vw - 750px);
-  max-height: calc(100vh - 50px);
+  max-height: calc(100vh - 100px);
   border-radius: 30px;
   overflow: hidden;
 `;

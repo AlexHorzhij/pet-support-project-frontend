@@ -6,9 +6,8 @@ import { getAuth } from 'redux/auth/authSelectors';
 export function PublicRoute() {
   const { isLoggedIn } = useSelector(getAuth);
 
-  return isLoggedIn ? <Navigate to="notices" /> : <Outlet />;
+  return isLoggedIn ? <Navigate to="notices/sell"/> : <Outlet /> ;
 }
-
 
 export function PrivateRoute() {
   const { isLoggedIn } = useSelector(getAuth);

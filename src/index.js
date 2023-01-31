@@ -1,3 +1,4 @@
+// import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { store, persistor } from '../src/redux/store';
@@ -6,15 +7,23 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import App from 'components/App';
 
+import { ThemeProvider } from '@mui/system';
+import { createTheme } from '@mui/material/styles';
+import { ThemeOptions } from 'muiSettings/muiSettings';
+
+const theme = createTheme(ThemeOptions);
+
+console.log(theme)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter
-        basename='pet-support-project-frontend'
-        >
-          <App />
-        </BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter basename="pet-support-project-frontend">
+            <App />
+          </BrowserRouter>
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   </React.StrictMode>

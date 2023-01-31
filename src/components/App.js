@@ -13,6 +13,7 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const NewsPage = lazy(() => import('../pages/NewsPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 const NoticePage = lazy(() => import('../pages/NoticePage'));
+// const ModalBackDrop = lazy(() => import('./ModalBackDrop/ModalBackDrop'))
 
 function App() {
   return (
@@ -27,9 +28,11 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/news" element={<NewsPage />} />
               <Route path="/friends" element={<OurFriendsPage />} />
-              <Route path="/notices/:categoryName" element={<NoticePage />}>
-                {/* <Route path="notices/:categoryName" element={<NoticePage />} /> */}
-              </Route>
+              <Route
+                path="/notices/:categoryName"
+                element={<NoticePage />}
+              ></Route>
+              {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
             </Route>
 
             <Route element={<PrivateRoute />}>

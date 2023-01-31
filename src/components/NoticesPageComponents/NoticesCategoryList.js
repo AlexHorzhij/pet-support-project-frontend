@@ -7,6 +7,8 @@ import { fetchNotices } from 'redux/notices/noticesOperations';
 
 import { Button } from '@mui/material';
 
+import ActionAreaCard from './NoticeCard';
+
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -18,45 +20,47 @@ export default function NoticesCategoryList() {
 
   const { isLoggedIn } = useSelector(getAuth)
   // const isLoggedIn = true
+
   return (
     <>
       <Button
-        variant="contained"
-        style={{ margin: '5px' }}
+        variant="outlined"
+        sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/sell')}
       >
         sell
       </Button>
       <Button
-        variant="contained"
-        style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/lost-found')}
+        variant="outlined"
+        sx={{ textTransform: 'lowercase' }}
+        onClick={() => navigate('/notices/sell')}
       >
         lost/found
       </Button>
       <Button
-        variant="contained"
-        style={{ margin: '5px' }}
+        variant="outlined"
+        sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/for-free')}
       >
         in good hands
       </Button>
       {isLoggedIn && <>
         <Button
-          variant="contained"
-        style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/favorite')}
+          variant="outlined"
+          sx={{ textTransform: 'lowercase' }}
+          onClick={() => navigate('/notices/favorite')}
         >
           favorite ads
         </Button>
         <Button
-          variant="contained"
-        style={{ margin: '5px' }}
-        onClick={() => navigate('/notices/my-ads')}
+          variant="outlined"
+          sx={{ textTransform: 'lowercase' }}
+          onClick={() => navigate('/notices/own')}
         >
           my ads
         </Button>
       </>}
+      <ActionAreaCard></ActionAreaCard>
     </>
   );
 }
