@@ -1,10 +1,19 @@
 import { NewsItem } from '../NewsItem/newsItem';
-import {useGetAllNewsQuery} from 'redux/news/newsSlice'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNews } from 'redux/news/newsSelectors';
+import { fetchNews } from 'redux/news/newsOperations';
 import Loader from 'components/Loader/Loader';
 
 export const NewsList = () => {
-  const { data: news, error, isLoading } = useGetAllNewsQuery();
-
+const dispatch = useDispatch()
+  
+useEffect(() => {
+    dispatch(fetchNews());
+}, [dispatch]);
+  
+  const { news, error, isLoading } = useSelector(getNews); 
+  
   return (
     <ul>
       {error && <p>{error.data}</p>}
