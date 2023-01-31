@@ -25,15 +25,18 @@ function App() {
 
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/friends" element={<OurFriendsPage />} />
-              <Route
-                path="/notices/:categoryName"
-                element={<NoticePage />}
-              ></Route>
-              {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
             </Route>
+            <Route element={<PublicRoute />}>
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
+
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/friends" element={<OurFriendsPage />} />
+            <Route
+              path="/notices/:categoryName"
+              element={<NoticePage />}
+            ></Route>
+            {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
 
             <Route element={<PublicRoute />}>
               <Route path="/user" element={<UserPage />} />
