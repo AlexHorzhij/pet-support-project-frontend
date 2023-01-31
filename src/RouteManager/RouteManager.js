@@ -12,5 +12,5 @@ export function PublicRoute() {
 export function PrivateRoute() {
   const { isLoggedIn } = useSelector(getAuth);
 
-  return !isLoggedIn ? <Navigate to="/login" /> : <Outlet />;
+  return !isLoggedIn ? <Navigate to="login" /> : <Outlet />;
 }

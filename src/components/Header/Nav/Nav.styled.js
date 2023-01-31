@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
   margin: 0;
@@ -9,7 +10,7 @@ export const Navigation = styled.nav`
     display: none;
   }
 `;
-export const NavLink = styled.a`
+export const LinkNav = styled(NavLink)`
   @media screen and (min-width: 767px) {
     font-family: 'Manrope';
     font-style: normal;
