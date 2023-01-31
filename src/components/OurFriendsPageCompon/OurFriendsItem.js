@@ -1,88 +1,89 @@
-import css from './OurFriendsItem.module.css';
+import {
+  Card,
+  ContactLink,
+  FlexBox,
+  FriendsContactItem,
+  FriendsContactsList,
+  ImgBox,
+  Title,
+  TitleLink,
+} from './OurFiendsItem.styled';
 
-export default function OurFriendsItem({ partner }) {
+const OurFriendsItem = ({ partner }) => {
   const { title, url, addressUrl, address, imageUrl, phone, email } = partner;
 
-  const checkEmail = data => {
+  const checkData = data => {
     if (!data) {
       return <p>-------------------</p>;
     }
+  };
+
+  const renderEmail = data => {
+    checkData(data);
 
     const emailHref = 'mailto:' + data;
 
-    return (
-      <a className={css.contactLink} href={emailHref}>
-        {data}
-      </a>
-    );
+    return <ContactLink href={emailHref}>{data}</ContactLink>;
   };
 
-  const checkPhone = data => {
-    if (!data) {
-      return <p>-------------------</p>;
-    }
+  const renderPhone = data => {
+    checkData(data);
 
     const phoneHref = 'tel:' + data;
 
-    return (
-      <a className={css.contactLink} href={phoneHref}>
-        {data}
-      </a>
-    );
+    return <ContactLink href={phoneHref}>{data}</ContactLink>;
   };
 
-  const checkAddress = data => {
-    if (!data) {
-      return <p>-------------------</p>;
-    }
+  const renderAddress = data => {
+    checkData(data);
 
     return (
-      <a
-        className={css.contactLink}
+      <ContactLink
         href={data}
         target="_blank"
         rel="noopener noreferrer nofollow"
       >
         {address}
-      </a>
+      </ContactLink>
     );
   };
 
   return (
-    <li className={css.partnerItem}>
-      <h2 className={css.partnerTitle}>
-        <a
-          className={css.partnerLink}
+    <Card>
+      <Title>
+        <TitleLink
           href={url}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
           {title}
-        </a>
-      </h2>
-      <div className={css.flexWrap}>
-        <div className={css.imgWrap}>
-          <img className={css.partnerLogo} src={imageUrl} alt="company logo" />
-        </div>
-        <ul className={css.partnerContactsList}>
-          <li className={css.partnerContactsItem}>
+        </TitleLink>
+      </Title>
+      <FlexBox>
+        <ImgBox>
+          <img src={imageUrl} alt="company logo" />
+        </ImgBox>
+        <FriendsContactsList>
+          <FriendsContactItem>
             <span>Time:</span>
-            <p className={css.contactLink}>8.00-20.00</p>
-          </li>
-          <li className={css.partnerContactsItem}>
+            <ContactLink>8.00-20.00</ContactLink>
+          </FriendsContactItem>
+          <FriendsContactItem>
             <span>Address:</span>
-            {checkAddress(addressUrl)}
-          </li>
-          <li className={css.partnerContactsItem}>
+            {renderAddress(addressUrl)}
+          </FriendsContactItem>
+          <FriendsContactItem>
             <span>Email:</span>
-            {checkEmail(email)}
-          </li>
-          <li className={css.partnerContactsItem}>
+            {renderEmail(email)}
+          </FriendsContactItem>
+          <FriendsContactItem>
             <span>Phone:</span>
-            {checkPhone(phone)}
-          </li>
-        </ul>
-      </div>
-    </li>
+            {renderPhone(phone)}
+          </FriendsContactItem>
+        </FriendsContactsList>
+      </FlexBox>
+    </Card>
   );
-}
+};
+
+export default OurFriendsItem;
