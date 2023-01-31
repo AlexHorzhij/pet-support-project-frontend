@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
 import { Card, CardContent, Grid, Typography } from '@mui/material';
-import { TextField } from 'formik-material-ui';
 import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';

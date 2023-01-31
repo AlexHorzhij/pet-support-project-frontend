@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'formik';
-import { Box, Button, Stack } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 export const FormStepper = ({ children, onClose }) => {
   const stepsArray = React.Children.toArray(children);
