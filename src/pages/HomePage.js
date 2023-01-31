@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function HomePage() {
   return (
-    <div>HomePage - a girl with a dog</div>
+    <main>HomePage - a girl with a dog</main>
   )
 }
