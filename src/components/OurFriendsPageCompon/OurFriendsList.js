@@ -1,17 +1,19 @@
-import { Loader } from 'components';
 import OurFriendsItem from './OurFriendsItem';
-import css from './OurFriendsList.module.css';
+import { FriendsList } from './OurFriendsList.styled';
+import { Loader } from 'components';
 
-export default function OurFriendsList({ partners }) {
+const OurFriendsList = ({ partners }) => {
   if (!partners) {
     return <Loader />;
   }
 
   return (
-    <ul className={css.partnersList}>
+    <FriendsList>
       {partners.map(partner => (
         <OurFriendsItem key={partner._id} partner={partner} />
       ))}
-    </ul>
+    </FriendsList>
   );
-}
+};
+
+export default OurFriendsList;
