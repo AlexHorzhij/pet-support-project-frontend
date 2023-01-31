@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 
 export const FriendsList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
   @media (min-width: 768px) {
-    display: flex;
-    flex-wrap: wrap;
     gap: 32px;
   }
 `;

@@ -8,12 +8,6 @@ export const Card = styled.li`
   padding: 12px 4px;
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
 
-  &:not(:last-child) {
-    @media (max-width: 767px) {
-      margin-bottom: 12px;
-    }
-  }
-
   @media (min-width: 768px) {
     width: 336px;
     padding: 16px 4px;
@@ -21,7 +15,7 @@ export const Card = styled.li`
   }
 
   @media (min-width: 1280px) {
-    width: 395px;
+    min-width: 394.666px;
   }
 `;
 
@@ -106,12 +100,10 @@ export const FriendsContactItem = styled.li`
 
   @media (min-width: 768px) {
     width: 181px;
-    overflow: hidden;
   }
 
   @media (min-width: 1280px) {
     width: 206px;
-    overflow: hidden;
   }
 `;
 
@@ -119,8 +111,8 @@ export const ContactLink = styled.a`
   display: block;
   overflow: hidden;
   white-space: nowrap;
-  color: inherit;
   text-overflow: ellipsis;
+  color: inherit;
   transition: color 250ms linear;
 
   &:hover,

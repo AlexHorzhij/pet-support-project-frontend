@@ -1,9 +1,8 @@
-import { Loader } from 'components';
 import OurFriendsItem from './OurFriendsItem';
-// import css from './OurFriendsList.module.css';
 import { FriendsList } from './OurFriendsList.styled';
+import { Loader } from 'components';
 
-export default function OurFriendsList({ partners }) {
+const OurFriendsList = ({ partners }) => {
   if (!partners) {
     return <Loader />;
   }
@@ -15,4 +14,6 @@ export default function OurFriendsList({ partners }) {
       ))}
     </FriendsList>
   );
-}
+};
+
+export default OurFriendsList;

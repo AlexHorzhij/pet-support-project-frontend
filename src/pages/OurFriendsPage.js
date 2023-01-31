@@ -1,4 +1,4 @@
-import OurFriendsList from 'components/OurFriendsPageCompon/OurFriendsList';
+import { Container, OurFriendsList } from 'components';
 import React, { useEffect, useState } from 'react';
 
 const partnersExample = [
@@ -104,7 +104,7 @@ const partnersExample = [
   },
 ];
 
-export default function OurFriendsPage() {
+const OurFriendsPage = () => {
   const [partnersArr, setPartnersArr] = useState(null);
 
   useEffect(() => {
@@ -113,8 +113,14 @@ export default function OurFriendsPage() {
 
   return (
     <main>
-      <h1>Our friends</h1>
-      <OurFriendsList partners={partnersArr} />
+      <Container>
+        <>
+          <h1>Our friends</h1>
+          <OurFriendsList partners={partnersArr} />
+        </>
+      </Container>
     </main>
   );
-}
+};
+
+export default OurFriendsPage;
