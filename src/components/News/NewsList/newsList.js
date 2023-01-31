@@ -1,5 +1,5 @@
 import { NewsItem } from '../NewsItem/newsItem';
-import { Grid } from '@mui/material';
+import { NewsGrid } from './newsList.styled';
 
 const news = [
   {
@@ -48,33 +48,9 @@ const news = [
   },
 ];
 
-// export const NewsList = () => {
-//   return (
-//     <ul>
-//       {/* {error && <p>{error.data}</p>} */}
-//       {/* {isLoading ? <Loader /> : ''} */}
-//       {news &&
-//         news.map(({ _id, title, description, date }) => {
-//           return (
-//             <NewsItem
-//               key={_id}
-//               title={title}
-//               date={date}
-//               description={description}
-//               id={_id}
-//             />
-//           );
-//         })}
-//     </ul>
-//   );
-// };
-
 export const NewsList = () => {
   return (
-    <Grid container spacing={2}>
-      {/* <ul> */}
-      {/* {error && <p>{error.data}</p>} 
-        {isLoading ? <Loader /> : ''}  */}
+    <NewsGrid component="ul" container columnSpacing={{ xs: 3, sm: 3, md: 3 }}>
       {news &&
         news.map(({ _id, title, description, date, url }) => {
           return (
@@ -88,7 +64,6 @@ export const NewsList = () => {
             />
           );
         })}
-      {/* </ul> */}
-    </Grid>
+    </NewsGrid>
   );
 };

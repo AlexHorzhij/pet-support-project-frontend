@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
-import { Grid } from '@mui/material';
+import { Grid } from '@mui/material/';
 import { NewsTitle } from './newsItem.styled';
 import { NewsText } from './newsItem.styled';
 import { Rectangle } from './newsItem.styled';
@@ -12,18 +12,22 @@ import { CardFooter } from './newsItem.styled';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   return (
-    <Grid item xs={12} md={4}>
+    <Grid
+      component="li"
+      item
+      xs={12}
+      sm={6}
+      md={4}
+      style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}
+    >
       <Rectangle variant="rectangular" />
-      <Card sx={{ height: '100%' }} variant="outlined">
+      <Card sx={{ height: '100%' }} variant="standart">
         {_id}
-        <NewsTitle variant="h5" component="div">
-          {title}
-        </NewsTitle>
-        <CardContent style={{ maxHeight: 200, overflow: 'auto' }}>
-          <NewsText
-            style={{ maxHeight: '500%', overflow: 'auto' }}
-            // sx={{ mb: 1 }}
-          >
+        <CardContent style={{ maxHeight: 200, overflow: 'hidden' }}>
+          <NewsTitle variant="h5" component="div">
+            {title}
+          </NewsTitle>
+          <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />
           </NewsText>
