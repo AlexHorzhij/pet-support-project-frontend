@@ -15,9 +15,7 @@ export const AuthNavigation = styled(Box)({
 export const AuthItem = styled(Button)({
   color: '#111111',
   backgroundColor: 'white',
-  '&:not(:last-child)': {
-    marginRight: '20px',
-  },
+  marginRight: '20px',
   '&:hover, focus': {
     color: 'white',
     backgroundColor: 'orange',
@@ -25,6 +23,7 @@ export const AuthItem = styled(Button)({
 });
 
 export const AuthLink = styled.a`
+  text-transform: capitalize;
   color: inherit;
   @media screen and (min-width: 768px) {
     font-family: 'Manrope';
