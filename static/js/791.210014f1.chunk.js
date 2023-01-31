@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpet_support_project_frontend=self.webpackChunkpet_support_project_frontend||[]).push([[791],{6791:function(t,e,n){n.r(e),n.d(e,{default:function(){return u}});n(2791);var r=n(3329);function u(){return(0,r.jsx)("div",{children:"NotFoundPage"})}}}]);
-//# sourceMappingURL=791.210014f1.chunk.js.map

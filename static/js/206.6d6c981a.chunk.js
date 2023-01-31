@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpet_support_project_frontend=self.webpackChunkpet_support_project_frontend||[]).push([[206],{1206:function(e,t,n){n.r(t),n.d(t,{default:function(){return u}});n(2791);var r=n(3329);function u(){return(0,r.jsx)("div",{children:"HomePage - a girl with a dog"})}}}]);
-//# sourceMappingURL=206.6d6c981a.chunk.js.map

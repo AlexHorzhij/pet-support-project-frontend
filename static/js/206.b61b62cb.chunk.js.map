@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/206.b61b62cb.chunk.js","mappings":"oNAEe,SAASA,IACtB,OACE,0BAAM,gCAEV,C","sources":["pages/HomePage.js"],"sourcesContent":["import React from 'react'\n\nexport default function HomePage() {\n  return (\n    <main>HomePage - a girl with a dog</main>\n  )\n}\n"],"names":["HomePage"],"sourceRoot":""}
