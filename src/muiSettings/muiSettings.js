@@ -93,7 +93,7 @@ export const ThemeOptions = {
   },
   components: {
     MuiCardActionArea: {
-    backgroundColor: 'red',
+      backgroundColor: 'red',
     },
     MuiButton: {
       variants: [
@@ -103,6 +103,10 @@ export const ThemeOptions = {
             border: `2px solid ${palette.primary.main}`,
             backgroundColor: palette.background.paper,
             color: palette.text.primary,
+            "&:hover": {
+              backgroundColor: palette.primary.main,
+              border: `2px solid ${palette.primary.main}`,
+            }
           },
         },
         {

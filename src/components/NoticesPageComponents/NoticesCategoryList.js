@@ -31,7 +31,7 @@ export default function NoticesCategoryList() {
         sell
       </Button>
       <Button
-        variant="contained"
+        variant="outlined"
         sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/sell')}
       >

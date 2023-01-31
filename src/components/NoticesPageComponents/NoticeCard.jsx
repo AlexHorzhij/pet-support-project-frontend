@@ -7,10 +7,14 @@ import { Button, CardActionArea } from '@mui/material';
 
 export default function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 200, p: 3 ,
-      borderTopRightRadius: 0,
-      borderTopLeftRadius: 0,
-    }}>
+    <Card
+      sx={{
+        maxWidth: 200,
+        p: 3,
+        borderTopRightRadius: 0,
+        borderTopLeftRadius: 0,
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -26,17 +30,32 @@ export default function ActionAreaCard() {
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography>
-          <Button 
-          sx={{
-            border: 2,
-            
-          }}
-          fullWidth
-          > Lern more </Button>
           <Button
-          sx={{border: 2}}
-          fullWidth
-          > Delete </Button>
+            variant="outlined"
+            sx={{
+              border: 2,
+              color: 'primary.main',
+              '&:hover': {
+                color: 'text.contrast',
+              },
+            }}
+            fullWidth
+          >
+            Lern more
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{
+              border: 2,
+              color: 'primary.main',
+              '&:hover': {
+                color: 'text.contrast',
+              },
+            }}
+            fullWidth
+          >
+            Delete
+          </Button>
         </CardContent>
       </CardActionArea>
     </Card>
