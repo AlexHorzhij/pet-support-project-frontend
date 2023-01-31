@@ -1,4 +1,4 @@
-// import './index.css';
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { store, persistor } from '../src/redux/store';
@@ -13,7 +13,7 @@ import { ThemeOptions } from 'muiSettings/muiSettings';
 
 const theme = createTheme(ThemeOptions);
 
-console.log(theme)
+console.log(theme);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
