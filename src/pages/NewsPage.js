@@ -5,10 +5,10 @@ import { NewsList } from 'components/News/NewsList/newsList';
 
 export default function NewsPage() {
   return (
-    <>
+    <main>
       <Title text="News" />
       <NewsSearch />
       <NewsList />
-    </>
+    </main>
   );
 }

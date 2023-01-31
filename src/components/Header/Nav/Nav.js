@@ -1,18 +1,18 @@
 import React from 'react';
-import { Navigation, NavList, ListItem, NavLink } from './Nav.styled';
+import { Navigation, NavList, ListItem, LinkNav } from './Nav.styled';
 export default function Nav() {
   return (
     <>
       <Navigation>
         <NavList>
           <ListItem>
-            <NavLink href="">News</NavLink>
+            <LinkNav to="news">News</LinkNav>
           </ListItem>
           <ListItem>
-            <NavLink href="">Find pet</NavLink>
+            <LinkNav to="">Find pet</LinkNav>
           </ListItem>
           <ListItem>
-            <NavLink href="">Our friends</NavLink>
+            <LinkNav to="/friends">Our friends</LinkNav>
           </ListItem>
         </NavList>
       </Navigation>

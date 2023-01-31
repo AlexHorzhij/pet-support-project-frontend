@@ -4,10 +4,10 @@ export default function AuthNav() {
   return (
     <AuthNavigation>
       <AuthItem color="inherit" variant="outlined">
-        <AuthLink href="">Login</AuthLink>
+        <AuthLink to="/login">Login</AuthLink>
       </AuthItem>
       <AuthItem color="inherit" variant="outlined">
-        <AuthLink href="">Registration</AuthLink>
+        <AuthLink to="register">Registration</AuthLink>
       </AuthItem>
     </AuthNavigation>
   );

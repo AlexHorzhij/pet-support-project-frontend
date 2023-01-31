@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Box, Button } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 export const AuthNavigation = styled(Box)({
   '@media screen and (max-width: 767px)': {
@@ -22,7 +23,7 @@ export const AuthItem = styled(Button)({
   },
 });
 
-export const AuthLink = styled.a`
+export const AuthLink = styled(NavLink)`
   text-transform: capitalize;
   color: inherit;
   @media screen and (min-width: 768px) {
