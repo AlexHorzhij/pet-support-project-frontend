@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
-import { Loader } from 'components';
+import { LoaderPage } from 'components';
 import { PrivateRoute, PublicRoute } from '../RouteManager/RouteManager';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
@@ -18,7 +18,7 @@ const NoticePage = lazy(() => import('../pages/NoticePage'));
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<LoaderPage />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />

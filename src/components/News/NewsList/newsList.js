@@ -3,17 +3,17 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNews } from 'redux/news/newsSelectors';
 import { fetchNews } from 'redux/news/newsOperations';
-import Loader from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 export const NewsList = () => {
-const dispatch = useDispatch()
-  
-useEffect(() => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     dispatch(fetchNews());
-}, [dispatch]);
-  
-  const { news, error, isLoading } = useSelector(getNews); 
-  
+  }, [dispatch]);
+
+  const { news, error, isLoading } = useSelector(getNews);
+
   return (
     <ul>
       {error && <p>{error.data}</p>}
