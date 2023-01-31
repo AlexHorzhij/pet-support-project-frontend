@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import UserDataItem from '../UserDataItem/UserDataItem';
@@ -11,8 +11,16 @@ import {
   StyledButton,
   ImageBox,
 } from './UserData.styled';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from 'redux/userData/userDataSelectors';
+import { fetchUserData } from 'redux/userData/userDataOperations';
 function UserData() {
+  const dispatch = useDispatch();
+  const user = useSelector(getUser);
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
   return (
     <>
       <BoxWrapper>
@@ -32,11 +40,15 @@ function UserData() {
           </StyledButton>
         </BoxImageWrapper>
         <Box sx={{ width: '100%' }}>
-          <UserDataItem title={'Name'} value={'Anna'} />
-          <UserDataItem title={'Email'} value={'anna00@gmail.com'} />
-          <UserDataItem title={'Birthday'} value={'00.00.0000'} />
-          <UserDataItem title={'Phone'} value={'+38000000000'} />
-          <UserDataItem title={'City'} value={'Kyiv'} />
+          {user.name && (
+            <>
+              <UserDataItem title={'Name'} value={user.name} />
+              <UserDataItem title={'Email'} value={user.email} />
+              <UserDataItem title={'Birthday'} value={user.birthday} />
+              <UserDataItem title={'Phone'} value={user.phone} />
+              <UserDataItem title={'City'} value={user.city} />
+            </>
+          )}
         </Box>
         <Logout />
       </BoxWrapper>
