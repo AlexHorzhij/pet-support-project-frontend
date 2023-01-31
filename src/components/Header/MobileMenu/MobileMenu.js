@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 // import Menu from '@mui/material/Menu';
 import Nav from '../Nav/Nav';
 import { MobileMenu } from './MobileMenu.styled';
-import { AuthNavigation, AuthItem } from '../AuthNav/AuthNav.styled';
+// import { AuthNavigation, AuthItem } from '../AuthNav/AuthNav.styled';
 import AuthNav from '../AuthNav/AuthNav';
 import { Btn } from './MobileMenu.styled';
 // import { MobileContainer } from './MobileMenu.styled';
