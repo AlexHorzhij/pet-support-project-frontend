@@ -4,7 +4,6 @@ import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
