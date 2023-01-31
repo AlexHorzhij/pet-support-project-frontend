@@ -3,8 +3,14 @@ import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
-
+import { Navigate } from 'react-router-dom';
 import { Loader } from 'components';
+import {
+  FormWrapper,
+  Input,
+  ErrorText,
+  Button,
+} from 'components/RegisterForm/Forms.styled';
 
 const schema = yup.object().shape({
   email: yup
@@ -39,7 +45,10 @@ const LoginForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const { email, password } = values;
-    dispatch(loginUser({ email: email, password: password }));
+    const response = dispatch(loginUser({ email: email, password: password }));
+    if (response.success) {
+      return <Navigate to="/user" replace />;
+    }
     resetForm();
   };
 
@@ -50,12 +59,24 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <Field type="email" name="email" placeholder="Email" />
-        <ErrorMessage component="div" name="email" />
-        <br />
-        <Field type="password" name="password" placeholder="Password" />
-        <ErrorMessage component="div" name="password" />
-        <button type="submit">{!isLoading ? 'Login' : <Loader />}</button>
+        <FormWrapper>
+          <Field type="email" name="email" placeholder="Email" as={Input} />
+          <ErrorMessage name="email">
+            {msg => <ErrorText>{msg}</ErrorText>}
+          </ErrorMessage>
+          <Field
+            type="password"
+            name="password"
+            placeholder="Password"
+            as={Input}
+          />
+          <ErrorMessage name="password">
+            {msg => <ErrorText>{msg}</ErrorText>}
+          </ErrorMessage>
+          <Button color="accent" type="submit">
+            {!isLoading ? 'Login' : <Loader />}
+          </Button>
+        </FormWrapper>
       </Form>
     </Formik>
   );

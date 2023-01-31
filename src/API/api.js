@@ -33,8 +33,11 @@ export async function register(signupData) {
   const data = {
     token: 'dijfikh123h23q2hkqweq',
     user: {
-      email: 'jsajs@kj.sa',
-      name: 'Alisa-regis',
+      email: 'alisa@gmail.com',
+      name: 'Alisa',
+      password: 'alisa123',
+      phone: '+380878787878',
+      city: 'Kyiv, Ukraine',
     },
   };
   return data;
@@ -44,11 +47,7 @@ export async function login(signupData) {
   //   const { data } = await instance.post('/login', signupData);
   //   setToken.set(data.token);
   const data = {
-    token: 'dijfikh123h23q2hkqweq',
-    user: {
-      email: 'jsajs@kj.sa',
-      name: 'Alisa-login',
-    },
+    token: 'lkmckldmxlmcskldsc',
   };
   return data;
 }
@@ -86,6 +85,7 @@ export async function requestNotices(category) {
       place: 'Dnipro',
       bithday: '2022.05.10',
     },
+
     {
       title: 'white cat',
       breed: 'siam',
@@ -169,10 +169,10 @@ export async function addPet(pet) {
 //======================== NEWS START ==========================
 export async function getAllNews() {
   try {
-    const { data } = await instance.get('/news')
-    return data
+    const { data } = await instance.get('/news');
+    return data;
   } catch (error) {
-    throw new Error(error.message) 
+    throw new Error(error.message);
   }
 }
 

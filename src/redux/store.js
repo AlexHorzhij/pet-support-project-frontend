@@ -20,7 +20,7 @@ import { fetchPetsDataSlice } from 'redux/petsData/petsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 
 export const store = configureStore({
@@ -31,7 +31,8 @@ export const store = configureStore({
     userData: fetchUserDataSlice.reducer,
     petsData: fetchPetsDataSlice.reducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },

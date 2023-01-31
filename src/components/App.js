@@ -22,25 +22,22 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />
-
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/friends" element={<OurFriendsPage />} />
-              <Route
-                path="/notices/:categoryName"
-                element={<NoticePage />}
-              ></Route>
-              {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
             </Route>
-
-            <Route element={<PrivateRoute />}>
-              <Route path="/user" element={<UserPage />} />
-            </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
+            <Route element={<PublicRoute />}></Route>
+            <Route path="/register" element={<RegisterPage />} />
           </Route>
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="/notices/:categoryName" element={<NoticePage />}></Route>
+          {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/user" element={<UserPage />} />
+          </Route>
+
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </>
