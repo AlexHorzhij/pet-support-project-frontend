@@ -7,7 +7,7 @@ import { fetchNotices } from 'redux/notices/noticesOperations';
 
 import { Button } from '@mui/material';
 
-import ActionAreaCard from './NoticeCard';
+import ActionAreaCard from './NoticeCard.jsx';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()

@@ -119,6 +119,9 @@ export const ThemeOptions = {
     },
     CardActionArea: {
       backgroundColor: 'red',
+    },
+    MuiCardBase: {
+      backgroundColor: 'red'
     }
   },
 };
