@@ -51,23 +51,6 @@ function UserData() {
               />
             </BoxImageContainer>
           </BoxImageBackdrop>
-          {/* <Dropzone onDrop={acceptedFiles => setUserPicture(acceptedFiles[0])}>
-            {({ getRootProps, getInputProps }) => (
-              <Box>
-                <Box {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <StyledButton>
-                    <PhotoCameraIcon
-                      sx={{ color: '#F59256', height: '20px' }}
-                    />
-                    <Typography sx={{ fontSize: '12px' }}>
-                      Edit photo
-                    </Typography>
-                  </StyledButton>
-                </Box>
-              </Box>
-            )}
-          </Dropzone> */}
           <div className="container">
             <div {...getRootProps({ className: 'dropzone' })}>
               <input {...getInputProps()} />

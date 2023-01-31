@@ -9,7 +9,9 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(17, 17, 17, 0.6);
+  z-index: 1200;
+  backdrop-filter: blur(5px);
 `;
 export const ModalWrapper = styled.div`
   position: relative;
@@ -17,6 +19,7 @@ export const ModalWrapper = styled.div`
   max-height: calc(100vh - 100px); */
   border-radius: 30px;
   overflow: hidden;
+  z-index: 1300;
 `;
 export const ModalButton = styled.button`
   position: absolute;

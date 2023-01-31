@@ -9,7 +9,8 @@ import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
 import { ModalTyporgaphy } from './ModalAddsPet.styled';
-import { StyledInput, StyledTextarea } from './ModalPets.styled';
+import { TextField } from 'formik-material-ui';
+import addIconSVG from '../../../assets/images/myPets/addImage.svg';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
@@ -17,6 +18,7 @@ function ModalAddsPet({ onModalClose }) {
     const preview = URL.createObjectURL(values.picture);
     values.picture = preview;
     values.id = nanoid();
+    console.log('values: ', values);
 
     dispatch(addPetToList(values));
     // const formData = new FormData();
@@ -67,16 +69,29 @@ function ModalAddsPet({ onModalClose }) {
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
                     <ModalTyporgaphy>Name pet</ModalTyporgaphy>
+
                     <Field
-                      type="text"
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '40px',
+
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
+                      fullWidth
                       name="name"
-                      component={StyledInput}
-                      placeholder="Type name pet"
+                      component={TextField}
+                      label="Type name pet"
                     />
                   </Grid>
                   <Grid
@@ -84,16 +99,27 @@ function ModalAddsPet({ onModalClose }) {
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
                     <ModalTyporgaphy>Date of birth</ModalTyporgaphy>
+
                     <Field
-                      type="text"
-                      component={StyledInput}
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '40px',
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
+                      fullWidth
                       name="dateOfBirth"
-                      placeholder="Type date of birth"
+                      component={TextField}
+                      label="Type date of birth"
                     />
                   </Grid>
                   <Grid
@@ -101,16 +127,26 @@ function ModalAddsPet({ onModalClose }) {
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
                     <ModalTyporgaphy>Breed</ModalTyporgaphy>
                     <Field
-                      type="text"
-                      component={StyledInput}
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '26px',
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
+                      fullWidth
                       name="breed"
-                      placeholder="Type breed"
+                      component={TextField}
+                      label="Last Name"
                     />
                   </Grid>
                 </Box>
@@ -163,17 +199,19 @@ function ModalAddsPet({ onModalClose }) {
                         <input {...getInputProps()} />
                         {!values.picture ? (
                           <Box>
-                            <AddOutlinedIcon
+                            <img src={addIconSVG} alt="add pet avatar" />
+
+                            {/* <AddOutlinedIcon
                               sx={{
                                 fontSize: '83px',
                               }}
-                            />
+                            /> */}
                           </Box>
                         ) : (
                           <Box
                             sx={{
                               height: '100%',
-                              borderRadius: '30px',
+                              borderRadius: '40px',
                               overflow: 'auto',
                             }}
                           >
@@ -192,17 +230,27 @@ function ModalAddsPet({ onModalClose }) {
                   </Dropzone>
                   <Grid item md={6} sx={{ mt: '40px' }}>
                     <Field
-                      cols={35}
-                      style={{
-                        height: '115px',
+                      sx={{
+                        backgroundColor: '#FDF7F2',
                         width: '395px',
-                        resize: 'none',
-                        padding: '15px',
+                        borderRadius: '20px',
+
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>textarea+textarea+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                        '&>label+div': {
+                          borderRadius: '20px',
+                        },
                       }}
-                      type="text"
-                      component={StyledTextarea}
+                      multiline={true}
+                      rows={5}
+                      fullWidth
                       name="comment"
-                      placeholder="Type comment"
+                      component={TextField}
+                      label="Type comment"
                     />
                   </Grid>
                 </Grid>
