@@ -72,21 +72,29 @@ export const ThemeOptions = {
       borderRadius: 20,
       textTransform: 'capitalize',
       margin: 4,
+      hover: {
+        backgroundColor: palette.primary.main,
+        color: palette.secondary.main,
+      }
     },
     caption: {
       fontSize: 12,
       fontWeight: 500,
       lineHeight: 1.34,
     },
-    card: {
-      backgroundColor: 'red',
-      p: 20,
-    }
+
+  },
+  CardActionArea: {
+    backgroundColor: 'red',
+    p: 20,
   },
   shape: {
     borderRadius: 40,
   },
   components: {
+    MuiCardActionArea: {
+    backgroundColor: 'red',
+    },
     MuiButton: {
       variants: [
         {
@@ -105,7 +113,7 @@ export const ThemeOptions = {
         },
       ],
     },
-    MuiCard: {
+    CardActionArea: {
       backgroundColor: 'red',
     }
   },

@@ -12,6 +12,8 @@ import { ThemeOptions } from 'muiSettings/muiSettings';
 
 const theme = createTheme(ThemeOptions)
 
+console.log(theme)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

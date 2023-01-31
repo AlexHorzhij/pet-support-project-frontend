@@ -7,7 +7,7 @@ import { fetchNotices } from 'redux/notices/noticesOperations';
 
 import { Button } from '@mui/material';
 
-import ActionAreaCard from './card';
+import ActionAreaCard from './NoticeCard';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -23,7 +23,6 @@ export default function NoticesCategoryList() {
 
   return (
     <>
-    <ActionAreaCard></ActionAreaCard>
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
@@ -61,7 +60,7 @@ export default function NoticesCategoryList() {
           my ads
         </Button>
       </>}
-    
+      <ActionAreaCard></ActionAreaCard>
     </>
   );
 }
