@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
+import Dropzone from 'react-dropzone';
 import {
   BoxWrapper,
   BoxImageWrapper,
@@ -17,6 +18,7 @@ import { fetchUserData } from 'redux/userData/userDataOperations';
 function UserData() {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const [userPicture, setUserPicture] = useState(null);
 
   useEffect(() => {
     dispatch(fetchUserData());
@@ -34,10 +36,17 @@ function UserData() {
               />
             </BoxImageContainer>
           </BoxImageBackdrop>
-          <StyledButton>
-            <PhotoCameraIcon sx={{ color: '#F59256', height: '20px' }} />
-            <Typography sx={{ fontSize: '12px' }}>Edit photo</Typography>
-          </StyledButton>
+
+          <Dropzone onDrop={acceptedFiles => setUserPicture(acceptedFiles)}>
+            {({ getRootProps, getInputProps }) => (
+              <section>
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
         </BoxImageWrapper>
         <Box sx={{ width: '100%' }}>
           {user.name && (
@@ -57,3 +66,12 @@ function UserData() {
 }
 
 export default UserData;
+
+// <StyledButton>
+//   <PhotoCameraIcon
+//     sx={{ color: '#F59256', height: '20px' }}
+//   />
+//   <Typography sx={{ fontSize: '12px' }}>
+//     Edit photo
+//   </Typography>
+// </StyledButton>

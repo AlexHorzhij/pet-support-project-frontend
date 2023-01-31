@@ -35,7 +35,7 @@ function App() {
               {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
             </Route>
 
-            <Route element={<PrivateRoute />}>
+            <Route element={<PublicRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>
 

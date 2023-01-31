@@ -1,6 +1,6 @@
 // дуже чорновий варіант, чекаю бек, поки підставила фейкові дані
-import cat from '../images/myPets/cat.png';
-import dog from '../images/myPets/dog.png';
+import cat from '../assets/images/myPets/cat.png';
+import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
 
 const BASE_URL = 'https://63d43ddbc52305feff6051b6.mockapi.io/api/v1/';
@@ -169,10 +169,10 @@ export async function addPet(pet) {
 //======================== NEWS START ==========================
 export async function getAllNews() {
   try {
-    const { data } = await instance.get('/news')
-    return data
+    const { data } = await instance.get('/news');
+    return data;
   } catch (error) {
-    throw new Error(error.message) 
+    throw new Error(error.message);
   }
 }
 
