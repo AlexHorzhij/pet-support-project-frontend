@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
-import { Card, CardContent, Typography, Grid } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { TextField } from 'formik-material-ui';
 import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
@@ -10,11 +10,10 @@ import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
 import { ModalTyporgaphy } from './ModalAddsPet.styled';
-import { StyledInput } from './ModalPets.styled';
+import { StyledInput, StyledTextarea } from './ModalPets.styled';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
-  // console.log('images: ', images[0].src);
   const formSumbitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
     values.picture = preview;
@@ -35,8 +34,11 @@ function ModalAddsPet({ onModalClose }) {
 
   return (
     <Formik enctype="multipart/form-data">
-      <Card>
-        <CardContent sx={{ paddingY: 10, paddingX: 5 }}>
+      <Card sx={{ width: '608px' }}>
+        <CardContent sx={{ paddingY: 5, paddingX: 10 }}>
+          <Typography sx={{ fontSize: '36px', textAlign: 'center' }}>
+            Add pet
+          </Typography>
           <Formik
             initialValues={{
               name: '',
@@ -59,7 +61,7 @@ function ModalAddsPet({ onModalClose }) {
               setFieldValue,
               resetForm,
             }) => (
-              <FormStepper>
+              <FormStepper onClose={onModalClose}>
                 <Box>
                   <Grid
                     item
@@ -121,6 +123,11 @@ function ModalAddsPet({ onModalClose }) {
                     alignItems: 'center',
                   }}
                 >
+                  <Typography
+                    sx={{ fontSize: '20px', textAlign: 'center', mb: '20px' }}
+                  >
+                    Add photo and some comments
+                  </Typography>
                   <Dropzone
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
@@ -157,7 +164,11 @@ function ModalAddsPet({ onModalClose }) {
                         <input {...getInputProps()} />
                         {!values.picture ? (
                           <Box>
-                            <AddOutlinedIcon />
+                            <AddOutlinedIcon
+                              sx={{
+                                fontSize: '83px',
+                              }}
+                            />
                           </Box>
                         ) : (
                           <Box
@@ -180,14 +191,19 @@ function ModalAddsPet({ onModalClose }) {
                       </Box>
                     )}
                   </Dropzone>
-                  <Grid item md={6}>
+                  <Grid item md={6} sx={{ mt: '40px' }}>
                     <Field
-                      multiline={true}
-                      rows={5}
-                      fullWidth
+                      cols={35}
+                      style={{
+                        height: '115px',
+                        width: '395px',
+                        resize: 'none',
+                        padding: '15px',
+                      }}
+                      type="text"
+                      component={StyledTextarea}
                       name="comment"
-                      component={TextField}
-                      label="Type comment"
+                      placeholder="Type comment"
                     />
                   </Grid>
                 </Grid>
@@ -197,92 +213,6 @@ function ModalAddsPet({ onModalClose }) {
         </CardContent>
       </Card>
     </Formik>
-    // <Box
-    //   sx={{
-    //     backgroundColor: 'white',
-    //     padding: '25px',
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     position: 'relative',
-    //   }}
-    // >
-    //   <IconButton
-    //     type="button"
-    //     onClick={onModalClose}
-    //     sx={{ position: 'absolute', top: 0, right: 0 }}
-    //   >
-    //     <CancelOutlinedIcon
-    //       sx={{
-    //         backgroundColor: '#FDF7F2',
-    //         borderRadius: '50%',
-    //         color: 'black',
-    //       }}
-    //     />
-    //   </IconButton>
-    //   <Typography>Add pet</Typography>
-    //   <form>
-    //     <label>
-    //       Name pet
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type name pet"
-    //       />
-    //     </label>
-    //     <label>
-    //       Date of birth
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type date of birth"
-    //       />
-    //     </label>
-    //     <label>
-    //       Breed
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type breed"
-    //       />
-    //     </label>
-    //   </form>
-    //   <Box>
-    //     <IconButton>Cancel</IconButton>
-    //     <IconButton>Next</IconButton>
-    //   </Box>
-    // </Box>
   );
 }
 
