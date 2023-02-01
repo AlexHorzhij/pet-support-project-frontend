@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 
+import mobile from '../../assets/backgrounds/mobile.png';
+import tablet from '../../assets/backgrounds/tablet.png';
+import desktop from '../../assets/backgrounds/desktop.png';
+
 export const Background = styled.div`
   width: 100%;
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 50px;
   background-color: #fdf7f2;
-  background-image: url('assets/backgrounds/mobile.png');
+  background-image: url(${mobile});
   background-size: 100% 160px;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -15,12 +19,12 @@ export const Background = styled.div`
 
   @media screen and (min-width: 768px) {
     background-size: 100% 400px;
-    background-image: url('assets/backgrounds/tablet.png');
+    background-image: url(${tablet});
   }
 
   @media screen and (min-width: 1280px) {
     background-size: 100% 390px;
-    background-image: url('assets/backgrounds/desktop.png');
+    background-image: url(${desktop});
   }
 `;
 
