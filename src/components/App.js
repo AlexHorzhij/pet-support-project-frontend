@@ -25,8 +25,6 @@ function App() {
 
             <Route element={<PublicRoute />}>
               <Route path="/login" element={<LoginPage />} />
-            </Route>
-            <Route element={<PublicRoute />}>
               <Route path="/register" element={<RegisterPage />} />
             </Route>
 

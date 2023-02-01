@@ -2,8 +2,8 @@
 import cat from '../images/myPets/cat.png';
 import dog from '../images/myPets/dog.png';
 import axios from 'axios';
-const URL = process.env.REACT_APP_BASE_URL;
-console.log(URL);
+// const URL = process.env.REACT_APP_BASE_URL;
+// console.log(URL);
 
 const BASE_URL = 'https://63d43ddbc52305feff6051b6.mockapi.io/api/v1/';
 

@@ -8,7 +8,7 @@ const palette = {
     contrastText: '#000000',
   },
   background: {
-    default: '#d5d9dd',
+    default: '#FDF7F2',
     paper: '#FFFFFF',
   },
   warning: {
@@ -82,17 +82,10 @@ export const ThemeOptions = {
       lineHeight: 1.34,
     },
   },
-  CardActionArea: {
-    backgroundColor: 'red',
-    p: 20,
-  },
   shape: {
     borderRadius: 40,
   },
   components: {
-    MuiCardActionArea: {
-      backgroundColor: 'red',
-    },
     MuiButton: {
       variants: [
         {
@@ -115,18 +108,25 @@ export const ThemeOptions = {
         },
       ],
     },
-    CardActionArea: {
-      backgroundColor: 'red',
-    },
-    MuiCardBase: {
-      backgroundColor: 'red'
+    MuiContainer: {
+      variants: [
+        {
+          props: { component: 'main'},
+          style: {
+            backgroundColor: palette.background.default,
+            marginTop: 49,
+            paddingTop: 10,
+            
+          }
+        }
+      ]
     }
   },
   breakpoints: {
     values: {
-      mobile: 320,
-      tablet: 768,
-      desktop: 1280,
+      lg: 1280,
+      md: 768,
+      sm: 320,
     },
   },
 };

@@ -1,7 +1,8 @@
 import React from 'react'
+import { Container } from '@mui/material'
+// import { ContainerMain } from 'components/muiCustomed/muiCustomed'
 
 import {
-  Main,
   DivFlexSpaceBetween
 } from './NoticePage.styled'
 
@@ -16,17 +17,17 @@ import {
 export default function NoticePage() {
 
   return (
-    <Main>
+    <Container component='main'>
       <NoticesFilter />
       <DivFlexSpaceBetween>
         <div>
           <NoticesCategoryList />
         </div>
-        <DivFlexSpaceBetween>
+        <div>
           <AddNoticeBtn />
-        </DivFlexSpaceBetween>
+        </div>
       </DivFlexSpaceBetween>
       <NoticesGallery />
-    </Main>
+    </Container>
   )
 }
