@@ -9,7 +9,8 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 export default function ApplicationBar() {
   const isLogIn = true;
   return (
-    <Header position="fixed">
+    <Header>
+      {/* position="fixed" */}
       <Wrapper>
         <LogoInfo>
           pe<Span>t</Span>ly

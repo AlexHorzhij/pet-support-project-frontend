@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  MobileAuthNavigation,
-  AuthWrapper,
-  MobileAuthItem,
-  MobileAuthLink,
-} from '../MobileAuth/MobileAuth.styled';
+import { MobileAuthItem } from '../MobileAuth/MobileAuth.styled';
 
 export const MobileAccounItem = styled(MobileAuthItem)({
   width: '164px',

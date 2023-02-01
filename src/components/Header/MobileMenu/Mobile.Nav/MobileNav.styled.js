@@ -1,11 +1,5 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
-import {
-  Navigation,
-  NavList,
-  ListItem,
-  LinkNav,
-} from 'components/Header/Nav/Nav.styled';
+import { Navigation, NavList, LinkNav } from 'components/Header/Nav/Nav.styled';
 
 export const MobileNavigation = styled(Navigation)({
   '@media screen and (max-width: 1279px)': {
