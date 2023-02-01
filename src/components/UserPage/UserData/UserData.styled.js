@@ -26,11 +26,11 @@ export const BoxImageBackdrop = styled(Box)({
   width: '233px',
   borderRadius: '50%',
   overflow: 'hidden',
+  boxShadow: '0px 4px 14px 0px rgba(0, 0, 0, 0.11)',
 });
 export const BoxImageContainer = styled(Box)({
   width: '100%',
   paddingTop: '100%',
-  backgroundColor: 'black',
   position: 'relative',
 });
 export const StyledButton = styled(IconButton)({
