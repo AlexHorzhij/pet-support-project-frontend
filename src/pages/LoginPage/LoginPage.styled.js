@@ -7,7 +7,7 @@ import desktop from '../../assets/backgrounds/desktop.png';
 export const Background = styled.div`
   width: 100%;
   height: 100vh;
-  padding-top: 50px;
+  padding-top: 100px;
   background-color: #fdf7f2;
   background-image: url(${mobile});
   background-size: 100% 160px;
@@ -18,24 +18,26 @@ export const Background = styled.div`
   overflow: auto;
 
   @media screen and (min-width: 768px) {
+    padding-top: 240px;
     background-size: 100% 400px;
     background-image: url(${tablet});
   }
 
   @media screen and (min-width: 1280px) {
+    padding-top: 150px;
     background-size: 100% 390px;
     background-image: url(${desktop});
   }
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 280px;
+  width: 280px;
   padding: 40px 0 40px 0;
   margin-right: auto;
   margin-left: auto;
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    width: 608px;
     min-height: 300px;
     padding: 60px 80px 40px 80px;
     background-color: #fff;
@@ -44,7 +46,7 @@ export const ContentWrapper = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 778px;
+    width: 618px;
     padding: 60px 80px 60px 80px;
   }
 `;

@@ -21,7 +21,7 @@ export const Background = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
-  padding-top: 120px;
+  padding-top: 118px;
   padding-left: 20px;
   background-color: #fdf7f2;
   background-image: url(${homeMobile});
