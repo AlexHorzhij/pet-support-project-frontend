@@ -13,12 +13,11 @@ export const MobileMenu = styled.div`
   height: 796px;
   display: flex;
   flex-direction: column;
+  z-index: 99;
   @media screen and (min-width: 1280px) {
     display: none;
   }
 `;
-// top: 22px;
-//   right: 15px;
 export const BtnClose = styled.button`
   position: absolute;
   top: 12px;
