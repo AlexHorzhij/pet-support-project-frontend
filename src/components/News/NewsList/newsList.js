@@ -2,7 +2,7 @@ import { NewsItem } from '../NewsItem/newsItem';
 import { NewsGrid } from './newsList.styled';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getNews } from 'redux/news/newsSelectors';
+import { getNews} from 'redux/news/newsSelectors';
 import { fetchNews } from 'redux/news/newsOperations';
 import { Loader } from 'components/Loader/Loader';
 
@@ -17,7 +17,7 @@ export const NewsList = () => {
 
   return (
     
-    <NewsGrid component="ul" container columnSpacing={{ xs: 3, sm: 3, md: 3 }}>
+    <NewsGrid component="ul" container columnSpacing={3}>
       {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
       {news &&
