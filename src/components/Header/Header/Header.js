@@ -1,23 +1,26 @@
+import { useSelector } from 'react-redux';
 import { Header, Wrapper } from '../Header/Header.styled';
 import Nav from '../Nav/Nav';
 import { LogoInfo, Span } from '../Logo/Logo.styled';
-import SimpleListMenu from '../MobileMenu/MobileMenu';
 import AuthNav from '../AuthNav/AuthNav';
 import { NavWrapper } from '../Header/Header.styled';
-import UserNav from '../UserNav';
+import UserNav from '../UserNav/UserNav';
+import MobileMenu from '../MobileMenu/MobileMenu';
+
+import { getAuth } from 'redux/auth/authSelectors';
 
 export default function ApplicationBar() {
-  const isLogIn = false;
+  const { isLoggedIn } = useSelector(getAuth);
   return (
-    <Header position="fixed">
+    <Header>
       <Wrapper>
         <LogoInfo>
           pe<Span>t</Span>ly
         </LogoInfo>
         <Nav />
         <NavWrapper>
-          {isLogIn ? <UserNav /> : <AuthNav />}
-          <SimpleListMenu />
+          {isLoggedIn ? <UserNav /> : <AuthNav />}
+          <MobileMenu />
         </NavWrapper>
       </Wrapper>
     </Header>
