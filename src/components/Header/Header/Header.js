@@ -3,7 +3,7 @@ import Nav from '../Nav/Nav';
 import { LogoInfo, Span } from '../Logo/Logo.styled';
 import AuthNav from '../AuthNav/AuthNav';
 import { NavWrapper } from '../Header/Header.styled';
-import UserNav from '../UserNav';
+import UserNav from '../UserNav/UserNav';
 import MobileMenu from '../MobileMenu/MobileMenu';
 
 export default function ApplicationBar() {

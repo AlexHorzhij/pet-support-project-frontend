@@ -14,7 +14,6 @@ export default function MobileMenu() {
       <Btn onClick={toggle}>
         <MenuIcon />
       </Btn>
-      {/* <MobileMarkup onClose={toggle} /> */}
       {isOpen && <MobileMarkup onClose={toggle} />}
     </div>
   );

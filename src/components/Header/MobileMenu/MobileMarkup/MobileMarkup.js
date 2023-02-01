@@ -6,7 +6,7 @@ import {
 } from './MobileMarkup.styled';
 import MobileNav from '../Mobile.Nav/MobileNav';
 import MobileAuth from '../MobileAuth/MobileAuth';
-import UserNav from 'components/Header/UserNav';
+import UserNav from 'components/Header/UserNav/UserNav';
 import Logo from 'components/Header/Logo/Logo';
 import MobileUserNav from '../MobileUserNav/MobileUserNav';
 

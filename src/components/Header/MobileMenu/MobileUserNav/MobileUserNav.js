@@ -2,7 +2,6 @@ import React from 'react';
 import {
   MobileAuthNavigation,
   AuthWrapper,
-  MobileAuthItem,
   MobileAuthLink,
 } from '../MobileAuth/MobileAuth.styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

@@ -49,16 +49,15 @@
 // ];
 
 // export const NewsList = () => {
-// const dispatch = useDispatch()
+//   const dispatch = useDispatch();
 
-// useEffect(() => {
+//   useEffect(() => {
 //     dispatch(fetchNews());
-// }, [dispatch]);
+//   }, [dispatch]);
 
 //   const { news, error, isLoading } = useSelector(getNews);
 
 //   return (
-
 //     <NewsGrid component="ul" container columnSpacing={{ xs: 3, sm: 3, md: 3 }}>
 //       {news &&
 //         news.map(({ _id, title, description, date, url }) => {
