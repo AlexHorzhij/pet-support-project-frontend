@@ -15,9 +15,9 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
     <Grid
       component="li"
       item
-      xs={12}
-      sm={6}
-      md={4}
+      mobile={12}
+      tablet={6}
+      desktop={4}
       style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}
     >
       <Rectangle variant="rectangular" />

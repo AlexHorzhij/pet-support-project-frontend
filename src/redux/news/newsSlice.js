@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNews } from "./newsOperations";
+import { fetchNews, fetchSearchNews } from "./newsOperations";
 
 
 const initialState = {
@@ -22,6 +22,17 @@ export const newsSlice = createSlice({
                 state.news = payload;
             })
             .addCase(fetchNews.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+            .addCase(fetchSearchNews.pending, state => {
+                state.isLoading = true;
+            })
+            .addCase(fetchSearchNews.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.news = payload;
+            })
+            .addCase(fetchSearchNews.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = payload;
             })
