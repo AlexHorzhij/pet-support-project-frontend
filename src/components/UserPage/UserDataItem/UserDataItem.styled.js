@@ -1,18 +1,26 @@
 import { styled } from '@mui/material/styles';
 import styledEmotion from '@emotion/styled';
 
-import { Typography, Box, ListItem } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+
+export const UserDataTitle = styled(Typography)({
+  fontSize: '18px',
+});
 
 export const UserDataItemBox = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   width: '100%',
-  mb: '10px',
   fontSize: '18px',
-
-  ':last-child': {
-    marginBottom: '0',
+  '&:not(:last-child)': {
+    marginBottom: '3px',
+  },
+});
+export const UserDataItemtitle = styled(Box)({
+  marginRight: 'auto',
+  '@media screen and (max-width: 960px)': {
+    width: '120px',
   },
 });
 export const UserDataItemInput = styledEmotion.input`
@@ -24,4 +32,13 @@ export const UserDataItemInput = styledEmotion.input`
           margin: 0 15px;
           appearance: none;
           outline: none;
+					font-size:18px;
+					line-height:25px;
+					letter-spacing: 0.8px;
+
+					   @media (min-width: 768px) {
+    width: 100%;
+
+  }
+  },
 `;

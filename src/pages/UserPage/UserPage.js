@@ -16,7 +16,7 @@ function UserPage() {
     setModalIsShown(prev => !prev);
   };
   return (
-    <UserDataContainer>
+    <UserDataContainer component="main">
       <Box>
         <UserDataTypography variant="h3">My information:</UserDataTypography>
         <UserData />

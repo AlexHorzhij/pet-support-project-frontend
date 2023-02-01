@@ -10,6 +10,11 @@ export const UserDataContainer = styled(Container)({
   gap: '32px',
   marginTop: '50px',
   paddingTop: '30px',
+  paddingBottom: '50px',
+
+  '@media screen and (max-width: 960px)': {
+    flexDirection: 'column',
+  },
 });
 export const UserDataTypography = styled(Typography)({
   marginLeft: '17px',

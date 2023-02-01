@@ -27,9 +27,9 @@ export const PetInfoTypography = styled(Typography)({
   fontWeight: 400,
   fontSize: '16px',
   lineHeight: '22px',
-  letterSpacing: '0.5px',
+  letterSpacing: '0.6px',
   '&:not(:last-child)': {
-    marginBottom: '16px',
+    marginBottom: '13px',
   },
 });
 export const PetImage = styledEmotion.img`

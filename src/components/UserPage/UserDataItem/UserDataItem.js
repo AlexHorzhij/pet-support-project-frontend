@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, IconButton, Typography } from '@mui/material';
-import { UserDataItemBox, UserDataItemInput } from './UserDataItem.styled';
+import { IconButton } from '@mui/material';
+import {
+  UserDataItemBox,
+  UserDataItemInput,
+  UserDataTitle,
+  UserDataItemtitle,
+} from './UserDataItem.styled';
 import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import { useDispatch } from 'react-redux';
@@ -31,9 +36,9 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
   };
   return (
     <UserDataItemBox>
-      <Box sx={{ mr: 'auto' }}>
-        <Typography>{title}:</Typography>
-      </Box>
+      <UserDataItemtitle>
+        <UserDataTitle>{title}:</UserDataTitle>
+      </UserDataItemtitle>
       <UserDataItemInput
         ref={inputRef}
         id={title}
