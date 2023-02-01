@@ -10,27 +10,47 @@ export const BoxWrapper = styled(Box)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '20px 16px',
+  padding: '20px 18px',
   width: '411px',
   marginLeft: '-24px',
   boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
+  '@media screen and (max-width: 960px)': {
+    position: 'relative',
+    flexDirection: 'row-reverse',
+    width: '100%',
+    marginLeft: 0,
+    height: '310px',
+
+    paddingBottom: '25px',
+  },
+  '@media screen and (max-width: 768px)': {
+    position: 'relative',
+    flexDirection: 'column',
+    marginLeft: 0,
+  },
 });
 export const BoxImageWrapper = styled(Box)({
   width: '100%',
   display: 'flex',
   position: 'relative',
   justifyContent: 'center',
-  marginBottom: '36px',
+
+  '@media screen and (max-width: 960px)': {
+    marginBottom: 0,
+  },
+  '@media screen and (max-width: 768px)': {
+    marginBottom: '70px',
+  },
 });
 export const BoxImageBackdrop = styled(Box)({
   width: '233px',
   borderRadius: '50%',
   overflow: 'hidden',
+  boxShadow: '0px 4px 14px 0px rgba(0, 0, 0, 0.11)',
 });
 export const BoxImageContainer = styled(Box)({
   width: '100%',
   paddingTop: '100%',
-  backgroundColor: 'black',
   position: 'relative',
 });
 export const StyledButton = styled(IconButton)({
@@ -38,8 +58,12 @@ export const StyledButton = styled(IconButton)({
   height: '26px',
   padding: '3px',
   position: 'absolute',
-  bottom: 0,
+  bottom: '-3px',
   right: 0,
+  '@media screen and (max-width: 960px)': {
+    bottom: '-40px',
+    right: '25px',
+  },
 });
 export const ImageBox = styled(Box)({
   position: 'absolute',

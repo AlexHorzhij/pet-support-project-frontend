@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'formik';
-import { Box, Button } from '@mui/material';
-
+import { StepperBox, StepperButton } from './FormStepper.styled';
 export const FormStepper = ({ children, onClose }) => {
   const stepsArray = React.Children.toArray(children);
   const [step, setStep] = useState(0);
@@ -9,49 +8,27 @@ export const FormStepper = ({ children, onClose }) => {
 
   return (
     <Form className="addForm">
-      {/* <Stepper alternativeLabel activeStep={step} sx={{ marginBottom: 5 }}>
-        {stepsArray.map((child, index) => (
-          <Step key={index} completed={step > index}>
-            <StepLabel key={index}>{child.props.label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper> */}
       {currentStep}
-      <Box
-        sx={{
-          marginTop: 5,
-          display: 'flex',
-          justifyContent: 'space-evenly',
-        }}
-      >
+      <StepperBox>
         {step === 0 && (
-          <Button
-            onClick={onClose}
-            sx={{ minWidth: '180px' }}
-            type="button"
-            variant="outlined"
-          >
+          <StepperButton onClick={onClose} variant="outlined">
             Cancel
-          </Button>
+          </StepperButton>
         )}
-
-        <Button
-          sx={{ minWidth: '180px' }}
-          type="button"
+        <StepperButton
           variant={step === 0 ? 'contained' : 'outlined'}
           onClick={() => {
             step === 0 ? setStep(1) : setStep(0);
           }}
         >
           {step === 0 ? 'Next' : 'Back'}
-        </Button>
-
+        </StepperButton>
         {step === 1 && (
-          <Button sx={{ minWidth: '180px' }} variant="contained" type="submit">
+          <StepperButton variant="contained" type="submit">
             Done
-          </Button>
+          </StepperButton>
         )}
-      </Box>
+      </StepperBox>
     </Form>
   );
 };
