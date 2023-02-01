@@ -1,4 +1,3 @@
-
 const palette = {
   type: 'light',
   primary: {
@@ -24,7 +23,7 @@ const palette = {
     contrast: '#FFFFFF',
     hint: 'rgba(0,0,0,0.39)',
   },
-}
+};
 
 export const ThemeOptions = {
   palette,
@@ -75,14 +74,13 @@ export const ThemeOptions = {
       hover: {
         backgroundColor: palette.primary.main,
         color: palette.secondary.main,
-      }
+      },
     },
     caption: {
       fontSize: 12,
       fontWeight: 500,
       lineHeight: 1.34,
     },
-
   },
   CardActionArea: {
     backgroundColor: 'red',
@@ -103,10 +101,10 @@ export const ThemeOptions = {
             border: `2px solid ${palette.primary.main}`,
             backgroundColor: palette.background.paper,
             color: palette.text.primary,
-            "&:hover": {
+            '&:hover': {
               backgroundColor: palette.primary.main,
               border: `2px solid ${palette.primary.main}`,
-            }
+            },
           },
         },
         {
@@ -119,6 +117,13 @@ export const ThemeOptions = {
     },
     CardActionArea: {
       backgroundColor: 'red',
-    }
+    },
+  },
+  breakpoints: {
+    values: {
+      mobile: 320,
+      tablet: 768,
+      desktop: 1280,
+    },
   },
 };

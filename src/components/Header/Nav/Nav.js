@@ -6,10 +6,10 @@ export default function Nav() {
       <Navigation>
         <NavList>
           <ListItem>
-            <LinkNav to="news">News</LinkNav>
+            <LinkNav to="/news">News</LinkNav>
           </ListItem>
           <ListItem>
-            <LinkNav to="">Find pet</LinkNav>
+            <LinkNav to="/notice">Find pet</LinkNav>
           </ListItem>
           <ListItem>
             <LinkNav to="/friends">Our friends</LinkNav>

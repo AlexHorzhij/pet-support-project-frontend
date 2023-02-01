@@ -1,6 +1,7 @@
 import { NewsItem } from '../NewsItem/newsItem';
+import { NewsGrid } from './newsList.styled';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getNews } from 'redux/news/newsSelectors';
 import { fetchNews } from 'redux/news/newsOperations';
 import { Loader } from 'components/Loader/Loader';
@@ -15,7 +16,8 @@ export const NewsList = () => {
   const { news, error, isLoading } = useSelector(getNews);
 
   return (
-    <ul>
+    
+    <NewsGrid component="ul" container columnSpacing={{ xs: 3, sm: 3, md: 3 }}>
       {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
       {news &&
@@ -31,6 +33,6 @@ export const NewsList = () => {
             />
           );
         })}
-    </ul>
+    </NewsGrid>
   );
 };

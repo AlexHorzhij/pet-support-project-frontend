@@ -12,26 +12,26 @@ import {
 import { BiImage } from 'react-icons/bi';
 import { AutoAwesomeMotion } from '@mui/icons-material';
 
-export default function NoticesCategoryList() {
+export default function NoticesCategoryList({ title, breed, place, age }) {
   return (
     <Card>
       <ImgWrapper>
         <BiImage style={{ width: 'auto' }} />
       </ImgWrapper>
       <Discription>
-        <Title>Сute dog looking for a home</Title>
+        <Title>{title}</Title>
         <List>
           <Li>
             <Key>Breed:</Key>
-            <p>Pomeranian</p>
+            <p>{breed}</p>
           </Li>
           <Li>
             <Key>Place:</Key>
-            <p>Lviv</p>
+            <p>{place}</p>
           </Li>
           <Li>
             <Key>Age:</Key>
-            <p>one year</p>
+            <p>{age}</p>
           </Li>
           <Li>
             <Key>Price:</Key>

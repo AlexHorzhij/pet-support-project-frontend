@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { PageTitle } from './Title.styled';
 
 export const Title = ({ text }) => {
-  return (
-    <>
-      <h1>{text}</h1>
-    </>
-  );
+  return <PageTitle variant="h2">{text}</PageTitle>;
 };
 
 Title.propTypes = {
