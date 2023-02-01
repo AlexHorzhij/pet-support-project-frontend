@@ -9,6 +9,7 @@ import MobileAuth from '../MobileAuth/MobileAuth';
 import UserNav from 'components/Header/UserNav/UserNav';
 import Logo from 'components/Header/Logo/Logo';
 import MobileUserNav from '../MobileUserNav/MobileUserNav';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function MobileMarkup({ onClose }) {
   const isLogIn = true;
@@ -20,7 +21,9 @@ export default function MobileMarkup({ onClose }) {
         {/* <MobileAuth /> */}
         <MobileNav />
       </MobileMenuContainer>
-      <BtnClose onClick={onClose}>CLOSE</BtnClose>
+      <BtnClose onClick={onClose}>
+        <CloseIcon />
+      </BtnClose>
     </MobileMenu>
   );
 }
