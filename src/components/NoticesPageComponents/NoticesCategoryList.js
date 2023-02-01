@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import { getAuth } from 'redux/auth/authSelectors';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export default function NoticesCategoryList() {
   // const isLoggedIn = true
 
   return (
-    <>
+    <Container sx={{mb: 6}}>
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
@@ -58,6 +58,6 @@ export default function NoticesCategoryList() {
           my ads
         </Button>
       </>}
-    </>
+    </Container>
   );
 }

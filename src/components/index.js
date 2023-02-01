@@ -4,7 +4,7 @@ import NoticesCategoryList from './NoticesPageComponents/NoticesCategoryList'
 import NoticesFilter from './NoticesPageComponents/NoticesFilter'
 import NoticesGallery from './NoticesPageComponents/NoticesGallery'
 import AddNoticeBtn from './NoticesPageComponents/AddNoticeBtn'
-import Container from './Container/Container';
+import Container from './Container/Container.js';
 import OurFriendsList from './OurFriendsPageCompon/OurFriendsList';
 import OurFriendsItem from './OurFriendsPageCompon/OurFriendsItem';
 
@@ -18,4 +18,5 @@ export {
     Container,
     OurFriendsItem,
     OurFriendsList,
+    
 }

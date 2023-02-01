@@ -18,8 +18,8 @@ const palette = {
     main: '#3091EB',
   },
   text: {
-    primary: '#111111',
-    secondary: '#000',
+    primary: '#000',
+    secondary: '#535353',
     contrast: '#FFFFFF',
     hint: 'rgba(0,0,0,0.39)',
   },
@@ -106,27 +106,36 @@ export const ThemeOptions = {
             color: palette.text.contrast,
           },
         },
+        {
+          props: { variant: 'text' },
+          style: { color: palette.text.primary}
+        }
       ],
     },
     MuiContainer: {
       variants: [
         {
-          props: { component: 'main'},
+          props: { component: 'main' },
           style: {
             backgroundColor: palette.background.default,
             marginTop: 49,
             paddingTop: 10,
-            
+
           }
         }
       ]
-    }
+    },
+    // MuiContainerBase: {
+    //   mx: 'auto'
+    // }
   },
   breakpoints: {
     values: {
-      lg: 1280,
-      md: 768,
+      xs: 0,
       sm: 320,
+      md: 768,
+      lg: 1280,
+      xl: 1536,
     },
   },
 };
