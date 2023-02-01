@@ -7,7 +7,7 @@ import AddNoticeBtn from './NoticesPageComponents/AddNoticeBtn';
 import Container from './Container/Container';
 import OurFriendsList from './OurFriendsPageCompon/OurFriendsList';
 import OurFriendsItem from './OurFriendsPageCompon/OurFriendsItem';
-import NoticesCategoryItemList from './NoticesPageComponents/NoticesCategoryList';
+import NoticesCategoryItemList from './NoticesCategoryList/NoticesCategoryItemList/NoticesCategoryItemList';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
 
 export {
