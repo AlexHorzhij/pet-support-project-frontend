@@ -3,7 +3,7 @@ import PetItem from '../PetItem/PetItem';
 import { List } from '@mui/material';
 function PetsList({ pets }) {
   return (
-    <List style={{ listStyle: 'none' }}>
+    <List style={{ listStyle: 'none', padding: '0' }}>
       {pets &&
         pets.map(({ id, picture, name, dateOfBirth, breed, comment }) => {
           return (
