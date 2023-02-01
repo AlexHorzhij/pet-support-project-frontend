@@ -1,10 +1,10 @@
 import { Header, Wrapper } from '../Header/Header.styled';
 import Nav from '../Nav/Nav';
 import { LogoInfo, Span } from '../Logo/Logo.styled';
-import SimpleListMenu from '../MobileMenu/MobileMenu';
 import AuthNav from '../AuthNav/AuthNav';
 import { NavWrapper } from '../Header/Header.styled';
 import UserNav from '../UserNav';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
 export default function ApplicationBar() {
   const isLogIn = false;
@@ -17,7 +17,7 @@ export default function ApplicationBar() {
         <Nav />
         <NavWrapper>
           {isLogIn ? <UserNav /> : <AuthNav />}
-          <SimpleListMenu />
+          <MobileMenu />
         </NavWrapper>
       </Wrapper>
     </Header>
