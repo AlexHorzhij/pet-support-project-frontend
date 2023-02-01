@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import NoticesCategoryList from '../components/NoticesCategoryList/NoticesCategoryItem/NoticesCategoryItem';
 
 export default function HomePage() {
   return (
-    <main>HomePage - a girl with a dog</main>
-  )
+    <main>
+      <NoticesCategoryList />
+    </main>
+  );
 }
