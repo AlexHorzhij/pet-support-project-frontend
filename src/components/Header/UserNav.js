@@ -5,7 +5,7 @@ export default function UserNav() {
   return (
     <AuthNavigation>
       <AuthItem color="inherit" variant="outlined">
-        <AuthLink href="">Account</AuthLink>
+        <AuthLink to="/login">Account</AuthLink>
       </AuthItem>
     </AuthNavigation>
   );

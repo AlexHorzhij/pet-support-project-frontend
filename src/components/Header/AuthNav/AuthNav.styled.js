@@ -18,8 +18,8 @@ export const AuthItem = styled(Button)({
   backgroundColor: 'white',
   marginRight: '20px',
   '&:hover, focus': {
-    color: 'white',
-    backgroundColor: 'orange',
+    color: '#FFFFFF',
+    backgroundColor: '#F59256',
   },
 });
 

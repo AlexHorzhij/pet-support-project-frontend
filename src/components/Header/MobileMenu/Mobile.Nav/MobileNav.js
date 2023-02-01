@@ -5,18 +5,19 @@ import {
   MobileNavListItem,
   MobileNavLink,
 } from './MobileNav.styled';
+
 export default function MobileNav() {
   return (
     <MobileNavigation>
       <MobileNavList>
         <MobileNavListItem>
-          <MobileNavLink href="/news">News</MobileNavLink>
+          <MobileNavLink to="/news">News</MobileNavLink>
         </MobileNavListItem>
         <MobileNavListItem>
-          <MobileNavLink href="/notice">Find pet</MobileNavLink>
+          <MobileNavLink to="/notice">Find pet</MobileNavLink>
         </MobileNavListItem>
         <MobileNavListItem>
-          <MobileNavLink href="/friends">Our friends</MobileNavLink>
+          <MobileNavLink to="/friends">Our friends</MobileNavLink>
         </MobileNavListItem>
       </MobileNavList>
     </MobileNavigation>

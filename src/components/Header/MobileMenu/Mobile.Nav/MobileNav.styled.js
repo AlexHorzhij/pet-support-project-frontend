@@ -8,9 +8,12 @@ import {
 } from 'components/Header/Nav/Nav.styled';
 
 export const MobileNavigation = styled(Navigation)({
-  '@media screen and (max-width: 767px)': {
+  '@media screen and (max-width: 1279px)': {
     display: 'flex',
     flexDirection: 'column',
+  },
+  '@media screen and (min-width: 768px) and (max-width: 1279px)': {
+    marginTop: '88px',
   },
 });
 // export const MobileNavigation = styled.nav`
@@ -24,6 +27,7 @@ export const MobileNavigation = styled(Navigation)({
 export const MobileNavList = styled(NavList)({
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   alignContent: 'center',
   flexDirection: 'column',
   listStyle: 'none',
@@ -39,14 +43,18 @@ export const MobileNavList = styled(NavList)({
 //   liststyle: none;
 // `;
 
-export const MobileNavListItem = styled(ListItem)({
-  marginBottom: '40px',
-  marginLeft: '0',
-});
+// export const MobileNavListItem = styled(ListItem)({
+//   marginBottom: '40px',
+//   marginLeft: 0,
+// });
+export const MobileNavListItem = styled.li`
+      margin-bottom: 40px;
+  }
+`;
 // export const MobileNavListItem = styled.li`marginBottom: '40px',
 //   marginLeft: '0',`;
 
-export const MobileNavLink = styled(NavLink)({
+export const MobileNavLink = styled(LinkNav)({
   fontFamily: 'Manrope',
   fontStyle: 'normal',
   fontWeight: '500',
@@ -58,6 +66,10 @@ export const MobileNavLink = styled(NavLink)({
   color: '#181C27',
   '&:hover &:focus': {
     color: 'rgba(245, 146, 86, 1)',
+  },
+  '@media screen and (min-width: 768px) and (max-width: 1279px)': {
+    fontSize: '48px',
+    lineHeight: '66px',
   },
 });
 

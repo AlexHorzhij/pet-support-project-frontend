@@ -7,7 +7,7 @@ import UserNav from '../UserNav';
 import MobileMenu from '../MobileMenu/MobileMenu';
 
 export default function ApplicationBar() {
-  const isLogIn = false;
+  const isLogIn = true;
   return (
     <Header position="fixed">
       <Wrapper>

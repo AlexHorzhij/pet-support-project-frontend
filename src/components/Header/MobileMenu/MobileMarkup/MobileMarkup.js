@@ -7,19 +7,18 @@ import {
 import MobileNav from '../Mobile.Nav/MobileNav';
 import MobileAuth from '../MobileAuth/MobileAuth';
 import UserNav from 'components/Header/UserNav';
-import AuthNav from 'components/Header/AuthNav/AuthNav';
-import Nav from 'components/Header/Nav/Nav';
+import Logo from 'components/Header/Logo/Logo';
+import MobileUserNav from '../MobileUserNav/MobileUserNav';
 
 export default function MobileMarkup({ onClose }) {
-  const isLogIn = false;
+  const isLogIn = true;
   return (
     <MobileMenu>
+      <Logo />
       <MobileMenuContainer>
-        <AuthNav />
-        <Nav />
-        {/* {isLogIn ? <UserNav /> : <MobileAuth />} */}
+        {isLogIn ? <MobileUserNav /> : <MobileAuth />}
         {/* <MobileAuth /> */}
-        {/* <MobileNav /> */}
+        <MobileNav />
       </MobileMenuContainer>
       <BtnClose onClick={onClose}>CLOSE</BtnClose>
     </MobileMenu>
