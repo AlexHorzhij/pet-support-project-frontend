@@ -1,8 +1,15 @@
-import { Box, IconButton, Typography, ListItem } from '@mui/material';
+import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/petsData/petsOperations';
-
+import {
+  PetListItem,
+  PetImageBox,
+  PetImage,
+  PetInfoBox,
+  PetInfoTitleSpan,
+  PetInfoTypography,
+} from './PetItem.styled';
 function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   const dispatch = useDispatch();
 
@@ -11,53 +18,31 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   };
 
   return (
-    <ListItem
-      sx={{
-        boxSizing: 'border-box',
-        display: 'flex',
-        alignItems: 'start',
-        backgroundColor: 'white',
-        borderRadius: '40px',
-        boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
-        padding: '20px',
-        '&:not(:last-child)': {
-          mb: '22px',
-        },
-      }}
-    >
-      <Box sx={{ minWidth: '161px', height: '161px' }}>
-        <img
-          style={{
-            width: '161px',
-            height: '161px',
-            borderRadius: '40px',
-            objectFit: 'cover',
-          }}
-          src={imgSrc}
-          alt="my pet"
-        />
-      </Box>
-      <Box sx={{ ml: '10px', mr: 'auto' }}>
-        <Box>
-          <Typography>Name: {name}</Typography>
-        </Box>
-        <Box>
-          <Typography>Date of birth: {birthDate}</Typography>
-        </Box>
-        <Box>
-          <Typography>Breed: {breed}</Typography>
-        </Box>
-        <Box>
-          <Typography>Comments: {comment}</Typography>
-        </Box>
-      </Box>
+    <PetListItem>
+      <PetImageBox>
+        <PetImage src={imgSrc} alt="my pet" />
+      </PetImageBox>
+      <PetInfoBox>
+        <PetInfoTypography>
+          <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
+        </PetInfoTypography>
+        <PetInfoTypography>
+          <PetInfoTitleSpan>Date of birth:</PetInfoTitleSpan> {birthDate}
+        </PetInfoTypography>
+        <PetInfoTypography>
+          <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
+        </PetInfoTypography>
+        <PetInfoTypography>
+          <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
+        </PetInfoTypography>
+      </PetInfoBox>
       <IconButton
         onClick={() => handlePetDelete(id)}
         sx={{ backgroundColor: '#FDF7F2' }}
       >
         <DeleteIcon />
       </IconButton>
-    </ListItem>
+    </PetListItem>
   );
 }
 

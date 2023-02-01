@@ -61,18 +61,20 @@ function UserData() {
             </div>
           </div>
         </BoxImageWrapper>
-        <Box sx={{ width: '100%' }}>
-          {user.name && (
-            <>
-              <UserDataItem title={'Name'} value={user.name} />
-              <UserDataItem title={'Email'} value={user.email} />
-              <UserDataItem title={'Birthday'} value={user.birthday} />
-              <UserDataItem title={'Phone'} value={user.phone} />
-              <UserDataItem title={'City'} value={user.city} />
-            </>
-          )}
+        <Box>
+          <Box sx={{ width: '100%' }}>
+            {user.name && (
+              <>
+                <UserDataItem title={'Name'} value={user.name} />
+                <UserDataItem title={'Email'} value={user.email} />
+                <UserDataItem title={'Birthday'} value={user.birthday} />
+                <UserDataItem title={'Phone'} value={user.phone} />
+                <UserDataItem title={'City'} value={user.city} />
+              </>
+            )}
+          </Box>
+          <Logout />
         </Box>
-        <Logout />
       </BoxWrapper>
     </>
   );

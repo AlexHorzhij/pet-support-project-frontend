@@ -86,6 +86,7 @@ export const ThemeOptions = {
     borderRadius: 40,
   },
   components: {
+
     MuiButton: {
       variants: [
         {

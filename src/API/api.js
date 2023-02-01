@@ -128,7 +128,7 @@ export async function requestPetsData() {
       id: '1',
       name: 'Jack',
       dateOfBirth: '22.04.2018',
-      breed: 'Precian cat',
+      breed: 'Percian cat',
       comment:
         'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
       picture: cat,

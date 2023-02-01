@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
+import { Button, Container } from '@mui/material';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button, Container } from '@mui/material';
 
 export default function NoticesCategoryList() {
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const params = useParams()
@@ -18,11 +19,11 @@ export default function NoticesCategoryList() {
     dispatch(fetchNotices(categoryName))
   }, [categoryName, dispatch])
 
-  const { isLoggedIn } = useSelector(getAuth)
+  const { isLoggedIn } = useSelector(getAuth);
   // const isLoggedIn = true
 
   return (
-    <Container sx={{mb: 6}}>
+    <Container sx={{ mb: 6 }}>
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}

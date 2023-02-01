@@ -8,7 +8,7 @@ const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
-const UserPage = lazy(() => import('../pages/UserPage'));
+const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const NewsPage = lazy(() => import('../pages/NewsPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
@@ -30,10 +30,7 @@ function App() {
 
             <Route path="/news" element={<NewsPage />} />
             <Route path="/friends" element={<OurFriendsPage />} />
-            <Route
-              path="/notices/:categoryName"
-              element={<NoticePage />}
-            ></Route>
+            <Route path="/notices/:categoryName" element={<NoticePage />}></Route>
             {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
 
             <Route element={<PrivateRoute />}>

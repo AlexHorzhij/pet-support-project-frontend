@@ -1,33 +1,70 @@
 import React from 'react'
-import { Container } from '@mui/material'
-// import { ContainerMain } from 'components/muiCustomed/muiCustomed'
-
-import {
-  DivFlexSpaceBetween
-} from './NoticePage.styled'
+import { Container } from '@mui/material';
 
 import {
   NoticesFilter,
   NoticesCategoryList,
   AddNoticeBtn,
   NoticesGallery
-} from 'components'
-
+} from 'components';
 
 export default function NoticePage() {
-
+  // const data = [
+  //   {
+  //     _id: nanoid(),
+  //     title: 'Cute dog looking for a home',
+  //     breed: 'Pomeranian',
+  //     place: 'Lviv',
+  //     age: 'five',
+  //     price: '50',
+  //     url: Rectangle16,
+  //   },
+  //   {
+  //     _id: nanoid(),
+  //     title: 'Cute dog looking for a home',
+  //     breed: 'Pomeranian',
+  //     place: 'Lviv',
+  //     age: 'five',
+  //     price: '50',
+  //     url: Rectangle16,
+  //   },
+  //   {
+  //     _id: nanoid(),
+  //     title: 'Cute dog looking for a home',
+  //     breed: 'Pomeranian',
+  //     place: 'Lviv',
+  //     age: 'five',
+  //     price: '50',
+  //     url: Rectangle16,
+  //   },
+  //   {
+  //     _id: nanoid(),
+  //     title: 'Cute dog looking for a home',
+  //     breed: 'Pomeranian',
+  //     place: 'Lviv',
+  //     age: 'five',
+  //     price: '50',
+  //     url: Rectangle16,
+  //   },
+  // ];
   return (
     <Container component='main'>
       <NoticesFilter />
-      <DivFlexSpaceBetween>
+      <Container
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
         <div>
           <NoticesCategoryList />
         </div>
         <div>
           <AddNoticeBtn />
         </div>
-      </DivFlexSpaceBetween>
+      </Container>
       <NoticesGallery />
     </Container>
   )
 }
+
