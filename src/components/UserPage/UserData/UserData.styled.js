@@ -13,7 +13,7 @@ export const BoxWrapper = styled(Box)({
   padding: '20px 16px',
   width: '411px',
   marginLeft: '-24px',
-  boxShadow: '4px 4px 8px 0px rgba(34, 60, 80, 0.2)',
+  boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
 });
 export const BoxImageWrapper = styled(Box)({
   width: '100%',

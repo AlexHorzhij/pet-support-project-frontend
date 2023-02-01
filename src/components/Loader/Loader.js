@@ -1,14 +1,13 @@
 import { ThreeCircles } from 'react-loader-spinner';
-import css from './Loader.module.css';
+import { LoaderWrapper, LoaderPageWrapper } from './Loader.styled';
 
-// лоудер як приклад (щоб правильно працювала логіка, красивий буде пізніше)
-const Loader = () => {
+export const Loader = () => {
   return (
-    <div className={css.loader}>
+    <LoaderWrapper>
       <ThreeCircles
         height="30"
         width="30"
-        color="skyblue"
+        color="#f59256"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
@@ -17,8 +16,25 @@ const Loader = () => {
         innerCircleColor=""
         middleCircleColor=""
       />
-    </div>
+    </LoaderWrapper>
   );
 };
 
-export default Loader
+export const LoaderPage = () => {
+  return (
+    <LoaderPageWrapper>
+      <ThreeCircles
+        height="80"
+        width="80"
+        color="#f59256"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor=""
+        innerCircleColor=""
+        middleCircleColor=""
+      />
+    </LoaderPageWrapper>
+  );
+};

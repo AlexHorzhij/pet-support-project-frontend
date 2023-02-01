@@ -4,12 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
 import { Loader } from 'components';
-import {
-  FormWrapper,
-  Input,
-  ErrorText,
-  Button,
-} from 'components/RegisterForm/Forms.styled';
+import { Input, ErrorText, Button } from 'components/RegisterForm/Forms.styled';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -47,36 +42,34 @@ const StepTwo = ({ next, prev, data }) => {
       {({ values }) => {
         return (
           <Form>
-            <FormWrapper>
-              <Field type="text" name="name" placeholder="Name" as={Input} />
-              <ErrorMessage component="div" name="name">
-                {msg => <ErrorText>{msg}</ErrorText>}
-              </ErrorMessage>
-              <Field
-                type="text"
-                name="city"
-                placeholder="City, Region"
-                as={Input}
-              />
-              <ErrorMessage component="div" name="city">
-                {msg => <ErrorText>{msg}</ErrorText>}
-              </ErrorMessage>
-              <Field
-                type="tel"
-                name="phone"
-                placeholder="Mobile phone"
-                as={Input}
-              />
-              <ErrorMessage component="div" name="phone">
-                {msg => <ErrorText>{msg}</ErrorText>}
-              </ErrorMessage>
-              <Button color="accent" type="submit">
-                {!isLoading ? 'Register' : <Loader />}
-              </Button>
-              <Button type="button" onClick={() => prev(values)}>
-                Back
-              </Button>
-            </FormWrapper>
+            <Field type="text" name="name" placeholder="Name" as={Input} />
+            <ErrorMessage component="div" name="name">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
+            <Field
+              type="text"
+              name="city"
+              placeholder="City, Region"
+              as={Input}
+            />
+            <ErrorMessage component="div" name="city">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
+            <Field
+              type="tel"
+              name="phone"
+              placeholder="Mobile phone"
+              as={Input}
+            />
+            <ErrorMessage component="div" name="phone">
+              {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
+            <Button color="accent" type="submit">
+              {!isLoading ? 'Register' : <Loader />}
+            </Button>
+            <Button type="button" onClick={() => prev(values)}>
+              Back
+            </Button>
           </Form>
         );
       }}
