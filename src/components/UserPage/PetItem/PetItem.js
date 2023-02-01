@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/petsData/petsOperations';
@@ -11,20 +11,28 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   };
 
   return (
-    <ul
-      style={{
+    <ListItem
+      sx={{
         boxSizing: 'border-box',
         display: 'flex',
         alignItems: 'start',
         backgroundColor: 'white',
         borderRadius: '40px',
-        boxShadow: '4px 4px 8px 0px rgba(34, 60, 80, 0.2)',
+        boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
         padding: '20px',
+        '&:not(:last-child)': {
+          mb: '22px',
+        },
       }}
     >
-      <Box>
+      <Box sx={{ minWidth: '161px', height: '161px' }}>
         <img
-          style={{ width: '161px', height: '161px', borderRadius: '40px' }}
+          style={{
+            width: '161px',
+            height: '161px',
+            borderRadius: '40px',
+            objectFit: 'cover',
+          }}
           src={imgSrc}
           alt="my pet"
         />
@@ -49,7 +57,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
       >
         <DeleteIcon />
       </IconButton>
-    </ul>
+    </ListItem>
   );
 }
 

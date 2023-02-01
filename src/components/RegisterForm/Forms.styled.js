@@ -1,25 +1,19 @@
 import styled from '@emotion/styled';
 
-export const FormWrapper = styled.div`
-  width: 100%;
-  /* margin-right: auto;
-  margin-left: auto; */
-`;
-
 export const Input = styled.input`
   background-color: #fdf7f2;
+  width: 100%;
+  height: 40px;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
-  padding: 14px 32px;
+  padding: 0 32px;
   margin-bottom: 16px;
-  width: calc(100% - 66px);
-  height: 40px;
 
   &::placeholder {
     font-family: 'Manrope';
     font-weight: 400;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 1.36;
     letter-spacing: 0.04em;
     color: rgba(17, 17, 17, 0.6);
   }
@@ -51,6 +45,7 @@ export const Button = styled.button`
   border-radius: 40px;
   width: 100%;
   height: 44px;
+  margin-top: 16px;
 
   @media screen and (min-width: 1280px) {
     height: 48px;

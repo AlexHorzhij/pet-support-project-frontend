@@ -5,12 +5,7 @@ import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
 import { Navigate } from 'react-router-dom';
 import { Loader } from 'components';
-import {
-  FormWrapper,
-  Input,
-  ErrorText,
-  Button,
-} from 'components/RegisterForm/Forms.styled';
+import { Input, ErrorText, Button } from 'components/RegisterForm/Forms.styled';
 
 const schema = yup.object().shape({
   email: yup
@@ -59,24 +54,22 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <FormWrapper>
-          <Field type="email" name="email" placeholder="Email" as={Input} />
-          <ErrorMessage name="email">
-            {msg => <ErrorText>{msg}</ErrorText>}
-          </ErrorMessage>
-          <Field
-            type="password"
-            name="password"
-            placeholder="Password"
-            as={Input}
-          />
-          <ErrorMessage name="password">
-            {msg => <ErrorText>{msg}</ErrorText>}
-          </ErrorMessage>
-          <Button color="accent" type="submit">
-            {!isLoading ? 'Login' : <Loader />}
-          </Button>
-        </FormWrapper>
+        <Field type="email" name="email" placeholder="Email" as={Input} />
+        <ErrorMessage name="email">
+          {msg => <ErrorText>{msg}</ErrorText>}
+        </ErrorMessage>
+        <Field
+          type="password"
+          name="password"
+          placeholder="Password"
+          as={Input}
+        />
+        <ErrorMessage name="password">
+          {msg => <ErrorText>{msg}</ErrorText>}
+        </ErrorMessage>
+        <Button color="accent" type="submit">
+          {!isLoading ? 'Login' : <Loader />}
+        </Button>
       </Form>
     </Formik>
   );

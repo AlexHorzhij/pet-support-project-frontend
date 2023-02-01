@@ -1,6 +1,6 @@
 // дуже чорновий варіант, чекаю бек, поки підставила фейкові дані
-import cat from '../images/myPets/cat.png';
-import dog from '../images/myPets/dog.png';
+import cat from '../assets/images/myPets/cat.png';
+import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
 const URL = process.env.REACT_APP_BASE_URL;
 console.log(URL);

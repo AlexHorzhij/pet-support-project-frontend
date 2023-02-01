@@ -21,6 +21,8 @@ function UserPage() {
         display: 'flex',
         backgroundColor: '#FDF7F2',
         gap: '32px',
+        mt: '50px',
+        pt: '30px',
       }}
     >
       <Box>
