@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 function LoginPage() {
   return (
-    <div>
+    <main>
+      <h2>Login</h2>
       <LoginForm />
       <p>
         Don't have an account? <Link to="/register">Register</Link>
       </p>
-    </div>
+    </main>
   );
 }
 
