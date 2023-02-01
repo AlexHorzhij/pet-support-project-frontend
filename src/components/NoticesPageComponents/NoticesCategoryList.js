@@ -10,11 +10,13 @@ import { Button, Container } from '@mui/material';
 export default function NoticesCategoryList() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const category = useParams()
+  const params = useParams()
+
+  const { categoryName } = params
 
   useEffect(() => {
-    dispatch(fetchNotices(category))
-  }, [category, dispatch])
+    dispatch(fetchNotices(categoryName))
+  }, [categoryName, dispatch])
 
   const { isLoggedIn } = useSelector(getAuth)
   // const isLoggedIn = true
@@ -31,7 +33,7 @@ export default function NoticesCategoryList() {
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
-        onClick={() => navigate('/notices/sell')}
+        onClick={() => navigate('/notices/lost-found')}
       >
         lost/found
       </Button>

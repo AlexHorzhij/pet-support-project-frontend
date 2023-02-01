@@ -7,8 +7,8 @@ import NoticesFilter from './NoticesPageComponents/NoticesFilter';
 import NoticesGallery from './NoticesPageComponents/NoticesGallery';
 import AddNoticeBtn from './NoticesPageComponents/AddNoticeBtn';
 import Container from './Container/Container';
-import OurFriendsList from './OurFriendsPageCompon/OurFriendsList';
-import OurFriendsItem from './OurFriendsPageCompon/OurFriendsItem';
+import OurFriendsList from './OurFriendsPageComponents/OurFriendsList';
+import OurFriendsItem from './OurFriendsPageComponents/OurFriendsItem';
 
 export {
   Loader,
