@@ -19,7 +19,6 @@ export const fetchSearchNews = createAsyncThunk(
     'fetchSearchNews',
     async (searchValue, {rejectWithValue}) => {
         try {
-            console.log("searchValue in fetch =>", searchValue)
             const news = await getSearchNews(searchValue)
             return news
         } catch (error) {
