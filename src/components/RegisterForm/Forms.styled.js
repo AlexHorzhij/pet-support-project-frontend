@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Input = styled.input`
   background-color: #fdf7f2;
-  width: calc(100% - 66px);
+  width: 100%;
   height: 40px;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;

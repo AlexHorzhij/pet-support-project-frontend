@@ -32,10 +32,7 @@ function App() {
 
             <Route path="/news" element={<NewsPage />} />
             <Route path="/friends" element={<OurFriendsPage />} />
-            <Route
-              path="/notices/:categoryName"
-              element={<NoticePage />}
-            ></Route>
+            <Route path="/notices" element={<NoticePage />}></Route>
             {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
 
             <Route element={<PrivateRoute />}>

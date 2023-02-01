@@ -10,7 +10,12 @@ export const MobileMenu = styled(Menu)({
   width: '100%',
   height: '796px',
   overflow: 'auto',
+  opacity: '0',
+  visibility: 'hidden',
+  zIndex: '1',
+  pointerEvents: 'none',
 });
+
 export const Lt = styled(List)({
   position: 'relative',
   backgroundColor: 'white',
@@ -27,13 +32,16 @@ export const Lt = styled(List)({
 export const Btn = styled(IconButton)({
   width: `40px`,
   height: `40px`,
-  //   '@media screen and (min-width: 320px)': {
-  //     marginLeft: `163px`,
-  //   },
-  //   '@media screen and (min-width: 768px)': {
-  //     marginLeft: '25px',
-  //   },
+  display: 'flex',
+  alignItems: 'start',
   '@media screen and (min-width: 1280px)': {
     display: 'none',
   },
 });
+// export const Btn = styled(Button)({
+//   width: `40px`,
+//   height: `40px`,
+//   '@media screen and (min-width: 1280px)': {
+//     display: 'none',
+//   },
+// });

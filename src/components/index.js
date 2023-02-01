@@ -10,6 +10,10 @@ import UserData from './UserPage/UserData/UserData';
 import PetsData from './UserPage/PetsData/PetsData';
 import ModalAddsPet from './UserPage/ModalAddsPet/ModalAddsPet';
 import Modal from './Modal/Modal';
+import OurFriendsItem from './OurFriendsPageCompon/OurFriendsItem';
+import NoticesCategoryItemList from './NoticesPageComponents/NoticesCategoryList';
+import AddToFavorite from './NoticesPageComponents/AddToFavorite';
+
 export {
   Loader,
   LoaderPage,
@@ -19,9 +23,12 @@ export {
   NoticesGallery,
   AddNoticeBtn,
   Container,
+  OurFriendsItem,
   OurFriendsList,
   UserData,
   PetsData,
   ModalAddsPet,
   Modal,
+  AddToFavorite,
+  NoticesCategoryItemList,
 };
