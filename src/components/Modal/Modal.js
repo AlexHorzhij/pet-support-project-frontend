@@ -25,7 +25,7 @@ export default function Modal({ children, onModalClose }) {
     }
   };
   return createPortal(
-    <Overlay onClick={modalCloseBackDrop}>
+    <Overlay className="overlay" onClick={modalCloseBackDrop}>
       <ModalWrapper>{children}</ModalWrapper>
     </Overlay>,
     modalRoot

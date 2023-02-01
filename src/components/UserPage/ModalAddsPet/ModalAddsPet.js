@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field } from 'formik';
-import { Card, CardContent, Typography, Grid } from '@mui/material';
-import { TextField } from 'formik-material-ui';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { FormStepper } from '../FormStepper/FormStepper';
 import { Box } from '@mui/system';
 import Dropzone from 'react-dropzone';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import { useDispatch } from 'react-redux';
 import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
+import { ModalTyporgaphy } from './ModalAddsPet.styled';
+import { TextField } from 'formik-material-ui';
+import addIconSVG from '../../../assets/images/myPets/addImage.svg';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
+  const [images, setImages] = useState([]);
   const formSumbitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
-    console.log('preview: ', preview);
     values.picture = preview;
     values.id = nanoid();
+    console.log('values: ', values);
 
     dispatch(addPetToList(values));
     // const formData = new FormData();
@@ -33,8 +34,11 @@ function ModalAddsPet({ onModalClose }) {
 
   return (
     <Formik enctype="multipart/form-data">
-      <Card>
-        <CardContent sx={{ paddingY: 10, paddingX: 5 }}>
+      <Card sx={{ width: '608px' }}>
+        <CardContent sx={{ paddingY: 5, paddingX: 10 }}>
+          <Typography sx={{ fontSize: '36px', textAlign: 'center' }}>
+            Add pet
+          </Typography>
           <Formik
             initialValues={{
               name: '',
@@ -57,23 +61,36 @@ function ModalAddsPet({ onModalClose }) {
               setFieldValue,
               resetForm,
             }) => (
-              <FormStepper>
+              <FormStepper onClose={onModalClose}>
                 <Box>
                   <Grid
                     item
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
-                    <Typography>Name pet</Typography>
+                    <ModalTyporgaphy>Name pet</ModalTyporgaphy>
+
                     <Field
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '40px',
+
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
                       fullWidth
                       name="name"
                       component={TextField}
-                      label="Type name"
+                      label="Type name pet"
                     />
                   </Grid>
                   <Grid
@@ -81,13 +98,23 @@ function ModalAddsPet({ onModalClose }) {
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
-                    <Typography>Date of birth</Typography>
+                    <ModalTyporgaphy>Date of birth</ModalTyporgaphy>
 
                     <Field
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '40px',
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
                       fullWidth
                       name="dateOfBirth"
                       component={TextField}
@@ -99,26 +126,57 @@ function ModalAddsPet({ onModalClose }) {
                     md={6}
                     sx={{
                       '&:not(:last-child)': {
-                        mb: '10px',
+                        mb: '28px',
                       },
                     }}
                   >
-                    <Typography>Breed</Typography>
+                    <ModalTyporgaphy>Breed</ModalTyporgaphy>
                     <Field
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        borderRadius: '26px',
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>input+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                      }}
                       fullWidth
                       name="breed"
                       component={TextField}
-                      label="Type breed"
+                      label="Last Name"
                     />
                   </Grid>
                 </Box>
-                <Grid>
+                <Grid
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography
+                    sx={{ fontSize: '20px', textAlign: 'center', mb: '20px' }}
+                  >
+                    Add photo and some comments
+                  </Typography>
                   <Dropzone
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
-                    onDrop={acceptedFiles =>
-                      setFieldValue('picture', acceptedFiles[0])
-                    }
+                    onDrop={acceptedFiles => {
+                      setFieldValue('picture', acceptedFiles[0]);
+
+                      acceptedFiles.map(file => {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                          setImages([{ src: e.target.result }]);
+                        };
+                        reader.readAsDataURL(file);
+                        return file;
+                      });
+                    }}
                   >
                     {({ getRootProps, getInputProps }) => (
                       <Box
@@ -126,29 +184,66 @@ function ModalAddsPet({ onModalClose }) {
                         p="1rem"
                         sx={{
                           '&:hover': { cursor: 'pointer' },
+                          boxSizing: 'border-box',
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
-                          width: '40px',
-                          height: '40px',
+                          width: '182px',
+                          height: '182px',
+                          borderRadius: '40px',
+                          backgroundColor: '#FDF7F2',
                           m: '0',
                         }}
                       >
                         <input {...getInputProps()} />
                         {!values.picture ? (
                           <Box>
-                            <AddOutlinedIcon />
+                            <img src={addIconSVG} alt="add pet avatar" />
+
+                            {/* <AddOutlinedIcon
+                              sx={{
+                                fontSize: '83px',
+                              }}
+                            /> */}
                           </Box>
                         ) : (
-                          <Box>
-                            <CheckOutlinedIcon />
+                          <Box
+                            sx={{
+                              height: '100%',
+                              borderRadius: '40px',
+                              overflow: 'auto',
+                            }}
+                          >
+                            {images.length > 0 && (
+                              <img
+                                style={{ height: '100%', objectFit: 'cover' }}
+                                alt="preview"
+                                src={images[0]?.src}
+                                className="file-img"
+                              />
+                            )}
                           </Box>
                         )}
                       </Box>
                     )}
                   </Dropzone>
-                  <Grid item md={6}>
+                  <Grid item md={6} sx={{ mt: '40px' }}>
                     <Field
+                      sx={{
+                        backgroundColor: '#FDF7F2',
+                        width: '395px',
+                        borderRadius: '20px',
+
+                        '&>label': {
+                          color: 'rgba(17, 17, 17, 0.6)',
+                        },
+                        '&>label+div>textarea+textarea+fieldset': {
+                          borderColor: 'rgba(245, 146, 86, 0.5)',
+                        },
+                        '&>label+div': {
+                          borderRadius: '20px',
+                        },
+                      }}
                       multiline={true}
                       rows={5}
                       fullWidth
@@ -164,92 +259,6 @@ function ModalAddsPet({ onModalClose }) {
         </CardContent>
       </Card>
     </Formik>
-    // <Box
-    //   sx={{
-    //     backgroundColor: 'white',
-    //     padding: '25px',
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     position: 'relative',
-    //   }}
-    // >
-    //   <IconButton
-    //     type="button"
-    //     onClick={onModalClose}
-    //     sx={{ position: 'absolute', top: 0, right: 0 }}
-    //   >
-    //     <CancelOutlinedIcon
-    //       sx={{
-    //         backgroundColor: '#FDF7F2',
-    //         borderRadius: '50%',
-    //         color: 'black',
-    //       }}
-    //     />
-    //   </IconButton>
-    //   <Typography>Add pet</Typography>
-    //   <form>
-    //     <label>
-    //       Name pet
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type name pet"
-    //       />
-    //     </label>
-    //     <label>
-    //       Date of birth
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type date of birth"
-    //       />
-    //     </label>
-    //     <label>
-    //       Breed
-    //       <input
-    //         style={{
-    //           borderColor: '#F59256',
-    //           backgroundColor: '#FDF7F2',
-    //           borderWidth: '1px',
-    //           padding: '5px 10px',
-    //           borderStyle: 'solid',
-    //           borderRadius: '15px',
-    //           width: '230px',
-    //           margin: '0 15px',
-    //           appearance: 'none',
-    //           outline: 'none',
-    //         }}
-    //         placeholder="Type breed"
-    //       />
-    //     </label>
-    //   </form>
-    //   <Box>
-    //     <IconButton>Cancel</IconButton>
-    //     <IconButton>Next</IconButton>
-    //   </Box>
-    // </Box>
   );
 }
 

@@ -24,3 +24,14 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+export const updateUserAvatar = createAsyncThunk(
+  'userData/updateUserAvatar',
+  async (data, { rejectWithValue }) => {
+    try {
+      const updatedUserData = await updateUserData(data);
+      return updatedUserData;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
