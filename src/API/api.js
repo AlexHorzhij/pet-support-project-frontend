@@ -5,7 +5,7 @@ import axios from 'axios';
 // const URL = process.env.REACT_APP_BASE_URL;
 // console.log(URL);
 
-const BASE_URL = 'https://63d43ddbc52305feff6051b6.mockapi.io/api/v1/';
+const BASE_URL = 'https://pet-support-project.onrender.com/api';
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -172,7 +172,8 @@ export async function addPet(pet) {
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
-    return data;
+    console.log(data.data);
+    return data.data.result;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -185,52 +186,52 @@ export async function getSearchNews(searchValue) {
   // } catch (error) {
   //   throw new Error(error.message);
   // }
-    const news = [
-  {
-    _id: 1234567891,
-    title: searchValue,
-    url: 'url1',
-    description: 'description1',
-    date: '2022-10-16T14:52:43.276+00:00',
-  },
-  {
-    _id: 1234567892,
-    title: searchValue,
-    url: 'url2',
-    description:
-      'Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
-    date: '2023-01-27T14:52:43.276+00:00',
-  },
-  {
-    _id: 1234567893,
-    title: searchValue,
-    url: 'url3',
-    description:
-      'Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину,вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству. стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
-    date: '2023-02-01T14:52:43.276+00:00',
-  },
-  {
-    _id: 1234567894,
-    title: searchValue,
-    url: 'url4',
-    description: 'description4',
-    date: 'date4',
-  },
-  {
-    _id: 1234567895,
-    title: searchValue,
-    url: 'url5',
-    description: 'description5',
-    date: 'date5',
-  },
-  {
-    _id: 1234567896,
-    title: searchValue,
-    url: 'url6',
-    description: 'description6',
-    date: 'date6',
-  },
-];
-  return news
+  const news = [
+    {
+      _id: 1234567891,
+      title: searchValue,
+      url: 'url1',
+      description: 'description1',
+      date: '2022-10-16T14:52:43.276+00:00',
+    },
+    {
+      _id: 1234567892,
+      title: searchValue,
+      url: 'url2',
+      description:
+        'Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
+      date: '2023-01-27T14:52:43.276+00:00',
+    },
+    {
+      _id: 1234567893,
+      title: searchValue,
+      url: 'url3',
+      description:
+        'Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину,вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству. стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
+      date: '2023-02-01T14:52:43.276+00:00',
+    },
+    {
+      _id: 1234567894,
+      title: searchValue,
+      url: 'url4',
+      description: 'description4',
+      date: 'date4',
+    },
+    {
+      _id: 1234567895,
+      title: searchValue,
+      url: 'url5',
+      description: 'description5',
+      date: 'date5',
+    },
+    {
+      _id: 1234567896,
+      title: searchValue,
+      url: 'url6',
+      description: 'description6',
+      date: 'date6',
+    },
+  ];
+  return news;
 }
 //========================== NEWS END =============================
