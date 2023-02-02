@@ -10,6 +10,7 @@ export const Navigation = styled.nav`
     display: none;
   }
 `;
+
 export const LinkNav = styled(NavLink)`
   @media screen and (min-width: 767px) {
     font-family: 'Manrope';
@@ -19,12 +20,13 @@ export const LinkNav = styled(NavLink)`
     line-height: 27px;
     letter-spacing: 0.04em;
     color: inherit;
+    text-decoration: none;
   }
   &:hover,
   &:focus {
     color: rgba(245, 146, 86, 1);
+    text-decoration-line: underline;
   }
-  text-decoration: none;
 `;
 export const NavList = styled.ul`
   display: flex;
