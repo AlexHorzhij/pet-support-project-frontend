@@ -1,14 +1,27 @@
 import { styled } from '@mui/material/styles';
 import styledEmotion from '@emotion/styled';
-
+import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import { Typography, Box } from '@mui/material';
 
-export const UserDataTitle = styled(Typography)({
+export const UserDataTitle = styled(Typography)(({ theme }) => ({
   fontSize: '18px',
-  '@media screen and (max-width: 768px)': {
+  [theme.breakpoints.down('md')]: {
     fontSize: '12px',
   },
-});
+}));
+
+export const ModeEditOutlineRoundedIconStyled = styled(
+  ModeEditOutlineRoundedIcon
+)(({ theme }) => ({
+  width: '20px',
+  color: theme.palette.primary.main,
+}));
+
+export const DoneRoundedIconStyled = styled(DoneRoundedIcon)(({ theme }) => ({
+  width: '25px',
+  color: theme.palette.primary.main,
+}));
 
 export const UserDataItemBox = styled(Box)({
   display: 'flex',
@@ -20,12 +33,14 @@ export const UserDataItemBox = styled(Box)({
     marginBottom: '3px',
   },
 });
-export const UserDataItemtitle = styled(Box)({
+
+export const UserDataItemtitle = styled(Box)(({ theme }) => ({
   marginRight: 'auto',
-  '@media screen and (max-width: 768px)': {
+  [theme.breakpoints.down('md')]: {
     width: '80px',
   },
-});
+}));
+
 export const UserDataItemInput = styledEmotion.input`
          border-width: 1px;
           padding: 5px 10px;
@@ -46,3 +61,15 @@ export const UserDataItemInput = styledEmotion.input`
   }
   },
 `;
+// export const UserDataItemtitle = styled(Box)({
+//   marginRight: 'auto',
+//   '@media screen and (max-width: 768px)': {
+//     width: '80px',
+//   },
+// });
+// export const UserDataTitle = styled(Typography)({
+//   fontSize: '18px',
+//   '@media screen and (max-width: 768px)': {
+//     fontSize: '12px',
+//   },
+// });

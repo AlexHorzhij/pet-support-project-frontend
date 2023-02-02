@@ -29,6 +29,7 @@ const palette = {
   },
   boxShadow: {
     main: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
+    secondary: '0px 4px 14px 0px rgba(0, 0, 0, 0.11)',
   },
 };
 

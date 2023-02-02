@@ -4,21 +4,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Typography, Box, ListItem } from '@mui/material';
 
-// export const PetListItem = styled(ListItem)({
-//   boxSizing: 'border-box',
-//   display: 'flex',
-//   alignItems: 'start',
-//   backgroundColor: 'white',
-//   borderRadius: '40px',
-//   boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
-//   padding: '20px',
-//   '&:not(:last-child)': {
-//     marginBottom: '22px',
-//   },
-//   '@media screen and (max-width: 768px)': {
-//     flexDirection: 'column',
-//   },
-// });
 export const PetListItem = styled(ListItem)(({ theme }) => ({
   boxSizing: 'border-box',
   display: 'flex',
@@ -68,7 +53,6 @@ export const IconButtonWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 export const DaleteIconStyled = styled(DeleteIcon)(({ theme }) => ({
-	
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
@@ -103,3 +87,18 @@ export const PetImage = styledEmotion.img`
 export const PetInfoTitleSpan = styledEmotion.span`
  font-weight: 500;
 `;
+// export const PetListItem = styled(ListItem)({
+//   boxSizing: 'border-box',
+//   display: 'flex',
+//   alignItems: 'start',
+//   backgroundColor: 'white',
+//   borderRadius: '40px',
+//   boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
+//   padding: '20px',
+//   '&:not(:last-child)': {
+//     marginBottom: '22px',
+//   },
+//   '@media screen and (max-width: 768px)': {
+//     flexDirection: 'column',
+//   },
+// });

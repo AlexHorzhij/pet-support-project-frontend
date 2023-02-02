@@ -32,7 +32,7 @@ export const UserDataContainer = styled(Container)(({ theme }) => ({
 //   },
 // });
 
-export const UserDataTypography = styled(Container)(({ theme }) => ({
+export const UserDataTypography = styled(Typography)(({ theme }) => ({
   marginLeft: '17px',
   fontSize: '28px',
   marginBottom: '24px',
@@ -41,6 +41,7 @@ export const UserDataTypography = styled(Container)(({ theme }) => ({
 
   [theme.breakpoints.down('md')]: {
     fontSize: '20px',
+    marginBottom: '18px',
   },
 }));
 

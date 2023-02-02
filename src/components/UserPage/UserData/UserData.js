@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import { Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
@@ -12,6 +11,8 @@ import {
   BoxImageContainer,
   StyledButton,
   ImageBox,
+  PhotoCameraIconStyled,
+  WrapperBox,
 } from './UserData.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from 'redux/userData/userDataSelectors';
@@ -55,14 +56,14 @@ function UserData() {
             <div {...getRootProps({ className: 'dropzone' })}>
               <input {...getInputProps()} />
               <StyledButton>
-                <PhotoCameraIcon sx={{ color: '#F59256', height: '20px' }} />
+                <PhotoCameraIconStyled />
                 <Typography sx={{ fontSize: '12px' }}>Edit photo</Typography>
               </StyledButton>
             </div>
           </div>
         </BoxImageWrapper>
-        <Box sx={{ width: '100%' }}>
-          <Box sx={{ width: '100%' }}>
+        <WrapperBox>
+          <WrapperBox>
             {user.name && (
               <>
                 <UserDataItem title={'Name'} value={user.name} />
@@ -72,9 +73,9 @@ function UserData() {
                 <UserDataItem title={'City'} value={user.city} />
               </>
             )}
-          </Box>
+          </WrapperBox>
           <Logout />
-        </Box>
+        </WrapperBox>
       </BoxWrapper>
     </>
   );
