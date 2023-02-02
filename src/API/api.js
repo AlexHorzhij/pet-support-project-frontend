@@ -1,4 +1,3 @@
-// дуже чорновий варіант, чекаю бек, поки підставила фейкові дані
 import cat from '../assets/images/myPets/cat.png';
 import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
@@ -11,67 +10,55 @@ const instance = axios.create({
   baseURL: BASE_URL,
 });
 
-// const setToken = {
-//   set(token) {
-//     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     instance.defaults.headers.common.Authorization = '';
-//   },
-// };
+const setToken = {
+  set(token) {
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    instance.defaults.headers.common.Authorization = '';
+    console.log('token unset');
+  },
+};
 
-// const setCurrentToken = token => {
-//   if (token) {
-//     setToken.set(token);
-//     return;
-//   }
-//   setToken.unset();
-// };
-// user
+const setCurrentToken = token => {
+  if (token) {
+    setToken.set(token);
+    return;
+  }
+  setToken.unset();
+};
+
+// auth
 
 export async function register(signupData) {
-  //   const { data } = await instance.post('/signup', signupData);
-  //   setToken.set(data.token);
-  const data = {
-    token: 'dijfikh123h23q2hkqweq',
-    user: {
-      email: 'alisa@gmail.com',
-      name: 'Alisa',
-      password: 'alisa123',
-      phone: '+380878787878',
-      city: 'Kyiv, Ukraine',
-    },
-  };
-  return data;
+  const { data } = await instance.post('auth/signup', signupData);
+  return data.data;
 }
 
 export async function login(signupData) {
-  //   const { data } = await instance.post('/login', signupData);
-  //   setToken.set(data.token);
-  const data = {
-    token: 'lkmckldmxlmcskldsc',
-  };
-  return data;
+  const { data } = await instance.post('auth/login', signupData);
+  setToken.set(data.data.token);
+  return data.data;
 }
 
 export async function fetchCurrent(token) {
-  // try {
-  //   setCurrentToken(token);
-  //   const data = await instance.get('/current');
-  //   return data.data;
-  // } catch (error) {
-  //   setCurrentToken();
-  //   throw error;
-  // }
-  return 'current user';
+  try {
+    setCurrentToken(token);
+    const data = await instance.get('auth/current');
+    return data.data;
+  } catch (error) {
+    setCurrentToken();
+    throw error;
+  }
 }
 
 export async function logout() {
-  //   const data = await instance.post('/logout');
-  //   setToken.unset();
-  //   return data.data;
-  return 'logout';
+  const { data } = await instance.post('auth/logout');
+  setToken.unset();
+  return data.data;
 }
+
+// notices
 
 export async function requestNotices(category) {
   // try {
@@ -96,6 +83,8 @@ export async function requestNotices(category) {
     },
   ];
 }
+
+//userData
 
 export async function requestUserData() {
   return {

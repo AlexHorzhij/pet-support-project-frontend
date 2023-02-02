@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { registerUser } from 'redux/auth/authOperations';
+import { registerUser, loginUser } from 'redux/auth/authOperations';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
@@ -32,7 +32,7 @@ const RegisterForm = () => {
       );
 
       if (response.success) {
-        return <Navigate to="/user" replace />;
+        return <Navigate to="/login" replace />;
       }
 
       return;
