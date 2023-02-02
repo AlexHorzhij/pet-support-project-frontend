@@ -16,6 +16,7 @@ export const NewsList = () => {
 
   const { news, error, isLoading } = useSelector(getNews);
   console.log('news', news);
+  
   const sortedNews = sortNewsByDate(news);
 
   return (

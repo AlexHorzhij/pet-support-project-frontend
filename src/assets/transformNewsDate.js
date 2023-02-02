@@ -1,8 +1,6 @@
 
 export const transformDate = (date) => {
-
-    if (typeof date === 'string') {
-
+    
         const newDate = new Date(date);
         let month = '' + (newDate.getMonth() + 1);
         let day = '' + newDate.getDate();
@@ -15,6 +13,5 @@ export const transformDate = (date) => {
             day = '0' + day
         }
     return [day, month, year].join('/');
-}
-    throw new Error("Date isn't a string")
+
 }
