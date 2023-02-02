@@ -1,10 +1,14 @@
 import Grid from '@mui/material/Grid';
 import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { Loader } from 'components/index';
+import { useSelector } from 'react-redux';
+import { getNotices } from '../../redux/notices/noticesSelectors';
 
-export default function NoticesGallery({ data }) {
+export default function NoticesGallery() {
+  const notice = useSelector(getNotices);
   const isLoading = false;
-  console.log(data);
+  const data = notice.items.data?.result;
+
   return (
     <Grid container>
       {/* {error && <p>{error.data}</p>} */}
