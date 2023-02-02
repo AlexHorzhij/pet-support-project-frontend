@@ -1,5 +1,6 @@
-import { Container, OurFriendsList } from 'components';
+import { OurFriendsList } from 'components';
 import React, { useEffect, useState } from 'react';
+import { Container } from '@mui/material';
 
 const partnersExample = [
   {
@@ -112,14 +113,10 @@ const OurFriendsPage = () => {
   }, []);
 
   return (
-    <main>
-      <Container>
-        <>
+    <Container component='main'>
           <h1>Our friends</h1>
           <OurFriendsList partners={partnersArr} />
-        </>
       </Container>
-    </main>
   );
 };
 

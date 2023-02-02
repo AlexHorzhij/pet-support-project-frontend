@@ -3,26 +3,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
+import { Button, Container } from '@mui/material';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 
-import { Button } from '@mui/material';
-
-// import ActionAreaCard from './NoticeCard';
 
 export default function NoticesCategoryList() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const category = useParams();
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const params = useParams()
+
+  const { categoryName } = params
 
   useEffect(() => {
-    dispatch(fetchNotices(category));
-  }, [category, dispatch]);
+    dispatch(fetchNotices(categoryName))
+  }, [categoryName, dispatch])
 
   const { isLoggedIn } = useSelector(getAuth);
   // const isLoggedIn = true
 
   return (
-    <>
+    <Container sx={{ mb: 6 }}>
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
@@ -33,7 +34,7 @@ export default function NoticesCategoryList() {
       <Button
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
-        onClick={() => navigate('/notices/sell')}
+        onClick={() => navigate('/notices/lost-found')}
       >
         lost/found
       </Button>
@@ -44,25 +45,22 @@ export default function NoticesCategoryList() {
       >
         in good hands
       </Button>
-      {isLoggedIn && (
-        <>
-          <Button
-            variant="outlined"
-            sx={{ textTransform: 'lowercase' }}
-            onClick={() => navigate('/notices/favorite')}
-          >
-            favorite ads
-          </Button>
-          <Button
-            variant="outlined"
-            sx={{ textTransform: 'lowercase' }}
-            onClick={() => navigate('/notices/own')}
-          >
-            my ads
-          </Button>
-        </>
-      )}
-      {/* <ActionAreaCard></ActionAreaCard> */}
-    </>
+      {isLoggedIn && <>
+        <Button
+          variant="outlined"
+          sx={{ textTransform: 'lowercase' }}
+          onClick={() => navigate('/notices/favorite')}
+        >
+          favorite ads
+        </Button>
+        <Button
+          variant="outlined"
+          sx={{ textTransform: 'lowercase' }}
+          onClick={() => navigate('/notices/own')}
+        >
+          my ads
+        </Button>
+      </>}
+    </Container>
   );
 }

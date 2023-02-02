@@ -1,7 +1,7 @@
-const { CustomContainer } = require('./Container.styled');
+// const { CustomContainer } = require('./Container.styled');
 
-const Container = ({ children }) => {
-  return <CustomContainer>{children}</CustomContainer>;
-};
+// const Container = ({ children }) => {
+//   return <CustomContainer>{children}</CustomContainer>;
+// };
 
-export default Container;
+// export default Container;

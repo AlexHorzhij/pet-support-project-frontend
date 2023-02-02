@@ -8,7 +8,7 @@ const palette = {
     contrastText: '#000000',
   },
   background: {
-    default: '#d5d9dd',
+    default: '#FDF7F2',
     paper: '#FFFFFF',
   },
   warning: {
@@ -18,8 +18,8 @@ const palette = {
     main: '#3091EB',
   },
   text: {
-    primary: '#111111',
-    secondary: '#000',
+    primary: '#000',
+    secondary: '#535353',
     contrast: '#FFFFFF',
     hint: 'rgba(0,0,0,0.39)',
   },
@@ -82,33 +82,11 @@ export const ThemeOptions = {
       lineHeight: 1.34,
     },
   },
-  CardActionArea: {
-    backgroundColor: 'red',
-    p: 20,
-  },
   shape: {
     borderRadius: 40,
   },
   components: {
-    MuiCardActionArea: {
-      variants: [
-        {
-          props: { variant: 'notice' },
-          style: {
-            width: '280px',
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
-            background: palette.secondary.main,
-            boxShadow: '7px 4px 14px rgba(49, 21, 4, 0.07)',
-            borderRadius: '0px 0px 20px 20px',
-          },
-        },
-      ],
-    },
-    // MuiCardActionArea: {
-    //   backgroundColor: 'red',
-    // },
+
     MuiButton: {
       variants: [
         {
@@ -129,17 +107,36 @@ export const ThemeOptions = {
             color: palette.text.contrast,
           },
         },
+        {
+          props: { variant: 'text' },
+          style: { color: palette.text.primary}
+        }
       ],
     },
-    CardActionArea: {
-      backgroundColor: 'red',
+    MuiContainer: {
+      variants: [
+        {
+          props: { component: 'main' },
+          style: {
+            backgroundColor: palette.background.default,
+            marginTop: 49,
+            paddingTop: 10,
+
+          }
+        }
+      ]
     },
+    // MuiContainerBase: {
+    //   mx: 'auto'
+    // }
   },
   breakpoints: {
     values: {
-      mobile: 320,
-      tablet: 768,
-      desktop: 1280,
+      xs: 0,
+      sm: 320,
+      md: 768,
+      lg: 1280,
+      xl: 1536,
     },
   },
 };
