@@ -1,5 +1,4 @@
-import { Box, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/petsData/petsOperations';
 import {
@@ -9,6 +8,9 @@ import {
   PetInfoBox,
   PetInfoTitleSpan,
   PetInfoTypography,
+  PetInfoBoxWrapper,
+  IconButtonWrapper,
+  DaleteIconStyled,
 } from './PetItem.styled';
 function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
       <PetImageBox>
         <PetImage src={imgSrc} alt="my pet" />
       </PetImageBox>
-      <Box sx={{ display: 'flex', position: 'relative', width: '100%' }}>
+      <PetInfoBoxWrapper>
         <PetInfoBox>
           <PetInfoTypography>
             <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
@@ -37,23 +39,17 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
             <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
           </PetInfoTypography>
         </PetInfoBox>
-        <Box
-          sx={{
-            position: { sm: 'absolute', md: 'relative' },
-            top: 0,
-            right: 0,
-          }}
-        >
+        <IconButtonWrapper>
           <IconButton
             onClick={() => handlePetDelete(id)}
             sx={{
               backgroundColor: '#FDF7F2',
             }}
           >
-            <DeleteIcon sx={{ fontSize: { sm: '20px', md: '30px' } }} />
+            <DaleteIconStyled />
           </IconButton>
-        </Box>
-      </Box>
+        </IconButtonWrapper>
+      </PetInfoBoxWrapper>
     </PetListItem>
   );
 }

@@ -58,44 +58,89 @@ export const ModalGrid = styled(Grid)({
     marginBottom: '26px',
   },
 });
-export const ModalField = styled(Field)({
-  backgroundColor: '#FDF7F2',
+// export const ModalField = styled(Field)({
+//   backgroundColor: '#FDF7F2',
+//   borderRadius: '40px',
+//   '&>label': {
+//     top: '-2px',
+//     left: '1px',
+//     color: 'rgba(17, 17, 17, 0.6)',
+//   },
+//   '&>label+div>input+fieldset': {
+//     borderColor: 'rgba(245, 146, 86, 0.5)',
+//   },
+//   '&>label+div>input': {
+//     padding: '5px',
+//     height: '40px',
+//   },
+// });
+export const ModalField = styled(Field)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
   borderRadius: '40px',
   '&>label': {
     top: '-2px',
     left: '1px',
-    color: 'rgba(17, 17, 17, 0.6)',
+    color: theme.palette.text.label,
   },
   '&>label+div>input+fieldset': {
-    borderColor: 'rgba(245, 146, 86, 0.5)',
+    borderColor: theme.palette.outlines.inputBorder,
   },
   '&>label+div>input': {
     padding: '5px',
     height: '40px',
   },
-});
-export const ModalMultiLineField = styled(Field)({
-  backgroundColor: '#FDF7F2',
-  width: '395px',
-  borderRadius: '20px',
+}));
 
+// export const ModalMultiLineField = styled(Field)({
+//   backgroundColor: '#FDF7F2',
+//   width: '395px',
+//   borderRadius: '20px',
+
+//   '&>label': {
+//     color: 'rgba(17, 17, 17, 0.6)',
+//   },
+//   '&>label+div>textarea+textarea+fieldset': {
+//     borderColor: 'rgba(245, 146, 86, 0.5)',
+//   },
+//   '&>label+div': {
+//     borderRadius: '20px',
+//   },
+// });
+export const ModalMultiLineField = styled(Field)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+
+  width: '395px',
+  borderRadius: theme.shape.borderRadius20,
   '&>label': {
-    color: 'rgba(17, 17, 17, 0.6)',
+    color: theme.palette.text.label,
   },
   '&>label+div>textarea+textarea+fieldset': {
-    borderColor: 'rgba(245, 146, 86, 0.5)',
+    borderColor: theme.palette.outlines.inputBorder,
   },
   '&>label+div': {
-    borderRadius: '20px',
+    borderRadius: theme.shape.borderRadius20,
   },
-});
+}));
+
 export const SecondStepBox = styled(Box)({
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
   alignItems: 'center',
 });
-export const DropZoneBox = styled(Box)({
+// export const DropZoneBox = styled(Box)({
+//   '&:hover': { cursor: 'pointer' },
+//   boxSizing: 'border-box',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   width: '182px',
+//   height: '182px',
+//   borderRadius: '40px',
+//   backgroundColor: '#FDF7F2',
+//   margin: '0',
+// });
+export const DropZoneBox = styled(Box)(({ theme }) => ({
   '&:hover': { cursor: 'pointer' },
   boxSizing: 'border-box',
   display: 'flex',
@@ -103,12 +148,17 @@ export const DropZoneBox = styled(Box)({
   alignItems: 'center',
   width: '182px',
   height: '182px',
-  borderRadius: '40px',
-  backgroundColor: '#FDF7F2',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme.palette.background.default,
   margin: '0',
-});
-export const DropZonePreviewBox = styled(Box)({
+}));
+// export const DropZonePreviewBox = styled(Box)({
+//   height: '100%',
+//   borderRadius: '40px',
+//   overflow: 'hidden',
+// });
+export const DropZonePreviewBox = styled(Box)(({ theme }) => ({
   height: '100%',
-  borderRadius: '40px',
+  borderRadius: theme.shape.borderRadius,
   overflow: 'hidden',
-});
+}));

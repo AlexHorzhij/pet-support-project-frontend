@@ -22,6 +22,13 @@ const palette = {
     secondary: '#535353',
     contrast: '#FFFFFF',
     hint: 'rgba(0,0,0,0.39)',
+    label: 'rgba(17, 17, 17, 0.6)',
+  },
+  outlines: {
+    inputBorder: 'rgba(245, 146, 86, 0.5)',
+  },
+  boxShadow: {
+    main: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
   },
 };
 
@@ -144,10 +151,10 @@ export const ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 320,
-      md: 768,
-      lg: 1280,
-      xl: 1536,
+      sm: 320.99,
+      md: 768.99,
+      lg: 1280.99,
+      xl: 1536.99,
     },
   },
 };
