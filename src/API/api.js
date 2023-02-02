@@ -16,7 +16,6 @@ const setToken = {
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
-    console.log('token unset');
   },
 };
 
@@ -44,8 +43,6 @@ export async function login(signupData) {
 export async function fetchCurrent(token) {
   try {
     setCurrentToken(token);
-    const data = await instance.get('auth/current');
-    return data.data;
   } catch (error) {
     setCurrentToken();
     throw error;
@@ -54,6 +51,7 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
+  console.log(data);
   setToken.unset();
   return data.data;
 }
@@ -145,7 +143,7 @@ export async function getAllNews() {
 
 export async function getSearchNews(search) {
   try {
-    const { data } = await instance.get('/news', {params: {search}});
+    const { data } = await instance.get('/news', { params: { search } });
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);
