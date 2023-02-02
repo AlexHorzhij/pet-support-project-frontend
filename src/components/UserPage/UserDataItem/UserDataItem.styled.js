@@ -5,6 +5,9 @@ import { Typography, Box } from '@mui/material';
 
 export const UserDataTitle = styled(Typography)({
   fontSize: '18px',
+  '@media screen and (max-width: 768px)': {
+    fontSize: '12px',
+  },
 });
 
 export const UserDataItemBox = styled(Box)({
@@ -19,15 +22,15 @@ export const UserDataItemBox = styled(Box)({
 });
 export const UserDataItemtitle = styled(Box)({
   marginRight: 'auto',
-  '@media screen and (max-width: 960px)': {
-    width: '120px',
+  '@media screen and (max-width: 768px)': {
+    width: '80px',
   },
 });
 export const UserDataItemInput = styledEmotion.input`
          border-width: 1px;
           padding: 5px 10px;
           border-style: solid;
-          border-radius: 15px;
+          border-radius: 20px;
           width: 230px;
           margin: 0 15px;
           appearance: none;
@@ -36,9 +39,10 @@ export const UserDataItemInput = styledEmotion.input`
 					line-height:25px;
 					letter-spacing: 0.8px;
 
-					   @media (min-width: 768px) {
-    width: 100%;
-
+					   @media (max-width: 768px) {
+    			width: 100%;
+					font-size:12px;
+					line-height:16px;
   }
   },
 `;

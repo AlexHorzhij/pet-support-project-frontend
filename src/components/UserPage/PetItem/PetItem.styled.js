@@ -14,14 +14,23 @@ export const PetListItem = styled(ListItem)({
   '&:not(:last-child)': {
     marginBottom: '22px',
   },
+  '@media screen and (max-width: 768px)': {
+    flexDirection: 'column',
+  },
 });
 export const PetImageBox = styled(Box)({
   minWidth: '161px',
   height: '161px',
+  '@media screen and (max-width: 768px)': {
+    marginBottom: '20px',
+  },
 });
 export const PetInfoBox = styled(Box)({
   marginLeft: '32px',
   marginRight: 'auto',
+  '@media screen and (max-width: 768px)': {
+    marginLeft: 'unset',
+  },
 });
 export const PetInfoTypography = styled(Typography)({
   fontWeight: 400,
@@ -30,6 +39,13 @@ export const PetInfoTypography = styled(Typography)({
   letterSpacing: '0.6px',
   '&:not(:last-child)': {
     marginBottom: '13px',
+  },
+  '@media screen and (max-width: 768px)': {
+    fontSize: '14px',
+    lineHeight: '18px',
+    '&:not(:last-child)': {
+      marginBottom: '12px',
+    },
   },
 });
 export const PetImage = styledEmotion.img`

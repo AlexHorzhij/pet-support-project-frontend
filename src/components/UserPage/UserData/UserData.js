@@ -61,7 +61,7 @@ function UserData() {
             </div>
           </div>
         </BoxImageWrapper>
-        <Box>
+        <Box sx={{ width: '100%' }}>
           <Box sx={{ width: '100%' }}>
             {user.name && (
               <>

@@ -144,16 +144,6 @@ export async function requestPetsData() {
       picture: dog,
       avatarURL: '',
     },
-    {
-      id: '3',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Basenji',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: dog,
-      avatarURL: '',
-    },
   ];
 }
 export async function deletePet(id) {

@@ -14,19 +14,20 @@ export const BoxWrapper = styled(Box)({
   width: '411px',
   marginLeft: '-24px',
   boxShadow: '7px 14px 11px 0px rgba(49, 21, 4, 0.07)',
-  '@media screen and (max-width: 960px)': {
+  '@media screen and (max-width: 1280px)': {
     position: 'relative',
     flexDirection: 'row-reverse',
     width: '100%',
     marginLeft: 0,
-    height: '310px',
-
-    paddingBottom: '25px',
+    height: '100%',
+    paddingBottom: '50px',
   },
   '@media screen and (max-width: 768px)': {
     position: 'relative',
     flexDirection: 'column',
     marginLeft: 0,
+    height: 'auto',
+    borderRadius: '20px',
   },
 });
 export const BoxImageWrapper = styled(Box)({
@@ -35,8 +36,8 @@ export const BoxImageWrapper = styled(Box)({
   position: 'relative',
   justifyContent: 'center',
 
-  '@media screen and (max-width: 960px)': {
-    marginBottom: 0,
+  '@media screen and (max-width: 1280px)': {
+    height: '100%',
   },
   '@media screen and (max-width: 768px)': {
     marginBottom: '70px',
@@ -60,7 +61,7 @@ export const StyledButton = styled(IconButton)({
   position: 'absolute',
   bottom: '-3px',
   right: 0,
-  '@media screen and (max-width: 960px)': {
+  '@media screen and (max-width: 1280px)': {
     bottom: '-40px',
     right: '25px',
   },

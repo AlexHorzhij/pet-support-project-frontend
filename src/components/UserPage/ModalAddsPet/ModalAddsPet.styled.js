@@ -9,14 +9,24 @@ import {
 } from '@mui/material';
 import { Field } from 'formik';
 
-export const ModalCloseButton = styled(IconButton)({
+// export const ModalCloseButton = styled(IconButton)({
+//   position: 'absolute',
+//   top: '24px',
+//   right: '24px',
+//   backgroundColor: '#FDF7F2',
+//   width: '44px',
+//   height: '44px',
+// });
+
+export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   top: '24px',
   right: '24px',
-  backgroundColor: '#FDF7F2',
+  backgroundColor: theme.palette.background.default,
   width: '44px',
   height: '44px',
-});
+}));
+
 export const ModalTyporgaphy = styled(Typography)({
   fontSize: '24px',
   fontWeight: '500',
