@@ -9,8 +9,12 @@ import { NewsText } from './newsItem.styled';
 import { Rectangle } from './newsItem.styled';
 import { NewsDate } from './newsItem.styled';
 import { CardFooter } from './newsItem.styled';
+import { transformDate } from 'assets/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
+
+const publicationDate = transformDate(date)
+
   return (
     <Grid
       component="li"
@@ -33,7 +37,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
           </NewsText>
           <CardFooter>
             <NewsDate sx={{ mr: 1 }} color="text.secondary">
-              {date}
+              {publicationDate}
             </NewsDate>
             <Link href={url} target="_blank" rel="noopener" color="primary">
               Read more

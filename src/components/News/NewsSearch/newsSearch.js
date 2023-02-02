@@ -18,7 +18,6 @@ export default function NewsSearch() {
 
   const handleInputSubmit = (event) => {
     event.preventDefault()
-    console.log('Search on submit =>', search )
     dispatch(fetchSearchNews(search))
   }
 

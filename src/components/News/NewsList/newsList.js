@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getNews} from 'redux/news/newsSelectors';
 import { fetchNews } from 'redux/news/newsOperations';
 import { Loader } from 'components/Loader/Loader';
+import { sortNewsByDate } from 'assets/sortNewsByDate';
 
 export const NewsList = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,15 @@ export const NewsList = () => {
 
   const { news, error, isLoading } = useSelector(getNews);
 
+  const sortedNews = sortNewsByDate(news)
+  
   return (
     
     <NewsGrid component="ul" container columnSpacing={3}>
       {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
       {news &&
-        news.map(({ _id, title, description, date, url }) => {
+        sortedNews.map(({ _id, title, description, date, url }) => {
           return (
             <NewsItem
               key={_id}
