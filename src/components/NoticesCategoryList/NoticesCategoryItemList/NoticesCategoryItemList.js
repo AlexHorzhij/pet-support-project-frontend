@@ -8,19 +8,14 @@ export default function NoticesCategoryItemList({ data }) {
   console.log(data);
   return (
     <Container>
-      <Grid
-        component="ul"
-        container
-        gap={'32px'}
-        //   columnSpacing={{ xs: 3, sm: 3, md: 3 }}
-      >
+      <Grid component="ul" container gap={'32px'}>
         {/* {error && <p>{error.data}</p>} */}
         {isLoading ? <Loader /> : ''}
         {data &&
           data.map(item => {
             return (
-              <Grid item md={6}>
-                <NoticesCategoryItem key={item._id} data={item} />
+              <Grid item md={6} key={item._id}>
+                <NoticesCategoryItem data={item} />
               </Grid>
             );
           })}

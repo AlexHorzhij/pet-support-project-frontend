@@ -90,15 +90,12 @@ export const ThemeOptions = {
     borderRadius: 40,
   },
   components: {
-    MuiCardActionArea: {
+    MuiCard: {
       variants: [
         {
           props: { variant: 'notice' },
           style: {
             width: '280px',
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
             background: palette.secondary.main,
             boxShadow: '7px 4px 14px rgba(49, 21, 4, 0.07)',
             borderRadius: '0px 0px 20px 20px',
@@ -106,9 +103,6 @@ export const ThemeOptions = {
         },
       ],
     },
-    // MuiCardActionArea: {
-    //   backgroundColor: 'red',
-    // },
     MuiButton: {
       variants: [
         {

@@ -1,7 +1,6 @@
-import { Button, CardActionArea } from '@mui/material';
-import { CardMedia, CardContent } from '@mui/material';
+import { Button, Card, CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { AddToFavorite } from 'components';
 import {
   Li,
   ItemsList,
@@ -9,19 +8,20 @@ import {
   Title,
   Lable,
 } from './NoticesCategoryItem.styled';
-import { AddToFavorite } from 'components';
+
 export default function NoticesCategoryItem({ data }) {
-  const { title, breed, place, age, price, url } = data;
+  const { title, breed, place, age, price, url, favorite } = data;
 
   return (
     <>
-      <CardActionArea variant="notice" style={{ marginTop: '50px' }}>
+      <Card variant="notice" style={{ marginTop: '50px' }}>
         <CardMedia
           style={{ height: '288px', position: 'relative' }}
           image={url}
         >
           <Lable>In good hands</Lable>
           <AddToFavorite
+            favorite={favorite}
             right="50px"
             top="50px"
             style={{ position: 'absolute', right: '50px', top: '50px' }}
@@ -47,21 +47,18 @@ export default function NoticesCategoryItem({ data }) {
               <ItemText>{price} $</ItemText>
             </Li>
           </ItemsList>
-          <Button
-            variant="outlined"
-            style={{ width: '100%', color: '#F59256' }}
-          >
+          <Button variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
             Learn more
           </Button>
           <Button
             variant="outlined"
-            style={{ width: '100%', color: '#F59256' }}
+            sx={{ width: '100%', color: '#F59256' }}
             endIcon={<DeleteOutlineIcon />}
           >
             Delete
           </Button>
         </CardContent>
-      </CardActionArea>
+      </Card>
     </>
   );
 }
