@@ -6,13 +6,23 @@ export default function NoticesGallery({ data }) {
   const isLoading = false;
   console.log(data);
   return (
-    <Grid component="ul" container gap={'32px'}>
+    <Grid container>
       {/* {error && <p>{error.data}</p>} */}
       {isLoading ? <Loader /> : ''}
       {data &&
         data.map(item => {
           return (
-            <Grid item md={6} key={item._id}>
+            <Grid
+              item
+              justifyContent="center"
+              display="flex"
+              xs={12}
+              sm={12}
+              md={6}
+              lg={3}
+              xl={3}
+              key={item._id}
+            >
               <NoticesCategoryItem data={item} />
             </Grid>
           );

@@ -14,7 +14,7 @@ export default function NoticesCategoryItem({ data }) {
 
   return (
     <>
-      <Card variant="notice" style={{ marginTop: '50px' }}>
+      <Card variant="notice" style={{ margin: '50px 0 0 0' }}>
         <CardMedia
           style={{ height: '288px', position: 'relative' }}
           image={url}
