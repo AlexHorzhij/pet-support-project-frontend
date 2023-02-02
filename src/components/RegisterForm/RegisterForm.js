@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { registerUser, loginUser } from 'redux/auth/authOperations';
+import { registerUser } from 'redux/auth/authOperations';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 
