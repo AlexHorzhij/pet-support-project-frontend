@@ -9,15 +9,19 @@ import { NewsText } from './newsItem.styled';
 import { Rectangle } from './newsItem.styled';
 import { NewsDate } from './newsItem.styled';
 import { CardFooter } from './newsItem.styled';
+import { transformDate } from 'assets/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
+
+const publicationDate = transformDate(date)
+
   return (
     <Grid
       component="li"
       item
-      xs={12}
-      sm={6}
-      md={4}
+      mobile={12}
+      tablet={6}
+      desktop={4}
       style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}
     >
       <Rectangle variant="rectangular" />
@@ -33,7 +37,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
           </NewsText>
           <CardFooter>
             <NewsDate sx={{ mr: 1 }} color="text.secondary">
-              {date}
+              {publicationDate}
             </NewsDate>
             <Link href={url} target="_blank" rel="noopener" color="primary">
               Read more

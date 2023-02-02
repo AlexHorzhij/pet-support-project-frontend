@@ -1,8 +1,7 @@
 import React from 'react'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { Typography } from '@mui/material';
-import { DivFlexSpaceBetween } from 'pages/NoticePage.styled';
+import { Button,  Typography } from '@mui/material';
 
 
 
@@ -13,8 +12,16 @@ export default function AddNoticeBtn() {
   }
 
   return (
-    <DivFlexSpaceBetween
+    <Button
       onClick={handleBtn}
+      variant='text'
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        '&:hover' : {
+          cursor: 'pointer'
+        }
+      }}
     >
       <Typography
         sx={{ marginRight: '5px' }}
@@ -25,7 +32,7 @@ export default function AddNoticeBtn() {
         color='primary'
         fontSize='large'
       />
-    </DivFlexSpaceBetween>
+    </Button>
   )
 }
 
