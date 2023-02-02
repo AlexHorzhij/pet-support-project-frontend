@@ -13,15 +13,15 @@ import { transformDate } from 'assets/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
 
-const publicationDate = transformDate(date)
+  const publicationDate = transformDate(date)
 
   return (
     <Grid
       component="li"
       item
-      mobile={12}
-      tablet={6}
-      desktop={4}
+      sm={12}
+      md={6}
+      lg={4}
       style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}
     >
       <Rectangle variant="rectangular" />
@@ -51,6 +51,6 @@ const publicationDate = transformDate(date)
 NewsItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
   url: PropTypes.string.isRequired,
 };
