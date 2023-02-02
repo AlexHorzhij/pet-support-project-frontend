@@ -5,7 +5,7 @@ import {requestNotices} from 'API/api'
 
 export const fetchNoticesByCategory = createAsyncThunk(
     'fetchNotices',
-    async (category, {rejectWithValue}) => {
+    async (categoryName, {rejectWithValue}) => {
         try {
             const notices = await requestNotices({status: categoryName})
             return notices

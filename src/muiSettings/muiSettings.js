@@ -97,7 +97,8 @@ export const ThemeOptions = {
             color: palette.text.primary,
             '&:hover': {
               backgroundColor: palette.primary.main,
-              border: `2px solid ${palette.secondary.main}`,
+              border: `2px solid ${palette.primary.main}`,
+              color: palette.text.contrast,
             },
           },
         },
@@ -109,7 +110,7 @@ export const ThemeOptions = {
         },
         {
           props: { variant: 'text' },
-          style: { color: palette.text.primary}
+          style: { color: palette.text.primary }
         }
       ],
     },
@@ -133,10 +134,10 @@ export const ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 320,
-      md: 768,
-      lg: 1280,
-      xl: 1536,
+      sm: 319.99,
+      md: 767.99,
+      lg: 1279.99,
+      xl: 1535.99,
     },
   },
 };
