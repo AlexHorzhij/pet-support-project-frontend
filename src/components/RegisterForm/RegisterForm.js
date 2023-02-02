@@ -32,14 +32,7 @@ const RegisterForm = () => {
       );
 
       if (response.success) {
-        const autoLogin = dispatch(
-          loginUser({ email: newData.email, password: newData.password })
-        );
-        if (autoLogin.success) {
-          return <Navigate to="/user" replace />;
-        } else {
-          return <Navigate to="/login" replace />;
-        }
+        return <Navigate to="/login" replace />;
       }
 
       return;
