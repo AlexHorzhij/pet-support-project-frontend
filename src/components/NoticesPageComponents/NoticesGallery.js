@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import NoticesCategoryItem from './NoticesCategoryItem/NoticesCategoryItem';
+import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { Loader } from 'components/index';
 
 export default function NoticesGallery({ data }) {
@@ -23,7 +23,7 @@ export default function NoticesGallery({ data }) {
               xl={3}
               key={item._id}
             >
-              <NoticesCategoryItem data={item} />
+              <NoticesCardItem data={item} />
             </Grid>
           );
         })}
