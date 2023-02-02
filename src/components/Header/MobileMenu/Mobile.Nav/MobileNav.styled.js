@@ -58,8 +58,10 @@ export const MobileNavLink = styled(LinkNav)({
   alignItems: 'center',
   letterSpacing: '0.04em',
   color: '#181C27',
+  textDecoration: 'none',
   '&:hover &:focus': {
     color: 'rgba(245, 146, 86, 1)',
+    textDecorationLine: 'underline',
   },
   '@media screen and (min-width: 768px) and (max-width: 1279px)': {
     fontSize: '48px',
