@@ -136,7 +136,7 @@ export async function addPet(pet) {
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
-    console.log(data.data);
+    // console.log(data.data);
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);
