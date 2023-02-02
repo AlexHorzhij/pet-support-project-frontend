@@ -33,7 +33,7 @@ function App() {
             <Route path="/notices" element={<NoticePage />}></Route>
             {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
 
-            <Route element={<PublicRoute />}>
+            <Route element={<PrivateRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>
 
