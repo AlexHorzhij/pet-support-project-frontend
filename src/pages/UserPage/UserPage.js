@@ -9,6 +9,7 @@ import {
   AddPetIcon,
   PetDataBox,
 } from './UserPage.styled';
+
 function UserPage() {
   const [modalIsShown, setModalIsShown] = useState(false);
 

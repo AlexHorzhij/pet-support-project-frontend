@@ -5,9 +5,9 @@ import {
   UserDataItemInput,
   UserDataTitle,
   UserDataItemtitle,
+  DoneRoundedIconStyled,
+  ModeEditOutlineRoundedIconStyled,
 } from './UserDataItem.styled';
-import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
-import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/userData/userDataOperations';
 function UserDataItem({ title = '', value = '', disabled = true }) {
@@ -56,11 +56,9 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
         sx={{ backgroundColor: '#FDF7F2', width: '32px', height: '32px' }}
       >
         {inputState ? (
-          <ModeEditOutlineRoundedIcon
-            sx={{ width: '20px', color: '#F59256' }}
-          />
+          <ModeEditOutlineRoundedIconStyled />
         ) : (
-          <DoneRoundedIcon sx={{ width: '25px', color: '#F59256' }} />
+          <DoneRoundedIconStyled />
         )}
       </IconButton>
     </UserDataItemBox>

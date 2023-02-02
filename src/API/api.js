@@ -1,4 +1,3 @@
-// дуже чорновий варіант, чекаю бек, поки підставила фейкові дані
 import cat from '../assets/images/myPets/cat.png';
 import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
@@ -11,67 +10,55 @@ const instance = axios.create({
   baseURL: BASE_URL,
 });
 
-// const setToken = {
-//   set(token) {
-//     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     instance.defaults.headers.common.Authorization = '';
-//   },
-// };
+const setToken = {
+  set(token) {
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    instance.defaults.headers.common.Authorization = '';
+    console.log('token unset');
+  },
+};
 
-// const setCurrentToken = token => {
-//   if (token) {
-//     setToken.set(token);
-//     return;
-//   }
-//   setToken.unset();
-// };
-// user
+const setCurrentToken = token => {
+  if (token) {
+    setToken.set(token);
+    return;
+  }
+  setToken.unset();
+};
+
+// auth
 
 export async function register(signupData) {
-  //   const { data } = await instance.post('/signup', signupData);
-  //   setToken.set(data.token);
-  const data = {
-    token: 'dijfikh123h23q2hkqweq',
-    user: {
-      email: 'alisa@gmail.com',
-      name: 'Alisa',
-      password: 'alisa123',
-      phone: '+380878787878',
-      city: 'Kyiv, Ukraine',
-    },
-  };
-  return data;
+  const { data } = await instance.post('auth/signup', signupData);
+  return data.data;
 }
 
 export async function login(signupData) {
-  //   const { data } = await instance.post('/login', signupData);
-  //   setToken.set(data.token);
-  const data = {
-    token: 'lkmckldmxlmcskldsc',
-  };
-  return data;
+  const { data } = await instance.post('auth/login', signupData);
+  setToken.set(data.data.token);
+  return data.data;
 }
 
 export async function fetchCurrent(token) {
-  // try {
-  //   setCurrentToken(token);
-  //   const data = await instance.get('/current');
-  //   return data.data;
-  // } catch (error) {
-  //   setCurrentToken();
-  //   throw error;
-  // }
-  return 'current user';
+  try {
+    setCurrentToken(token);
+    const data = await instance.get('auth/current');
+    return data.data;
+  } catch (error) {
+    setCurrentToken();
+    throw error;
+  }
 }
 
 export async function logout() {
-  //   const data = await instance.post('/logout');
-  //   setToken.unset();
-  //   return data.data;
-  return 'logout';
+  const { data } = await instance.post('auth/logout');
+  setToken.unset();
+  return data.data;
 }
+
+// notices
 
 export async function requestNotices(category) {
   try {
@@ -81,6 +68,8 @@ export async function requestNotices(category) {
     throw error;
   }
 }
+
+//userData
 
 export async function requestUserData() {
   return {
@@ -129,16 +118,6 @@ export async function requestPetsData() {
       picture: dog,
       avatarURL: '',
     },
-    {
-      id: '3',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Basenji',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: dog,
-      avatarURL: '',
-    },
   ];
 }
 export async function deletePet(id) {
@@ -164,59 +143,12 @@ export async function getAllNews() {
   }
 }
 
-export async function getSearchNews(searchValue) {
-  // try {
-  //   const { data } = await instance.get('/news', searchValue);
-  //   return data;
-  // } catch (error) {
-  //   throw new Error(error.message);
-  // }
-  const news = [
-    {
-      _id: 1234567891,
-      title: searchValue,
-      url: 'url1',
-      description: 'description1',
-      date: '2022-10-16T14:52:43.276+00:00',
-    },
-    {
-      _id: 1234567892,
-      title: searchValue,
-      url: 'url2',
-      description:
-        'Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
-      date: '2023-01-27T14:52:43.276+00:00',
-    },
-    {
-      _id: 1234567893,
-      title: searchValue,
-      url: 'url3',
-      description:
-        'Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину,вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству. стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.Для чего нужен тег border Универсальное свойство border позволяет одновременно установить толщину, стиль и цвет границы вокруг элемента.Значения могут идти в любом порядке, разделяясь пробелом, браузер сам определит,какое из них соответствует нужному свойству.',
-      date: '2023-02-01T14:52:43.276+00:00',
-    },
-    {
-      _id: 1234567894,
-      title: searchValue,
-      url: 'url4',
-      description: 'description4',
-      date: 'date4',
-    },
-    {
-      _id: 1234567895,
-      title: searchValue,
-      url: 'url5',
-      description: 'description5',
-      date: 'date5',
-    },
-    {
-      _id: 1234567896,
-      title: searchValue,
-      url: 'url6',
-      description: 'description6',
-      date: 'date6',
-    },
-  ];
-  return news;
+export async function getSearchNews(search) {
+  try {
+    const { data } = await instance.get('/news', {params: {search}});
+    return data.data.result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }
 //========================== NEWS END =============================

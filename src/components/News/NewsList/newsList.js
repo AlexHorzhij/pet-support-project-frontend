@@ -23,6 +23,7 @@ export const NewsList = () => {
     <NewsGrid component="ul" container columnSpacing={3}>
       {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
+      {news.length === 0  && <p>We have not any news on this topic</p>}
       {news &&
         sortedNews.map(({ _id, title, description, date, url }) => {
           return (
