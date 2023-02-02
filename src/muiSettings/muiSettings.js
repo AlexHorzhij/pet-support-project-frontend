@@ -92,7 +92,6 @@ export const ThemeOptions = {
         {
           props: { variant: 'notice' },
           style: {
-            width: '280px',
             background: palette.secondary.main,
             boxShadow: '7px 4px 14px rgba(49, 21, 4, 0.07)',
             borderRadius: '0px 0px 20px 20px',

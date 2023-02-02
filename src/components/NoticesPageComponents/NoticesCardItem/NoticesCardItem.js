@@ -1,4 +1,4 @@
-import { Button, Card, CardMedia, CardContent } from '@mui/material';
+import { Button, CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite } from 'components';
 import {
@@ -6,20 +6,20 @@ import {
   ItemsList,
   ItemText,
   Title,
-  Lable,
-} from './NoticesCategoryItem.styled';
+  CategoryLable,
+  NoticeCard,
+} from './NoticesCardItem.styled';
 
-export default function NoticesCategoryItem({ data }) {
+export default function NoticesCardItem({ data }) {
   const { title, breed, place, age, price, url, favorite } = data;
-
   return (
     <>
-      <Card variant="notice" style={{ marginTop: '50px' }}>
+      <NoticeCard variant="notice" sx={{ width: '280px' }}>
         <CardMedia
           style={{ height: '288px', position: 'relative' }}
           image={url}
         >
-          <Lable>In good hands</Lable>
+          <CategoryLable>In good hands</CategoryLable>
           <AddToFavorite
             favorite={favorite}
             right="50px"
@@ -58,7 +58,7 @@ export default function NoticesCategoryItem({ data }) {
             Delete
           </Button>
         </CardContent>
-      </Card>
+      </NoticeCard>
     </>
   );
 }
