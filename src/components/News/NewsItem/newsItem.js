@@ -9,7 +9,7 @@ import { NewsText } from './newsItem.styled';
 import { Rectangle } from './newsItem.styled';
 import { NewsDate } from './newsItem.styled';
 import { CardFooter } from './newsItem.styled';
-import { transformDate } from 'assets/transformNewsDate';
+import { transformDate } from 'servises/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
 
@@ -19,15 +19,15 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
     <Grid
       component="li"
       item
-      sm={12}
-      md={6}
-      lg={4}
+      xs={12}
+      sm={6}
+      md={4}
       style={{ position: 'relative', marginLeft: 'auto', marginRight: 'auto' }}
     >
       <Rectangle variant="rectangular" />
       <Card sx={{ height: '100%' }} variant="standart">
         {_id}
-        <CardContent style={{ maxHeight: 200, overflow: 'hidden' }}>
+        <CardContent style={{ overflow: 'hidden' }}>
           <NewsTitle variant="h5" component="div">
             {title}
           </NewsTitle>
