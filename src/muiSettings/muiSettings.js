@@ -97,7 +97,7 @@ export const ThemeOptions = {
             color: palette.text.primary,
             '&:hover': {
               backgroundColor: palette.primary.main,
-              border: `2px solid ${palette.primary.main}`,
+              border: `2px solid ${palette.secondary.main}`,
             },
           },
         },
