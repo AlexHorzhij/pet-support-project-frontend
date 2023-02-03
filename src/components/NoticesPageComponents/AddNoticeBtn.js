@@ -21,7 +21,6 @@ export default function AddNoticeBtn() {
       return
     }
     setOpenNotification(true)
-    // dispatch(manageModalWin(true))
   }
 
   const handleCloseNotification = () => {
@@ -61,7 +60,7 @@ export default function AddNoticeBtn() {
       </Dialog>
       <Dialog open={openAddPetForm} onClose={handleCloseAddNotice}>
         <DialogContent>
-          <NoticeAddForm/>
+          <NoticeAddForm />
         </DialogContent>
       </Dialog>
 

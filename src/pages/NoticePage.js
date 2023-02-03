@@ -6,7 +6,6 @@ import {
   NoticesCategoryNav,
   AddNoticeBtn,
   NoticesGallery,
-  NoticeAddForm,
 } from 'components';
 
 import { nanoid } from 'nanoid';
