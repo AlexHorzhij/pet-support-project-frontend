@@ -1,25 +1,24 @@
+import WorkDays from './WorkDays';
+
+import { Link, Box, Grid } from '@mui/material';
 import {
-  Card,
+  ContactsItem,
+  ContactsTypography,
+  FriendsLogo,
+  ItemGrid,
+  ItemTitle,
   ContactLink,
-  FlexBox,
-  FriendsContactItem,
-  FriendsContactsList,
-  ImgBox,
-  Title,
-  TitleLink,
-} from './OurFiendsItem.styled';
+} from './OurFiendsPage.styled';
+import defaultLogo from 'images/default_logo.png';
 
 const OurFriendsItem = ({ partner }) => {
-  const { title, url, addressUrl, address, imageUrl, phone, email } = partner;
+  const { title, url, addressUrl, address, imageUrl, phone, email, workDays } =
+    partner;
 
-  const checkData = data => {
+  const renderEmail = data => {
     if (!data) {
       return <p>-------------------</p>;
     }
-  };
-
-  const renderEmail = data => {
-    checkData(data);
 
     const emailHref = 'mailto:' + data;
 
@@ -27,7 +26,9 @@ const OurFriendsItem = ({ partner }) => {
   };
 
   const renderPhone = data => {
-    checkData(data);
+    if (!data) {
+      return <p>-------------------</p>;
+    }
 
     const phoneHref = 'tel:' + data;
 
@@ -35,7 +36,9 @@ const OurFriendsItem = ({ partner }) => {
   };
 
   const renderAddress = data => {
-    checkData(data);
+    if (!data) {
+      return <p>-------------------</p>;
+    }
 
     return (
       <ContactLink
@@ -48,41 +51,64 @@ const OurFriendsItem = ({ partner }) => {
     );
   };
 
+  const renderDate = data => {
+    if (!data || !data.length) {
+      return <p>-------------------</p>;
+    }
+
+    return <WorkDays workDays={data} />;
+  };
+
   return (
-    <Card>
-      <Title>
-        <TitleLink
+    <ItemGrid item component="li">
+      <ItemTitle>
+        <Link
           href={url}
           target="_blank"
           rel="noopener noreferrer nofollow"
+          color="inherit"
         >
           {title}
-        </TitleLink>
-      </Title>
-      <FlexBox>
-        <ImgBox>
-          <img src={imageUrl} alt="company logo" />
-        </ImgBox>
-        <FriendsContactsList>
-          <FriendsContactItem>
-            <span>Time:</span>
-            <ContactLink>8.00-20.00</ContactLink>
-          </FriendsContactItem>
-          <FriendsContactItem>
-            <span>Address:</span>
-            {renderAddress(addressUrl)}
-          </FriendsContactItem>
-          <FriendsContactItem>
-            <span>Email:</span>
-            {renderEmail(email)}
-          </FriendsContactItem>
-          <FriendsContactItem>
-            <span>Phone:</span>
-            {renderPhone(phone)}
-          </FriendsContactItem>
-        </FriendsContactsList>
-      </FlexBox>
-    </Card>
+        </Link>
+      </ItemTitle>
+      <Box
+        sx={{
+          display: 'flex',
+        }}
+      >
+        <FriendsLogo
+          component="img"
+          image={imageUrl ?? defaultLogo}
+          alt="company logo"
+        />
+        <Grid container component="ul">
+          <ContactsItem item component="li" md={6}>
+            <ContactsTypography component="span">
+              Time:
+              {renderDate(workDays)}
+            </ContactsTypography>
+          </ContactsItem>
+          <ContactsItem item component="li">
+            <ContactsTypography component="span">
+              Address:
+              {renderAddress(addressUrl)}
+            </ContactsTypography>
+          </ContactsItem>
+          <ContactsItem item component="li">
+            <ContactsTypography component="span">
+              Email:
+              {renderEmail(email)}
+            </ContactsTypography>
+          </ContactsItem>
+          <ContactsItem item component="li">
+            <ContactsTypography component="span">
+              Phone:
+              {renderPhone(phone)}
+            </ContactsTypography>
+          </ContactsItem>
+        </Grid>
+      </Box>
+    </ItemGrid>
   );
 };
 

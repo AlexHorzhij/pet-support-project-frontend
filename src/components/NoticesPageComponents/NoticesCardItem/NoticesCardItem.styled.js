@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { List, ListItem, ListItemText, Card } from '@mui/material';
+import { List, ListItem, ListItemText, Card, Button } from '@mui/material';
 
 export const NoticeCard = styled(Card)`
   width: 280px;
@@ -10,6 +10,12 @@ export const NoticeCard = styled(Card)`
   }
   @media (min-width: 1279.99px) {
     width: 288px;
+  }
+`;
+
+export const Btn = styled(Button)`
+  &:hover {
+    color: 'white';
   }
 `;
 

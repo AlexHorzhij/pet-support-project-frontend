@@ -165,3 +165,17 @@ export async function getSearchNews(search) {
   }
 }
 //========================== NEWS END =============================
+
+// ======================== Our Friends ===========================
+
+export async function getOurFriends() {
+  try {
+    const { data } = await instance.get('/services');
+    // console.log(data.data.result);
+    return data.data.result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+// =================================================================
