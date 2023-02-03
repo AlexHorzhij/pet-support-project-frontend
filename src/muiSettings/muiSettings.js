@@ -153,10 +153,10 @@ export const ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 319.99,
-      md: 767.99,
-      lg: 1279.99,
-      xl: 1535.99,
+      sm: 319.98,
+      md: 767.98,
+      lg: 1279.98,
+      xl: 1535.98,
 
     },
   },
