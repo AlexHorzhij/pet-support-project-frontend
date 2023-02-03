@@ -58,14 +58,13 @@ export async function logout() {
 
 //======================== NOTICES START ==========================
 
-
 export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', req)
+    const { data } = await instance.get('/notices', req);
     // console.log(data)
-    return data.data.result
+    return data.data.result;
   } catch (error) {
-    throw error
+    throw error;
   }
   // return [
   //   {
@@ -172,8 +171,7 @@ export async function getSearchNews(search) {
 
 export async function getOurFriends() {
   try {
-    const { data } = await instance.get('/services');
-    // console.log(data.data.result);
+    const { data } = await instance.get('/friends');
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);

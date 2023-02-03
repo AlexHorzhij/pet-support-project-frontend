@@ -86,15 +86,13 @@ const WorkDays = ({ workDays }) => {
             borderRadius: '8px',
           }}
         >
-          <Box>
-            {workDays.map(workDay => (
-              <WorkDaysPopover
-                key={workDay._id}
-                index={workDays.indexOf(workDay)}
-                dayObj={workDay}
-              />
-            ))}
-          </Box>
+          {workDays.map(workDay => (
+            <WorkDaysPopover
+              key={workDay._id}
+              index={workDays.indexOf(workDay)}
+              dayObj={workDay}
+            />
+          ))}
         </Box>
       </Popover>
     </>
