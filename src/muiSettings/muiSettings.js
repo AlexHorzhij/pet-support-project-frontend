@@ -146,9 +146,6 @@ export const ThemeOptions = {
         },
       ],
     },
-    // MuiContainerBase: {
-    //   mx: 'auto'
-    // }
   },
   breakpoints: {
     values: {

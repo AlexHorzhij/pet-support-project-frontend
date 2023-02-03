@@ -1,17 +1,27 @@
 import React from 'react';
 import { Container } from '@mui/material';
 
+import { useState } from 'react';
+
 import {
   NoticesFilter,
-  NoticesCategoryList,
+  NoticesCategoryNav,
   AddNoticeBtn,
   NoticesGallery,
+  Modal,
+  NoticeAddForm,
 } from 'components';
 
 import { nanoid } from 'nanoid';
 import Rectangle16 from 'assets/images/Rectangle16.jpg';
 
 export default function NoticePage() {
+  const [modalIsShown, setModalIsShown] = useState(false);
+
+  const toggleModal = () => {
+    setModalIsShown(prev => !prev);
+  };
+
   const data = [
     {
       _id: nanoid(),
@@ -60,13 +70,18 @@ export default function NoticePage() {
         }}
       >
         <div>
-          <NoticesCategoryList />
+          <NoticesCategoryNav />
         </div>
         <div>
-          <AddNoticeBtn />
+          <AddNoticeBtn onModalOpen={toggleModal}/>
         </div>
       </Container>
       <NoticesGallery data={data} />
+
+      {modalIsShown && (
+        <Modal onModalClose={toggleModal}>
+          <NoticeAddForm onModalClose={toggleModal} />
+        </Modal>)}
     </Container>
   );
 }

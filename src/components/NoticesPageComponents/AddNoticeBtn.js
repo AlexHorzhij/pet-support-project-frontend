@@ -3,17 +3,13 @@ import React from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Button,  Typography } from '@mui/material';
 
+import PropTypes from 'prop-types';
 
 
-export default function AddNoticeBtn() {
-  const handleBtn = () => {
-    alert('Натиснув? Ну й молодець!')
-    return
-  }
-
+export default function AddNoticeBtn({onModalOpen}) {
   return (
     <Button
-      onClick={handleBtn}
+      onClick={onModalOpen}
       variant='text'
       sx={{
         display: 'flex',
@@ -34,6 +30,10 @@ export default function AddNoticeBtn() {
       />
     </Button>
   )
+}
+
+AddNoticeBtn.propTypes = {
+  onModalOpen: PropTypes.func.isRequired
 }
 
 export {
