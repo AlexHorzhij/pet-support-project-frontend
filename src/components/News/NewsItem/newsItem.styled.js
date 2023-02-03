@@ -5,7 +5,6 @@ import Link from '@mui/material/Link';
 import { CardActions, Card } from '@mui/material';
 
 export const Rectangle = styled(Skeleton)({
-  width: '340px',
   height: '8px',
   borderRadius: '40px',
   background: 'linear-gradient(90deg, #FF634E 0%, #FFDF48 105.44%)',
@@ -23,7 +22,7 @@ export const NewsTitle = styled(Typography)({
   fontSize: '24px',
   lineHeight: '1.35',
   textAlign: 'start',
-  paddingTop: '60px',
+  marginTop: '4px',
 });
 
 export const NewsText = styled(Typography)({
