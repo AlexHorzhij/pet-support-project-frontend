@@ -3,15 +3,16 @@ import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { Loader } from 'components/index';
 import { useSelector } from 'react-redux';
 import { getNotices } from '../../redux/notices/noticesSelectors';
+import { sortObjByDate } from 'servises/sortObjByDate';
 
 export default function NoticesGallery() {
-  const { items: data } = useSelector(getNotices);
-
-  const isLoading = false;
+  const { items, error, isLoading } = useSelector(getNotices);
+  // const isLoading = false;
+  const data = sortObjByDate(items, 'create_at');
 
   return (
     <Grid container>
-      {/* {error && <p>{error.data}</p>} */}
+      {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
       {data &&
         data.map(item => {

@@ -1,4 +1,4 @@
-import { Button, CardMedia, CardContent } from '@mui/material';
+import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite } from 'components';
 import distanceBetwenDateAndNowWords from 'servises/distanceBetwenDateAndNowWords';
@@ -9,6 +9,7 @@ import {
   Title,
   CategoryLable,
   NoticeCard,
+  Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
@@ -28,14 +29,20 @@ export default function NoticesCardItem({ data }) {
     <>
       <NoticeCard variant="notice" sx={{ width: '280px' }}>
         <CardMedia
-          image={avatarUrl}
+          image={nophoto}
           style={{
             height: '288px',
             position: 'relative',
             objectFit: 'cover',
-            backgroundImage: `url(${nophoto})`,
           }}
         >
+          <CardMedia
+            image={avatarUrl}
+            style={{
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
           <CategoryLable>{status}</CategoryLable>
           <AddToFavorite
             favorite={favorite}
@@ -66,16 +73,16 @@ export default function NoticesCardItem({ data }) {
               </Li>
             )}
           </ItemsList>
-          <Button variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
+          <Btn variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
             Learn more
-          </Button>
-          <Button
+          </Btn>
+          <Btn
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
             endIcon={<DeleteOutlineIcon />}
           >
             Delete
-          </Button>
+          </Btn>
         </CardContent>
       </NoticeCard>
     </>
