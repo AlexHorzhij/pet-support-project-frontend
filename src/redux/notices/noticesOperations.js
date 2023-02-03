@@ -7,7 +7,7 @@ export const fetchNoticesByCategory = createAsyncThunk(
     'fetchNotices',
     async (categoryName, {rejectWithValue}) => {
         try {
-            const notices = await requestNotices({status: categoryName})
+            const notices = await requestNotices({category: categoryName})
             return notices
         } catch (error) {
             rejectWithValue(error.message)
@@ -20,8 +20,9 @@ export const fetchNoticesBySearch = createAsyncThunk(
     async (query, {rejectWithValue}) => {
         try {
             const notices = await requestNotices({
-                status: query.categoryName, 
-                search: query.filterValue})
+                category: query.categoryName, 
+                search: query.search})
+                console.log(notices)
             return notices
         } catch (error) {
             rejectWithValue(error.message)

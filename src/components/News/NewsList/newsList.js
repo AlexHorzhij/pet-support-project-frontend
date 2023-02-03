@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNews } from 'redux/news/newsSelectors';
 import { fetchNews } from 'redux/news/newsOperations';
-import { sortNewsByDate } from 'servises/sortNewsByDate';
+import { sortNewsByDate } from 'services/sortNewsByDate';
 
 export const NewsList = () => {
   const dispatch = useDispatch();

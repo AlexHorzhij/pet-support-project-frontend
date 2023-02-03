@@ -9,7 +9,7 @@ import { NewsText } from './newsItem.styled';
 import { Rectangle } from './newsItem.styled';
 import { NewsDate } from './newsItem.styled';
 import { CardFooter } from './newsItem.styled';
-import { transformDate } from 'servises/transformNewsDate';
+import { transformDate } from 'services/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
 
