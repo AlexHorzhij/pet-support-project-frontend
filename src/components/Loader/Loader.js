@@ -7,14 +7,9 @@ export const Loader = () => {
       <ThreeCircles
         height="30"
         width="30"
-        color="#f59256"
-        wrapperStyle={{}}
-        wrapperClass=""
+        color="#fff"
         visible={true}
         ariaLabel="three-circles-rotating"
-        outerCircleColor=""
-        innerCircleColor=""
-        middleCircleColor=""
       />
     </LoaderWrapper>
   );
@@ -27,13 +22,8 @@ export const LoaderPage = () => {
         height="80"
         width="80"
         color="#f59256"
-        wrapperStyle={{}}
-        wrapperClass=""
         visible={true}
         ariaLabel="three-circles-rotating"
-        outerCircleColor=""
-        innerCircleColor=""
-        middleCircleColor=""
       />
     </LoaderPageWrapper>
   );

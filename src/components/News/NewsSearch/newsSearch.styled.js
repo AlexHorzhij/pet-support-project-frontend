@@ -1,10 +1,5 @@
 import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';
-
-export const InputStyled = styled(InputBase)({
-  borderRadius: '20px',
-});
 
 export const FormSearch = styled(Paper)({
   background: '#FFFFFF',

@@ -1,4 +1,4 @@
-import { Button, CardMedia, CardContent } from '@mui/material';
+import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite } from 'components';
 import distanceBetwenDateAndNowWords from 'services/distanceBetwenDateAndNowWords';
@@ -9,11 +9,13 @@ import {
   Title,
   CategoryLable,
   NoticeCard,
+  Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
-export default function NoticesCardItem({ data }) {
+export default function NoticesCardItem({ data, deleteCard, openModal }) {
   const {
+    _id,
     title,
     breed,
     location,
@@ -28,16 +30,23 @@ export default function NoticesCardItem({ data }) {
     <>
       <NoticeCard variant="notice" sx={{ width: '280px' }}>
         <CardMedia
-          image={avatarUrl}
+          image={nophoto}
           style={{
             height: '288px',
             position: 'relative',
             objectFit: 'cover',
-            backgroundImage: `url(${nophoto})`,
           }}
         >
+          <CardMedia
+            image={avatarUrl}
+            style={{
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
           <CategoryLable>{status}</CategoryLable>
           <AddToFavorite
+            id={_id}
             favorite={favorite}
             right="50px"
             top="50px"
@@ -66,16 +75,23 @@ export default function NoticesCardItem({ data }) {
               </Li>
             )}
           </ItemsList>
-          <Button variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
+          <Btn
+            id={_id}
+            onClick={openModal}
+            variant="outlined"
+            sx={{ width: '100%', color: '#F59256' }}
+          >
             Learn more
-          </Button>
-          <Button
+          </Btn>
+          <Btn
+            id={_id}
+            onClick={deleteCard}
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
             endIcon={<DeleteOutlineIcon />}
           >
             Delete
-          </Button>
+          </Btn>
         </CardContent>
       </NoticeCard>
     </>
