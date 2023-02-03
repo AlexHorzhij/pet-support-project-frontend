@@ -12,7 +12,9 @@ const instance = axios.create({
 
 const setToken = {
   set(token) {
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    token
+      ? (instance.defaults.headers.common.Authorization = `Bearer ${token}`)
+      : (instance.defaults.headers.common.Authorization = '');
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
@@ -27,7 +29,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-// auth
+//======================== AUNTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -56,35 +58,48 @@ export async function logout() {
   return data.data;
 }
 
-//======================== NOTICES START ==========================
-
+//======================== NOTICES  ==========================
 
 export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', req)
+    const { data } = await instance.get('/notices', req);
     // console.log(data)
-    return data.data.result
+    return data.data.result;
   } catch (error) {
-    throw error
+    throw error;
   }
-  // return [
-  //   {
-  //     title: 'good dog',
-  //     breed: 'taxa',
-  //     place: 'Dnipro',
-  //     bithday: '2022.05.10',
-  //   },
-
-  //   {
-  //     title: 'white cat',
-  //     breed: 'siam',
-  //     place: 'Odesa',
-  //     bithday: '2021.12.06',
-  //   },
-  // ];
 }
 
-//========================== NOTICES END =============================
+export async function removNoticesById(id) {
+  console.log('id', id);
+  try {
+    // const { data } = await instance.delete(`user/notices/${id}`, id);
+    // console.log('remove data', data);
+    // return data.data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//========================== FAVORITE  =============================
+
+export async function togleFavorite(id, token, req) {
+  console.log('id', id);
+  console.log('token', token);
+  console.log('req', req);
+
+  setToken.set(token);
+
+  try {
+    const { data } = await instance[req](`user/notices/${id}/favorite`);
+    console.log('favAdd data', data);
+    return data.data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//========================== USER  =============================
 
 export async function requestUserData() {
   return {
@@ -147,7 +162,9 @@ export async function addPet(pet) {
   newData.push(pet);
   return newData;
 }
-//======================== NEWS START ==========================
+
+//======================== NEWS  ==========================
+
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
@@ -166,9 +183,8 @@ export async function getSearchNews(search) {
     throw new Error(error.message);
   }
 }
-//========================== NEWS END =============================
 
-// ======================== Our Friends ===========================
+//========================== OUR FRIENDS  =============================
 
 export async function getOurFriends() {
   try {

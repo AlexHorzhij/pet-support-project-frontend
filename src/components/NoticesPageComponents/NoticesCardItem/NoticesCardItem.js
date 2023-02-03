@@ -13,8 +13,9 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
-export default function NoticesCardItem({ data }) {
+export default function NoticesCardItem({ data, deleteCard, openModal }) {
   const {
+    _id,
     title,
     breed,
     location,
@@ -45,6 +46,7 @@ export default function NoticesCardItem({ data }) {
           />
           <CategoryLable>{status}</CategoryLable>
           <AddToFavorite
+            id={_id}
             favorite={favorite}
             right="50px"
             top="50px"
@@ -73,10 +75,17 @@ export default function NoticesCardItem({ data }) {
               </Li>
             )}
           </ItemsList>
-          <Btn variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
+          <Btn
+            id={_id}
+            onClick={openModal}
+            variant="outlined"
+            sx={{ width: '100%', color: '#F59256' }}
+          >
             Learn more
           </Btn>
           <Btn
+            id={_id}
+            onClick={deleteCard}
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
             endIcon={<DeleteOutlineIcon />}
