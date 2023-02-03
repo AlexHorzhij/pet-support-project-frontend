@@ -1,1 +1,1 @@
-export const selectIsModalOpen = state => state.isModalOpen
+export const selectIsModalOpen = state => state.modalWin

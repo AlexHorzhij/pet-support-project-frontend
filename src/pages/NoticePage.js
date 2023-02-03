@@ -1,30 +1,19 @@
 import React from 'react';
 import { Container } from '@mui/material';
 
-import { useState } from 'react';
-
 import {
   NoticesFilter,
   NoticesCategoryNav,
   AddNoticeBtn,
   NoticesGallery,
-  Modal,
   NoticeAddForm,
 } from 'components';
 
 import { nanoid } from 'nanoid';
 import Rectangle16 from 'assets/images/Rectangle16.jpg';
 
-import { selectIsModalOpen } from 'redux/modalWin/modalWinSelectors';
-import { useSelector } from 'react-redux';
-
 
 export default function NoticePage() {
-  const [modalIsShown, setModalIsShown] = useState(false);
-
-  const toggleModal = () => {
-    setModalIsShown(prev => !prev);
-  };
 
   const data = [
     {
@@ -65,7 +54,6 @@ export default function NoticePage() {
     },
   ];
 
-  const isModalOpen = useSelector(selectIsModalOpen)
   
   return (
     <Container component="main">
@@ -81,16 +69,10 @@ export default function NoticePage() {
         </div>
         <div>
           <AddNoticeBtn
-          //  onModalOpen={toggleModal}
            />
         </div>
       </Container>
       <NoticesGallery data={data} />
-
-      {isModalOpen && (
-        <Modal onModalClose={toggleModal}>
-          <NoticeAddForm onModalClose={toggleModal} />
-        </Modal>)}
     </Container>
   );
 }
