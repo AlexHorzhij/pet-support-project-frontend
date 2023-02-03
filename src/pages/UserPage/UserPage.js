@@ -13,7 +13,7 @@ import {
 function UserPage() {
   const [modalIsShown, setModalIsShown] = useState(false);
 
-  const toogleModal = () => {
+  const togleModal = () => {
     setModalIsShown(prev => !prev);
   };
   return (
@@ -25,7 +25,7 @@ function UserPage() {
       <PetDataBox>
         <UserDataTypography variant="h3">My pets:</UserDataTypography>
         <PetsData />
-        <UserDataIconButton onClick={toogleModal}>
+        <UserDataIconButton onClick={togleModal}>
           <AddPetTypography variant="h5" color="text.primary">
             Add pet
           </AddPetTypography>
@@ -33,8 +33,8 @@ function UserPage() {
         </UserDataIconButton>
       </PetDataBox>
       {modalIsShown && (
-        <Modal onModalClose={toogleModal}>
-          <ModalAddsPet onModalClose={toogleModal} />
+        <Modal onModalClose={togleModal}>
+          <ModalAddsPet onModalClose={togleModal} />
         </Modal>
       )}
     </UserDataContainer>
