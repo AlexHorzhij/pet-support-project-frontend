@@ -27,7 +27,8 @@ export const fetchUserDataSlice = createSlice({
   extraReducers: builder => {
     builder
       //==========GET /user ====================
-      //Працює немає поля дати народження
+      //Працює
+      // OK
       .addCase(fetchUserData.pending, state => {
         state.isLoading = true;
       })
@@ -58,6 +59,7 @@ export const fetchUserDataSlice = createSlice({
 
       //==========POST /user/pets ====================
       // Працює
+      // OK
       .addCase(addPetToList.pending, state => {
         state.isLoading = true;
       })

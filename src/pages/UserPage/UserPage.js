@@ -23,30 +23,24 @@ function UserPage() {
   };
   return (
     <UserDataContainer component="main">
-      {!showPage && (
-        <>
-          <Box>
-            <UserDataTypography variant="h3">
-              My information:
-            </UserDataTypography>
-            <UserData />
-          </Box>
-          <PetDataBox>
-            <UserDataTypography variant="h3">My pets:</UserDataTypography>
-            <PetsData />
-            <UserDataIconButton onClick={togleModal}>
-              <AddPetTypography variant="h5" color="text.primary">
-                Add pet
-              </AddPetTypography>
-              <AddPetIcon />
-            </UserDataIconButton>
-          </PetDataBox>
-          {modalIsShown && (
-            <Modal onModalClose={togleModal}>
-              <ModalAddsPet onModalClose={togleModal} />
-            </Modal>
-          )}
-        </>
+      <Box>
+        <UserDataTypography variant="h3">My information:</UserDataTypography>
+        <UserData />
+      </Box>
+      <PetDataBox>
+        <UserDataTypography variant="h3">My pets:</UserDataTypography>
+        <PetsData />
+        <UserDataIconButton onClick={togleModal}>
+          <AddPetTypography variant="h5" color="text.primary">
+            Add pet
+          </AddPetTypography>
+          <AddPetIcon />
+        </UserDataIconButton>
+      </PetDataBox>
+      {modalIsShown && (
+        <Modal onModalClose={togleModal}>
+          <ModalAddsPet onModalClose={togleModal} />
+        </Modal>
       )}
     </UserDataContainer>
   );

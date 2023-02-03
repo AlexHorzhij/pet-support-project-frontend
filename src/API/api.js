@@ -95,6 +95,8 @@ export async function requestUserData() {
 }
 
 export async function updateUserData(data) {
+  console.log('data: ', data);
+
   const userData = await requestUserData();
 
   Object.keys(userData).forEach(item => {
