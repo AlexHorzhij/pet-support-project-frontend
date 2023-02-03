@@ -53,7 +53,6 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
-  console.log(data);
   setToken.unset();
   return data.data;
 }
@@ -188,8 +187,7 @@ export async function getSearchNews(search) {
 
 export async function getOurFriends() {
   try {
-    const { data } = await instance.get('/services');
-    // console.log(data.data.result);
+    const { data } = await instance.get('/friends');
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);
