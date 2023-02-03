@@ -2,8 +2,8 @@ import Checkbox from '@mui/material/Checkbox';
 import { Favorite } from '@mui/icons-material';
 import { useState } from 'react';
 
-export default function AddToFavorite() {
-  const [checked, setChecked] = useState(false);
+export default function AddToFavorite({ favorite = false }) {
+  const [checked, setChecked] = useState(favorite);
   const handleChange = event => {
     setChecked(event.target.checked);
     console.log(checked);

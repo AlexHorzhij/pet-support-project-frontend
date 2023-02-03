@@ -1,20 +1,17 @@
 import styled from '@emotion/styled';
-import { List, ListItem, ListItemText } from '@mui/material';
-// export const Card1 = styled(CardActionArea)`
-//   width: 280px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   background: #ffffff;
-//   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
-//   border-radius: 0px 0px 20px 20px;
-// `;
+import { List, ListItem, ListItemText, Card } from '@mui/material';
 
-// export const ImgWrapper = styled.div`
-//   width: 280px;
-//   height: 288px;
-//   background-image: url(${Rectangle16});
-// `;
+export const NoticeCard = styled(Card)`
+  width: 280px;
+  margin: 50px 0 0 0;
+
+  @media (min-width: 767.99px) {
+    width: 336px;
+  }
+  @media (min-width: 1279.99px) {
+    width: 288px;
+  }
+`;
 
 export const Li = styled(ListItem)`
   padding: 0;
@@ -22,13 +19,6 @@ export const Li = styled(ListItem)`
     margin-bottom: 8px;
   }
 `;
-
-// export const Discription = styled.div`
-//   /* display: flex;
-//   align-items: center;
-//   flex-direction: column;
-//   padding: 20px 20px 32px 20px; */
-// `;
 
 export const ItemsList = styled(List)`
   padding: 0 4px;
@@ -42,7 +32,6 @@ export const ItemText = styled(ListItemText)`
   padding: 0;
   margin: 0;
   width: 90px;
-  /* text-align: start; */
 `;
 
 export const Title = styled.h2`
@@ -53,7 +42,7 @@ export const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const Lable = styled.p`
+export const CategoryLable = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;

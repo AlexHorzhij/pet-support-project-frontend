@@ -32,7 +32,7 @@ const RegisterForm = () => {
       );
 
       if (response.success) {
-        return <Navigate to="/user" replace />;
+        return <Navigate to="/login" replace />;
       }
 
       return;

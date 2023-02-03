@@ -1,5 +1,4 @@
 import { IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/petsData/petsOperations';
 import {
@@ -9,6 +8,9 @@ import {
   PetInfoBox,
   PetInfoTitleSpan,
   PetInfoTypography,
+  PetInfoBoxWrapper,
+  IconButtonWrapper,
+  DaleteIconStyled,
 } from './PetItem.styled';
 function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   const dispatch = useDispatch();
@@ -22,26 +24,32 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
       <PetImageBox>
         <PetImage src={imgSrc} alt="my pet" />
       </PetImageBox>
-      <PetInfoBox>
-        <PetInfoTypography>
-          <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
-        </PetInfoTypography>
-        <PetInfoTypography>
-          <PetInfoTitleSpan>Date of birth:</PetInfoTitleSpan> {birthDate}
-        </PetInfoTypography>
-        <PetInfoTypography>
-          <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
-        </PetInfoTypography>
-        <PetInfoTypography>
-          <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
-        </PetInfoTypography>
-      </PetInfoBox>
-      <IconButton
-        onClick={() => handlePetDelete(id)}
-        sx={{ backgroundColor: '#FDF7F2' }}
-      >
-        <DeleteIcon />
-      </IconButton>
+      <PetInfoBoxWrapper>
+        <PetInfoBox>
+          <PetInfoTypography>
+            <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
+          </PetInfoTypography>
+          <PetInfoTypography>
+            <PetInfoTitleSpan>Date of birth:</PetInfoTitleSpan> {birthDate}
+          </PetInfoTypography>
+          <PetInfoTypography>
+            <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
+          </PetInfoTypography>
+          <PetInfoTypography>
+            <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
+          </PetInfoTypography>
+        </PetInfoBox>
+        <IconButtonWrapper>
+          <IconButton
+            onClick={() => handlePetDelete(id)}
+            sx={{
+              backgroundColor: '#FDF7F2',
+            }}
+          >
+            <DaleteIconStyled />
+          </IconButton>
+        </IconButtonWrapper>
+      </PetInfoBoxWrapper>
     </PetListItem>
   );
 }

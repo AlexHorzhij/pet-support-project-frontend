@@ -11,22 +11,34 @@ export const FormStepper = ({ children, onClose }) => {
       {currentStep}
       <StepperBox>
         {step === 0 && (
-          <StepperButton onClick={onClose} variant="outlined">
-            Cancel
-          </StepperButton>
+          <>
+            <StepperButton onClick={onClose} variant="outlined">
+              Cancel
+            </StepperButton>
+            <StepperButton
+              variant={'contained'}
+              onClick={() => {
+                step === 0 ? setStep(1) : setStep(0);
+              }}
+            >
+              Next
+            </StepperButton>
+          </>
         )}
-        <StepperButton
-          variant={step === 0 ? 'contained' : 'outlined'}
-          onClick={() => {
-            step === 0 ? setStep(1) : setStep(0);
-          }}
-        >
-          {step === 0 ? 'Next' : 'Back'}
-        </StepperButton>
         {step === 1 && (
-          <StepperButton variant="contained" type="submit">
-            Done
-          </StepperButton>
+          <>
+            <StepperButton
+              variant="outlined"
+              onClick={() => {
+                step === 0 ? setStep(1) : setStep(0);
+              }}
+            >
+              Back
+            </StepperButton>
+            <StepperButton variant="contained" type="submit">
+              Done
+            </StepperButton>
+          </>
         )}
       </StepperBox>
     </Form>

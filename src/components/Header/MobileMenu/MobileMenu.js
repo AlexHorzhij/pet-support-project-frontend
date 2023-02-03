@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import MobileMarkup from './MobileMarkup/MobileMarkup';
-// import MenuIcon from '@mui/icons-material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Btn } from './MobileMenu.styled';
 
