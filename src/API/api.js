@@ -170,8 +170,7 @@ export async function getSearchNews(search) {
 
 export async function getOurFriends() {
   try {
-    const { data } = await instance.get('/services');
-    // console.log(data.data.result);
+    const { data } = await instance.get('/friends');
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);

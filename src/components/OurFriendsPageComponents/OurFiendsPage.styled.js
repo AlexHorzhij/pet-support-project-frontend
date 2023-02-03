@@ -10,11 +10,13 @@ import {
 
 export const Main = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
+  paddingTop: '10px',
+  marginTop: '49px',
 }));
 
 export const CustomContainer = styled(Container)(({ theme }) => ({
   maxWidth: '474px',
-  margin: '49px auto 0 auto',
+  margin: '0 auto',
   padding: '0 20px',
 
   [theme.breakpoints.up('md')]: {
