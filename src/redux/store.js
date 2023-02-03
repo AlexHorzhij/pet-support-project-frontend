@@ -20,7 +20,7 @@ import { fetchPetsDataSlice } from 'redux/petsData/petsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isLoggedIn'],
+  whitelist: ['token'],
 };
 
 export const store = configureStore({
