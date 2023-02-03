@@ -15,6 +15,10 @@ import {
 import { nanoid } from 'nanoid';
 import Rectangle16 from 'assets/images/Rectangle16.jpg';
 
+import { selectIsModalOpen } from 'redux/modalWin/modalWinSelectors';
+import { useSelector } from 'react-redux';
+
+
 export default function NoticePage() {
   const [modalIsShown, setModalIsShown] = useState(false);
 
@@ -60,6 +64,9 @@ export default function NoticePage() {
       url: Rectangle16,
     },
   ];
+
+  const isModalOpen = useSelector(selectIsModalOpen)
+  
   return (
     <Container component="main">
       <NoticesFilter />
@@ -73,12 +80,14 @@ export default function NoticePage() {
           <NoticesCategoryNav />
         </div>
         <div>
-          <AddNoticeBtn onModalOpen={toggleModal}/>
+          <AddNoticeBtn
+          //  onModalOpen={toggleModal}
+           />
         </div>
       </Container>
       <NoticesGallery data={data} />
 
-      {modalIsShown && (
+      {isModalOpen && (
         <Modal onModalClose={toggleModal}>
           <NoticeAddForm onModalClose={toggleModal} />
         </Modal>)}

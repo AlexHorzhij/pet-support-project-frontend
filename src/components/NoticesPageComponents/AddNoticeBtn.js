@@ -5,11 +5,21 @@ import { Button,  Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 
+import { manageModalWin } from 'redux/modalWin/modalWinOperations';
+import { useDispatch } from 'react-redux';
+
 
 export default function AddNoticeBtn({onModalOpen}) {
+
+  const dispatch = useDispatch()
+  const openModalWindow = () => {
+    dispatch(manageModalWin(true))
+  }
+
+  
   return (
     <Button
-      onClick={onModalOpen}
+      onClick={openModalWindow}
       variant='text'
       sx={{
         display: 'flex',
@@ -33,7 +43,7 @@ export default function AddNoticeBtn({onModalOpen}) {
 }
 
 AddNoticeBtn.propTypes = {
-  onModalOpen: PropTypes.func.isRequired
+  onModalOpen: PropTypes.func
 }
 
 export {
