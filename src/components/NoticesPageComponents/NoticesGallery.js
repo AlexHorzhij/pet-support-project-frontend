@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { getNotices } from '../../redux/notices/noticesSelectors';
 
 export default function NoticesGallery() {
-  const notice = useSelector(getNotices);
+  const { items: data } = useSelector(getNotices);
+
   const isLoading = false;
-  const data = notice.items.data?.result;
 
   return (
     <Grid container>
