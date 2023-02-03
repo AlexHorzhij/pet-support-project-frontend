@@ -16,7 +16,7 @@ import { noticesSlice } from 'redux/notices/noticesSlice';
 import { newsSlice } from './news/newsSlice';
 import { fetchUserDataSlice } from 'redux/userData/userDataSlice';
 import { fetchPetsDataSlice } from 'redux/petsData/petsSlice';
-import { modalWinSlice } from 'redux/modalWin/modalWinSlice'
+import { friendsSlice } from './friends/friendsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,7 +31,7 @@ export const store = configureStore({
     news: newsSlice.reducer,
     userData: fetchUserDataSlice.reducer,
     petsData: fetchPetsDataSlice.reducer,
-    modalWin: modalWinSlice.reducer,
+    friends: friendsSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

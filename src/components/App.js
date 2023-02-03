@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-
+import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
 import { PrivateRoute, PublicRoute } from '../RouteManager/RouteManager';
@@ -49,6 +49,7 @@ function App() {
           </Route>
         </Routes>
       </Suspense>
+      <Toaster />
     </>
   );
 }

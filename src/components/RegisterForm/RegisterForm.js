@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/authOperations';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
@@ -16,12 +16,13 @@ const RegisterForm = () => {
   });
   const [currentStep, setCurrentStep] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleNextStep = (newData, final = false) => {
     setData(prev => ({ ...prev, ...newData }));
 
     if (final) {
-      const response = dispatch(
+      dispatch(
         registerUser({
           email: newData.email,
           password: newData.password,
@@ -31,9 +32,7 @@ const RegisterForm = () => {
         })
       );
 
-      if (response.success) {
-        return <Navigate to="/login" replace />;
-      }
+      navigate('/login');
 
       return;
     }

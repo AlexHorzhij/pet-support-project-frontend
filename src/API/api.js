@@ -12,7 +12,9 @@ const instance = axios.create({
 
 const setToken = {
   set(token) {
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    token
+      ? (instance.defaults.headers.common.Authorization = `Bearer ${token}`)
+      : (instance.defaults.headers.common.Authorization = '');
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
@@ -27,7 +29,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-// auth
+//======================== AUNTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -51,13 +53,11 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
-  console.log(data);
   setToken.unset();
   return data.data;
 }
 
-//======================== NOTICES START ==========================
-
+//======================== NOTICES  ==========================
 
 export async function requestNotices(query) {
   const {category, search} = query
@@ -71,14 +71,43 @@ console.log(category, search)
     }
   }
   try {
-    const { data } = await instance.get(`/notices?status=${category}`)
-    return data.data.result
+    const { data } = await instance.get('/notices', req);
+    return data.data.result;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-//========================== NOTICES END =============================
+export async function removNoticesById(id) {
+  console.log('id', id);
+  try {
+    // const { data } = await instance.delete(`user/notices/${id}`, id);
+    // console.log('remove data', data);
+    // return data.data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//========================== FAVORITE  =============================
+
+export async function togleFavorite(id, token, req) {
+  console.log('id', id);
+  console.log('token', token);
+  console.log('req', req);
+
+  setToken.set(token);
+
+  try {
+    const { data } = await instance[req](`user/notices/${id}/favorite`);
+    console.log('favAdd data', data);
+    return data.data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//========================== USER  =============================
 
 export async function requestUserData() {
   return {
@@ -141,7 +170,9 @@ export async function addPet(pet) {
   newData.push(pet);
   return newData;
 }
-//======================== NEWS START ==========================
+
+//======================== NEWS  ==========================
+
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
@@ -160,4 +191,16 @@ export async function getSearchNews(search) {
     throw new Error(error.message);
   }
 }
-//========================== NEWS END =============================
+
+//========================== OUR FRIENDS  =============================
+
+export async function getOurFriends() {
+  try {
+    const { data } = await instance.get('/friends');
+    return data.data.result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+// =================================================================

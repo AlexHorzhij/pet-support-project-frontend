@@ -1,26 +1,24 @@
 import React from 'react';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import {
-  Background,
+  AuthContainer,
   ContentWrapper,
+  HeaderText,
   Switcher,
 } from 'pages/LoginPage/LoginPage.styled';
-import { Link } from 'react-router-dom';
 
 function RegisterPage() {
   return (
-    <Background>
+    <AuthContainer>
       <ContentWrapper>
-        <Typography sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
-          Register
-        </Typography>
+        <HeaderText>Registration</HeaderText>
         <RegisterForm />
         <Switcher>
           Already have an account? <Link to="/login">Login</Link>
         </Switcher>
       </ContentWrapper>
-    </Background>
+    </AuthContainer>
   );
 }
 
