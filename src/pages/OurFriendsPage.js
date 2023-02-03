@@ -1,6 +1,7 @@
 import { OurFriendsList } from 'components';
 import React, { useEffect, useState } from 'react';
 import { Container } from '@mui/material';
+import { Title } from 'components/Title/Title';
 
 const partnersExample = [
   {
@@ -113,10 +114,10 @@ const OurFriendsPage = () => {
   }, []);
 
   return (
-    <Container component='main'>
-          <h1>Our friends</h1>
-          <OurFriendsList partners={partnersArr} />
-      </Container>
+    <Container component="main">
+      <Title text="Our Friends" />
+      <OurFriendsList partners={partnersArr} />
+    </Container>
   );
 };
 

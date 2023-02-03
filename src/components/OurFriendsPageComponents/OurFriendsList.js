@@ -1,6 +1,7 @@
 import OurFriendsItem from './OurFriendsItem';
-import { FriendsList } from './OurFriendsList.styled';
+// import { FriendsList } from './OurFriendsList.styled';
 import { Loader } from 'components';
+import { ListGrid } from './OurFiendsPage.styled';
 
 const OurFriendsList = ({ partners }) => {
   if (!partners) {
@@ -8,11 +9,11 @@ const OurFriendsList = ({ partners }) => {
   }
 
   return (
-    <FriendsList>
+    <ListGrid container component="ul">
       {partners.map(partner => (
         <OurFriendsItem key={partner._id} partner={partner} />
       ))}
-    </FriendsList>
+    </ListGrid>
   );
 };
 
