@@ -1,15 +1,15 @@
-// import formatDistanceStrict from 'date-fns/formatDistanceStrict';
-// import { ToWords } from 'to-words';
+import formatDistanceStrict from 'date-fns/formatDistanceStrict';
+import { ToWords } from 'to-words';
 
-// export default function distanceBetwenDateAndNowWords(birthdate) {
-//   const toWords = new ToWords();
+export default function distanceBetwenDateAndNowWords(birthdate) {
+  const toWords = new ToWords();
 
-//   if (birthdate) {
-//     const ageArr = formatDistanceStrict(
-//       Date.now(),
-//       Date.parse(birthdate)
-//     ).split(' ');
-//     return [toWords.convert(ageArr[0]), ageArr[1]].join(' ');
-//   }
-//   return '';
-// }
+  if (birthdate) {
+    const ageArr = formatDistanceStrict(
+      Date.now(),
+      Date.parse(birthdate)
+    ).split(' ');
+    return [toWords.convert(ageArr[0]), ageArr[1]].join(' ');
+  }
+  return '';
+}

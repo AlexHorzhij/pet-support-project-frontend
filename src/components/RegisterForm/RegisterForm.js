@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/authOperations';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
@@ -15,6 +16,7 @@ const RegisterForm = () => {
   });
   const [currentStep, setCurrentStep] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleNextStep = (newData, final = false) => {
     setData(prev => ({ ...prev, ...newData }));
@@ -29,6 +31,8 @@ const RegisterForm = () => {
           phone: newData.phone,
         })
       );
+
+      navigate('/login');
 
       return;
     }

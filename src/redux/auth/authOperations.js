@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 import { register, login, logout, fetchCurrent } from '../../API/api';
 
 export const registerUser = createAsyncThunk(
@@ -11,14 +10,13 @@ export const registerUser = createAsyncThunk(
       toast.success(
         'Successfully registered! You can log in after confirming your email'
       );
-      <Navigate to="/login" replace />;
       return user;
     } catch ({ response }) {
       const error = {
         status: response.status,
         message: response.data.message,
       };
-      toast.error('Oops! Something went wrong, please, try again');
+      toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }
   }
@@ -36,7 +34,8 @@ export const loginUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      toast.error('Oops! Something went wrong, please, try again');
+      console.log(response.data.message);
+      toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }
   }
