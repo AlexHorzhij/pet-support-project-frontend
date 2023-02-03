@@ -5,4 +5,5 @@ export const NewsGrid = styled(Grid)({
   paddingLeft: '0px',
   marginTop: '0px',
   marginBottom: '0px',
+  paddingBottom: '40px',
 });
