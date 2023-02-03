@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
-import { Navigate } from 'react-router-dom';
 import { Loader } from 'components';
 import { Input, ErrorText, Button } from 'components/RegisterForm/Forms.styled';
 
@@ -40,10 +39,7 @@ const LoginForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const { email, password } = values;
-    const response = dispatch(loginUser({ email: email, password: password }));
-    if (response.success) {
-      return <Navigate to="/user" replace />;
-    }
+    dispatch(loginUser({ email: email, password: password }));
     resetForm();
   };
 

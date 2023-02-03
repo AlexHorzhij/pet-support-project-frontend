@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/authOperations';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
@@ -21,7 +20,7 @@ const RegisterForm = () => {
     setData(prev => ({ ...prev, ...newData }));
 
     if (final) {
-      const response = dispatch(
+      dispatch(
         registerUser({
           email: newData.email,
           password: newData.password,
@@ -30,10 +29,6 @@ const RegisterForm = () => {
           phone: newData.phone,
         })
       );
-
-      if (response.success) {
-        return <Navigate to="/login" replace />;
-      }
 
       return;
     }
