@@ -8,7 +8,7 @@ import { addPetToList } from 'redux/petsData/petsOperations';
 import { nanoid } from 'nanoid';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import {
-  ModalTyporgaphy,
+  ModalTypography,
   ModalCard,
   ModalCardContent,
   AddPetTitle,
@@ -26,7 +26,7 @@ import addIconSVG from '../../../assets/images/myPets/addImage.svg';
 function ModalAddsPet({ onModalClose }) {
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
-  const formSumbitHandler = async (values, onSubmitProps) => {
+  const formSubmitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
     values.picture = preview;
     values.id = nanoid();
@@ -74,13 +74,13 @@ function ModalAddsPet({ onModalClose }) {
               avatarURL: '',
               owner: '1',
             }}
-            onSubmit={formSumbitHandler}
+            onSubmit={formSubmitHandler}
           >
             {({ values, setFieldValue }) => (
               <FormStepper onClose={onModalClose}>
                 <Box>
                   <ModalGrid item md={6}>
-                    <ModalTyporgaphy>Name pet</ModalTyporgaphy>
+                    <ModalTypography>Name pet</ModalTypography>
                     <ModalField
                       fullWidth
                       name="name"
@@ -89,7 +89,7 @@ function ModalAddsPet({ onModalClose }) {
                     />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTyporgaphy>Date of birth</ModalTyporgaphy>
+                    <ModalTypography>Date of birth</ModalTypography>
                     <ModalField
                       fullWidth
                       name="dateOfBirth"
@@ -98,7 +98,7 @@ function ModalAddsPet({ onModalClose }) {
                     />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTyporgaphy>Breed</ModalTyporgaphy>
+                    <ModalTypography>Breed</ModalTypography>
                     <ModalField
                       fullWidth
                       name="breed"
@@ -138,7 +138,7 @@ function ModalAddsPet({ onModalClose }) {
                     )}
                   </Dropzone>
                   <Grid item md={6} sx={{ mt: '40px' }}>
-                    <ModalTyporgaphy>Comments</ModalTyporgaphy>
+                    <ModalTypography>Comments</ModalTypography>
                     <ModalMultiLineField
                       multiline={true}
                       rows={3.5}

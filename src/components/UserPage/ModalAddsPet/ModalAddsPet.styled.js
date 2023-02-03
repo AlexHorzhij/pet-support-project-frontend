@@ -18,7 +18,7 @@ export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
   height: '44px',
 }));
 
-export const ModalTyporgaphy = styled(Typography)({
+export const ModalTypography = styled(Typography)({
   fontSize: '24px',
   fontWeight: '500',
   lineHeight: '27px',
