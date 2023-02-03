@@ -1,19 +1,12 @@
-import { useEffect } from 'react';
 import PetsList from '../PetsList/PetsList';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPetsData } from 'redux/petsData/petsOperations';
+import { useSelector } from 'react-redux';
 
 function PetsData() {
-  const dispatch = useDispatch();
-  const pets = useSelector(state => state.petsData.pets);
-
-  useEffect(() => {
-    dispatch(fetchPetsData());
-  }, [dispatch]);
+  const petsDB = useSelector(state => state.userData.user.pets);
 
   return (
     <>
-      <PetsList pets={pets} />
+      <PetsList pets={petsDB} />
     </>
   );
 }

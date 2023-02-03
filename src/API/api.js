@@ -58,14 +58,13 @@ export async function logout() {
 
 //======================== NOTICES START ==========================
 
-
 export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', req)
+    const { data } = await instance.get('/notices', req);
     // console.log(data)
-    return data.data.result
+    return data.data.result;
   } catch (error) {
-    throw error
+    throw error;
   }
   // return [
   //   {
@@ -87,14 +86,12 @@ export async function requestNotices(req) {
 //========================== NOTICES END =============================
 
 export async function requestUserData() {
-  return {
-    name: 'Anna',
-    email: 'anna00@gmail.com',
-    birthday: '00.00.0000',
-    phone: '+380000000',
-    city: 'Kyiv',
-    picture: '',
-  };
+  try {
+    const { data } = await instance.get('/user');
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function updateUserData(data) {
@@ -111,41 +108,25 @@ export async function updateUserData(data) {
   return newUserData;
 }
 
-export async function requestPetsData() {
-  return [
-    {
-      id: '1',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Percian cat',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: cat,
-      avatarURL: '',
-    },
-    {
-      id: '2',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Basenji',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: dog,
-      avatarURL: '',
-    },
-  ];
-}
-export async function deletePet(id) {
-  const petsData = await requestPetsData();
-  const newData = petsData.filter(value => value.id !== id);
-  await requestPetsData(newData);
-  return newData;
+export async function deletePet(_id) {
+  try {
+    const response = await instance.delete(`/user/pets/${_id}`);
+    if (response.status === 200) {
+      return { status: response.status, petID: _id };
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 export async function addPet(pet) {
-  const petsData = await requestPetsData();
-  const newData = [...petsData];
-  newData.push(pet);
-  return newData;
+  try {
+    const response = await instance.post(`/user/pets`, pet);
+    if (response.status === 201) {
+      return { status: response.status, pet: response.data };
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 //======================== NEWS START ==========================
 export async function getAllNews() {

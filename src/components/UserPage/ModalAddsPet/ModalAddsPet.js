@@ -3,10 +3,10 @@ import { Formik } from 'formik';
 import { Grid, Box } from '@mui/material';
 import { FormStepper } from '../FormStepper/FormStepper';
 import Dropzone from 'react-dropzone';
-import { useDispatch } from 'react-redux';
-import { addPetToList } from 'redux/petsData/petsOperations';
-import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { getUser } from 'redux/userData/userDataSelectors';
+import * as yup from 'yup';
 import {
   ModalTypography,
   ModalCard,
@@ -23,29 +23,43 @@ import {
 } from './ModalAddsPet.styled';
 import { TextField } from 'formik-material-ui';
 import addIconSVG from '../../../assets/images/myPets/addImage.svg';
+import { addPetToList } from 'redux/userData/userDataOperations';
+
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  date: yup.string().required(),
+  breed: yup.string().required(),
+  description: yup.string().required(),
+  avatarUrl: yup.mixed().required('File is required'),
+});
+
+const initialValues = {
+  name: '',
+  date: '',
+  breed: '',
+  description: '',
+  avatarUrl: '',
+};
+
 function ModalAddsPet({ onModalClose }) {
+  const user = useSelector(getUser);
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const formSubmitHandler = async (values, onSubmitProps) => {
-    const preview = URL.createObjectURL(values.picture);
-    values.picture = preview;
-    values.id = nanoid();
+    const formData = new FormData();
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+    formData.append('owner', user._id);
 
-    dispatch(addPetToList(values));
-    // const formData = new FormData();
-    // for (let value in values) {
-    //   formData.append(value, values[value]);
-    // }
-    // formData.append('picturePath', values.picture.name);
-    // console.log('formData: ', formData);
-
+    dispatch(addPetToList(formData));
     // alert(JSON.stringify(values, null, 2));
     onSubmitProps.resetForm();
     onModalClose();
   };
 
   const fileHandler = (acceptedFiles, setFieldValue) => {
-    setFieldValue('picture', acceptedFiles[0]);
+    setFieldValue('avatarUrl', acceptedFiles[0]);
     acceptedFiles.map(file => {
       const reader = new FileReader();
       reader.onload = function (e) {
@@ -65,15 +79,8 @@ function ModalAddsPet({ onModalClose }) {
           </ModalCloseButton>
           <AddPetTitle>Add pet</AddPetTitle>
           <Formik
-            initialValues={{
-              name: '',
-              dateOfBirth: '',
-              breed: '',
-              comment: '',
-              picture: '',
-              avatarURL: '',
-              owner: '1',
-            }}
+            validationSchema={schema}
+            initialValues={initialValues}
             onSubmit={formSubmitHandler}
           >
             {({ values, setFieldValue }) => (
@@ -92,7 +99,7 @@ function ModalAddsPet({ onModalClose }) {
                     <ModalTypography>Date of birth</ModalTypography>
                     <ModalField
                       fullWidth
-                      name="dateOfBirth"
+                      name="date"
                       component={TextField}
                       label="Type date of birth"
                     />
@@ -119,7 +126,7 @@ function ModalAddsPet({ onModalClose }) {
                     {({ getRootProps, getInputProps }) => (
                       <DropZoneBox {...getRootProps()}>
                         <input {...getInputProps()} />
-                        {!values.picture ? (
+                        {!values.avatarUrl ? (
                           <Box>
                             <img src={addIconSVG} alt="add pet avatar" />
                           </Box>
@@ -143,7 +150,7 @@ function ModalAddsPet({ onModalClose }) {
                       multiline={true}
                       rows={3.5}
                       fullWidth
-                      name="comment"
+                      name="description"
                       component={TextField}
                       label="Type comment"
                     />

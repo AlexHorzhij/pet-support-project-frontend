@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { deletePetFromList } from 'redux/petsData/petsOperations';
+import { deletePetFromList } from 'redux/userData/userDataOperations';
 import {
   PetListItem,
   PetImageBox,
@@ -12,7 +12,7 @@ import {
   IconButtonWrapper,
   DaleteIconStyled,
 } from './PetItem.styled';
-function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
+function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
 
   const handlePetDelete = petId => {
@@ -22,7 +22,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   return (
     <PetListItem>
       <PetImageBox>
-        <PetImage src={imgSrc} alt="my pet" />
+        <PetImage src={avatarUrl} alt="my pet" />
       </PetImageBox>
       <PetInfoBoxWrapper>
         <PetInfoBox>
@@ -36,7 +36,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
             <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
+            <PetInfoTitleSpan>Descriptions:</PetInfoTitleSpan> {description}
           </PetInfoTypography>
         </PetInfoBox>
         <IconButtonWrapper>
