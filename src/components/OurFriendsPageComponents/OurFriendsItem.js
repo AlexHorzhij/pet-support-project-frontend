@@ -9,6 +9,7 @@ import {
   ItemTitle,
   ContactLink,
 } from './OurFiendsPage.styled';
+import defaultLogo from 'images/default_logo.png';
 
 const OurFriendsItem = ({ partner }) => {
   const { title, url, addressUrl, address, imageUrl, phone, email, workDays } =
@@ -51,11 +52,11 @@ const OurFriendsItem = ({ partner }) => {
   };
 
   const renderDate = data => {
-    if (!data) {
+    if (!data || !data.length) {
       return <p>-------------------</p>;
     }
 
-    return <WorkDays workDays={workDays} />;
+    return <WorkDays workDays={data} />;
   };
 
   return (
@@ -70,10 +71,18 @@ const OurFriendsItem = ({ partner }) => {
           {title}
         </Link>
       </ItemTitle>
-      <Box sx={{ display: 'flex' }}>
-        <FriendsLogo component="img" image={imageUrl} alt="company logo" />
+      <Box
+        sx={{
+          display: 'flex',
+        }}
+      >
+        <FriendsLogo
+          component="img"
+          image={imageUrl ?? defaultLogo}
+          alt="company logo"
+        />
         <Grid container component="ul">
-          <ContactsItem item component="li">
+          <ContactsItem item component="li" md={6}>
             <ContactsTypography component="span">
               Time:
               {renderDate(workDays)}

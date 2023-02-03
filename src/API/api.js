@@ -160,10 +160,24 @@ export async function getAllNews() {
 
 export async function getSearchNews(search) {
   try {
-    const { data } = await instance.get('/news', {params: {search}});
+    const { data } = await instance.get('/news', { params: { search } });
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);
   }
 }
 //========================== NEWS END =============================
+
+// ======================== Our Friends ===========================
+
+export async function getOurFriends() {
+  try {
+    const { data } = await instance.get('/services');
+    // console.log(data.data.result);
+    return data.data.result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+// =================================================================

@@ -19,13 +19,13 @@ const WorkDays = ({ workDays }) => {
 
   const date = new Date();
   const todayIndex = date.getDay();
+
   const normalDayIndex = data => {
     if (data === 0) {
       return 6;
     }
 
-    const index = data - 1;
-    return index;
+    return data - 1;
   };
   const indexDay = normalDayIndex(todayIndex);
   const dayWorkTime = workDays[indexDay];
@@ -35,7 +35,7 @@ const WorkDays = ({ workDays }) => {
       return 'Closed today';
     }
 
-    return `${data.from} - ${data.to}`;
+    return `${data.from}-${data.to}`;
   };
 
   return (
@@ -78,7 +78,7 @@ const WorkDays = ({ workDays }) => {
       >
         <Box
           sx={{
-            width: '120px',
+            width: '130px',
             height: '160px',
             padding: '12px',
             border: '1px solid #F59256',
@@ -89,7 +89,7 @@ const WorkDays = ({ workDays }) => {
           <Box>
             {workDays.map(workDay => (
               <WorkDaysPopover
-                key={workDays.indexOf(workDay)}
+                key={workDay._id}
                 index={workDays.indexOf(workDay)}
                 dayObj={workDay}
               />

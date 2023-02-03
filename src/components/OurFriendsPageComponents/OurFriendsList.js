@@ -1,19 +1,29 @@
 import OurFriendsItem from './OurFriendsItem';
-// import { FriendsList } from './OurFriendsList.styled';
 import { Loader } from 'components';
 import { ListGrid } from './OurFiendsPage.styled';
+import { getFriends } from 'redux/friends/friendsSelectors';
+import { useSelector } from 'react-redux';
 
-const OurFriendsList = ({ partners }) => {
-  if (!partners) {
+const OurFriendsList = () => {
+  const { friends, error, isLoading } = useSelector(getFriends);
+
+  if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <ListGrid container component="ul">
-      {partners.map(partner => (
-        <OurFriendsItem key={partner._id} partner={partner} />
-      ))}
-    </ListGrid>
+    <>
+      {error && <p>{error.data}</p>}
+      {friends.length === 0 ? (
+        <p>We have not any friends on this topic</p>
+      ) : (
+        <ListGrid container component="ul">
+          {friends.map(friend => (
+            <OurFriendsItem key={friend._id} partner={friend} />
+          ))}
+        </ListGrid>
+      )}
+    </>
   );
 };
 

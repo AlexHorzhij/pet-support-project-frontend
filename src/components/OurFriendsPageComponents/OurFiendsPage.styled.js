@@ -1,5 +1,34 @@
 import { styled } from '@mui/material/styles';
-import { Box, CardMedia, Grid, Link, Typography } from '@mui/material';
+import {
+  Box,
+  CardMedia,
+  Grid,
+  Link,
+  Typography,
+  Container,
+} from '@mui/material';
+
+export const Main = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+}));
+
+export const CustomContainer = styled(Container)(({ theme }) => ({
+  maxWidth: '474px',
+  margin: '49px auto 0 auto',
+  padding: '0 20px',
+
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '768px',
+    padding: '0 32px',
+  },
+
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '1280px',
+    padding: '0 16px',
+  },
+}));
+
+// ====================================================================
 
 export const ListGrid = styled(Grid)(({ theme }) => ({
   marginTop: '28px',
@@ -18,20 +47,20 @@ export const ListGrid = styled(Grid)(({ theme }) => ({
 // ====================================================
 
 export const ItemGrid = styled(Grid)(({ theme }) => ({
-  width: '280px',
+  maxWidth: '430px',
   backgroundColor: theme.palette.background.paper,
   padding: '12px 4px',
   borderRadius: theme.shape.borderRadius20,
   boxShadow: '7px 4px 14px 0px rgba(49, 21, 4, 0.07)',
 
   [theme.breakpoints.up('md')]: {
-    width: '336px',
+    maxWidth: '336px',
     padding: '16px 17px 16px 4px',
     borderRadius: theme.shape.borderRadius,
   },
 
   [theme.breakpoints.up('lg')]: {
-    width: '389.5px',
+    maxWidth: '394px',
   },
 }));
 
