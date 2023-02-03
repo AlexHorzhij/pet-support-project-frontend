@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { toast } from 'react-hot-toast';
 import { register, login, logout, fetchCurrent } from '../../API/api';
 
 export const registerUser = createAsyncThunk(
@@ -7,12 +7,16 @@ export const registerUser = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await register(data);
+      toast.success(
+        'Successfully registered! You can log in after confirming your email'
+      );
       return user;
     } catch ({ response }) {
       const error = {
         status: response.status,
         message: response.data.message,
       };
+      toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }
   }
@@ -23,12 +27,15 @@ export const loginUser = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await login(data);
+      toast.success('Welcome!');
       return user;
     } catch ({ response }) {
       const error = {
         status: response.status,
         message: response.data.message,
       };
+      console.log(response.data.message);
+      toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }
   }
@@ -39,12 +46,14 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const result = await logout();
+      toast.success('Bye! See you later');
       return result;
     } catch ({ response }) {
       const error = {
         status: response.status,
         message: response.data.message,
       };
+      toast.error('Oops! Something went wrong, please, try again');
       return rejectWithValue(error);
     }
   }

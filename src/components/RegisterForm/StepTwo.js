@@ -1,10 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
 import { Loader } from 'components';
-import { Input, ErrorText, Button } from 'components/RegisterForm/Forms.styled';
+import {
+  StyledInput,
+  ErrorText,
+  FormButton,
+} from 'components/RegisterForm/Forms.styled';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -42,34 +46,43 @@ const StepTwo = ({ next, prev, data }) => {
       {({ values }) => {
         return (
           <Form>
-            <Field type="text" name="name" placeholder="Name" as={Input} />
+            <StyledInput
+              type="text"
+              name="name"
+              placeholder="Name"
+              disableunderline="true"
+            />
             <ErrorMessage component="div" name="name">
-              {msg => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>*{msg}</ErrorText>}
             </ErrorMessage>
-            <Field
+            <StyledInput
               type="text"
               name="city"
               placeholder="City, Region"
-              as={Input}
+              disableunderline="true"
             />
             <ErrorMessage component="div" name="city">
-              {msg => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>*{msg}</ErrorText>}
             </ErrorMessage>
-            <Field
+            <StyledInput
               type="tel"
               name="phone"
               placeholder="Mobile phone"
-              as={Input}
+              disableunderline="true"
             />
             <ErrorMessage component="div" name="phone">
-              {msg => <ErrorText>{msg}</ErrorText>}
+              {msg => <ErrorText>*{msg}</ErrorText>}
             </ErrorMessage>
-            <Button color="accent" type="submit">
+            <FormButton variant="contained" type="submit">
               {!isLoading ? 'Register' : <Loader />}
-            </Button>
-            <Button type="button" onClick={() => prev(values)}>
+            </FormButton>
+            <FormButton
+              variant="outlined"
+              type="button"
+              onClick={() => prev(values)}
+            >
               Back
-            </Button>
+            </FormButton>
           </Form>
         );
       }}

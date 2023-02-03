@@ -51,21 +51,19 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
-  console.log(data);
   setToken.unset();
   return data.data;
 }
 
 //======================== NOTICES START ==========================
 
-
 export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', req)
+    const { data } = await instance.get('/notices', req);
     // console.log(data)
-    return data.data.result
+    return data.data.result;
   } catch (error) {
-    throw error
+    throw error;
   }
   // return [
   //   {

@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   AdaptiveTypography,
-  Background,
+  HomeContainer,
+  RelativeContainer,
   AdditionalImage,
   WomanImage,
   HeartImage,
@@ -9,13 +10,15 @@ import {
 
 export default function HomePage() {
   return (
-    <Background>
-      <AdaptiveTypography variant="h1">
-        Take good care of your small pets
-      </AdaptiveTypography>
-      <AdditionalImage />
-      <WomanImage />
-      <HeartImage />
-    </Background>
+    <HomeContainer>
+      <RelativeContainer>
+        <AdaptiveTypography variant="h1">
+          Take good care of your small pets
+        </AdaptiveTypography>
+        <AdditionalImage />
+        <WomanImage />
+        <HeartImage />
+      </RelativeContainer>
+    </HomeContainer>
   );
 }
