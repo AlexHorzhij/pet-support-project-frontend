@@ -56,18 +56,35 @@ export async function logout() {
   return data.data;
 }
 
-// notices
+//======================== NOTICES START ==========================
 
-export async function requestNotices(category) {
+
+export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', category);
-    return data;
+    const { data } = await instance.get('/notices', req)
+    // console.log(data)
+    return data.data.result
   } catch (error) {
-    throw error;
+    throw error
   }
+  // return [
+  //   {
+  //     title: 'good dog',
+  //     breed: 'taxa',
+  //     place: 'Dnipro',
+  //     bithday: '2022.05.10',
+  //   },
+
+  //   {
+  //     title: 'white cat',
+  //     breed: 'siam',
+  //     place: 'Odesa',
+  //     bithday: '2021.12.06',
+  //   },
+  // ];
 }
 
-//userData
+//========================== NOTICES END =============================
 
 export async function requestUserData() {
   return {

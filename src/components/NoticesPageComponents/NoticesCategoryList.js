@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
-import { fetchNotices } from 'redux/notices/noticesOperations';
+import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
 
 
 export default function NoticesCategoryList() {
@@ -16,7 +16,7 @@ export default function NoticesCategoryList() {
   const { categoryName } = params
 
   useEffect(() => {
-    dispatch(fetchNotices(categoryName))
+    dispatch(fetchNoticesByCategory(categoryName))
   }, [categoryName, dispatch])
 
   const { isLoggedIn } = useSelector(getAuth);
