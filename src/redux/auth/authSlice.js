@@ -66,14 +66,9 @@ export const authSlice = createSlice({
         state.isLoadingUser = true;
         state.error = null;
       })
-      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+      .addCase(fetchCurrentUser.fulfilled, state => {
         state.isLoadingUser = false;
-        state.isLoggedIn = true;
-        state.user = payload;
-      })
-      .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
-        state.isLoadingUser = false;
-        state.error = payload;
+        state.token ? (state.isLoggedIn = true) : (state.isLoggedIn = false);
       });
   },
 });

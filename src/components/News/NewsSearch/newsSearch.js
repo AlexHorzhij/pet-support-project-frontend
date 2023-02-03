@@ -3,14 +3,13 @@ import { FormSearch } from './newsSearch.styled';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputStyled } from './newsSearch.styled';
-// import { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { fetchSearchNews } from 'redux/news/newsOperations';
 import { useSearchParams } from "react-router-dom";
 
 export default function NewsSearch() {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const search = !searchParams.get("search") ? '' : searchParams.get("search");
 
   const handleInputChange = (event) => {
@@ -19,6 +18,7 @@ export default function NewsSearch() {
 
   const handleInputSubmit = (event) => {
     event.preventDefault()
+    console.log(search)
     dispatch(fetchSearchNews(search))
   }
 

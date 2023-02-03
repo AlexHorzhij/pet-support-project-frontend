@@ -16,7 +16,6 @@ const setToken = {
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
-    console.log('token unset');
   },
 };
 
@@ -44,8 +43,6 @@ export async function login(signupData) {
 export async function fetchCurrent(token) {
   try {
     setCurrentToken(token);
-    const data = await instance.get('auth/current');
-    return data.data;
   } catch (error) {
     setCurrentToken();
     throw error;
@@ -54,22 +51,40 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
+  console.log(data);
   setToken.unset();
   return data.data;
 }
 
-// notices
+//======================== NOTICES START ==========================
 
-export async function requestNotices(category) {
+
+export async function requestNotices(req) {
   try {
-    const { data } = await instance.get('/notices', category);
-    return data;
+    const { data } = await instance.get('/notices', req)
+    // console.log(data)
+    return data.data.result
   } catch (error) {
-    throw error;
+    throw error
   }
+  // return [
+  //   {
+  //     title: 'good dog',
+  //     breed: 'taxa',
+  //     place: 'Dnipro',
+  //     bithday: '2022.05.10',
+  //   },
+
+  //   {
+  //     title: 'white cat',
+  //     breed: 'siam',
+  //     place: 'Odesa',
+  //     bithday: '2021.12.06',
+  //   },
+  // ];
 }
 
-//userData
+//========================== NOTICES END =============================
 
 export async function requestUserData() {
   return {
@@ -145,7 +160,7 @@ export async function getAllNews() {
 
 export async function getSearchNews(search) {
   try {
-    const { data } = await instance.get('/news', {params: {search}});
+    const { data } = await instance.get('/news', { params: { search } });
     return data.data.result;
   } catch (error) {
     throw new Error(error.message);

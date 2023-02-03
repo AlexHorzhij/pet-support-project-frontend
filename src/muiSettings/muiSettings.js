@@ -118,6 +118,7 @@ export const ThemeOptions = {
             '&:hover': {
               backgroundColor: palette.primary.main,
               border: `2px solid ${palette.primary.main}`,
+              color: palette.text.contrast,
             },
           },
         },
@@ -129,8 +130,8 @@ export const ThemeOptions = {
         },
         {
           props: { variant: 'text' },
-          style: { color: palette.text.primary },
-        },
+          style: { color: palette.text.primary }
+        }
       ],
     },
     MuiContainer: {
@@ -156,6 +157,7 @@ export const ThemeOptions = {
       md: 767.98,
       lg: 1279.98,
       xl: 1535.98,
+
     },
   },
 };
