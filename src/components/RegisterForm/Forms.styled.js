@@ -1,53 +1,46 @@
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
+import { Box, Button } from '@mui/material';
+import { Field } from 'formik';
 
-export const Input = styled.input`
-  background-color: #fdf7f2;
-  width: 100%;
-  height: 40px;
-  border: 1px solid rgba(245, 146, 86, 0.5);
-  border-radius: 40px;
-  padding: 0 32px;
-  margin-bottom: 16px;
+export const StyledInput = styled(Field)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  width: '100%',
+  height: '40px',
+  border: `1px solid ${theme.palette.outlines.inputBorder}`,
+  borderRadius: theme.shape.borderRadius,
+  padding: '0 32px',
+  marginBottom: '16px',
 
-  &::placeholder {
-    font-family: 'Manrope';
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.36;
-    letter-spacing: 0.04em;
-    color: rgba(17, 17, 17, 0.6);
-  }
+  '&::placeholder': {
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '1.36',
+    letterSpacing: '0.04em',
+    color: theme.palette.text.label,
+  },
 
-  &:last-child {
-    margin-bottom: 40px;
-  }
+  [theme.breakpoints.up('md')]: {
+    height: '52px',
 
-  @media screen and (min-width: 768px) {
-    height: 52px;
+    '&::placeholder': {
+      fontSize: '18px',
+      lineHeight: '1.39',
+    },
+  },
+}));
 
-    &::placeholder {
-      font-size: 18px;
-      line-height: 25px;
-    }
-  }
-`;
+export const ErrorText = styled(Box)(({ theme }) => ({
+  padding: '5px 20px',
+  marginBottom: '10px',
+  color: theme.palette.warning.main,
+}));
 
-export const ErrorText = styled.div`
-  padding: 5px 20px;
-  margin-bottom: 10px;
-  color: #f59256;
-`;
+export const FormButton = styled(Button)(({ theme }) => ({
+  width: '100%',
+  height: '44px',
+  marginTop: '16px',
 
-export const Button = styled.button`
-  background-color: ${props => (props.color ? '#f59256' : '#fff')};
-  color: ${props => (props.color ? '#fff' : '#000')};
-  border: 2px solid #f59256;
-  border-radius: 40px;
-  width: 100%;
-  height: 44px;
-  margin-top: 16px;
-
-  @media screen and (min-width: 1280px) {
-    height: 48px;
-  }
-`;
+  [theme.breakpoints.up('lg')]: {
+    height: '48px',
+  },
+}));

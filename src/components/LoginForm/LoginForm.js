@@ -1,10 +1,14 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
 import { Loader } from 'components';
-import { Input, ErrorText, Button } from 'components/RegisterForm/Forms.styled';
+import {
+  StyledInput,
+  ErrorText,
+  FormButton,
+} from 'components/RegisterForm/Forms.styled';
 
 const schema = yup.object().shape({
   email: yup
@@ -50,22 +54,27 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <Field type="email" name="email" placeholder="Email" as={Input} />
+        <StyledInput
+          type="email"
+          name="email"
+          placeholder="Email"
+          disableunderline="true"
+        />
         <ErrorMessage name="email">
-          {msg => <ErrorText>{msg}</ErrorText>}
+          {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
-        <Field
+        <StyledInput
           type="password"
           name="password"
           placeholder="Password"
-          as={Input}
+          disableunderline="true"
         />
         <ErrorMessage name="password">
-          {msg => <ErrorText>{msg}</ErrorText>}
+          {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
-        <Button color="accent" type="submit">
+        <FormButton variant="contained" type="submit">
           {!isLoading ? 'Login' : <Loader />}
-        </Button>
+        </FormButton>
       </Form>
     </Formik>
   );
