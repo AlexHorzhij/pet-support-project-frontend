@@ -1,4 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCurrentUser } from 'redux/auth/authOperations';
 
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
@@ -16,6 +18,12 @@ const NoticePage = lazy(() => import('../pages/NoticePage'));
 // const ModalBackDrop = lazy(() => import('./ModalBackDrop/ModalBackDrop'))
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Suspense fallback={<LoaderPage />}>

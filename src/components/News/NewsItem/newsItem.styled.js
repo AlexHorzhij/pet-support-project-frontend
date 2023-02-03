@@ -17,12 +17,12 @@ export const NewsText = styled(Typography)({
   textAlign: 'start',
   fontWeight: '400',
   color: '#111321',
-  paddingBottom: '8px',
   position: 'relative',
   marginBottom: '40px',
 });
 
 export const Rectangle = styled(Skeleton)({
+  width: '340px',
   height: '8px',
   marginTop: '60px',
   borderRadius: '40px',

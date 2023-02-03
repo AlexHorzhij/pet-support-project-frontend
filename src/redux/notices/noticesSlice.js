@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchNotices } from "./noticesOperations";
+import { fetchNoticesByCategory } from "./noticesOperations";
 
 
 const initialState = {
@@ -14,14 +14,14 @@ export const noticesSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchNotices.pending, state => {
+            .addCase(fetchNoticesByCategory.pending, state => {
                 state.isLoading = true;
             })
-            .addCase(fetchNotices.fulfilled, (state, { payload }) => {
+            .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.items = payload;
             })
-            .addCase(fetchNotices.rejected, (state, { payload }) => {
+            .addCase(fetchNoticesByCategory.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = payload;
             })

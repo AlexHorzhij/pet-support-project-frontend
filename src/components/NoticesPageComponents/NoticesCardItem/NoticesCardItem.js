@@ -1,6 +1,7 @@
-import { Button, CardMedia, CardContent } from '@mui/material';
+import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite } from 'components';
+import distanceBetwenDateAndNowWords from 'servises/distanceBetwenDateAndNowWords';
 import {
   Li,
   ItemsList,
@@ -8,18 +9,41 @@ import {
   Title,
   CategoryLable,
   NoticeCard,
+  Btn,
 } from './NoticesCardItem.styled';
+import nophoto from 'assets/images/nophoto.gif';
 
 export default function NoticesCardItem({ data }) {
-  const { title, breed, place, age, price, url, favorite } = data;
+  const {
+    title,
+    breed,
+    location,
+    birthdate,
+    price,
+    avatarUrl,
+    status,
+    favorite,
+  } = data;
+  const age = distanceBetwenDateAndNowWords(birthdate);
   return (
     <>
       <NoticeCard variant="notice" sx={{ width: '280px' }}>
         <CardMedia
-          style={{ height: '288px', position: 'relative' }}
-          image={url}
+          image={nophoto}
+          style={{
+            height: '288px',
+            position: 'relative',
+            objectFit: 'cover',
+          }}
         >
-          <CategoryLable>In good hands</CategoryLable>
+          <CardMedia
+            image={avatarUrl}
+            style={{
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+          <CategoryLable>{status}</CategoryLable>
           <AddToFavorite
             favorite={favorite}
             right="50px"
@@ -36,27 +60,29 @@ export default function NoticesCardItem({ data }) {
             </Li>
             <Li>
               <ItemText>Place::</ItemText>
-              <ItemText>{place}</ItemText>
+              <ItemText>{location}</ItemText>
             </Li>
             <Li>
               <ItemText>Age:</ItemText>
               <ItemText>{age}</ItemText>
             </Li>
-            <Li>
-              <ItemText>Price:</ItemText>
-              <ItemText>{price} $</ItemText>
-            </Li>
+            {price && (
+              <Li>
+                <ItemText>Price:</ItemText>
+                <ItemText>{price} $</ItemText>
+              </Li>
+            )}
           </ItemsList>
-          <Button variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
+          <Btn variant="outlined" sx={{ width: '100%', color: '#F59256' }}>
             Learn more
-          </Button>
-          <Button
+          </Btn>
+          <Btn
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
             endIcon={<DeleteOutlineIcon />}
           >
             Delete
-          </Button>
+          </Btn>
         </CardContent>
       </NoticeCard>
     </>
