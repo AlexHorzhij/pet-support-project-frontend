@@ -53,7 +53,7 @@ export default function NoticePage() {
     },
   ];
 
-  
+
   return (
     <Container component="main">
       <NoticesFilter />
@@ -68,7 +68,7 @@ export default function NoticePage() {
         </div>
         <div>
           <AddNoticeBtn
-           />
+          />
         </div>
       </Container>
       <NoticesGallery data={data} />

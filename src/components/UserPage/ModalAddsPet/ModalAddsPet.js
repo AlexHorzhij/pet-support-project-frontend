@@ -37,7 +37,7 @@ function ModalAddsPet({ onModalClose }) {
     //   formData.append(value, values[value]);
     // }
     // formData.append('picturePath', values.picture.name);
-    // console.log('formData: ', formData);
+    // // console.log('formData: ', formData);
 
     // alert(JSON.stringify(values, null, 2));
     onSubmitProps.resetForm();
@@ -55,6 +55,16 @@ function ModalAddsPet({ onModalClose }) {
       return file;
     });
   };
+
+  const targetData = {
+    name: '',
+    dateOfBirth: '',
+    breed: '',
+    comment: '',
+    picture: '',
+    avatarURL: '',
+    owner: '1',
+  }
 
   return (
     <Formik>

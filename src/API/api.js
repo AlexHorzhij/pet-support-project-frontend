@@ -60,19 +60,19 @@ export async function logout() {
 //======================== NOTICES  ==========================
 
 export async function requestNotices(query) {
-  const {category, search} = query
-console.log(category, search)
+  const { category, search } = query
   if (search) {
     try {
-      const { data } = await instance.get(`/notices?status=${category}&search=${search}`)
-      return data.data.result
+      const { data } = await instance.get(`/notices/${category}?query=${search}`)
+      return data
     } catch (error) {
       throw error
     }
   }
   try {
-    const { data } = await instance.get('/notices', query);
-    return data.data.result;
+    const { data } = await instance.get(`/notices/${category}`);
+    console.log(data)
+    return data;
   } catch (error) {
     throw error;
   }
@@ -176,8 +176,7 @@ export async function addPet(pet) {
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
-    // console.log(data.data);
-    return data.data.result;
+    return data.news;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -186,7 +185,7 @@ export async function getAllNews() {
 export async function getSearchNews(search) {
   try {
     const { data } = await instance.get('/news', { params: { search } });
-    return data.data.result;
+    return data.news;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -197,7 +196,7 @@ export async function getSearchNews(search) {
 export async function getOurFriends() {
   try {
     const { data } = await instance.get('/friends');
-    return data.data.result;
+    return data.friends;
   } catch (error) {
     throw new Error(error.message);
   }

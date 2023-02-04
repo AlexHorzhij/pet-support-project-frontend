@@ -7,7 +7,6 @@ export const fetchNoticesByCategory = createAsyncThunk(
   async (categoryName, { rejectWithValue }) => {
     try {
       const notices = await requestNotices({ category: categoryName })
-      console.log(notices)
       return notices
     } catch (error) {
       rejectWithValue(error.message)

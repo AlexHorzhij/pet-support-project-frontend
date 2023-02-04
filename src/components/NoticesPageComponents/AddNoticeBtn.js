@@ -13,7 +13,8 @@ export default function AddNoticeBtn() {
   const [openNotification, setOpenNotification] = React.useState(false);
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
   const navigate = useNavigate()
-  const { isLoggedIn } = useSelector(getAuth);
+  // const { isLoggedIn } = useSelector(getAuth);
+  const isLoggedIn = true
 
   const handleAddNotice = () => {
     if (isLoggedIn) {
@@ -47,23 +48,27 @@ export default function AddNoticeBtn() {
         <AddCircleIcon color='primary' fontSize='large'
         />
       </Button>
-      <Dialog open={openNotification} onClose={handleCloseNotification}>
+      <Dialog
+        maxWidth="xs"
+        sx={{ backdropFilter: "blur(5px)" }}
+        open={openNotification} onClose={handleCloseNotification}>
         <DialogTitle>You are not authorized</DialogTitle>
-        <DialogContent>
+        <DialogContent
+          sx={{ backdropFilter: "blur(5px)", }}>
           <DialogContentText>
-            Lorem ipsum dolor sit amet, consectet sectetur Lorem  ipsum color sit amet, consectetur  Lorem  ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur.
+            Lorem ipsuur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem  ipsum color sit amet, consectetur  Lorem  ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => navigate('/register')}>Sign Up</Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={openAddPetForm} onClose={handleCloseAddNotice}>
-        <DialogContent>
-          <NoticeAddForm />
-        </DialogContent>
+      <Dialog
+        maxWidth="xl"
+        open={openAddPetForm} onClose={handleCloseAddNotice}
+      >
+        <NoticeAddForm handleClose={handleCloseAddNotice} />
       </Dialog>
-
     </div>
 
   )

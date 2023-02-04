@@ -9,7 +9,9 @@ import { removNoticefromUserById } from 'redux/notices/noticesOperations';
 export default function NoticesGallery() {
   const { items, error, isLoading } = useSelector(getNotices);
   const dispatch = useDispatch();
-  const data = sortObjByDate(items, 'create_at');
+  const data = sortObjByDate(items, 'create_at')
+  if (items) {
+  }
 
   const deleteCard = e => {
     dispatch(removNoticefromUserById(e.target.id));
