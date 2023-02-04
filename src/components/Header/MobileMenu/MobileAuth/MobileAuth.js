@@ -5,17 +5,19 @@ import {
   MobileAuthItem,
   MobileAuthLink,
 } from './MobileAuth.styled';
-export default function MobileAuth({ onClose }) {
+import { useMenu } from 'components/Header/Context/menuContext';
+export default function MobileAuth() {
+  const { close } = useMenu();
   return (
     <AuthWrapper>
       <MobileAuthNavigation>
         <MobileAuthItem color="inherit" variant="outlined">
-          <MobileAuthLink to="/login" onClick={onClose}>
+          <MobileAuthLink to="/login" onClick={close}>
             Login
           </MobileAuthLink>
         </MobileAuthItem>
         <MobileAuthItem color="inherit" variant="outlined">
-          <MobileAuthLink to="register" onClick={onClose}>
+          <MobileAuthLink to="register" onClick={close}>
             Registration
           </MobileAuthLink>
         </MobileAuthItem>

@@ -10,7 +10,6 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import { MenuProvider } from '../Context/menuContext';
 
 import { getAuth } from 'redux/auth/authSelectors';
-import { MobMenu } from '../Context/MobileMenuContext';
 
 export default function ApplicationBar() {
   const { isLoggedIn } = useSelector(getAuth);
@@ -24,7 +23,7 @@ export default function ApplicationBar() {
           <Nav />
           <NavWrapper>
             {isLoggedIn ? <UserNav /> : <AuthNav />}
-            <MobMenu />
+            <MobileMenu />
           </NavWrapper>
         </Wrapper>
       </Header>
