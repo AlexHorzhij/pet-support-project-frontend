@@ -12,9 +12,15 @@ import {
   IconButtonWrapper,
   DaleteIconStyled,
 } from './PetItem.styled';
+import { useSelector } from 'react-redux';
+import { ThreeCircles } from 'react-loader-spinner';
+import { useTheme } from '@mui/material';
+import { isDeletingPet } from 'redux/userData/userDataSelectors';
+
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
-
+  const isDeleting = useSelector(isDeletingPet);
+  const theme = useTheme();
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
   };
@@ -46,7 +52,17 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
               backgroundColor: '#FDF7F2',
             }}
           >
-            <DaleteIconStyled />
+            {isDeleting === id ? (
+              <ThreeCircles
+                height="20"
+                width="20"
+                color={theme.palette.primary.main}
+                visible={true}
+                ariaLabel="three-circles-rotating"
+              />
+            ) : (
+              <DaleteIconStyled />
+            )}
           </IconButton>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>

@@ -45,11 +45,13 @@ function ModalAddsPet({ onModalClose }) {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
+
   const formSubmitHandler = async (values, onSubmitProps) => {
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
+
     formData.append('owner', user._id);
 
     dispatch(addPetToList(formData));

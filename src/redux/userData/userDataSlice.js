@@ -17,6 +17,9 @@ const initialState = {
     pets: [],
   },
   isLoading: false,
+  isLoadingUpdate: false,
+  isLoadingUpdatePet: false,
+  isDeletingPet: false,
   error: null,
 };
 
@@ -46,19 +49,20 @@ export const fetchUserDataSlice = createSlice({
       //==========GET /user ====================
 
       //==========PATCH /user ====================
-      //Працює але тілки з прикріпленим файлом картинки
+      //Працює
+      // OK
       .addCase(updateUser.pending, state => {
-        state.isLoading = true;
+        state.isLoadingUpdate = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         if (!payload) {
           return state;
         }
-        state.isLoading = false;
+        state.isLoadingUpdate = false;
         state.user.user = payload;
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUpdate = false;
         state.error = payload;
       })
       //==========PATCH /user ====================
@@ -67,17 +71,17 @@ export const fetchUserDataSlice = createSlice({
       // Працює
       // OK
       .addCase(addPetToList.pending, state => {
-        state.isLoading = true;
+        state.isLoadingUpdatePet = true;
       })
       .addCase(addPetToList.fulfilled, (state, { payload }) => {
         if (!payload) {
           return state;
         }
-        state.isLoading = false;
+        state.isLoadingUpdatePet = false;
         state.user.pets = [...state.user.pets, payload.pet];
       })
       .addCase(addPetToList.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUpdatePet = false;
         state.error = payload;
       })
       //==========POST /user/pets ====================
@@ -85,8 +89,8 @@ export const fetchUserDataSlice = createSlice({
       // ============Delete pet from DB==================
       // Працює
       // OK
-      .addCase(deletePetFromList.pending, state => {
-        state.isLoading = true;
+      .addCase(deletePetFromList.pending, (state, action) => {
+        state.isDeletingPet = `${action.meta.arg}`;
       })
       .addCase(deletePetFromList.fulfilled, (state, { payload }) => {
         if (!payload) {
@@ -96,10 +100,10 @@ export const fetchUserDataSlice = createSlice({
           item => item._id !== payload.petID
         );
         state.user.pets = newPetList;
-        state.isLoading = false;
+        state.isDeletingPet = false;
       })
       .addCase(deletePetFromList.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isDeletingPet = false;
         state.error = payload;
       });
     // ============Delete pet from DB==================

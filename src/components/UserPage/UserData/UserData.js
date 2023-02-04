@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
-
+import { ThreeCircles } from 'react-loader-spinner';
+import { useTheme } from '@mui/material';
 import {
   BoxWrapper,
   BoxImageWrapper,
@@ -15,22 +16,20 @@ import {
   WrapperBox,
 } from './UserData.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from 'redux/userData/userDataSelectors';
-import { fetchUserData, updateUser } from 'redux/userData/userDataOperations';
+import { getUser, isLoadingUpdate } from 'redux/userData/userDataSelectors';
+import { updateUser } from 'redux/userData/userDataOperations';
 
 function UserData() {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
-
-  // eslint-disable-next-line no-unused-vars
-  const [userPicture, setUserPicture] = useState(false);
+  const isBeingUpdated = useSelector(isLoadingUpdate);
+  const theme = useTheme();
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({});
 
   useEffect(() => {
     if (acceptedFiles.length > 0) {
       dispatch(updateUser({ name: 'avatarUrl', value: acceptedFiles[0] }));
     }
-    dispatch(fetchUserData());
   }, [dispatch, acceptedFiles]);
 
   return (
@@ -42,11 +41,7 @@ function UserData() {
               <BoxImageContainer>
                 <ImageBox
                   component="img"
-                  src={
-                    user.avatarUrl
-                      ? user.avatarUrl
-                      : 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80'
-                  }
+                  src={user.avatarUrl}
                   alt="user avatar"
                 />
               </BoxImageContainer>
@@ -55,7 +50,19 @@ function UserData() {
               <div {...getRootProps({ className: 'dropzone' })}>
                 <input {...getInputProps()} />
                 <StyledButton>
-                  <PhotoCameraIconStyled />
+                  {isBeingUpdated ? (
+                    <Box style={{ marginRight: '5px' }}>
+                      <ThreeCircles
+                        height="20"
+                        width="20"
+                        color={theme.palette.primary.main}
+                        visible={true}
+                        ariaLabel="three-circles-rotating"
+                      />
+                    </Box>
+                  ) : (
+                    <PhotoCameraIconStyled />
+                  )}
                   <Typography sx={{ fontSize: '12px' }}>Edit photo</Typography>
                 </StyledButton>
               </div>
