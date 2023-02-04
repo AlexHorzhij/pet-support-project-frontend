@@ -12,7 +12,7 @@ import {
   NewsDate,
   CardFooter,
 } from './newsItem.styled';
-import { transformDate } from 'servises/transformNewsDate';
+import { transformDate } from 'services/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
@@ -32,7 +32,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
         marginTop: '60px',
       }}
     >
-      <Rectangle variant="rectangular" sx={{ width: '100%' }} />
+      <Rectangle variant="rectangular" sx={{ width: '86%' }} />
       <NewsCard sx={{ height: '100%' }} variant="standart">
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>

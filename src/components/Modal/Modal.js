@@ -24,6 +24,7 @@ export default function Modal({ children, onModalClose }) {
       onModalClose();
     }
   };
+  
   return createPortal(
     <Overlay className="overlay" onClick={modalCloseBackDrop}>
       <ModalWrapper>{children}</ModalWrapper>
@@ -31,6 +32,7 @@ export default function Modal({ children, onModalClose }) {
     modalRoot
   );
 }
+
 Modal.propTypes = {
   onModalClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
