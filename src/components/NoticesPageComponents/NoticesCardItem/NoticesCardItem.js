@@ -28,9 +28,10 @@ export default function NoticesCardItem({
     price,
     avatarUrl,
     category,
-    favorite,
+    favorite = false,
   } = data;
   const age = distanceBetwenDateAndNowWords(birthdate);
+
   return (
     <>
       <NoticeCard variant="notice" sx={{ width: '280px' }}>

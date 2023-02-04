@@ -11,10 +11,12 @@ export default function NoticesGallery() {
   const { items, error, isLoading } = useSelector(getNotices);
   const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
+  console.log('items', items);
+
   const data = sortObjByDate(items, 'create_at');
+
   const deleteCard = e => {
     dispatch(removeNoticeFromUserById(e.target.id));
-    console.log(e.target.id);
   };
 
   const openModal = e => {

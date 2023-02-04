@@ -65,7 +65,9 @@ export async function requestNotices(query) {
     const { data } = await instance.get(`/notices/${category}`, {
       query: { search },
     });
-    return data.data.result;
+    console.log('DATA', data);
+
+    return data;
   } catch (error) {
     throw error;
   }
@@ -91,12 +93,12 @@ export async function removeNoticesById(id) {
 
 //========================== FAVORITE  =============================
 
-export async function togleFavorite(id, token, req) {
+export async function toggleFavorite(id, token, req) {
   console.log('id', id);
   console.log('token', token);
   console.log('req', req);
-
-  setCurrentToken(token);
+  setToken.set(token);
+  // setCurrentToken(token);
 
   try {
     const { data } = await instance[req](`user/notices/${id}/favorite`);

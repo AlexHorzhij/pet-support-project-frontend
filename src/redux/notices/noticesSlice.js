@@ -20,6 +20,8 @@ export const noticesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
+        console.log('payload', payload);
+        console.log('state', state);
         state.isLoading = false;
         state.items = payload;
       })
