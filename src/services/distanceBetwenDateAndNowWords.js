@@ -1,9 +1,7 @@
 import formatDistanceStrict from 'date-fns/formatDistanceStrict';
 import { ToWords } from 'to-words';
 
-export default function distanceBetwenDateAndNowWords(
-  birthdate
-  ) {
+export default function distanceBetwenDateAndNowWords(birthdate) {
   const toWords = new ToWords();
 
   if (birthdate) {
