@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconButton } from '@mui/material';
 import {
   UserDataItemBox,
@@ -10,6 +10,8 @@ import {
 } from './UserDataItem.styled';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/userData/userDataOperations';
+import { useDebouncedCallback } from 'use-debounce';
+
 function UserDataItem({ title = '', value = '', disabled = true }) {
   const dispatch = useDispatch();
 
@@ -20,20 +22,22 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
 
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    const name = inputName.toLowerCase();
-    dispatch(updateUser({ name, value: inputValue }));
-  }, [dispatch, inputName, inputValue, value]);
-
   const changeInputState = e => {
     setInputState(prev => !prev);
     setTimeout(() => {
       inputRef.current.focus();
     }, 100);
   };
-  const changeInputValue = e => {
-    setInputValue(e.currentTarget.value);
-  };
+  const debouncedInputHandler = useDebouncedCallback(value => {
+    let name;
+    if (inputName === 'Birthday') {
+      name = 'birthdate';
+    } else {
+      name = inputName.toLowerCase();
+    }
+    dispatch(updateUser({ name, value: inputValue }));
+  }, 500);
+
   return (
     <UserDataItemBox>
       <UserDataItemtitle>
@@ -48,7 +52,10 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
         }}
         disabled={inputState}
         value={inputValue}
-        onChange={changeInputValue}
+        onChange={e => {
+          setInputValue(e.target.value);
+          debouncedInputHandler(e.target.value);
+        }}
         onBlur={changeInputState}
       />
       <IconButton

@@ -109,20 +109,32 @@ export async function requestUserData() {
   }
 }
 
-export async function updateUserData(data) {
-  console.log('data: ', data);
+export async function updateUserData(userData) {
+  const updateData = {
+    [userData.name]: userData.value,
+  };
+  try {
+    const { data } = await instance.patch('/user', updateData, {
+      headers: {
+        'Content-Type': `multipart/form-data;`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
 
-  const userData = await requestUserData();
+  // const userData = await requestUserData();
 
-  Object.keys(userData).forEach(item => {
-    if (item === data.name) {
-      userData[item] = data.value;
-    }
-  });
+  // Object.keys(userData).forEach(item => {
+  //   if (item === data.name) {
+  //     userData[item] = data.value;
+  //   }
+  // });
 
-  const newUserData = { ...userData };
+  // const newUserData = { ...userData };
 
-  return newUserData;
+  // return newUserData;
 }
 
 export async function deletePet(_id) {

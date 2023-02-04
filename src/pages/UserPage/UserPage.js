@@ -13,11 +13,7 @@ import {
 
 function UserPage() {
   const [modalIsShown, setModalIsShown] = useState(false);
-  // const [showPage, setShowPage] = useState(false);
-  const isLoadingPage = useSelector(state => state.userData.isLoading);
-  useEffect(() => {
-    // setShowPage(isLoadingPage);
-  }, [isLoadingPage]);
+
   const togleModal = () => {
     setModalIsShown(prev => !prev);
   };

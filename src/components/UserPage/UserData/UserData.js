@@ -28,11 +28,10 @@ function UserData() {
 
   useEffect(() => {
     if (acceptedFiles.length > 0) {
-      const preview = URL.createObjectURL(acceptedFiles[0]);
-      dispatch(updateUser({ name: 'picture', value: preview }));
+      dispatch(updateUser({ name: 'avatarUrl', value: acceptedFiles[0] }));
     }
     dispatch(fetchUserData());
-  }, [dispatch, acceptedFiles, userPicture]);
+  }, [dispatch, acceptedFiles]);
 
   return (
     <>
@@ -64,7 +63,7 @@ function UserData() {
           </BoxImageWrapper>
           <WrapperBox>
             <WrapperBox>
-              {user.name && (
+              {user && (
                 <>
                   <UserDataItem title={'Name'} value={user.name} />
                   <UserDataItem title={'Email'} value={user.email} />

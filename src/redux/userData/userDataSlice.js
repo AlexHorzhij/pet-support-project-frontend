@@ -10,7 +10,7 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    birthday: null,
+    birthdate: null,
     phone: null,
     city: null,
     picture: null,
@@ -33,6 +33,9 @@ export const fetchUserDataSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchUserData.fulfilled, (state, { payload }) => {
+        if (!payload) {
+          return state;
+        }
         state.isLoading = false;
         state.user = payload;
       })
@@ -48,8 +51,11 @@ export const fetchUserDataSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
+        if (!payload) {
+          return state;
+        }
         state.isLoading = false;
-        state.user = payload;
+        state.user.user = payload;
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -64,6 +70,9 @@ export const fetchUserDataSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addPetToList.fulfilled, (state, { payload }) => {
+        if (!payload) {
+          return state;
+        }
         state.isLoading = false;
         state.user.pets = [...state.user.pets, payload.pet];
       })
@@ -80,6 +89,9 @@ export const fetchUserDataSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deletePetFromList.fulfilled, (state, { payload }) => {
+        if (!payload) {
+          return state;
+        }
         const newPetList = state.user.pets.filter(
           item => item._id !== payload.petID
         );
