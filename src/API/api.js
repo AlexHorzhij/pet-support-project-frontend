@@ -71,7 +71,7 @@ console.log(category, search)
     }
   }
   try {
-    const { data } = await instance.get('/notices', req);
+    const { data } = await instance.get('/notices', query);
     return data.data.result;
   } catch (error) {
     throw error;
