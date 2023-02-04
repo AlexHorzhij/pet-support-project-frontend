@@ -4,8 +4,8 @@ import { Loader } from 'components/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
-import { sortObjByDate } from 'servises/sortObjByDate';
-import { removNoticefromUserById } from 'redux/notices/noticesOperations';
+import { sortObjByDate } from 'services/sortObjByDate';
+import { removeNoticeFromUserById } from 'redux/notices/noticesOperations';
 
 export default function NoticesGallery() {
   const { items, error, isLoading } = useSelector(getNotices);
@@ -13,7 +13,7 @@ export default function NoticesGallery() {
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
   const deleteCard = e => {
-    dispatch(removNoticefromUserById(e.target.id));
+    dispatch(removeNoticeFromUserById(e.target.id));
     console.log(e.target.id);
   };
 

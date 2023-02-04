@@ -29,8 +29,8 @@ export const fetchNoticesBySearch = createAsyncThunk(
   }
 );
 
-export const removNoticefromUserById = createAsyncThunk(
-  'removNotices',
+export const removeNoticeFromUserById = createAsyncThunk(
+  'removeNotices',
   async (id, { rejectWithValue }) => {
     try {
       const notices = await removeNoticesById(id);
