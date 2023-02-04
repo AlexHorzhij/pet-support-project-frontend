@@ -3,7 +3,7 @@ import { Container } from '@mui/material';
 
 import {
   NoticesFilter,
-  NoticesCategoryList,
+  NoticesCategoryNav,
   AddNoticeBtn,
   NoticesGallery,
 } from 'components';
@@ -11,7 +11,9 @@ import {
 import { nanoid } from 'nanoid';
 import Rectangle16 from 'assets/images/Rectangle16.jpg';
 
+
 export default function NoticePage() {
+
   const data = [
     {
       _id: nanoid(),
@@ -50,6 +52,8 @@ export default function NoticePage() {
       url: Rectangle16,
     },
   ];
+
+  
   return (
     <Container component="main">
       <NoticesFilter />
@@ -60,10 +64,11 @@ export default function NoticePage() {
         }}
       >
         <div>
-          <NoticesCategoryList />
+          <NoticesCategoryNav />
         </div>
         <div>
-          <AddNoticeBtn />
+          <AddNoticeBtn
+           />
         </div>
       </Container>
       <NoticesGallery data={data} />

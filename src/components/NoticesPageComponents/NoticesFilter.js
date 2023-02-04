@@ -4,24 +4,23 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Container, Typography } from '@mui/material';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-// import { fetchNotices } from 'redux/notices/noticesOperations';
+import { fetchNoticesBySearch } from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
 
 
 export default function NoticesFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const { categoryName } = params
+  const search = searchParams.get('search')
 
   const handleFilter = () => {
-    const filterValue = searchParams.get('filter')
-    // dispatch(fetchNotices({category, filterValue}))
-    console.log({ categoryName, filterValue })
+    dispatch(fetchNoticesBySearch({ categoryName, search }))
   }
 
   return (
@@ -43,9 +42,12 @@ export default function NoticesFilter() {
           sx={{ ml: 1, flex: 1, pl: 1, }}
           placeholder="Search"
           inputProps={{ 'aria-label': 'search' }}
-          onChange={e => setSearchParams({ filter: e.target.value })}
+          onChange={e => setSearchParams({ search: e.target.value })}
+          value={search}
         />
-        <IconButton onClick={handleFilter} type="button" sx={{ p: '10px' }} aria-label="search" >
+        <IconButton
+          onClick={handleFilter} type="button"
+          sx={{ p: '10px' }} aria-label="search" >
           <SearchIcon />
         </IconButton>
       </Paper>

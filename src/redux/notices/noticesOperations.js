@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { requestNotices, removNoticesById } from 'API/api';
 
@@ -6,11 +6,13 @@ export const fetchNoticesByCategory = createAsyncThunk(
   'fetchNotices',
   async (categoryName, { rejectWithValue }) => {
     try {
-      const notices = await requestNotices({ status: categoryName });
-      return notices;
+      const notices = await requestNotices({ category: categoryName })
+      console.log(notices)
+      return notices
     } catch (error) {
-      rejectWithValue(error.message);
+      rejectWithValue(error.message)
     }
+
   }
 );
 
