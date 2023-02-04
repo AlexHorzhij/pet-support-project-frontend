@@ -58,22 +58,24 @@ export async function logout() {
 //======================== NOTICES  ==========================
 
 export async function requestNotices(query) {
-  const {category, search} = query
-console.log(category, search)
-  if (search) {
-    try {
-      const { data } = await instance.get(`/notices?status=${category}&search=${search}`)
-      return data.data.result
-    } catch (error) {
-      throw error
-    }
-  }
+  const { category = 'all', search } = query;
+  console.log('category', search);
+  // if (search) {
   try {
-    const { data } = await instance.get('/notices', query);
+    const { data } = await instance.get(`/notices/${category}`, {
+      query: { search },
+    });
     return data.data.result;
   } catch (error) {
     throw error;
   }
+  // }
+  // try {
+  //   const { data } = await instance.get(`/notices/${category}`, query);
+  //   return data.data.result;
+  // } catch (error) {
+  //   throw error;
+  // }
 }
 
 export async function removeNoticesById(id) {

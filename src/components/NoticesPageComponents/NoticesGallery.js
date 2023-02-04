@@ -12,7 +12,6 @@ export default function NoticesGallery() {
   const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
-  console.log('token1', token);
   const deleteCard = e => {
     dispatch(removNoticefromUserById(e.target.id));
     console.log(e.target.id);

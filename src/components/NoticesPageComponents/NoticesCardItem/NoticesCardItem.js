@@ -27,7 +27,7 @@ export default function NoticesCardItem({
     birthdate,
     price,
     avatarUrl,
-    status,
+    category,
     favorite,
   } = data;
   const age = distanceBetwenDateAndNowWords(birthdate);
@@ -49,7 +49,7 @@ export default function NoticesCardItem({
               objectFit: 'cover',
             }}
           />
-          <CategoryLable>{status}</CategoryLable>
+          <CategoryLable>{category}</CategoryLable>
           {token && (
             <AddToFavorite
               id={_id}
