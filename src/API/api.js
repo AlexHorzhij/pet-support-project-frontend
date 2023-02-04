@@ -57,10 +57,19 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(req) {
+export async function requestNotices(query) {
+  const {category, search} = query
+console.log(category, search)
+  if (search) {
+    try {
+      const { data } = await instance.get(`/notices?status=${category}&search=${search}`)
+      return data.data.result
+    } catch (error) {
+      throw error
+    }
+  }
   try {
-    const { data } = await instance.get('/notices', req);
-    // console.log(data)
+    const { data } = await instance.get('/notices', query);
     return data.data.result;
   } catch (error) {
     throw error;

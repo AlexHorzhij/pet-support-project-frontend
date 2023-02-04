@@ -1,7 +1,7 @@
 import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite } from 'components';
-import distanceBetwenDateAndNowWords from 'servises/distanceBetwenDateAndNowWords';
+import distanceBetwenDateAndNowWords from 'services/distanceBetwenDateAndNowWords';
 import {
   Li,
   ItemsList,

@@ -1,6 +1,6 @@
 import SharedLayout from './SharedLayout/SharedLayout';
 import { Loader, LoaderPage } from './Loader/Loader';
-import NoticesCategoryList from './NoticesPageComponents/NoticesCategoryList';
+import NoticesCategoryNav from './NoticesPageComponents/NoticesCategoryNav';
 import NoticesFilter from './NoticesPageComponents/NoticesFilter';
 import NoticesGallery from './NoticesPageComponents/NoticesGallery';
 import AddNoticeBtn from './NoticesPageComponents/AddNoticeBtn';
@@ -11,12 +11,13 @@ import PetsData from './UserPage/PetsData/PetsData';
 import Modal from './Modal/Modal';
 import ModalAddsPet from './UserPage/ModalAddsPet/ModalAddsPet';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
+import NoticeAddForm from './NoticeAddForm/NoticeAddForm';
 
 export {
   Loader,
   LoaderPage,
   SharedLayout,
-  NoticesCategoryList,
+  NoticesCategoryNav,
   NoticesFilter,
   UserData,
   PetsData,
@@ -27,4 +28,6 @@ export {
   AddNoticeBtn,
   NoticesGallery,
   OurFriendsItem,
+  NoticeAddForm,
+  
 };
