@@ -188,7 +188,7 @@ export async function getAllNews() {
 export async function getSearchNews(search) {
   try {
     const { data } = await instance.get('/news', { params: { search } });
-    return data.data.result;
+    return data.news;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -199,7 +199,7 @@ export async function getSearchNews(search) {
 export async function getOurFriends() {
   try {
     const { data } = await instance.get('/friends');
-    return data.data.result;
+    return data.friends;
   } catch (error) {
     throw new Error(error.message);
   }
