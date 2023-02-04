@@ -14,11 +14,13 @@ import { getAuth } from 'redux/auth/authSelectors';
 
 export default function MobileMarkup({ onClose }) {
   const { isLoggedIn } = useSelector(getAuth);
+
   return (
     <MobileMenu>
       <Logo />
       <MobileMenuContainer>
         {isLoggedIn ? <MobileUserNav /> : <MobileAuth />}
+
         <MobileNav />
       </MobileMenuContainer>
       <BtnClose onClick={onClose}>
