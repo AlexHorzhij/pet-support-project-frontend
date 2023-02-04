@@ -43,11 +43,13 @@ export const TitleWrapper = styled(Box)({
   width: '280px',
   height: '66px',
   overflow: 'hidden',
-  resize: 'horizontal',
-  backgroundColor: 'ghostwhite',
+  // resize: 'horizontal',
+  // backgroundColor: 'ghostwhite',
 });
 
-export const NewsTitle = styled(Typography)({
+export const NewsTitle = styled(Box)({
+  width: '280px',
+  height: '66px',
   fontWeight: '700',
   fontSize: '24px',
   lineHeight: '1.35',
@@ -64,13 +66,13 @@ export const NewsTitle = styled(Typography)({
   // display: '-webkit-box;',
   // webkit-line-clamp: '2',
   // webkitBoxOrient: 'vertical',
-  // overflow: 'hidden',
-  // whiteSpace: ' pre-wrap',
+  overflow: 'hidden',
+  whiteSpace: ' wrap',
 
   // Для однострокової назви з трьома крапками
   textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
+  // whiteSpace: 'nowrap',
+  // overflow: 'hidden',
 });
 
 export const NewsCard = styled(Card)({

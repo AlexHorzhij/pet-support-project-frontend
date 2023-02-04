@@ -1,5 +1,5 @@
-import cat from '../assets/images/myPets/cat.png';
-import dog from '../assets/images/myPets/dog.png';
+// import cat from '../assets/images/myPets/cat.png';
+// import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
 // const URL = process.env.REACT_APP_BASE_URL;
 // console.log(URL);
@@ -71,6 +71,7 @@ export async function requestPublicNotices(request) {
   try {
     const { data } = await instance.get(`/notices/${category}`);
     return data;
+
   } catch (error) {
     throw error;
   }
@@ -135,65 +136,61 @@ export async function toggleFavorite(id, token, req) {
 //========================== USER  =============================
 
 export async function requestUserData() {
-  return {
-    name: 'Anna',
-    email: 'anna00@gmail.com',
-    birthday: '00.00.0000',
-    phone: '+380000000',
-    city: 'Kyiv',
-    picture: '',
+  try {
+    const { data } = await instance.get('/user');
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateUserData(userData) {
+  const updateData = {
+    [userData.name]: userData.value,
   };
+  try {
+    const { data } = await instance.patch('/user', updateData, {
+      headers: {
+        'Content-Type': `multipart/form-data;`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+
+  // const userData = await requestUserData();
+
+  // Object.keys(userData).forEach(item => {
+  //   if (item === data.name) {
+  //     userData[item] = data.value;
+  //   }
+  // });
+
+  // const newUserData = { ...userData };
+
+  // return newUserData;
 }
 
-export async function updateUserData(data) {
-  const userData = await requestUserData();
-
-  Object.keys(userData).forEach(item => {
-    if (item === data.name) {
-      userData[item] = data.value;
+export async function deletePet(_id) {
+  try {
+    const response = await instance.delete(`/user/pets/${_id}`);
+    if (response.status === 200) {
+      return { status: response.status, petID: _id };
     }
-  });
-
-  const newUserData = { ...userData };
-
-  return newUserData;
-}
-
-export async function requestPetsData() {
-  return [
-    {
-      id: '1',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Percian cat',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: cat,
-      avatarURL: '',
-    },
-    {
-      id: '2',
-      name: 'Jack',
-      dateOfBirth: '22.04.2018',
-      breed: 'Basenji',
-      comment:
-        'Proin magna. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Suspendisse potenti.',
-      picture: dog,
-      avatarURL: '',
-    },
-  ];
-}
-export async function deletePet(id) {
-  const petsData = await requestPetsData();
-  const newData = petsData.filter(value => value.id !== id);
-  await requestPetsData(newData);
-  return newData;
+  } catch (error) {
+    throw error;
+  }
 }
 export async function addPet(pet) {
-  const petsData = await requestPetsData();
-  const newData = [...petsData];
-  newData.push(pet);
-  return newData;
+  try {
+    const response = await instance.post(`/user/pets`, pet);
+    if (response.status === 201) {
+      return { status: response.status, pet: response.data };
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 
 //======================== NEWS  ==========================
