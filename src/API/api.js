@@ -12,9 +12,7 @@ const instance = axios.create({
 
 const setToken = {
   set(token) {
-    token
-      ? (instance.defaults.headers.common.Authorization = `Bearer ${token}`)
-      : (instance.defaults.headers.common.Authorization = '');
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
@@ -59,17 +57,30 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(req) {
+export async function requestNotices(query) {
+  const { category = 'all', search } = query;
+  console.log('category', search);
+  // if (search) {
   try {
-    const { data } = await instance.get('/notices', req);
-    // console.log(data)
-    return data.data.result;
+    const { data } = await instance.get(`/notices/${category}`, {
+      query: { search },
+    });
+    console.log('DATA', data);
+    return data;
+
   } catch (error) {
     throw error;
   }
+  // }
+  // try {
+  //   const { data } = await instance.get(`/notices/${category}`, query);
+  //   return data.data.result;
+  // } catch (error) {
+  //   throw error;
+  // }
 }
 
-export async function removNoticesById(id) {
+export async function removeNoticesById(id) {
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);
@@ -82,12 +93,12 @@ export async function removNoticesById(id) {
 
 //========================== FAVORITE  =============================
 
-export async function togleFavorite(id, token, req) {
+export async function toggleFavorite(id, token, req) {
   console.log('id', id);
   console.log('token', token);
   console.log('req', req);
-
   setToken.set(token);
+  // setCurrentToken(token);
 
   try {
     const { data } = await instance[req](`user/notices/${id}/favorite`);
@@ -163,8 +174,7 @@ export async function addPet(pet) {
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
-    // console.log(data.data);
-    return data.data.result;
+    return data.news;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -173,7 +183,7 @@ export async function getAllNews() {
 export async function getSearchNews(search) {
   try {
     const { data } = await instance.get('/news', { params: { search } });
-    return data.data.result;
+    return data.news;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -184,7 +194,7 @@ export async function getSearchNews(search) {
 export async function getOurFriends() {
   try {
     const { data } = await instance.get('/friends');
-    return data.data.result;
+    return data.friends;
   } catch (error) {
     throw new Error(error.message);
   }

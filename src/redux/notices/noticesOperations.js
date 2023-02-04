@@ -1,18 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { requestNotices, removNoticesById } from 'API/api';
+import { requestNotices, removeNoticesById } from 'API/api';
 
 export const fetchNoticesByCategory = createAsyncThunk(
   'fetchNotices',
   async (categoryName, { rejectWithValue }) => {
     try {
-      const notices = await requestNotices({ category: categoryName })
-      console.log(notices)
-      return notices
+      const notices = await requestNotices({ category: categoryName });
+      return notices;
     } catch (error) {
-      rejectWithValue(error.message)
+      rejectWithValue(error.message);
     }
-
   }
 );
 
@@ -31,11 +29,11 @@ export const fetchNoticesBySearch = createAsyncThunk(
   }
 );
 
-export const removNoticefromUserById = createAsyncThunk(
-  'removNotices',
+export const removeNoticeFromUserById = createAsyncThunk(
+  'removeNotices',
   async (id, { rejectWithValue }) => {
     try {
-      const notices = await removNoticesById(id);
+      const notices = await removeNoticesById(id);
       return notices;
     } catch (error) {
       rejectWithValue(error.message);
