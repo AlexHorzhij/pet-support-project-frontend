@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { deletePetFromList } from 'redux/petsData/petsOperations';
+import { deletePetFromList } from 'redux/userData/userDataOperations';
 import {
   PetListItem,
   PetImageBox,
@@ -12,9 +12,15 @@ import {
   IconButtonWrapper,
   DaleteIconStyled,
 } from './PetItem.styled';
-function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
-  const dispatch = useDispatch();
+import { useSelector } from 'react-redux';
+import { ThreeCircles } from 'react-loader-spinner';
+import { useTheme } from '@mui/material';
+import { isDeletingPet } from 'redux/userData/userDataSelectors';
 
+function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
+  const dispatch = useDispatch();
+  const isDeleting = useSelector(isDeletingPet);
+  const theme = useTheme();
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
   };
@@ -22,7 +28,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
   return (
     <PetListItem>
       <PetImageBox>
-        <PetImage src={imgSrc} alt="my pet" />
+        <PetImage src={avatarUrl} alt="my pet" />
       </PetImageBox>
       <PetInfoBoxWrapper>
         <PetInfoBox>
@@ -36,7 +42,7 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
             <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Comments:</PetInfoTitleSpan> {comment}
+            <PetInfoTitleSpan>Descriptions:</PetInfoTitleSpan> {description}
           </PetInfoTypography>
         </PetInfoBox>
         <IconButtonWrapper>
@@ -46,7 +52,17 @@ function PetItem({ imgSrc, name, birthDate, breed, comment, id }) {
               backgroundColor: '#FDF7F2',
             }}
           >
-            <DaleteIconStyled />
+            {isDeleting === id ? (
+              <ThreeCircles
+                height="20"
+                width="20"
+                color={theme.palette.primary.main}
+                visible={true}
+                ariaLabel="three-circles-rotating"
+              />
+            ) : (
+              <DaleteIconStyled />
+            )}
           </IconButton>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>
