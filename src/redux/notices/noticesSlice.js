@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchNoticesByCategory,
-  removNoticefromUserById,
+  removeNoticeFromUserById,
 } from './noticesOperations';
 
 const initialState = {
@@ -27,14 +27,14 @@ export const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(removNoticefromUserById.pending, state => {
+      .addCase(removeNoticeFromUserById.pending, state => {
         state.isLoading = true;
       })
-      .addCase(removNoticefromUserById.fulfilled, (state, { payload }) => {
+      .addCase(removeNoticeFromUserById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.items = state.items.filter(item => item.id !== payload.id);
       })
-      .addCase(removNoticefromUserById.rejected, (state, { payload }) => {
+      .addCase(removeNoticeFromUserById.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });
