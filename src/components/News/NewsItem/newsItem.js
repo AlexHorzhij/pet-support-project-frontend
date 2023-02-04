@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import {
   NewsCard,
   Rectangle,
+  TitleWrapper,
   NewsTitle,
   NewsText,
   NewsDate,
@@ -29,16 +30,17 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingTop: '0px',
-        marginTop: '60px',
       }}
     >
       <Rectangle variant="rectangular" sx={{ width: '86%' }} />
       <NewsCard sx={{ height: '100%' }} variant="standart">
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>
-          <NewsTitle variant="h5" component="div">
-            {title}
-          </NewsTitle>
+          <TitleWrapper component="div" style={{ overflow: 'hidden' }}>
+            <NewsTitle variant="h5" component="div">
+              {title}
+            </NewsTitle>
+          </TitleWrapper>
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />
