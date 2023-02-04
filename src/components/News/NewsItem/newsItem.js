@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import {
+  NewsContainer,
+  ContentWrapper,
   NewsCard,
   Rectangle,
   NewsTitle,
@@ -18,6 +20,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
 
   return (
+    // <NewsContainer>
     <Grid
       component="li"
       item
@@ -39,10 +42,13 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
           <NewsTitle variant="h5" component="div">
             {title}
           </NewsTitle>
+          {/* <ContentWrapper> */}
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />
           </NewsText>
+          {/* </ContentWrapper> */}
+
           <CardFooter>
             <NewsDate sx={{ mr: 1 }} color="text.secondary">
               {publicationDate}
@@ -54,6 +60,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
         </CardContent>
       </NewsCard>
     </Grid>
+    // </NewsContainer>
   );
 };
 NewsItem.propTypes = {

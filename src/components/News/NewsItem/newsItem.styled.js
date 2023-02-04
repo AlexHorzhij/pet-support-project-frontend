@@ -2,7 +2,13 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Link from '@mui/material/Link';
-import { CardActions, Card } from '@mui/material';
+import { CardActions, Card, Box } from '@mui/material';
+
+export const Main = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  paddingTop: '10px',
+  marginTop: '49px',
+}));
 
 export const Rectangle = styled(Skeleton)({
   height: '8px',
@@ -16,6 +22,29 @@ export const NewsCard = styled(Card)({
   backgroundColor: 'inherit',
   paddingBottom: '40px',
 });
+
+// export const ContentWrapper = styled(Box)(({ theme }) => ({
+//   width: '280px',
+//   marginBottom: '20px ',
+//   marginTop: '16px ',
+
+//   marginRight: 'auto',
+//   marginLeft: 'auto',
+
+// [theme.breakpoints.up('md')]: {
+//   width: '608px',
+//   minHeight: '300px',
+//   padding: '60px 80px 40px 80px',
+//   backgroundColor: '#fff',
+//   borderRadius: '40px',
+//   boxShadow: '7px 4px 14px rgba(0, 0, 0, 0.11)',
+// },
+
+// [theme.breakpoints.up('lg')]: {
+//   width: '618px',
+//   padding: '60px 80px 60px 80px',
+// },
+// }));
 
 export const NewsTitle = styled(Typography)({
   fontWeight: '700',
