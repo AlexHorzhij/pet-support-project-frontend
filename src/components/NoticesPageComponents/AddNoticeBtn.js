@@ -13,8 +13,8 @@ export default function AddNoticeBtn() {
   const [openNotification, setOpenNotification] = React.useState(false);
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
   const navigate = useNavigate()
-  // const { isLoggedIn } = useSelector(getAuth);
-  const isLoggedIn = true
+  const { isLoggedIn } = useSelector(getAuth);
+  // const isLoggedIn = true
 
   const handleAddNotice = () => {
     if (isLoggedIn) {

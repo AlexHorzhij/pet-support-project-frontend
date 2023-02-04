@@ -56,16 +56,6 @@ function ModalAddsPet({ onModalClose }) {
     });
   };
 
-  const targetData = {
-    name: '',
-    dateOfBirth: '',
-    breed: '',
-    comment: '',
-    picture: '',
-    avatarURL: '',
-    owner: '1',
-  }
-
   return (
     <Formik>
       <ModalCard>

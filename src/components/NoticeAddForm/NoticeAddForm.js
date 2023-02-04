@@ -1,12 +1,12 @@
-import { InputLabel, InputBase, Paper } from '@mui/material'
-import { useTheme } from '@mui/material'
+// import { InputLabel, InputBase, Paper } from '@mui/material'
+// import { useTheme } from '@mui/material'
 // 
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Grid, Box } from '@mui/material';
 import { FormStepper } from 'components/UserPage/FormStepper/FormStepper';
 import Dropzone from 'react-dropzone';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { addNotice } from 'redux/''
 import { nanoid } from 'nanoid';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -30,7 +30,7 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 const ModalTypography = ModalTyporgaphy
 
 export default function NoticeAddForm({ handleClose }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const formSubmitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
@@ -55,15 +55,15 @@ export default function NoticeAddForm({ handleClose }) {
     });
   };
 
-  const targetData = {
-    name: '',
-    dateOfBirth: '',
-    breed: '',
-    comment: '',
-    picture: '',
-    avatarURL: '',
-    owner: '1',
-  }
+  // const targetData = {
+  //   name: '',
+  //   dateOfBirth: '',
+  //   breed: '',
+  //   comment: '',
+  //   picture: '',
+  //   avatarURL: '',
+  //   owner: '1',
+  // }
 
   return (
     <Formik>

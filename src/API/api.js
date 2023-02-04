@@ -83,7 +83,7 @@ export async function requestPublicNotices(request) {
   // }
 }
 
-export async function requestPrivatNotices(request) {
+export async function requestPrivateNotices(request) {
   const { category } = request
   if (category) {
     try {
@@ -102,7 +102,7 @@ export async function requestPrivatNotices(request) {
   }
 }
 
-export async function removNoticesById(id) {
+export async function removeNoticesById(id) {
 
   console.log('id', id);
   try {
