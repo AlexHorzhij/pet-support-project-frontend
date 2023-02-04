@@ -59,8 +59,8 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(query) {
-  const { category, search } = query
+export async function requestPublicNotices(request) {
+  const { category, search } = request
   if (search) {
     try {
       const { data } = await instance.get(`/notices/${category}?query=${search}`)
@@ -75,6 +75,25 @@ export async function requestNotices(query) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function requestPrivatNotices(request) {
+  const { category } = request
+  if (category) {
+    try {
+      const { data } = await instance.get(`user/notices/${category}`)
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  try {
+    const { data } = await instance.get(`user/notices/`)
+    return data
+  } catch (error) {
+    throw error
   }
 }
 
