@@ -1,17 +1,17 @@
 import PetsList from '../PetsList/PetsList';
 import { useSelector } from 'react-redux';
-import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme } from '@mui/material';
-import { Box } from '@mui/system';
-import { isLoadingUpdatePet } from 'redux/userData/userDataSelectors';
+// import { ThreeCircles } from 'react-loader-spinner';
+// import { useTheme } from '@mui/material';
+// import { Box } from '@mui/system';
+// import { isLoadingUpdatePet } from 'redux/userData/userDataSelectors';
 function PetsData() {
-  const petsDB = useSelector(state => state.userData.user.pets);
-  const theme = useTheme();
-  const isLoadingUpdate = useSelector(isLoadingUpdatePet);
+  const pets = useSelector(state => state.userData.user.pets);
+  // const theme = useTheme();
+  // const isLoadingUpdate = useSelector(isLoadingUpdatePet);
   return (
     <>
-      <PetsList pets={petsDB} />
-      {isLoadingUpdate && (
+      <PetsList pets={pets} />
+      {/* {isLoadingUpdate && (
         <Box
           sx={{
             width: '100%',
@@ -29,7 +29,7 @@ function PetsData() {
             ariaLabel="three-circles-rotating"
           />
         </Box>
-      )}
+      )} */}
     </>
   );
 }

@@ -73,4 +73,5 @@ export const AddPetIcon = styled(AddCircleIcon)({
 });
 export const PetDataBox = styled(Box)({
   position: 'relative',
+  width: '100%',
 });
