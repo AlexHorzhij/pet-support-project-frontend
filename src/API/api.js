@@ -178,7 +178,6 @@ export async function addPet(pet) {
 export async function getAllNews() {
   try {
     const { data } = await instance.get('/news');
-    console.log('data api', data);
     return data.news;
   } catch (error) {
     throw new Error(error.message);
