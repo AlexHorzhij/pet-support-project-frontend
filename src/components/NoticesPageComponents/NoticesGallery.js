@@ -2,15 +2,17 @@ import Grid from '@mui/material/Grid';
 import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { Loader } from 'components/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotices } from '../../redux/notices/noticesSelectors';
+import { getNotices } from 'redux/notices/noticesSelectors';
+import { getAuth } from 'redux/auth/authSelectors';
 import { sortObjByDate } from 'servises/sortObjByDate';
 import { removNoticefromUserById } from 'redux/notices/noticesOperations';
 
 export default function NoticesGallery() {
   const { items, error, isLoading } = useSelector(getNotices);
+  const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
-
+  console.log('token1', token);
   const deleteCard = e => {
     dispatch(removNoticefromUserById(e.target.id));
     console.log(e.target.id);
@@ -39,6 +41,7 @@ export default function NoticesGallery() {
               key={item._id}
             >
               <NoticesCardItem
+                token={token}
                 data={item}
                 deleteCard={deleteCard}
                 openModal={openModal}

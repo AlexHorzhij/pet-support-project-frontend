@@ -12,9 +12,7 @@ const instance = axios.create({
 
 const setToken = {
   set(token) {
-    token
-      ? (instance.defaults.headers.common.Authorization = `Bearer ${token}`)
-      : (instance.defaults.headers.common.Authorization = '');
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
@@ -69,7 +67,7 @@ export async function requestNotices(req) {
   }
 }
 
-export async function removNoticesById(id) {
+export async function removeNoticesById(id) {
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);
@@ -87,7 +85,7 @@ export async function togleFavorite(id, token, req) {
   console.log('token', token);
   console.log('req', req);
 
-  setToken.set(token);
+  setCurrentToken(token);
 
   try {
     const { data } = await instance[req](`user/notices/${id}/favorite`);

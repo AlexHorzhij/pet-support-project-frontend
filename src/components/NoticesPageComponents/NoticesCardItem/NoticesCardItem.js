@@ -13,7 +13,12 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
-export default function NoticesCardItem({ data, deleteCard, openModal }) {
+export default function NoticesCardItem({
+  data,
+  deleteCard,
+  openModal,
+  token,
+}) {
   const {
     _id,
     title,
@@ -45,13 +50,15 @@ export default function NoticesCardItem({ data, deleteCard, openModal }) {
             }}
           />
           <CategoryLable>{status}</CategoryLable>
-          <AddToFavorite
-            id={_id}
-            favorite={favorite}
-            right="50px"
-            top="50px"
-            style={{ position: 'absolute', right: '50px', top: '50px' }}
-          />
+          {token && (
+            <AddToFavorite
+              id={_id}
+              favorite={favorite}
+              right="50px"
+              top="50px"
+              style={{ position: 'absolute', right: '50px', top: '50px' }}
+            />
+          )}
         </CardMedia>
         <CardContent style={{ padding: '20px 16px 32px 16px' }}>
           <Title>{title}</Title>
@@ -83,15 +90,17 @@ export default function NoticesCardItem({ data, deleteCard, openModal }) {
           >
             Learn more
           </Btn>
-          <Btn
-            id={_id}
-            onClick={deleteCard}
-            variant="outlined"
-            sx={{ width: '100%', color: '#F59256' }}
-            endIcon={<DeleteOutlineIcon />}
-          >
-            Delete
-          </Btn>
+          {token && (
+            <Btn
+              id={_id}
+              onClick={deleteCard}
+              variant="outlined"
+              sx={{ width: '100%', color: '#F59256' }}
+              endIcon={<DeleteOutlineIcon />}
+            >
+              Delete
+            </Btn>
+          )}
         </CardContent>
       </NoticeCard>
     </>
