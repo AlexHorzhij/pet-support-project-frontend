@@ -4,7 +4,7 @@ import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
-import { PrivateRoute, PublicRoute } from '../RouteManager/RouteManager';
+import { PrivateRoute, PublicRoute } from '../services/RouteManager';
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -38,9 +38,7 @@ function App() {
 
             <Route path="/news" element={<NewsPage />} />
             <Route path="/friends" element={<OurFriendsPage />} />
-            <Route path="/notices/:categoryName" element={<NoticePage />} />
-            {/* <Route path="/modal" element={<ModalAddNotice />} /> */}
-
+            <Route path="/notices/:categoryName" element={<NoticePage />}></Route>
             <Route element={<PrivateRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>

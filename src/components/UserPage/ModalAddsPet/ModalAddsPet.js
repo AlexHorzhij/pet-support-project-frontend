@@ -54,6 +54,7 @@ function ModalAddsPet({ onModalClose }) {
 
     formData.append('owner', user._id);
 
+
     dispatch(addPetToList(formData));
     // alert(JSON.stringify(values, null, 2));
     onSubmitProps.resetForm();

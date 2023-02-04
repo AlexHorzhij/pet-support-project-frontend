@@ -17,7 +17,7 @@ export default function NoticesFilter() {
   const dispatch = useDispatch()
 
   const { categoryName } = params
-  const search = searchParams.get('search')
+  const search = searchParams.get('search') || ''
 
   const handleFilter = () => {
     dispatch(fetchNoticesBySearch({ categoryName, search }))

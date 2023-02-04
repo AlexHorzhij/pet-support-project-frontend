@@ -57,15 +57,19 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(query) {
-  const { category = 'all', search } = query;
-  console.log('category', search);
-  // if (search) {
+
+export async function requestPublicNotices(request) {
+  const { category, search } = request
+  if (search) {
+    try {
+      const { data } = await instance.get(`/notices/${category}?query=${search}`)
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
   try {
-    const { data } = await instance.get(`/notices/${category}`, {
-      query: { search },
-    });
-    console.log('DATA', data);
+    const { data } = await instance.get(`/notices/${category}`);
     return data;
 
   } catch (error) {
@@ -80,7 +84,27 @@ export async function requestNotices(query) {
   // }
 }
 
+export async function requestPrivateNotices(request) {
+  const { category } = request
+  if (category) {
+    try {
+      const { data } = await instance.get(`user/notices/${category}`)
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  try {
+    const { data } = await instance.get(`user/notices/`)
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 export async function removeNoticesById(id) {
+
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);

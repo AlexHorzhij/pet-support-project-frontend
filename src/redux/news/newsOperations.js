@@ -7,7 +7,6 @@ export const fetchNews = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const news = await getAllNews();
-      console.log(news);
       return news;
     } catch (error) {
       rejectWithValue(error.message);
