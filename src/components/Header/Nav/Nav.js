@@ -9,7 +9,7 @@ export default function Nav() {
             <LinkNav to="/news">News</LinkNav>
           </ListItem>
           <ListItem>
-            <LinkNav to="/notices">Find pet</LinkNav>
+            <LinkNav to="/notices/sell">Find pet</LinkNav>
           </ListItem>
           <ListItem>
             <LinkNav to="/friends">Our friends</LinkNav>

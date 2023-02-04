@@ -12,9 +12,7 @@ const instance = axios.create({
 
 const setToken = {
   set(token) {
-    token
-      ? (instance.defaults.headers.common.Authorization = `Bearer ${token}`)
-      : (instance.defaults.headers.common.Authorization = '');
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     instance.defaults.headers.common.Authorization = '';
@@ -59,6 +57,7 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
+
 export async function requestPublicNotices(request) {
   const { category, search } = request
   if (search) {
@@ -71,11 +70,17 @@ export async function requestPublicNotices(request) {
   }
   try {
     const { data } = await instance.get(`/notices/${category}`);
-    console.log(data)
     return data;
   } catch (error) {
     throw error;
   }
+  // }
+  // try {
+  //   const { data } = await instance.get(`/notices/${category}`, query);
+  //   return data.data.result;
+  // } catch (error) {
+  //   throw error;
+  // }
 }
 
 export async function requestPrivatNotices(request) {
@@ -98,6 +103,7 @@ export async function requestPrivatNotices(request) {
 }
 
 export async function removNoticesById(id) {
+
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);
@@ -110,12 +116,12 @@ export async function removNoticesById(id) {
 
 //========================== FAVORITE  =============================
 
-export async function togleFavorite(id, token, req) {
+export async function toggleFavorite(id, token, req) {
   console.log('id', id);
   console.log('token', token);
   console.log('req', req);
-
   setToken.set(token);
+  // setCurrentToken(token);
 
   try {
     const { data } = await instance[req](`user/notices/${id}/favorite`);

@@ -39,7 +39,6 @@ function App() {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/friends" element={<OurFriendsPage />} />
             <Route path="/notices/:categoryName" element={<NoticePage />}></Route>
-
             <Route element={<PrivateRoute />}>
               <Route path="/user" element={<UserPage />} />
             </Route>

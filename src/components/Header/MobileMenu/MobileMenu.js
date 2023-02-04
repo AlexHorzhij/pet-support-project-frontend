@@ -1,19 +1,18 @@
 import React from 'react';
-import { useState } from 'react';
 import MobileMarkup from './MobileMarkup/MobileMarkup';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Btn } from './MobileMenu.styled';
+import { useMenu } from '../Context/menuContext';
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(isOpen => !isOpen);
+  const { isOpen, open, close } = useMenu();
 
   return (
     <div>
-      <Btn onClick={toggle}>
+      <Btn onClick={open}>
         <MenuIcon />
       </Btn>
-      {isOpen && <MobileMarkup onClose={toggle} />}
+      {isOpen && <MobileMarkup onClose={close} />}
     </div>
   );
 }

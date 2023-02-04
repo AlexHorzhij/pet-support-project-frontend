@@ -4,26 +4,21 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 
-import { togleFavorite } from 'API/api';
+import { toggleFavorite } from 'API/api';
 
 export default function AddToFavorite({ favorite = false, id }) {
   const [checked, setChecked] = useState(favorite);
   const { token } = useSelector(getAuth);
-  // const userId = '63dd4ec90739cae4a8edb372';
+
   const handleChange = event => {
     const favorite = event.target.checked;
     const req = favorite ? 'post' : 'delete';
-    togleFavorite(id, token, req);
+
+    toggleFavorite(id, token, req);
+
     setChecked(favorite);
-    // if (favorite) {
-    //   console.log(id);
-    //   addToFavorite(id, token);
-    //   setChecked(favorite);
-    // } else {
-    //   removeFromFavorite(id, token);
-    //   setChecked(favorite);
-    // }
   };
+
   return (
     <>
       <Checkbox
@@ -36,7 +31,6 @@ export default function AddToFavorite({ favorite = false, id }) {
         inputProps={{ 'aria-label': 'favorite' }}
         icon={
           <Favorite
-            // color="primary.main"
             sx={{
               strokeWidth: '2',
               stroke: '#F59256',

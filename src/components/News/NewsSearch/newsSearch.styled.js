@@ -8,4 +8,5 @@ export const FormSearch = styled(Paper)({
   marginRight: 'auto',
   marginLeft: 'auto',
   marginTop: '40px',
+  marginBottom: '60px',
 });
