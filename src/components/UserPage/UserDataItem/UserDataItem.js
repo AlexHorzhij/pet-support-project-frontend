@@ -18,22 +18,23 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
   const [inputState, setInputState] = useState(disabled);
   const [inputValue, setInputValue] = useState(value);
   // eslint-disable-next-line no-unused-vars
-  const [inputName, __] = useState(title);
+  const [inputName, __] = useState(title.toLowerCase());
 
   const inputRef = useRef(null);
 
   const changeInputState = e => {
     setInputState(prev => !prev);
+
     setTimeout(() => {
       inputRef.current.focus();
     }, 100);
   };
   const debouncedInputHandler = useDebouncedCallback(value => {
     let name;
-    if (inputName === 'Birthday') {
+    if (inputName === 'birthday') {
       name = 'birthdate';
     } else {
-      name = inputName.toLowerCase();
+      name = inputName;
     }
     dispatch(updateUser({ name, value: inputValue }));
   }, 500);

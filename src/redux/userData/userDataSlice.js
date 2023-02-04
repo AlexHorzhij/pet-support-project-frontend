@@ -51,7 +51,7 @@ export const fetchUserDataSlice = createSlice({
       //==========PATCH /user ====================
       //Працює
       // OK
-      .addCase(updateUser.pending, state => {
+      .addCase(updateUser.pending, (state, action) => {
         state.isLoadingUpdate = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {

@@ -110,7 +110,6 @@ export async function requestUserData() {
 }
 
 export async function updateUserData(userData) {
-  console.log('userData: ', userData);
   const updateData = {
     [userData.name]: userData.value,
   };

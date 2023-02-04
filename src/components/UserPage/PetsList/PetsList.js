@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PetItem from '../PetItem/PetItem';
 import { List } from '@mui/material';
 function PetsList({ pets }) {
-  const [buttonClickId, setButtonClickId] = useState(false);
-
-  const clickHandle = buttonId => {
-    console.log(buttonId);
-  };
   return (
     <List style={{ listStyle: 'none', padding: '0' }}>
       {pets &&
@@ -20,8 +15,6 @@ function PetsList({ pets }) {
               breed={breed}
               description={description}
               id={_id}
-              clickHandle={clickHandle}
-              isClicked={buttonClickId}
             />
           );
         })}

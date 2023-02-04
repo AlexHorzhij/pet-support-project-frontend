@@ -36,6 +36,30 @@ function UserData() {
     <>
       {user && (
         <BoxWrapper>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
+          >
+            {isBeingUpdated ? (
+              <>
+                <Typography sx={{ marginBottom: '5px' }}>Updating</Typography>
+                <ThreeCircles
+                  height="30"
+                  width="30"
+                  color={theme.palette.primary.main}
+                  visible={true}
+                  ariaLabel="three-circles-rotating"
+                />
+              </>
+            ) : null}
+          </Box>
           <BoxImageWrapper>
             <BoxImageBackdrop>
               <BoxImageContainer>
@@ -50,19 +74,7 @@ function UserData() {
               <div {...getRootProps({ className: 'dropzone' })}>
                 <input {...getInputProps()} />
                 <StyledButton>
-                  {isBeingUpdated ? (
-                    <Box style={{ marginRight: '5px' }}>
-                      <ThreeCircles
-                        height="20"
-                        width="20"
-                        color={theme.palette.primary.main}
-                        visible={true}
-                        ariaLabel="three-circles-rotating"
-                      />
-                    </Box>
-                  ) : (
-                    <PhotoCameraIconStyled />
-                  )}
+                  <PhotoCameraIconStyled />
                   <Typography sx={{ fontSize: '12px' }}>Edit photo</Typography>
                 </StyledButton>
               </div>
