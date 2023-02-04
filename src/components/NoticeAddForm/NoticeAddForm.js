@@ -11,7 +11,7 @@ import Dropzone from 'react-dropzone';
 import { nanoid } from 'nanoid';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import {
-  ModalTyporgaphy,
+  ModalTypography,
   ModalCard,
   ModalCardContent,
   AddPetTitle,
@@ -26,8 +26,6 @@ import {
 } from 'components/UserPage/ModalAddsPet/ModalAddsPet.styled';
 import { TextField } from 'formik-material-ui';
 import addIconSVG from 'assets/images/myPets/addImage.svg';
-// 
-const ModalTypography = ModalTyporgaphy
 
 export default function NoticeAddForm({ handleClose }) {
   // const dispatch = useDispatch();
