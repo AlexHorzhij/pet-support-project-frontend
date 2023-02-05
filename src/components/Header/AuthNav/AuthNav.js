@@ -6,10 +6,10 @@ import { Button } from '@mui/material';
 export default function AuthNav() {
   return (
     <AuthNavigation>
-      <Button variant="contained">
+      <Button variant="outlined">
         <AuthLink to="/login">Login</AuthLink>
       </Button>
-      <Button variant="contained">
+      <Button variant="outlined">
         <AuthLink to="register">Registration</AuthLink>
       </Button>
     </AuthNavigation>

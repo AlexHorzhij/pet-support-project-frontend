@@ -17,11 +17,7 @@ export const MobileAuthNavigation = styled(Box)({
     display: 'none',
   },
 });
-export const MobileAuthItem = styled(AuthItem)({
-  background: '#FFFFFF',
-  border: '2px solid #F59256',
-  borderRadius: '40px',
-});
+
 export const MobileAuthLink = styled(AuthLink)({
   fontSize: '14px',
   lineHeight: '19px',
