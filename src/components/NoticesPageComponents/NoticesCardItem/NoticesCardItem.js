@@ -20,7 +20,7 @@ export default function NoticesCardItem({
   // openModal,
   token,
 }) {
-  const [modalIsShown, setModalIsShown] = useState(false);
+  const [modalIsShown, setModalIsShown] = useState(true);
   const {
     _id,
     title,
@@ -32,7 +32,7 @@ export default function NoticesCardItem({
     category,
     favorite = false,
   } = data;
-  // console.log(data);
+  console.log(data);
   const age = distanceBetwenDateAndNowWords(birthdate);
 
   const toggleModal = () => {

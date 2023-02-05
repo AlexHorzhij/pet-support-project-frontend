@@ -7,7 +7,7 @@ import {
 } from './authOperations';
 
 const initialState = {
-  user: { email: null },
+  userEmail: null,
   token: null,
   isLoggedIn: false,
   isLoading: false,
@@ -40,7 +40,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isLoggedIn = true;
         state.token = payload.token;
-        state.user.email = payload.email;
+        state.userEmail = payload.email;
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -54,7 +54,7 @@ export const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, state => {
         state.isLoading = false;
         state.isLoggedIn = false;
-        state.user = { email: null };
+        state.userEmail = null;
         state.token = null;
       })
       .addCase(logoutUser.rejected, (state, { payload }) => {

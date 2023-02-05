@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { requestUserData } from 'API/api';
+import React from 'react';
 import { AddToFavorite } from 'components';
 import nophoto from 'assets/images/nophoto.gif';
-import { Button, Typography, Box } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import {
   ModalCard,
@@ -13,11 +12,12 @@ import {
   Text,
   HeadText,
   OwnerContact,
+  ButtonsWrapper,
+  AddFavouriteButton,
+  ContactButton,
 } from './LearnMoreModal.styled';
 
 export default function LearnMoreModal({ onModalClose, data }) {
-  const [email, setEmail] = useState(null);
-  const [phone, setPhone] = useState(null);
   const {
     _id,
     avatarUrl,
@@ -27,28 +27,18 @@ export default function LearnMoreModal({ onModalClose, data }) {
     category,
     location,
     name,
-    owner,
+    owner: { email, phone },
     sex,
     price,
     title,
   } = data;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await requestUserData(owner);
-      return data;
-    };
-
-    fetchData()
-      .then(({ email, phone }) => {
-        setEmail(email);
-        setPhone(phone);
-      })
-      .catch(console.error);
-  }, [owner]);
-
-  const onContactClick = () => {
-    console.log('show me contacts');
+  const Contact = ({ children }) => {
+    return (
+      <OwnerContact href={`tel:${phone}`} sx={{ mb: 0 }}>
+        {children}
+      </OwnerContact>
+    );
   };
 
   return (
@@ -58,11 +48,12 @@ export default function LearnMoreModal({ onModalClose, data }) {
       </ModalCloseButton>
       <BoxFlex>
         <Box style={{ position: 'relative' }}>
-          <Image image={nophoto} src={avatarUrl} />
+          <Image image={`${nophoto}`} sx={{ position: 'relative' }} />
+          <Image image={`${avatarUrl}`} />
           <CategoryLable>{category}</CategoryLable>
         </Box>
         <Box>
-          <Typography variant="h3" sx={{ mb: 2 }}>
+          <Typography variant="h3" sx={{ mb: 2, maxWidth: '300px' }}>
             {title}
           </Typography>
           <Box sx={{ display: 'flex' }}>
@@ -83,12 +74,12 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {location && <Text>{location}</Text>}
               {sex && <Text>{sex}</Text>}
               {email && (
-                <OwnerContact underline="hover" href="mailto:{email}">
+                <OwnerContact underline="hover" href={`mailto:${email}`}>
                   <Text>{email}</Text>
                 </OwnerContact>
               )}
               {phone && (
-                <OwnerContact underline="hover" href="tel:{phone}">
+                <OwnerContact underline="hover" href={`tel:${phone}`}>
                   <Text>{phone}</Text>
                 </OwnerContact>
               )}
@@ -98,15 +89,18 @@ export default function LearnMoreModal({ onModalClose, data }) {
         </Box>
       </BoxFlex>
       <Text>
-        <HeadText variant="body1">Comments: </HeadText>
-        {comments}
+        <HeadText variant="body1" sx={{ mb: 4 }}>
+          Comments: {comments}
+        </HeadText>
       </Text>
-      <Button variant="outlined">
-        Add to <AddToFavorite id={_id} />
-      </Button>
-      <Button variant="contained" onClick={onContactClick}>
-        Contact
-      </Button>
+      <ButtonsWrapper>
+        <ContactButton variant="contained">
+          <Contact>Contact</Contact>
+        </ContactButton>
+        <AddFavouriteButton variant="outlined">
+          Add to{<AddToFavorite id={_id} />}
+        </AddFavouriteButton>
+      </ButtonsWrapper>
     </ModalCard>
   );
 }
