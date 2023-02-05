@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
 import { PrivateRoute, PublicRoute } from '../services/RouteManager';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 
 // const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
