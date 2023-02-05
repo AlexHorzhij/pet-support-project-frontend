@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
-import distanceBetwenDateAndNowWords from 'services/distanceBetwenDateAndNowWords';
+import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
 import {
   Li,
   ItemsList,
@@ -32,8 +32,8 @@ export default function NoticesCardItem({
     category,
     favorite = false,
   } = data;
-  console.log(data);
-  const age = distanceBetwenDateAndNowWords(birthdate);
+  // console.log(data);
+  const age = distanceBetweenDateAndNowWords(birthdate);
 
   const toggleModal = () => {
     setModalIsShown(prev => !prev);

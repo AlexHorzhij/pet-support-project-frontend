@@ -63,7 +63,7 @@ export async function requestNotices(request) {
   if (search) {
     try {
       const { data } = await instance.get(
-        `/notices/${category}?search=${search}`
+        `/notices?category=${category}&search=${search}`
       );
       console.log(`data for category "${category}", search "${search}"`, data);
       return data;
@@ -73,7 +73,7 @@ export async function requestNotices(request) {
   }
 
   try {
-    const { data } = await instance.get(`/notices/${category}`);
+    const { data } = await instance.get(`/notices?category=${category}`);
     console.log(`data for category "${category}"`, data);
     return data;
   } catch (error) {
