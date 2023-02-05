@@ -58,50 +58,46 @@ export async function logout() {
 //======================== NOTICES  ==========================
 
 
-export async function requestPublicNotices(request) {
+export async function requestNotices(request) {
   const { category, search } = request
+  console.log(request)
   if (search) {
     try {
-      const { data } = await instance.get(`/notices/${category}?query=${search}`)
+      const { data } = await instance.get(`/notices/${category}?search=${search}`)
+      console.log(`data for category "${category}", search "${search}"`, data)
       return data
     } catch (error) {
       throw error
     }
   }
+
   try {
     const { data } = await instance.get(`/notices/${category}`);
+    console.log(`data for category "${category}"`, data)
     return data;
-
   } catch (error) {
     throw error;
   }
-  // }
-  // try {
-  //   const { data } = await instance.get(`/notices/${category}`, query);
-  //   return data.data.result;
-  // } catch (error) {
-  //   throw error;
-  // }
 }
 
-export async function requestPrivateNotices(request) {
-  const { category } = request
-  if (category) {
-    try {
-      const { data } = await instance.get(`user/notices/${category}`)
-      return data
-    } catch (error) {
-      throw error
-    }
-  }
+// export async function requestPrivateNotices(request) {
+//   const { category } = request
+//   if (category) {
+//     try {
+//       const { data } = await instance.get(`user/notices/${category}`)
+//       return data
+//     } catch (error) {
+//       throw error
+//     }
+//   }
 
-  try {
-    const { data } = await instance.get(`user/notices/`)
-    return data
-  } catch (error) {
-    throw error
-  }
-}
+//   try {
+//     const { data } = await instance.get(`user/notices/`)
+//     return data
+//   } catch (error) {
+//     throw error
+//   }
+// }
 
 export async function removeNoticesById(id) {
 
