@@ -18,7 +18,7 @@ export default function MobileNav() {
           </MobileNavLink>
         </MobileNavListItem>
         <MobileNavListItem>
-          <MobileNavLink to="/notice" onClick={close}>
+          <MobileNavLink to="/notices/sell" onClick={close}>
             Find pet
           </MobileNavLink>
         </MobileNavListItem>

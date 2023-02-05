@@ -4,7 +4,7 @@ import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
 import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme } from '@mui/material';
+import { useTheme, useMediaQuery } from '@mui/material';
 import {
   BoxWrapper,
   BoxImageWrapper,
@@ -24,6 +24,7 @@ function UserData() {
   const user = useSelector(getUser);
   const isBeingUpdated = useSelector(isLoadingUpdate);
   const theme = useTheme();
+  const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({});
 
   useEffect(() => {
@@ -49,7 +50,10 @@ function UserData() {
           >
             {isBeingUpdated ? (
               <>
-                <Typography sx={{ marginBottom: '5px' }}>Updating</Typography>
+                {isMobileScreens ? null : (
+                  <Typography sx={{ marginBottom: '5px' }}>Updating</Typography>
+                )}
+
                 <ThreeCircles
                   height="30"
                   width="30"

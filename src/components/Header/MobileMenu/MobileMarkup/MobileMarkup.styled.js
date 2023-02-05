@@ -12,6 +12,8 @@ export const MobileMenu = styled.div`
   width: 100vw;
   height: 796px;
   display: flex;
+  padding-top: 12px;
+  padding-bottom: 12px;
   flex-direction: column;
   z-index: 99;
   @media screen and (min-width: 1280px) {
@@ -20,12 +22,16 @@ export const MobileMenu = styled.div`
 `;
 export const BtnClose = styled.button`
   position: absolute;
-  top: 12px;
-  right: 22px;
+  top: 24px;
+  right: 30px;
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
   padding: 0;
   line-height: 0;
+  @media screen and (min-width: 768px) {
+    top: 20px;
+    right: 30px;
+  }
 `;

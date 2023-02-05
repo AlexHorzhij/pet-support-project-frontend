@@ -15,8 +15,8 @@ const schema = yup.object().shape({
   city: yup
     .string()
     .matches(
-      /^[A-Z][a-z]+,\s+[A-Z][a-z]*$/,
-      'Begin with capital letters, contain comma and space'
+      /^[A-Z][a-zA-Z\s]+,\s+[A-Z][a-zA-Z\s]*$/,
+      'Begin with capital letters, devided by comma and space'
     )
     .required(),
   phone: yup

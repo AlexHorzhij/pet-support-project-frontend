@@ -8,7 +8,8 @@ export const registerUser = createAsyncThunk(
     try {
       const user = await register(data);
       toast.success(
-        'Successfully registered! You can log in after confirming your email'
+        'Successfully registered! You can log in after confirming your email',
+        { duration: 10000 }
       );
       return user;
     } catch ({ response }) {
@@ -71,6 +72,8 @@ export const fetchCurrentUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
+      await logout();
+      toast.error('Oops! Something went wrong, please, login again');
       return rejectWithValue(error);
     }
   }

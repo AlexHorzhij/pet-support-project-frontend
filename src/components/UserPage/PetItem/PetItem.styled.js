@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import styledEmotion from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { Typography, Box, ListItem } from '@mui/material';
+import { Typography, Box, ListItem, IconButton } from '@mui/material';
 
 export const PetListItem = styled(ListItem)(({ theme }) => ({
   boxSizing: 'border-box',
@@ -43,6 +43,9 @@ export const PetInfoBoxWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
 }));
 export const IconButtonWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'start',
   [theme.breakpoints.down('md')]: {
     position: 'relative',
   },
@@ -53,11 +56,19 @@ export const IconButtonWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 export const DaleteIconStyled = styled(DeleteIcon)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '20px',
+  },
+}));
+
+export const IconButtonStyled = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  '&:not(:last-child)': {
+    marginBottom: '13px',
   },
 }));
 

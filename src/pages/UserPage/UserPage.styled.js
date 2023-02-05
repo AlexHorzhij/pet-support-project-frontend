@@ -38,6 +38,7 @@ export const UserDataTypography = styled(Typography)(({ theme }) => ({
   marginBottom: '24px',
   fontWeight: '500',
   lineHeight: '100%',
+  display: 'inline-block',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '20px',
@@ -73,4 +74,19 @@ export const AddPetIcon = styled(AddCircleIcon)({
 });
 export const PetDataBox = styled(Box)({
   position: 'relative',
+  width: '100%',
 });
+export const SceletonWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: '20px',
+    marginTop: '90px',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '20px',
+    marginTop: '130px',
+  },
+}));

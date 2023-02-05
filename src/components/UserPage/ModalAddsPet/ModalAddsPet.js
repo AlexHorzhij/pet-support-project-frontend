@@ -3,9 +3,8 @@ import { Formik } from 'formik';
 import { Grid, Box } from '@mui/material';
 import { FormStepper } from '../FormStepper/FormStepper';
 import Dropzone from 'react-dropzone';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { getUser } from 'redux/userData/userDataSelectors';
 import * as yup from 'yup';
 import {
   ModalTypography,
@@ -42,7 +41,6 @@ const initialValues = {
 };
 
 function ModalAddsPet({ onModalClose }) {
-  const user = useSelector(getUser);
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
 
@@ -51,9 +49,6 @@ function ModalAddsPet({ onModalClose }) {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-
-    formData.append('owner', user._id);
-
 
     dispatch(addPetToList(formData));
     // alert(JSON.stringify(values, null, 2));
@@ -90,30 +85,33 @@ function ModalAddsPet({ onModalClose }) {
               <FormStepper onClose={onModalClose}>
                 <Box>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Name pet</ModalTypography>
+                    <ModalTypography>Name pet*</ModalTypography>
                     <ModalField
                       fullWidth
                       name="name"
                       component={TextField}
                       label="Type name pet"
+                      required
                     />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Date of birth</ModalTypography>
+                    <ModalTypography>Date of birth*</ModalTypography>
                     <ModalField
                       fullWidth
                       name="date"
                       component={TextField}
                       label="Type date of birth"
+                      required
                     />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Breed</ModalTypography>
+                    <ModalTypography>Breed*</ModalTypography>
                     <ModalField
                       fullWidth
                       name="breed"
                       component={TextField}
                       label="Type breed"
+                      required
                     />
                   </ModalGrid>
                 </Box>
@@ -148,7 +146,7 @@ function ModalAddsPet({ onModalClose }) {
                     )}
                   </Dropzone>
                   <Grid item md={6} sx={{ mt: '40px' }}>
-                    <ModalTypography>Comments</ModalTypography>
+                    <ModalTypography>Comments*</ModalTypography>
                     <ModalMultiLineField
                       multiline={true}
                       rows={3.5}
@@ -156,6 +154,7 @@ function ModalAddsPet({ onModalClose }) {
                       name="description"
                       component={TextField}
                       label="Type comment"
+                      required
                     />
                   </Grid>
                 </SecondStepBox>

@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { PropTypes } from 'prop-types';
-
+import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import {
   NewsCard,
   Rectangle,
-  TitleWrapper,
   NewsTitle,
   NewsText,
   NewsDate,
   CardFooter,
 } from './newsItem.styled';
 import { transformDate } from 'services/transformNewsDate';
+import NanoClamp from 'nanoclamp';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
@@ -36,11 +35,9 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
       <NewsCard sx={{ height: '100%' }} variant="standart">
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>
-          <TitleWrapper component="div" style={{ overflow: 'hidden' }}>
-            <NewsTitle variant="h5" component="div">
-              {title}
-            </NewsTitle>
-          </TitleWrapper>
+          <NewsTitle variant="h5" component="div">
+            <NanoClamp is="p" lines={2} text={title} ellipsis="..." />
+          </NewsTitle>
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />

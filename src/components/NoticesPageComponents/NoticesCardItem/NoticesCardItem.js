@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
+// import { getUser } from 'redux/userData/userDataSelectors';
 import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { AddToFavorite } from 'components';
-import distanceBetwenDateAndNowWords from 'services/distanceBetwenDateAndNowWords';
+import { AddToFavorite, Modal, LearnMoreModal } from 'components';
+import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
 import {
   Li,
   ItemsList,
@@ -16,9 +19,13 @@ import nophoto from 'assets/images/nophoto.gif';
 export default function NoticesCardItem({
   data,
   deleteCard,
-  openModal,
+  // openModal,
   token,
 }) {
+  // const { user } = useSelector(getUser);
+  // console.log('user', user);
+
+  const [modalIsShown, setModalIsShown] = useState(false);
   const {
     _id,
     title,
@@ -30,7 +37,12 @@ export default function NoticesCardItem({
     category,
     favorite = false,
   } = data;
-  const age = distanceBetwenDateAndNowWords(birthdate);
+  // console.log(data);
+  const age = distanceBetweenDateAndNowWords(birthdate);
+
+  const toggleModal = () => {
+    setModalIsShown(prev => !prev);
+  };
 
   return (
     <>
@@ -53,6 +65,7 @@ export default function NoticesCardItem({
           <CategoryLable>{category}</CategoryLable>
           {token && (
             <AddToFavorite
+              bg={'rgba(255, 255, 255, 0.6)'}
               id={_id}
               favorite={favorite}
               right="50px"
@@ -85,7 +98,7 @@ export default function NoticesCardItem({
           </ItemsList>
           <Btn
             id={_id}
-            onClick={openModal}
+            onClick={toggleModal}
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
           >
@@ -104,6 +117,11 @@ export default function NoticesCardItem({
           )}
         </CardContent>
       </NoticeCard>
+      {modalIsShown && (
+        <Modal onModalClose={toggleModal}>
+          <LearnMoreModal onModalClose={toggleModal} data={data} />
+        </Modal>
+      )}
     </>
   );
 }
