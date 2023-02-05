@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pet-support-project-frontend/static/css/main.8758bbb8.css",
-    "main.js": "/pet-support-project-frontend/static/js/main.0b87f6d6.js",
+    "main.js": "/pet-support-project-frontend/static/js/main.0046f4da.js",
     "static/js/586.36c70481.chunk.js": "/pet-support-project-frontend/static/js/586.36c70481.chunk.js",
     "static/js/939.61c14218.chunk.js": "/pet-support-project-frontend/static/js/939.61c14218.chunk.js",
     "static/js/211.2d8ef375.chunk.js": "/pet-support-project-frontend/static/js/211.2d8ef375.chunk.js",
@@ -22,7 +22,7 @@
     "index.html": "/pet-support-project-frontend/index.html",
     "static/media/addImage.svg": "/pet-support-project-frontend/static/media/addImage.ddd97a7b4a6fe9fdc00d1fdf2ac1bb1c.svg",
     "main.8758bbb8.css.map": "/pet-support-project-frontend/static/css/main.8758bbb8.css.map",
-    "main.0b87f6d6.js.map": "/pet-support-project-frontend/static/js/main.0b87f6d6.js.map",
+    "main.0046f4da.js.map": "/pet-support-project-frontend/static/js/main.0046f4da.js.map",
     "586.36c70481.chunk.js.map": "/pet-support-project-frontend/static/js/586.36c70481.chunk.js.map",
     "939.61c14218.chunk.js.map": "/pet-support-project-frontend/static/js/939.61c14218.chunk.js.map",
     "211.2d8ef375.chunk.js.map": "/pet-support-project-frontend/static/js/211.2d8ef375.chunk.js.map",
@@ -34,6 +34,6 @@
   },
   "entrypoints": [
     "static/css/main.8758bbb8.css",
-    "static/js/main.0b87f6d6.js"
+    "static/js/main.0046f4da.js"
   ]
 }
