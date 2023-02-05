@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { IconButton } from '@mui/material';
+import { toast } from 'react-hot-toast';
+
 import {
   UserDataItemBox,
   UserDataItemInput,
@@ -12,7 +14,13 @@ import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/userData/userDataOperations';
 import { useDebouncedCallback } from 'use-debounce';
 
-function UserDataItem({ title = '', value = '', disabled = true }) {
+function UserDataItem({
+  title = '',
+  value = '',
+  disabled = true,
+  pattern,
+  textMessage,
+}) {
   const dispatch = useDispatch();
 
   const [inputState, setInputState] = useState(disabled);
@@ -35,6 +43,15 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
       name = 'birthdate';
     } else {
       name = inputName;
+    }
+    let result = value.match(pattern);
+		console.log('value: ', value);
+		console.log('pattern: ', pattern);
+    console.log('result: ', result);
+
+    if (!result) {
+      toast.error(textMessage, { duration: 3000 });
+      return;
     }
     dispatch(updateUser({ name, value }));
   }, 500);
