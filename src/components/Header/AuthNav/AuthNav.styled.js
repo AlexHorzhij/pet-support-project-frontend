@@ -9,9 +9,6 @@ export const AuthNavigation = styled(Box)({
   '@media screen and (min-width: 768px)': {
     marginLeft: '246px',
   },
-  //   '@media screen and (min-width: 1280px)': {
-  //     marginLeft: '351px',
-  //   },
 });
 export const AuthItem = styled(Button)({
   color: '#111111',
