@@ -38,14 +38,6 @@ export const Rectangle = styled(Skeleton)(({ theme }) => ({
 
   [theme.breakpoints.up('lg')]: {},
 }));
-export const TitleWrapper = styled(Box)({
-  // Для  назви з трьома крапками
-  width: '280px',
-  height: '66px',
-  overflow: 'hidden',
-  // resize: 'horizontal',
-  // backgroundColor: 'ghostwhite',
-});
 
 export const NewsTitle = styled(Box)({
   width: '280px',
@@ -55,31 +47,12 @@ export const NewsTitle = styled(Box)({
   lineHeight: '1.35',
   textAlign: 'start',
   marginTop: '4px',
-  // ------------
-  // display: 'flex',
-  // flexDirection: 'column',
-  // lineClamp: '2',
-  // overflow: 'hidden',
-  // whiteSpace: ' pre-wrap',
-
-  // Для мултистрокової назви з трьома крапками
-  // display: '-webkit-box;',
-  // webkit-line-clamp: '2',
-  // webkitBoxOrient: 'vertical',
-  overflow: 'hidden',
-  whiteSpace: ' wrap',
-
-  // Для однострокової назви з трьома крапками
-  textOverflow: 'ellipsis',
-  // whiteSpace: 'nowrap',
-  // overflow: 'hidden',
 });
 
 export const NewsCard = styled(Card)({
   border: 'none',
   borderRadius: '0px',
   backgroundColor: 'inherit',
-  // paddingLeft: '0px',
 });
 
 export const NewsText = styled(Typography)({
