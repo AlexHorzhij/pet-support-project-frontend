@@ -27,7 +27,8 @@ const schema = yup.object().shape({
   breed: yup.string().required(),
 });
 
-const StepOne = ({ next, data }) => {
+const StepOne = ({ next, data, isUpdateAction }) => {
+  console.log('isUpdateAction: ', isUpdateAction);
   const handleSubmit = async values => {
     next(values);
   };
@@ -37,6 +38,7 @@ const StepOne = ({ next, data }) => {
       initialValues={data}
       validationSchema={schema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       <Form>
         <ModalGrid>

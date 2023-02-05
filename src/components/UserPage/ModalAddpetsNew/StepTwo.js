@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   avatarUrl: yup.mixed().required('File is required'),
 });
 
-const StepTwo = ({ next, prev, data }) => {
+const StepTwo = ({ next, prev, data, isUpdateAction }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -49,6 +49,7 @@ const StepTwo = ({ next, prev, data }) => {
       initialValues={data}
       validationSchema={schema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       {({ values, setFieldValue }) => {
         return (

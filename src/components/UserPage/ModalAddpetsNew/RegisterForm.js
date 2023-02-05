@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addPetToList,
   updatePetFromList,
@@ -13,6 +13,7 @@ import {
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { getPets } from 'redux/userData/userDataSelectors';
 
 const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const [data, setData] = useState({
@@ -22,6 +23,20 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
     description: '',
     avatarUrl: '',
   });
+  const pets = useSelector(getPets);
+
+  useEffect(() => {
+    const updatedPet = pets.find(value => value._id === petId);
+    if (updatedPet) {
+      setData({
+        name: updatedPet.name,
+        date: updatedPet.date,
+        breed: updatedPet.breed,
+        description: updatedPet.description,
+        avatarUrl: updatedPet.avatarUrl,
+      });
+    }
+  }, [petId, pets]);
   const [currentStep, setCurrentStep] = useState(0);
   const dispatch = useDispatch();
 
@@ -48,12 +63,18 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   };
 
   const steps = [
-    <StepOne next={handleNextStep} data={data} onModalClose={onModalClose} />,
+    <StepOne
+      next={handleNextStep}
+      data={data}
+      onModalClose={onModalClose}
+      isUpdateAction
+    />,
     <StepTwo
       next={handleNextStep}
       prev={handlePrevStep}
       data={data}
       onModalClose={onModalClose}
+      isUpdateAction
     />,
   ];
 
