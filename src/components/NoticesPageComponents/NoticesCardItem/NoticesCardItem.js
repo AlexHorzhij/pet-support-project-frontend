@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getUser } from 'redux/userData/userDataSelectors';
+// import { useSelector } from 'react-redux';
+// import { getUser } from 'redux/userData/userDataSelectors';
 import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
