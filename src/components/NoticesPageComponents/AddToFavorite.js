@@ -6,7 +6,7 @@ import { getAuth } from 'redux/auth/authSelectors';
 
 import { toggleFavorite } from 'API/api';
 
-export default function AddToFavorite({ favorite = false, id }) {
+export default function AddToFavorite({ favorite = false, id, bg }) {
   const [checked, setChecked] = useState(favorite);
   const { token } = useSelector(getAuth);
 
@@ -24,8 +24,7 @@ export default function AddToFavorite({ favorite = false, id }) {
       <Checkbox
         style={{ position: 'absolute', right: '12px', top: '12px' }}
         sx={{
-          color: 'rgba(255, 255, 255, 0.6)',
-          bgcolor: 'rgba(255, 255, 255, 0.6)',
+          bgcolor: bg,
           backdropFilter: 'blur(2px)',
         }}
         inputProps={{ 'aria-label': 'favorite' }}
