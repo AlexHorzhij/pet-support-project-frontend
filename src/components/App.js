@@ -28,7 +28,7 @@ function App() {
     <>
       <Suspense fallback={<LoaderPage />}>
         <Routes>
-          <Route path="" element={<SharedLayout />}>
+          <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />
 
             <Route element={<PublicRoute />}>
