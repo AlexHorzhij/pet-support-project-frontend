@@ -36,7 +36,6 @@ export async function register(signupData) {
 
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
-  console.log(data);
   setToken.set(data.token);
   return data;
 }
@@ -52,7 +51,6 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
-  console.log(data);
   setToken.unset();
   return data;
 }
