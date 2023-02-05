@@ -27,7 +27,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
     category,
     location,
     name,
-    owner: { email, phone },
+    owner,
     sex,
     price,
     title,
@@ -35,7 +35,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
 
   const Contact = ({ children }) => {
     return (
-      <OwnerContact href={`tel:${phone}`} sx={{ mb: 0 }}>
+      <OwnerContact href={`tel:${owner.phone}`} sx={{ mb: 0 }}>
         {children}
       </OwnerContact>
     );
@@ -48,8 +48,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
       </ModalCloseButton>
       <BoxFlex>
         <Box style={{ position: 'relative' }}>
-          <Image image={`${nophoto}`} sx={{ position: 'relative' }} />
-          <Image image={`${avatarUrl}`} />
+          {avatarUrl ? <Image src={avatarUrl} /> : <Image src={nophoto} />}
           <CategoryLable>{category}</CategoryLable>
         </Box>
         <Box>
@@ -63,8 +62,8 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {breed && <HeadText variant="body2">Breed: </HeadText>}
               {location && <HeadText variant="body2">Location: </HeadText>}
               {sex && <HeadText variant="body2">The sex: </HeadText>}
-              {email && <HeadText variant="body2">Email: </HeadText>}
-              {phone && <HeadText variant="body2">Phone: </HeadText>}
+              {owner.name && <HeadText variant="body2">Owner: </HeadText>}
+              {owner.phone && <HeadText variant="body2">Phone: </HeadText>}
               {price && <HeadText variant="body2">Sell: </HeadText>}
             </Box>
             <Box>
@@ -73,14 +72,14 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {breed && <Text>{breed}</Text>}
               {location && <Text>{location}</Text>}
               {sex && <Text>{sex}</Text>}
-              {email && (
-                <OwnerContact underline="hover" href={`mailto:${email}`}>
-                  <Text>{email}</Text>
+              {owner.name && (
+                <OwnerContact underline="hover" href={`mailto:${owner.name}`}>
+                  <Text>{owner.name}</Text>
                 </OwnerContact>
               )}
-              {phone && (
-                <OwnerContact underline="hover" href={`tel:${phone}`}>
-                  <Text>{phone}</Text>
+              {owner.phone && (
+                <OwnerContact underline="hover" href={`tel:${owner.phone}`}>
+                  <Text>{owner.phone}</Text>
                 </OwnerContact>
               )}
               {price && <Text>{price}$</Text>}
