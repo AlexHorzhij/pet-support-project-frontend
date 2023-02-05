@@ -6,6 +6,7 @@ import {
   Box,
   Typography,
   Link,
+  Button,
 } from '@mui/material';
 
 export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
@@ -65,7 +66,6 @@ export const CategoryLable = styled(Box)(() => ({
 }));
 
 export const Text = styled(Typography)(({ theme }) => ({
-  // color: 'inherit',
   fontSize: '14px',
   marginBottom: '8px',
 
@@ -91,5 +91,33 @@ export const OwnerContact = styled(Link)(({ theme }) => ({
 
   [theme.breakpoints.up('md')]: {
     fontSize: '16px',
+  },
+}));
+
+export const ButtonsWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  fontSize: '16px',
+
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row-reverse',
+  },
+}));
+
+export const AddFavouriteButton = styled(Button)(({ theme }) => ({
+  position: 'relative',
+  fontSize: '16px',
+
+  [theme.breakpoints.up('md')]: {
+    width: '160px',
+    marginRight: '12px',
+  },
+}));
+
+export const ContactButton = styled(Button)(({ theme }) => ({
+  fontSize: '16px',
+
+  [theme.breakpoints.up('md')]: {
+    width: '160px',
   },
 }));
