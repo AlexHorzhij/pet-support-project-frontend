@@ -4,6 +4,7 @@ import {
   updateUser,
   addPetToList,
   deletePetFromList,
+  updatePetFromList,
 } from './userDataOperations';
 
 const initialState = {
@@ -18,7 +19,8 @@ const initialState = {
   },
   isLoading: false,
   isLoadingUpdate: false,
-  isLoadingUpdatePet: false,
+  isUploadingPet: false,
+  isUpdatingPet: false,
   isDeletingPet: false,
   error: null,
 };
@@ -71,17 +73,17 @@ export const fetchUserDataSlice = createSlice({
       // Працює
       // OK
       .addCase(addPetToList.pending, state => {
-        state.isLoadingUpdatePet = true;
+        state.isUploadingPet = true;
       })
       .addCase(addPetToList.fulfilled, (state, { payload }) => {
         if (!payload) {
           return state;
         }
-        state.isLoadingUpdatePet = false;
+        state.isUploadingPet = false;
         state.user.pets = [...state.user.pets, payload.pet];
       })
       .addCase(addPetToList.rejected, (state, { payload }) => {
-        state.isLoadingUpdatePet = false;
+        state.isUploadingPet = false;
         state.error = payload;
       })
       //==========POST /user/pets ====================
@@ -105,7 +107,27 @@ export const fetchUserDataSlice = createSlice({
       .addCase(deletePetFromList.rejected, (state, { payload }) => {
         state.isDeletingPet = false;
         state.error = payload;
+      })
+      // ============Delete pet from DB==================
+
+      // ============Update pet==================
+      .addCase(updatePetFromList.pending, (state, action) => {
+        state.isUpdatingPet = `${action.meta.arg.petId}`;
+      })
+      .addCase(updatePetFromList.fulfilled, (state, { payload }) => {
+        if (!payload) {
+          return state;
+        }
+        state.isUpdatingPet = false;
+        const newPetList = state.user.pets.filter(
+          item => item._id !== payload._id
+        );
+        state.user.pets = [payload, ...newPetList];
+      })
+      .addCase(updatePetFromList.rejected, (state, { payload }) => {
+        state.isUpdatingPet = false;
+        state.error = payload;
       });
-    // ============Delete pet from DB==================
+    // ============Update pet==================
   },
 });

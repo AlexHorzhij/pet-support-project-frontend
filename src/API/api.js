@@ -31,13 +31,13 @@ const setCurrentToken = token => {
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
-  return data.data;
+  return data;
 }
 
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
-  setToken.set(data.data.token);
-  return data.data;
+  setToken.set(data.token);
+  return data;
 }
 
 export async function fetchCurrent(token) {
@@ -52,26 +52,26 @@ export async function fetchCurrent(token) {
 export async function logout() {
   const { data } = await instance.post('auth/logout');
   setToken.unset();
-  return data.data;
+  return data;
 }
 
 //======================== NOTICES  ==========================
 
-
 export async function requestPublicNotices(request) {
-  const { category, search } = request
+  const { category, search } = request;
   if (search) {
     try {
-      const { data } = await instance.get(`/notices/${category}?query=${search}`)
-      return data
+      const { data } = await instance.get(
+        `/notices/${category}?query=${search}`
+      );
+      return data;
     } catch (error) {
-      throw error
+      throw error;
     }
   }
   try {
     const { data } = await instance.get(`/notices/${category}`);
     return data;
-
   } catch (error) {
     throw error;
   }
@@ -85,26 +85,25 @@ export async function requestPublicNotices(request) {
 }
 
 export async function requestPrivateNotices(request) {
-  const { category } = request
+  const { category } = request;
   if (category) {
     try {
-      const { data } = await instance.get(`user/notices/${category}`)
-      return data
+      const { data } = await instance.get(`user/notices/${category}`);
+      return data;
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
   try {
-    const { data } = await instance.get(`user/notices/`)
-    return data
+    const { data } = await instance.get(`user/notices/`);
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 export async function removeNoticesById(id) {
-
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);
@@ -158,18 +157,23 @@ export async function updateUserData(userData) {
   } catch (error) {
     throw error;
   }
+}
 
-  // const userData = await requestUserData();
-
-  // Object.keys(userData).forEach(item => {
-  //   if (item === data.name) {
-  //     userData[item] = data.value;
-  //   }
-  // });
-
-  // const newUserData = { ...userData };
-
-  // return newUserData;
+export async function updatePetsData(petData) {
+  try {
+    const { data } = await instance.patch(
+      `/user/pets/${petData.petId}`,
+      petData.formData,
+      {
+        headers: {
+          'Content-Type': `multipart/form-data;`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function deletePet(_id) {

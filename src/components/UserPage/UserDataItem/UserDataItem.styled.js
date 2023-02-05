@@ -54,7 +54,7 @@ export const UserDataItemInput = styledEmotion.input`
 					line-height:25px;
 					letter-spacing: 0.8px;
 
-					   @media (max-width: 768px) {
+					   @media (max-width: 767.98px) {
     			width: 100%;
 					font-size:12px;
 					line-height:16px;

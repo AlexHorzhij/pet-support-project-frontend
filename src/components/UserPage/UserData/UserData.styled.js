@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { IconButton, Box } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export const BoxWrapper = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -74,6 +75,16 @@ export const StyledButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   bottom: '-3px',
   right: 0,
+  [theme.breakpoints.down('lg')]: {
+    bottom: '-40px',
+    right: '25px',
+  },
+}));
+
+export const StyledSpiner = styled(ThreeCircles)(({ theme }) => ({
+  height: '30px',
+  width: '30px',
+  color: theme.palette.primary.main,
   [theme.breakpoints.down('lg')]: {
     bottom: '-40px',
     right: '25px',

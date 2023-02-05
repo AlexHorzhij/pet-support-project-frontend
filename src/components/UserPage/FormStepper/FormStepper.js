@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'formik';
 import { StepperBox, StepperButton } from './FormStepper.styled';
 export const FormStepper = ({ children, onClose }) => {
+  console.log('children: ', children);
   const stepsArray = React.Children.toArray(children);
   const [step, setStep] = useState(0);
   const currentStep = stepsArray[step];

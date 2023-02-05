@@ -54,8 +54,11 @@ export const ModalCardContent = styled(CardContent)(({ theme }) => ({
   },
 }));
 export const ModalGrid = styled(Grid)({
+  position: 'relative',
+  width: '100%',
+  textAlign: 'center',
   '&:not(:last-child)': {
-    marginBottom: '26px',
+    marginBottom: '35px',
   },
 });
 

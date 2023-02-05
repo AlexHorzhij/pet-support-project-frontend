@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import { UserData, PetsData, ModalAddsPet, Modal } from 'components';
+import { UserData, PetsData, Modal } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -10,16 +10,18 @@ import {
   AddPetTypography,
   AddPetIcon,
   PetDataBox,
+  SceletonWrapper,
 } from './UserPage.styled';
 import { fetchUserData } from 'redux/userData/userDataOperations';
 import {
   getPets,
   isLoading,
-  isLoadingUpdatePet,
+  isUploadingPet,
 } from 'redux/userData/userDataSelectors';
 import { useTheme } from '@mui/system';
 import { ThreeCircles } from 'react-loader-spinner';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/RegisterForm';
 
 function UserPage() {
   const [modalIsShown, setModalIsShown] = useState(false);
@@ -27,7 +29,7 @@ function UserPage() {
   const pets = useSelector(getPets);
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isLoadingUpdate = useSelector(isLoadingUpdatePet);
+  const isUploadingPetData = useSelector(isUploadingPet);
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
@@ -58,23 +60,16 @@ function UserPage() {
                 <PetsData />
               </>
             ) : (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                  marginTop: '150px',
-                }}
-              >
+              <SceletonWrapper>
                 <Typography sx={{ fontSize: '30px' }}>
                   Your pets will be shown here
                 </Typography>
                 <PetsOutlinedIcon
                   sx={{ marginTop: '30px', fontSize: '100px', color: 'grey' }}
                 />
-              </Box>
+              </SceletonWrapper>
             )}
-            {isLoadingUpdate && (
+            {isUploadingPetData && (
               <Box
                 sx={{
                   width: '100%',
@@ -96,7 +91,7 @@ function UserPage() {
           </PetDataBox>
           {modalIsShown && (
             <Modal onModalClose={togleModal}>
-              <ModalAddsPet onModalClose={togleModal} />
+              <ModalAddPetsNew onModalClose={togleModal} />
             </Modal>
           )}
         </>
