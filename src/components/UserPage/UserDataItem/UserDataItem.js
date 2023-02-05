@@ -36,7 +36,7 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
     } else {
       name = inputName;
     }
-    dispatch(updateUser({ name, value: inputValue }));
+    dispatch(updateUser({ name, value }));
   }, 500);
 
   return (
@@ -46,7 +46,6 @@ function UserDataItem({ title = '', value = '', disabled = true }) {
       </UserDataItemtitle>
       <UserDataItemInput
         ref={inputRef}
-        id={title}
         style={{
           borderColor: inputState ? 'transparent' : '#F59256',
           backgroundColor: inputState ? 'transparent' : '#FDF7F2',
