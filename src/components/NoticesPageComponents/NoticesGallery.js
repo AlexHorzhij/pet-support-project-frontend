@@ -18,7 +18,7 @@ export default function NoticesGallery() {
     dispatch(removeNoticeFromUserById(e.target.id));
   };
 
-  // const openModal = e => {
+  // const openModal = e => {t
   //   console.log(e.target.id);
   // };
 
