@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/pet-support-project-frontend/static/css/main.8758bbb8.css",
-    "main.js": "/pet-support-project-frontend/static/js/main.34fd5430.js",
+    "main.js": "/pet-support-project-frontend/static/js/main.1ca32a88.js",
     "static/js/586.4429e085.chunk.js": "/pet-support-project-frontend/static/js/586.4429e085.chunk.js",
     "static/js/939.dc5c2274.chunk.js": "/pet-support-project-frontend/static/js/939.dc5c2274.chunk.js",
-    "static/js/211.860c3fc5.chunk.js": "/pet-support-project-frontend/static/js/211.860c3fc5.chunk.js",
+    "static/js/211.fef91c1c.chunk.js": "/pet-support-project-frontend/static/js/211.fef91c1c.chunk.js",
     "static/js/230.a773d74c.chunk.js": "/pet-support-project-frontend/static/js/230.a773d74c.chunk.js",
     "static/js/791.f7937bc7.chunk.js": "/pet-support-project-frontend/static/js/791.f7937bc7.chunk.js",
     "static/js/387.6e53c412.chunk.js": "/pet-support-project-frontend/static/js/387.6e53c412.chunk.js",
@@ -22,10 +22,10 @@
     "index.html": "/pet-support-project-frontend/index.html",
     "static/media/addImage.svg": "/pet-support-project-frontend/static/media/addImage.ddd97a7b4a6fe9fdc00d1fdf2ac1bb1c.svg",
     "main.8758bbb8.css.map": "/pet-support-project-frontend/static/css/main.8758bbb8.css.map",
-    "main.34fd5430.js.map": "/pet-support-project-frontend/static/js/main.34fd5430.js.map",
+    "main.1ca32a88.js.map": "/pet-support-project-frontend/static/js/main.1ca32a88.js.map",
     "586.4429e085.chunk.js.map": "/pet-support-project-frontend/static/js/586.4429e085.chunk.js.map",
     "939.dc5c2274.chunk.js.map": "/pet-support-project-frontend/static/js/939.dc5c2274.chunk.js.map",
-    "211.860c3fc5.chunk.js.map": "/pet-support-project-frontend/static/js/211.860c3fc5.chunk.js.map",
+    "211.fef91c1c.chunk.js.map": "/pet-support-project-frontend/static/js/211.fef91c1c.chunk.js.map",
     "230.a773d74c.chunk.js.map": "/pet-support-project-frontend/static/js/230.a773d74c.chunk.js.map",
     "791.f7937bc7.chunk.js.map": "/pet-support-project-frontend/static/js/791.f7937bc7.chunk.js.map",
     "387.6e53c412.chunk.js.map": "/pet-support-project-frontend/static/js/387.6e53c412.chunk.js.map",
@@ -34,6 +34,6 @@
   },
   "entrypoints": [
     "static/css/main.8758bbb8.css",
-    "static/js/main.34fd5430.js"
+    "static/js/main.1ca32a88.js"
   ]
 }
