@@ -31,13 +31,14 @@ const setCurrentToken = token => {
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
-  return data.data;
+  return data;
 }
 
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
-  setToken.set(data.data.token);
-  return data.data;
+  console.log(data);
+  setToken.set(data.token);
+  return data;
 }
 
 export async function fetchCurrent(token) {
@@ -51,29 +52,31 @@ export async function fetchCurrent(token) {
 
 export async function logout() {
   const { data } = await instance.post('auth/logout');
+  console.log(data);
   setToken.unset();
-  return data.data;
+  return data;
 }
 
 //======================== NOTICES  ==========================
 
-
 export async function requestNotices(request) {
-  const { category, search } = request
-  console.log(request)
+  const { category, search } = request;
+  console.log(request);
   if (search) {
     try {
-      const { data } = await instance.get(`/notices/${category}?search=${search}`)
-      console.log(`data for category "${category}", search "${search}"`, data)
-      return data
+      const { data } = await instance.get(
+        `/notices/${category}?search=${search}`
+      );
+      console.log(`data for category "${category}", search "${search}"`, data);
+      return data;
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
   try {
     const { data } = await instance.get(`/notices/${category}`);
-    console.log(`data for category "${category}"`, data)
+    console.log(`data for category "${category}"`, data);
     return data;
   } catch (error) {
     throw error;
@@ -100,7 +103,6 @@ export async function requestNotices(request) {
 // }
 
 export async function removeNoticesById(id) {
-
   console.log('id', id);
   try {
     // const { data } = await instance.delete(`user/notices/${id}`, id);
