@@ -59,7 +59,7 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const NewsTextInput = styled(Typography)({
+export const NewsTextFound = styled(Typography)({
   fontWeight: '700',
   fontSize: '48px',
   backgroundColor: '#FFFFFF',

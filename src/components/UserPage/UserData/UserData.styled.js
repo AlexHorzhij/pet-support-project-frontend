@@ -3,6 +3,7 @@ import { IconButton, Box } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 export const BoxWrapper = styled(Box)(({ theme }) => ({
+  position: 'relative',
   boxSizing: 'border-box',
   backgroundColor: theme.palette.background.paper,
   borderTopRightRadius: theme.shape.borderRadius,
@@ -13,7 +14,7 @@ export const BoxWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   padding: '20px 18px',
   width: '411px',
-  marginLeft: '-24px',
+  marginLeft: '-30px',
   boxShadow: theme.palette.boxShadow.main,
 
   [theme.breakpoints.down('lg')]: {
@@ -35,7 +36,7 @@ export const BoxImageWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   position: 'relative',
   justifyContent: 'center',
-
+  marginBottom: '30px',
   [theme.breakpoints.down('lg')]: {
     height: '100%',
   },

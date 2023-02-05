@@ -7,7 +7,7 @@ import { Container, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { fetchNoticesBySearch } from 'redux/notices/noticesOperations';
+import { fetchNotices } from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
 
 
@@ -17,10 +17,11 @@ export default function NoticesFilter() {
   const dispatch = useDispatch()
 
   const { categoryName } = params
-  const search = searchParams.get('search')
+  const search = searchParams.get('search') || ''
 
-  const handleFilter = () => {
-    dispatch(fetchNoticesBySearch({ categoryName, search }))
+  const handleFilter = (e) => {
+    e.preventDefault()
+    dispatch(fetchNotices({ categoryName, search }))
   }
 
   return (

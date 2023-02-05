@@ -30,7 +30,7 @@ export default function NoticesCardItem({
     price,
     avatarUrl,
     category,
-    favorite,
+    favorite = false,
   } = data;
   // console.log(data);
   const age = distanceBetwenDateAndNowWords(birthdate);

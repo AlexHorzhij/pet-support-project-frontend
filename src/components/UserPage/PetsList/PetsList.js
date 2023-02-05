@@ -5,16 +5,16 @@ function PetsList({ pets }) {
   return (
     <List style={{ listStyle: 'none', padding: '0' }}>
       {pets &&
-        pets.map(({ id, picture, name, dateOfBirth, breed, comment }) => {
+        pets.map(({ _id, avatarUrl, name, date, breed, description }) => {
           return (
             <PetItem
-              key={id}
-              imgSrc={picture}
+              key={_id}
+              avatarUrl={avatarUrl}
               name={name}
-              birthDate={dateOfBirth}
+              birthDate={date}
               breed={breed}
-              comment={comment}
-              id={id}
+              description={description}
+              id={_id}
             />
           );
         })}

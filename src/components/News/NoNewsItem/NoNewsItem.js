@@ -2,7 +2,7 @@ import {
   Background,
   ContentWrapper,
   Text,
-  NewsTextInput,
+  NewsTextFound,
 } from './NoNewsItem.styled';
 import { useSearchParams } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ export const NoNewsItem = () => {
         </Text>
         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
           But we don't have news about
-          <NewsTextInput component="div">"{topic}"</NewsTextInput>
+          <NewsTextFound component="div">"{topic}"</NewsTextFound>
         </Text>
       </ContentWrapper>
     </Background>

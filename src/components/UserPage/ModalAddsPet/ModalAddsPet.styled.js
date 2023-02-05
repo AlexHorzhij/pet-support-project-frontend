@@ -18,7 +18,7 @@ export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
   height: '44px',
 }));
 
-export const ModalTyporgaphy = styled(Typography)({
+export const ModalTypography = styled(Typography)({
   fontSize: '24px',
   fontWeight: '500',
   lineHeight: '27px',
@@ -61,6 +61,7 @@ export const ModalGrid = styled(Grid)({
 
 export const ModalField = styled(Field)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
+
   borderRadius: '40px',
   '&>label': {
     top: '-2px',
@@ -72,7 +73,12 @@ export const ModalField = styled(Field)(({ theme }) => ({
   },
   '&>label+div>input': {
     padding: '5px',
+    paddingLeft: '25px',
     height: '40px',
+  },
+  '&>label+div+p': {
+    position: 'absolute',
+    bottom: '-18px',
   },
 }));
 
@@ -89,6 +95,10 @@ export const ModalMultiLineField = styled(Field)(({ theme }) => ({
   },
   '&>label+div': {
     borderRadius: theme.shape.borderRadius20,
+  },
+  '&>label+div+p': {
+    position: 'absolute',
+    bottom: '-18px',
   },
   [theme.breakpoints.down('md')]: {
     width: '240px',
