@@ -18,9 +18,9 @@ export default function NoticesGallery() {
     dispatch(removeNoticeFromUserById(e.target.id));
   };
 
-  const openModal = e => {
-    console.log(e.target.id);
-  };
+  // const openModal = e => {
+  //   console.log(e.target.id);
+  // };
 
   return (
     <Grid container>
@@ -44,7 +44,7 @@ export default function NoticesGallery() {
                 token={token}
                 data={item}
                 deleteCard={deleteCard}
-                openModal={openModal}
+                // openModal={openModal}
               />
             </Grid>
           );

@@ -12,6 +12,7 @@ import Modal from './Modal/Modal';
 import ModalAddsPet from './UserPage/ModalAddsPet/ModalAddsPet';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
 import NoticeAddForm from './NoticeAddForm/NoticeAddForm';
+import LearnMoreModal from './NoticesPageComponents/LearnMoreModal/LearnMoreModal';
 
 export {
   Loader,
@@ -29,5 +30,5 @@ export {
   NoticesGallery,
   OurFriendsItem,
   NoticeAddForm,
-  
+  LearnMoreModal,
 };
