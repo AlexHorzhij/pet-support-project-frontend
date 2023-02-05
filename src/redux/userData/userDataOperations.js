@@ -4,9 +4,11 @@ import { addPet, deletePet, requestUserData, updatePetsData, updateUserData } fr
 
 export const fetchUserData = createAsyncThunk(
   'userData/fetchUserData',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const { auth } = getState();
+    console.log(auth.token);
     try {
-      const userData = await requestUserData();
+      const userData = await requestUserData(auth.token);
       if (!userData) {
         console.log('message');
       }

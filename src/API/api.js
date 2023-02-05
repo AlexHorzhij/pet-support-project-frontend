@@ -57,31 +57,28 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestPublicNotices(request) {
+export async function requestNotices(request) {
   const { category, search } = request;
+  console.log(request);
   if (search) {
     try {
       const { data } = await instance.get(
-        `/notices/${category}?query=${search}`
+        `/notices?category=${category}&search=${search}`
       );
+      console.log(`data for category "${category}", search "${search}"`, data);
       return data;
     } catch (error) {
       throw error;
     }
   }
+
   try {
-    const { data } = await instance.get(`/notices/${category}`);
+    const { data } = await instance.get(`/notices?category=${category}`);
+    console.log(`data for category "${category}"`, data);
     return data;
   } catch (error) {
     throw error;
   }
-  // }
-  // try {
-  //   const { data } = await instance.get(`/notices/${category}`, query);
-  //   return data.data.result;
-  // } catch (error) {
-  //   throw error;
-  // }
 }
 
 export async function requestPrivateNotices(request) {
@@ -102,6 +99,7 @@ export async function requestPrivateNotices(request) {
     throw error;
   }
 }
+
 
 export async function removeNoticesById(id) {
   console.log('id', id);
@@ -134,9 +132,11 @@ export async function toggleFavorite(id, token, req) {
 
 //========================== USER  =============================
 
-export async function requestUserData() {
+export async function requestUserData(token) {
+  setToken.set(token);
   try {
     const { data } = await instance.get('/user');
+    console.log('data redux', data);
     return data;
   } catch (error) {
     throw error;
@@ -175,6 +175,8 @@ export async function updatePetsData(petData) {
     throw error;
   }
 }
+
+//========================== USER PETS  =============================
 
 export async function deletePet(_id) {
   try {

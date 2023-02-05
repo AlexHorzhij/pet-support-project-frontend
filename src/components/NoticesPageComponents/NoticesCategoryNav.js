@@ -4,7 +4,10 @@ import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
-import { fetchNoticesByCategory } from 'redux/notices/noticesOperations';
+import {
+  fetchNotices,
+  // fetchPrivateNotices
+} from 'redux/notices/noticesOperations';
 
 
 export default function NoticesCategoryList() {
@@ -12,15 +15,16 @@ export default function NoticesCategoryList() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const params = useParams()
+  const { isLoggedIn } = useSelector(getAuth);
 
   const { categoryName } = params
 
   useEffect(() => {
-    dispatch(fetchNoticesByCategory(categoryName))
-  }, [categoryName, dispatch])
-
-  const { isLoggedIn } = useSelector(getAuth);
-  // const isLoggedIn = true
+    // if (isLoggedIn) {
+      // dispatch(fetchPrivateNotices(categoryName))
+      // return    }
+    dispatch(fetchNotices({categoryName}))
+  }, [categoryName, dispatch, isLoggedIn])
 
   return (
     <Container sx={{ mb: 6 }}>
