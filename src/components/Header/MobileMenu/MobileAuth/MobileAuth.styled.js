@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AuthItem, AuthLink } from 'components/Header/AuthNav/AuthNav.styled';
+import { AuthLink } from 'components/Header/AuthNav/AuthNav.styled';
 import { Box } from '@mui/material';
 export const AuthWrapper = styled.div`
   display: flex;

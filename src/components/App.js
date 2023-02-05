@@ -35,15 +35,14 @@ function App() {
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
             </Route>
-
-            <Route path="news" element={<NewsPage />} />
-            <Route path="friends" element={<OurFriendsPage />} />
-            <Route path="notices/:categoryName" element={<NoticePage />} />
-
+            <Route>
+              <Route path="news" element={<NewsPage />} />
+              <Route path="friends" element={<OurFriendsPage />} />
+              <Route path="notices/:categoryName" element={<NoticePage />} />
+            </Route>
             <Route element={<PrivateRoute />}>
               <Route path="user" element={<UserPage />} />
             </Route>
-
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
