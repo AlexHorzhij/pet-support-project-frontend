@@ -81,24 +81,25 @@ export async function requestNotices(request) {
   }
 }
 
-// export async function requestPrivateNotices(request) {
-//   const { category } = request
-//   if (category) {
-//     try {
-//       const { data } = await instance.get(`user/notices/${category}`)
-//       return data
-//     } catch (error) {
-//       throw error
-//     }
-//   }
+export async function requestPrivateNotices(request) {
+  const { category } = request;
+  if (category) {
+    try {
+      const { data } = await instance.get(`user/notices/${category}`);
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-//   try {
-//     const { data } = await instance.get(`user/notices/`)
-//     return data
-//   } catch (error) {
-//     throw error
-//   }
-// }
+  try {
+    const { data } = await instance.get(`user/notices/`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 export async function removeNoticesById(id) {
   console.log('id', id);
@@ -156,18 +157,23 @@ export async function updateUserData(userData) {
   } catch (error) {
     throw error;
   }
+}
 
-  // const userData = await requestUserData();
-
-  // Object.keys(userData).forEach(item => {
-  //   if (item === data.name) {
-  //     userData[item] = data.value;
-  //   }
-  // });
-
-  // const newUserData = { ...userData };
-
-  // return newUserData;
+export async function updatePetsData(petData) {
+  try {
+    const { data } = await instance.patch(
+      `/user/pets/${petData.petId}`,
+      petData.formData,
+      {
+        headers: {
+          'Content-Type': `multipart/form-data;`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 //========================== USER PETS  =============================

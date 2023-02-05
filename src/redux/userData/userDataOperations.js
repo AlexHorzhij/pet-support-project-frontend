@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { addPet, deletePet, requestUserData, updateUserData } from 'API/api';
+import { addPet, deletePet, requestUserData, updatePetsData, updateUserData } from 'API/api';
 
 export const fetchUserData = createAsyncThunk(
   'userData/fetchUserData',
@@ -56,6 +56,17 @@ export const deletePetFromList = createAsyncThunk(
   async (_id, { rejectWithValue }) => {
     try {
       const updatedPetsData = await deletePet(_id);
+      return updatedPetsData;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
+export const updatePetFromList = createAsyncThunk(
+  'petsData/updatePetFromList',
+  async (petData, { rejectWithValue }) => {
+    try {
+      const updatedPetsData = await updatePetsData(petData);
       return updatedPetsData;
     } catch (error) {
       rejectWithValue(error.message);

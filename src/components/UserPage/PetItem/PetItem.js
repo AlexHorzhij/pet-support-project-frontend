@@ -1,6 +1,6 @@
-import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { deletePetFromList } from 'redux/userData/userDataOperations';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import {
   PetListItem,
   PetImageBox,
@@ -11,18 +11,30 @@ import {
   PetInfoBoxWrapper,
   IconButtonWrapper,
   DaleteIconStyled,
+  IconButtonStyled,
 } from './PetItem.styled';
 import { useSelector } from 'react-redux';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useTheme } from '@mui/material';
-import { isDeletingPet } from 'redux/userData/userDataSelectors';
+import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
+import { useState } from 'react';
+import Modal from 'components/Modal/Modal';
+import ModalAddPetsNew from '../ModalAddpetsNew/RegisterForm';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
+
   const isDeleting = useSelector(isDeletingPet);
+  const isUpdating = useSelector(isUpdatingPet);
+
   const theme = useTheme();
+  const [modalIsShown, setModalIsShown] = useState(false);
+
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
+  };
+  const togleModal = () => {
+    setModalIsShown(prev => !prev);
   };
 
   return (
@@ -46,12 +58,7 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
           </PetInfoTypography>
         </PetInfoBox>
         <IconButtonWrapper>
-          <IconButton
-            onClick={() => handlePetDelete(id)}
-            sx={{
-              backgroundColor: '#FDF7F2',
-            }}
-          >
+          <IconButtonStyled onClick={() => handlePetDelete(id)}>
             {isDeleting === id ? (
               <ThreeCircles
                 height="20"
@@ -63,9 +70,31 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
             ) : (
               <DaleteIconStyled />
             )}
-          </IconButton>
+          </IconButtonStyled>
+          <IconButtonStyled onClick={togleModal}>
+            {isUpdating === id ? (
+              <ThreeCircles
+                height="20"
+                width="20"
+                color={theme.palette.primary.main}
+                visible={true}
+                ariaLabel="three-circles-rotating"
+              />
+            ) : (
+              <EditRoundedIcon />
+            )}
+          </IconButtonStyled>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>
+      {modalIsShown && (
+        <Modal onModalClose={togleModal}>
+          <ModalAddPetsNew
+            onModalClose={togleModal}
+            isUpdateAction={true}
+            petId={id}
+          />
+        </Modal>
+      )}
     </PetListItem>
   );
 }
