@@ -20,7 +20,7 @@ export default function NoticesCardItem({
   // openModal,
   token,
 }) {
-  const [modalIsShown, setModalIsShown] = useState(true);
+  const [modalIsShown, setModalIsShown] = useState(false);
   const {
     _id,
     title,
