@@ -4,7 +4,7 @@ import { AppBar, Container, Box } from '@mui/material';
 export const Header = styled(AppBar)({
   position: 'fixed',
   color: `#111111`,
-  backgroundColor: `inherit`,
+  backgroundColor: `#FDF7F2`,
   boxShadow: 'none',
 });
 

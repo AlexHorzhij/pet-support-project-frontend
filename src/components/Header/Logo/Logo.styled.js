@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const LogoWrapper = styled.div`
-  margin-left: 16px;
+  padding-left: 24px;
   font-weight: 700;
 `;
 export const LogoInfo = styled.p`

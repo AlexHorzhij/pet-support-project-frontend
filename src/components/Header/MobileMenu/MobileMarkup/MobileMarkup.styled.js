@@ -21,11 +21,15 @@ export const MobileMenu = styled.div`
 export const BtnClose = styled.button`
   position: absolute;
   top: 12px;
-  right: 22px;
+  right: 30px;
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
   padding: 0;
   line-height: 0;
+  @media screen and (min-width: 768px) {
+    top: 9px;
+    right: 31px;
+  }
 `;
