@@ -12,14 +12,15 @@ export default function NoticesGallery() {
   const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
+
   const deleteCard = e => {
     dispatch(removeNoticeFromUserById(e.target.id));
     console.log(e.target.id);
   };
 
-  const openModal = e => {
-    console.log(e.target.id);
-  };
+  // const openModal = e => {
+  //   console.log(e.target.id);
+  // };
 
   return (
     <Grid container>
@@ -43,7 +44,7 @@ export default function NoticesGallery() {
                 token={token}
                 data={item}
                 deleteCard={deleteCard}
-                openModal={openModal}
+                // openModal={openModal}
               />
             </Grid>
           );

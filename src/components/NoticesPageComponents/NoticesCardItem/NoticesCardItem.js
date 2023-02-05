@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
 import { CardMedia, CardContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { AddToFavorite } from 'components';
+import { AddToFavorite, Modal, LearnMoreModal } from 'components';
 import distanceBetwenDateAndNowWords from 'services/distanceBetwenDateAndNowWords';
 import {
   Li,
@@ -16,9 +17,10 @@ import nophoto from 'assets/images/nophoto.gif';
 export default function NoticesCardItem({
   data,
   deleteCard,
-  openModal,
+  // openModal,
   token,
 }) {
+  const [modalIsShown, setModalIsShown] = useState(true);
   const {
     _id,
     title,
@@ -30,7 +32,13 @@ export default function NoticesCardItem({
     category,
     favorite,
   } = data;
+  // console.log(data);
   const age = distanceBetwenDateAndNowWords(birthdate);
+
+  const toggleModal = () => {
+    setModalIsShown(prev => !prev);
+  };
+
   return (
     <>
       <NoticeCard variant="notice" sx={{ width: '280px' }}>
@@ -84,7 +92,7 @@ export default function NoticesCardItem({
           </ItemsList>
           <Btn
             id={_id}
-            onClick={openModal}
+            onClick={toggleModal}
             variant="outlined"
             sx={{ width: '100%', color: '#F59256' }}
           >
@@ -103,6 +111,11 @@ export default function NoticesCardItem({
           )}
         </CardContent>
       </NoticeCard>
+      {modalIsShown && (
+        <Modal onModalClose={toggleModal}>
+          <LearnMoreModal onModalClose={toggleModal} data={data} />
+        </Modal>
+      )}
     </>
   );
 }
