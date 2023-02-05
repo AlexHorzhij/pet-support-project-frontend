@@ -22,8 +22,8 @@ export default function NoticesCardItem({
   // openModal,
   token,
 }) {
-  const { user } = useSelector(getUser);
-  console.log('user', user);
+  // const { user } = useSelector(getUser);
+  // console.log('user', user);
 
   const [modalIsShown, setModalIsShown] = useState(false);
   const {
