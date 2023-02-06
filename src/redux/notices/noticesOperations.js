@@ -5,6 +5,7 @@ import {
   removeNoticesById,
   requestFavoriteNotices,
   requestOwnNotices,
+  writeNewNotice
 } from 'API/api';
 
 export const fetchNotices = createAsyncThunk(
@@ -41,6 +42,15 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
+export const addNewNotice = createAsyncThunk('addNotice',
+  async (data, { rejectWithValue }) => {
+    try {
+      await writeNewNotice(data)
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
 
 export const removeNoticeFromUserById = createAsyncThunk(
   'removNotices',
@@ -49,7 +59,7 @@ export const removeNoticeFromUserById = createAsyncThunk(
       const notices = await removeNoticesById(id);
       return notices;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

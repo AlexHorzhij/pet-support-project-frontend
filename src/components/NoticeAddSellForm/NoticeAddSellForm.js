@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/authOperations';
-import { StepOneAddSellNotice } from 'components/NoticeAddSellForm/StepOneAddSellNotice'
-// import StepTwo from './StepTwo';
+import { Step1AddSellNotice } from 'components/NoticeAddSellForm/Step1AddSellNotice'
+import { Step2AddSellNotice } from 'components/NoticeAddSellForm/Step2AddSellNotice'
 
-export const NoticeAddSellForm = (handleClose) => {
+export const NoticeAddSellForm = ({ handleClose }) => {
     const [data, setData] = useState({
         // step-1:
         tittle: '',
@@ -13,9 +13,12 @@ export const NoticeAddSellForm = (handleClose) => {
         dateOfBirth: '',
         breed: '',
         // step-2:
-        city: '',
-        phone: '',
+        sex: '',
+        location: '',
+        price: '',
+        imageUrl: '',
     });
+
     const [currentStep, setCurrentStep] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -26,11 +29,14 @@ export const NoticeAddSellForm = (handleClose) => {
         if (final) {
             dispatch(
                 registerUser({
-                    email: newData.email,
-                    password: newData.password,
-                    name: newData.name,
-                    city: newData.city,
-                    phone: newData.phone,
+                    tittle: '',
+                    namePet: '',
+                    dateOfBirth: '',
+                    breed: '',
+                    sex: '',
+                    location: '',
+                    price: '',
+                    imageUrl: '',
                 })
             );
 
@@ -48,9 +54,11 @@ export const NoticeAddSellForm = (handleClose) => {
     };
 
     const steps = [
-        <StepOneAddSellNotice next={handleNextStep} data={data}
-         handleClose={handleClose} />,
-        <div next={handleNextStep} prev={handlePrevStep} data={data} />,
+        <Step1AddSellNotice next={handleNextStep} data={data}
+            handleClose={handleClose} />,
+
+        <Step2AddSellNotice
+            next={handleNextStep} prev={handlePrevStep} data={data} />,
     ];
 
     return <>{steps[currentStep]}</>;

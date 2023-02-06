@@ -5,16 +5,16 @@ import { Button, Typography } from '@mui/material';
 import { DialogContent, Dialog, DialogContentText, DialogTitle, DialogActions } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { getAuth } from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { getAuth } from 'redux/auth/authSelectors';
 import { NoticeAddSellForm } from 'components/NoticeAddSellForm/NoticeAddSellForm';
 
 export default function AddNoticeBtn() {
-  const [openNotification, setOpenNotification] = React.useState(false);
+  const [openNotification, setOpenNotification] = React.useState(true);
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
   const navigate = useNavigate()
-  // const { isLoggedIn } = useSelector(getAuth);
-  const isLoggedIn = true
+  const { isLoggedIn } = useSelector(getAuth);
+  // const isLoggedIn = true
 
   const handleAddNotice = () => {
     if (isLoggedIn) {
@@ -49,19 +49,21 @@ export default function AddNoticeBtn() {
         />
       </Button>
 
-      
+
       <Dialog
         sx={{ backdropFilter: "blur(5px)" }}
-        maxWidth="md"
+        maxWidth="sm"
         open={openNotification} onClose={handleCloseNotification}>
-        <DialogTitle>You are not authorized</DialogTitle>
+        <DialogTitle
+        sx={{textAlign: 'center'}}
+        >You are not authorized</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lorem ipsuur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem  ipsum color sit amet, consectetur  Lorem  ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur.
+            If you'd like to add an ad about your pet you should sign up! Press the button below to register!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => navigate('/register')}>Sign Up</Button>
+          <Button sx={{mx: 'auto'}} onClick={() => navigate('/register')} variant='contained'>Sign Up</Button>
         </DialogActions>
       </Dialog>
 
@@ -69,35 +71,14 @@ export default function AddNoticeBtn() {
       <Dialog
         sx={{ backdropFilter: "blur(5px)" }}
         maxWidth='modal'
-        open={openAddPetForm} onClose={handleCloseAddNotice}
+        open={openAddPetForm}
+        onClose={handleCloseAddNotice}
       >
-        <DialogContent sx={{px: 10, py: 5, height: "950px"}}
+        <DialogContent sx={{ px: 10, py: 5, height: "950px", width: '608px' }}
         >
           <DialogTitle
-            sx={{ fontWeight: 600, fontSize: 36, lineHeight: 1.35, textAlign: 'center', }}
+            sx={{ fontWeight: 600, fontSize: 36, lineHeight: 1.35, textAlign: 'center' }}
           >Add pet</DialogTitle>
-          <DialogContentText sx={{ color: 'text.primary', fontSize: 20, fontWeight: 500, lineHeight: 1.37, textAlign: 'center', pb: 2}}
-          >Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </DialogContentText>
-          <DialogActions sx={{justifyContent: 'center', mb: 2}}>
-            <Button
-              variant="contained"
-              sx={{ textTransform: 'lowercase' }}
-            >
-              sell
-            </Button>
-            <Button
-              variant="outlined"
-              sx={{ textTransform: 'lowercase' }}
-            >
-              lost/found
-            </Button>
-            <Button
-              variant="outlined"
-              sx={{ textTransform: 'lowercase' }}
-            >
-              in good hands
-            </Button>
-          </DialogActions>
           <NoticeAddSellForm
             handleClose={handleCloseAddNotice} />
         </DialogContent>
