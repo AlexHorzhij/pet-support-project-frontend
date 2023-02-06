@@ -27,7 +27,7 @@ const schema = yup.object().shape({
   breed: yup.string().required(),
 });
 
-const StepOne = ({ next, data, isUpdateAction }) => {
+const StepOne = ({ next, data, isUpdateAction, onModalClose }) => {
   console.log('isUpdateAction: ', isUpdateAction);
   const handleSubmit = async values => {
     next(values);
@@ -75,7 +75,9 @@ const StepOne = ({ next, data, isUpdateAction }) => {
           </ErrorMessage>
         </ModalGrid>
         <StepperBox>
-          <FormButton variant="outlined">Cancel</FormButton>
+          <FormButton onClick={onModalClose} variant="outlined">
+            Cancel
+          </FormButton>
           <FormButton variant="contained" type="submit">
             Next
           </FormButton>

@@ -25,7 +25,11 @@ function UserData() {
   const isBeingUpdated = useSelector(isLoadingUpdate);
   const theme = useTheme();
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
-  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({});
+  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+    accept: {
+      'image/jpeg': ['.jpg', '.jpeg', '.png'],
+    },
+  });
 
   // ========================= regex Patterns ==========================
   const datePattern = /^[0-3][0-9].[0-3][0-9].(?:[0-9][0-9])?[0-9][0-9]$/;
