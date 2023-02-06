@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { registerUser } from 'redux/auth/authOperations';
 import { Step1AddSellNotice } from 'components/NoticeAddSellForm/Step1AddSellNotice'
 import { Step2AddSellNotice } from 'components/NoticeAddSellForm/Step2AddSellNotice'
+import { addNewNotice } from 'redux/notices/noticesOperations';
+import { formDataEntries } from 'services/formDataEntries';
 
 export const NoticeAddSellForm = ({ handleClose }) => {
     const [data, setData] = useState({
+        status: 'sell',
         // step-1:
         tittle: '',
         namePet: '',
@@ -16,31 +17,36 @@ export const NoticeAddSellForm = ({ handleClose }) => {
         sex: '',
         location: '',
         price: '',
-        imageUrl: '',
+        avatarUrl: '',
     });
 
     const [currentStep, setCurrentStep] = useState(0);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleNextStep = (newData, final = false) => {
         setData(prev => ({ ...prev, ...newData }));
+        newData.status = 'sell'
 
         if (final) {
+            const formData = new FormData();
+            for (let value in newData) {
+                formData.append(value, newData[value]);
+
+                if (value === "tittle") {
+                    console.log('value: ', value);
+                    formData.append("title", newData[value])
+                }
+            }
+            // formData.append("status", 'sell')
+
+
+            formDataEntries(formData)
+
             dispatch(
-                registerUser({
-                    tittle: '',
-                    namePet: '',
-                    dateOfBirth: '',
-                    breed: '',
-                    sex: '',
-                    location: '',
-                    price: '',
-                    imageUrl: '',
-                })
+                addNewNotice(formData)
             );
 
-            navigate('/login');
+            handleClose()
 
             return;
         }

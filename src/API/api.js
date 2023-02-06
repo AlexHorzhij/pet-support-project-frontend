@@ -81,7 +81,7 @@ export async function requestPublicNotices(request) {
 export async function requestFavoriteNotices(search) {
   if (search) {
     try {
-      const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
+      const { data } = await instance.get(`notices/user/favorite`, { params: { query: `search` } });
       return data;
     } catch (error) {
       throw error;
@@ -89,7 +89,7 @@ export async function requestFavoriteNotices(search) {
   }
 
   try {
-    const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
+    const { data } = await instance.get(`notices/user/favorite`);
     return data;
   } catch (error) {
     throw error;
@@ -115,8 +115,10 @@ export async function requestOwnNotices(search) {
   }
 }
 
-export async function writeNewNotice(data) {
-  const { data } = await instance.post(`user/notices`, data)
+export async function writeNewNotice(req) {
+  console.log(req)
+  await instance.post(`notices/user`, req)
+  return
 }
 
 export async function removeNoticesById(id) {

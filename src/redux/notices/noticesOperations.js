@@ -44,8 +44,10 @@ export const fetchNotices = createAsyncThunk(
 
 export const addNewNotice = createAsyncThunk('addNotice',
   async (data, { rejectWithValue }) => {
+    console.log('dataOperation: ', data);
     try {
-      await writeNewNotice(data)
+      const res = await writeNewNotice(data)
+      console.log('res', res)
     } catch (error) {
       return rejectWithValue(error.message)
     }

@@ -28,17 +28,16 @@ const schema = yup.object().shape({
         .required(),
 });
 
-export const Step2AddSellNotice = ({ next, prev, data, handleClose }) => {
+export const Step2AddSellNotice = ({ next, prev, data }) => {
     const [images, setImages] = useState([]);
 
-    const handleSubmit = (values, { resetForm }) => {
-        next(values, true);
-        resetForm();
-        handleClose()
+    const handleSubmit = async (values, { resetForm }) => {
+        await next(values, true);
+        resetForm()
     };
 
     const fileHandler = (acceptedFiles, setFieldValue) => {
-        setFieldValue('imageUrl', acceptedFiles[0]);
+        setFieldValue('avatarUrl', acceptedFiles[0]);
         acceptedFiles.map(file => {
             const reader = new FileReader();
             reader.onload = function (e) {
@@ -62,12 +61,12 @@ export const Step2AddSellNotice = ({ next, prev, data, handleClose }) => {
                     <div role="group" aria-labelledby="my-radio-group">
                         <label>
                             <Field type="radio" name="sex"
-                             value="male" />
+                                value="male" />
                             Male
                         </label>
                         <label>
-                            <Field type="radio" name="sex" 
-                            value="female" />
+                            <Field type="radio" name="sex"
+                                value="female" />
                             Female
                         </label>
                     </div>
@@ -100,7 +99,7 @@ export const Step2AddSellNotice = ({ next, prev, data, handleClose }) => {
                         {({ getRootProps, getInputProps }) => (
                             <DropZoneBox {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                {!values.imageUrl ? (
+                                {!values.avatarUrl ? (
                                     <Box>
                                         <img src={addIconSVG} alt="add pet avatar" />
                                     </Box>
