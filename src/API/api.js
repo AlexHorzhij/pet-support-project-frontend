@@ -85,7 +85,7 @@ export async function requestPrivateNotices(request) {
   const { category } = request;
   if (category) {
     try {
-      const { data } = await instance.get(`user/notices/${category}`);
+      const { data } = await instance.get(`notices/user${category}`);
       return data;
     } catch (error) {
       throw error;
@@ -99,7 +99,6 @@ export async function requestPrivateNotices(request) {
     throw error;
   }
 }
-
 
 export async function removeNoticesById(id) {
   console.log('id', id);
