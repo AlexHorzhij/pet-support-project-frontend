@@ -8,11 +8,11 @@ import womanImg from '../../assets/backgrounds/woman.png';
 import heartImg from '../../assets/backgrounds/heart.png';
 
 export const AdaptiveTypography = styled(Typography)(({ theme }) => ({
-  width: '280px',
+  maxWidth: '280px',
   fontSize: '32px',
 
   [theme.breakpoints.up('md')]: {
-    width: '588px',
+    maxWidth: '588px',
     fontSize: '68px',
   },
 }));
@@ -40,8 +40,9 @@ export const HomeContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const RelativeContainer = styled(Container)(({ theme }) => ({
+export const RelativeContainer = styled(Container)(() => ({
   position: 'relative',
+  overflow: 'hidden',
 }));
 
 export const AdditionalImage = styled(Box)(({ theme }) => ({
@@ -73,7 +74,7 @@ export const WomanImage = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up('md')]: {
     width: '700px',
-    height: '733px',
+    height: '650px',
   },
 
   [theme.breakpoints.up('lg')]: {

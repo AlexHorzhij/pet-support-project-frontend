@@ -27,7 +27,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-//======================== AUNTIFICATION  ==========================
+//======================== AUTH  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -99,7 +99,6 @@ export async function requestPrivateNotices(request) {
     throw error;
   }
 }
-
 
 export async function removeNoticesById(id) {
   console.log('id', id);

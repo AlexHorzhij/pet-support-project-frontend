@@ -1,3 +1,5 @@
+import CloseIcon from '@mui/icons-material/Close';
+import { Button } from '@mui/material';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 import { register, login, logout, fetchCurrent } from '../../API/api';
@@ -7,9 +9,30 @@ export const registerUser = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await register(data);
-      toast.success(
-        'Successfully registered! You can log in after confirming your email',
-        { duration: 10000 }
+      toast(
+        t => (
+          <div style={{ position: 'relative' }}>
+            <p>
+              Successfully registered! You can log in after
+              <b>confirming your email</b>. Check your mailbox!
+              <br />
+              <Button
+                style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  right: '-30px',
+                  margin: '0',
+                }}
+                onClick={() => toast.dismiss(t.id)}
+              >
+                <CloseIcon />
+              </Button>
+            </p>
+          </div>
+        ),
+        {
+          duration: 30000,
+        }
       );
       return user;
     } catch ({ response }) {
