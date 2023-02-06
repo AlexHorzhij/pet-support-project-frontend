@@ -19,7 +19,7 @@ export const ModalWrapper = styled.div`
   max-width: calc(100vw - 50px);
   max-height: calc(100vh - 20px);
   border-radius: 30px;
-  overflow: scroll;
+  overflow: auto;
   z-index: 1300;
 `;
 export const ModalButton = styled.button`
