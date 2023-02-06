@@ -108,6 +108,11 @@ export const AddFavouriteButton = styled(Button)(({ theme }) => ({
   position: 'relative',
   fontSize: '16px',
 
+  '&:hover': {
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.primary.main,
+  },
+
   [theme.breakpoints.up('md')]: {
     width: '160px',
     marginRight: '12px',
