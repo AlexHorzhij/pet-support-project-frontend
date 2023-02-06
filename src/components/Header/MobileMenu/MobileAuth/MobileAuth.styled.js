@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AuthItem, AuthLink } from 'components/Header/AuthNav/AuthNav.styled';
+import { AuthLink } from 'components/Header/AuthNav/AuthNav.styled';
 import { Box } from '@mui/material';
 export const AuthWrapper = styled.div`
   display: flex;
@@ -17,11 +17,7 @@ export const MobileAuthNavigation = styled(Box)({
     display: 'none',
   },
 });
-export const MobileAuthItem = styled(AuthItem)({
-  background: '#FFFFFF',
-  border: '2px solid #F59256',
-  borderRadius: '40px',
-});
+
 export const MobileAuthLink = styled(AuthLink)({
   fontSize: '14px',
   lineHeight: '19px',

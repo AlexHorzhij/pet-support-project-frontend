@@ -5,8 +5,9 @@ import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
 import { PrivateRoute, PublicRoute } from '../services/RouteManager';
+import SharedLayout from './SharedLayout/SharedLayout';
 
-const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
+// const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -35,17 +36,12 @@ function App() {
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
             </Route>
-
             <Route path="news" element={<NewsPage />} />
             <Route path="friends" element={<OurFriendsPage />} />
-            <Route
-              path="notices/:categoryName"
-              element={<NoticePage />}
-            ></Route>
+            <Route path="notices/:categoryName" element={<NoticePage />} />
             <Route element={<PrivateRoute />}>
               <Route path="user" element={<UserPage />} />
             </Route>
-
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
