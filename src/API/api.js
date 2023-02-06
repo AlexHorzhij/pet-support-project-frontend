@@ -57,7 +57,7 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(request) {
+export async function requestPublicNotices(request) {
   const { category, search } = request;
   console.log(request);
   if (search) {

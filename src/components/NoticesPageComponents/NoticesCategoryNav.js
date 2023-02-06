@@ -4,10 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
-import {
-  fetchNotices,
-  fetchPrivateNotices
-} from 'redux/notices/noticesOperations';
+import { fetchNotices } from 'redux/notices/noticesOperations';
 
 
 export default function NoticesCategoryList() {
@@ -20,12 +17,8 @@ export default function NoticesCategoryList() {
   const { categoryName } = params
 
   useEffect(() => {
-    if (categoryName === 'favorite' || categoryName === 'own') {
-      dispatch(fetchPrivateNotices({flag: categoryName }))
-      return
-    }
     dispatch(fetchNotices({ categoryName }))
-  }, [categoryName, dispatch, isLoggedIn])
+  }, [categoryName, dispatch])
 
   return (
     <Container sx={{ mb: 6 }}>
