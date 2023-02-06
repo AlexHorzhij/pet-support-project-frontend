@@ -57,14 +57,12 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestNotices(request) {
+export async function requestPublicNotices(request) {
   const { category, search } = request;
   console.log(request);
   if (search) {
     try {
-      const { data } = await instance.get(
-        `/notices?category=${category}&search=${search}`
-      );
+      const { data } = await instance.get(`/notices?category=${category}`, { params: { search: 'sell' } });
       console.log(`data for category "${category}", search "${search}"`, data);
       return data;
     } catch (error) {
@@ -82,10 +80,11 @@ export async function requestNotices(request) {
 }
 
 export async function requestFavoriteNotices(search) {
-
   if (search) {
     try {
-      const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
+      const { data } = await instance.get(`notices/user/favorite`, {
+        params: { query: 'sell' },
+      });
       return data;
     } catch (error) {
       throw error;
@@ -93,7 +92,9 @@ export async function requestFavoriteNotices(search) {
   }
 
   try {
-    const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
+    const { data } = await instance.get(`notices/user/favorite`, {
+      params: { query: 'sell' },
+    });
     return data;
   } catch (error) {
     throw error;
@@ -103,6 +104,7 @@ export async function requestFavoriteNotices(search) {
 export async function requestOwnNotices(search) {
   if (search) {
     try {
+      console.log(search)
       const { data } = await instance.get(`notices/user/`, { params: { query: 'sell' } });
       return data;
     } catch (error) {
@@ -111,13 +113,13 @@ export async function requestOwnNotices(search) {
   }
 
   try {
+    console.log('asdf')
     const { data } = await instance.get(`notices/user`);
     return data;
   } catch (error) {
     throw error;
   }
 }
-
 
 export async function removeNoticesById(id) {
   console.log('id', id);

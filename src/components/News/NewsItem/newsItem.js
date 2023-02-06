@@ -35,12 +35,13 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
       <NewsCard sx={{ height: '100%' }} variant="standart">
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>
+
           <NewsTitle variant="h5" component="div">
             <MultiClamp ellipsis="..." clamp={2}>
               {' '}
               {title}
             </MultiClamp>
-          </NewsTitle>
+           </NewsTitle>
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />
