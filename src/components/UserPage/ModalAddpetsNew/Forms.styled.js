@@ -76,7 +76,7 @@ export const AddPetTitle = styled(Typography)({
 export const ModalCard = styled(Card)(({ theme }) => ({
   width: '608px',
   [theme.breakpoints.down('md')]: {
-    width: '280px',
+    width: '270px',
   },
 }));
 export const ModalCardContent = styled(CardContent)(({ theme }) => ({

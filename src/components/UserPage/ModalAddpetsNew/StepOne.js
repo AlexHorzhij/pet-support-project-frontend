@@ -9,14 +9,26 @@ import {
   ModalGrid,
   ModalTypography,
 } from 'components/UserPage/ModalAddpetsNew/Forms.styled';
-
+import parse from 'date-fns/parse';
 const schema = yup.object().shape({
   name: yup.string().required(),
-  date: yup.string().required(),
+  date: yup
+    .date()
+    .transform(function (value, originalValue) {
+      if (this.isType(value)) {
+        return value;
+      }
+      const result = parse(originalValue, 'dd.MM.yyyy', new Date());
+      return result;
+    })
+    .typeError('please enter a valid date')
+    .required()
+    .min('1969-11-13', 'Date is too early'),
   breed: yup.string().required(),
 });
 
-const StepOne = ({ next, data }) => {
+const StepOne = ({ next, data, isUpdateAction, onModalClose }) => {
+  console.log('isUpdateAction: ', isUpdateAction);
   const handleSubmit = async values => {
     next(values);
   };
@@ -26,6 +38,7 @@ const StepOne = ({ next, data }) => {
       initialValues={data}
       validationSchema={schema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       <Form>
         <ModalGrid>
@@ -43,7 +56,7 @@ const StepOne = ({ next, data }) => {
           <ModalTypography>Date of birth*</ModalTypography>
           <StyledInput
             name="date"
-            placeholder="Type date of birth"
+            placeholder="Type date of birth dd.MM.yyyy"
             disableunderline="true"
           />
           <ErrorMessage component="div" name="date">
@@ -62,7 +75,9 @@ const StepOne = ({ next, data }) => {
           </ErrorMessage>
         </ModalGrid>
         <StepperBox>
-          <FormButton variant="outlined">Cancel</FormButton>
+          <FormButton onClick={onModalClose} variant="outlined">
+            Cancel
+          </FormButton>
           <FormButton variant="contained" type="submit">
             Next
           </FormButton>
