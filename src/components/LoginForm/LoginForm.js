@@ -13,7 +13,7 @@ import {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .min(10)
+    .min(8)
     .max(63)
     .matches(
       /^[^-n]+[a-zA-Z0-9.,!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/,
@@ -41,10 +41,9 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector(getAuth);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = values => {
     const { email, password } = values;
     dispatch(loginUser({ email: email, password: password }));
-    resetForm();
   };
 
   return (

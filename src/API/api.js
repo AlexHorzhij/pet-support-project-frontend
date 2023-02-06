@@ -99,6 +99,7 @@ export async function requestFavoriteNotices(search) {
 export async function requestOwnNotices(search) {
   if (search) {
     try {
+      console.log(search)
       const { data } = await instance.get(`notices/user/`, { params: { query: 'sell' } });
       return data;
     } catch (error) {
@@ -114,9 +115,8 @@ export async function requestOwnNotices(search) {
   }
 }
 
-export async function writeNewNotice(req) {
-  const { data } = await instance.post(`user/notices`, req)
-  return data
+export async function writeNewNotice(data) {
+  const { data } = await instance.post(`user/notices`, data)
 }
 
 export async function removeNoticesById(id) {

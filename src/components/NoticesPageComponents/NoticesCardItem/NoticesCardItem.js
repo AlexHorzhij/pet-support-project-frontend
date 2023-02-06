@@ -16,6 +16,8 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
+const userId = '63dd4ec90739cae4a8edb372';
+
 export default function NoticesCardItem({
   data,
   deleteCard,
@@ -27,6 +29,7 @@ export default function NoticesCardItem({
 
   const [modalIsShown, setModalIsShown] = useState(false);
   const {
+    owner,
     _id,
     title,
     breed,
@@ -43,6 +46,8 @@ export default function NoticesCardItem({
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
+
+  console.log('userId === owner._id', userId === owner._id);
 
   return (
     <>
@@ -74,7 +79,7 @@ export default function NoticesCardItem({
             />
           )}
         </CardMedia>
-        <CardContent style={{ padding: '20px 16px 32px 16px' }}>
+        <CardContent style={{ padding: '20px 16px 0px 16px' }}>
           <Title>{title}</Title>
           <ItemsList>
             <Li>
@@ -104,12 +109,12 @@ export default function NoticesCardItem({
           >
             Learn more
           </Btn>
-          {token && (
+          {userId === owner._id && (
             <Btn
               id={_id}
               onClick={deleteCard}
               variant="outlined"
-              sx={{ width: '100%', color: '#F59256' }}
+              sx={{ width: '100%', color: '#F59256', mb: '12px' }}
               endIcon={<DeleteOutlineIcon />}
             >
               Delete

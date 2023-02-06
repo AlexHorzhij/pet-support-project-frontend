@@ -12,9 +12,12 @@ import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from '../../../services/pagination';
 
+import { useSearchParams } from 'react-router-dom';
+
 export const NewsList = () => {
   const dispatch = useDispatch();
- 
+  const [search] = useSearchParams('search')
+
   useEffect(() => {
     dispatch(fetchNews());
   }, [dispatch]);
@@ -39,8 +42,8 @@ export const NewsList = () => {
     <>
       {error && <p>{error.data}</p>}
       {isLoading ? <Loader /> : ''}
-      {news.length === 0 && !isLoading && <NoNewsItem />}
-      {news && (
+      {news.length === 0 && <NoNewsItem />}
+      {(news || search === '') && (
         <NewsGrid component="ul" container columnSpacing={4} rowSpacing={7}>
           {paginationData.currentData().map(({ _id, title, description, date, url }) => (
             <NewsItem

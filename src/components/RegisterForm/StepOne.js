@@ -10,7 +10,7 @@ import {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .min(10)
+    .min(8)
     .max(63)
     .matches(
       /^[^-n]+[a-zA-Z0-9.,!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/,

@@ -1,8 +1,12 @@
-import React from 'react';
-import { AddToFavorite } from 'components';
+import React, { useState } from 'react';
 import nophoto from 'assets/images/nophoto.gif';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Checkbox } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { Favorite } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
+import { getAuth } from 'redux/auth/authSelectors';
+import { toggleFavorite } from 'API/api';
+import { toast } from 'react-hot-toast';
 import {
   ModalCard,
   ModalCloseButton,
@@ -31,7 +35,21 @@ export default function LearnMoreModal({ onModalClose, data }) {
     sex,
     price,
     title,
+    favorite = false,
   } = data;
+
+  const [checked, setChecked] = useState(favorite);
+  const { token, isLoggedIn } = useSelector(getAuth);
+
+  const onFavoriteClick = () => {
+    if (isLoggedIn) {
+      const req = checked ? 'delete' : 'post';
+      toggleFavorite(_id, token, req);
+      setChecked(prev => !prev);
+    } else {
+      toast.error('To add or remove favorites you have to be LOGGED IN');
+    }
+  };
 
   const Contact = ({ children }) => {
     return (
@@ -96,8 +114,33 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <ContactButton variant="contained">
           <Contact>Contact</Contact>
         </ContactButton>
-        <AddFavouriteButton variant="outlined">
-          Add to{<AddToFavorite id={_id} />}
+        <AddFavouriteButton variant="outlined" onClick={onFavoriteClick}>
+          {checked ? 'Remove from' : 'Add to'}
+          <Checkbox
+            sx={{
+              width: '16px',
+              height: '20px',
+              ml: 1,
+            }}
+            inputProps={{ 'aria-label': 'favorite' }}
+            icon={
+              <Favorite
+                sx={{
+                  strokeWidth: '2',
+                  stroke: '#F59256',
+                  fill: 'white',
+                }}
+              />
+            }
+            checked={checked}
+            checkedIcon={
+              <Favorite
+                sx={{
+                  color: '#F59256',
+                }}
+              />
+            }
+          />
         </AddFavouriteButton>
       </ButtonsWrapper>
     </ModalCard>
