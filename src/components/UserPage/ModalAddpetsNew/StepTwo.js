@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   avatarUrl: yup.mixed().required('File is required'),
 });
 
-const StepTwo = ({ next, prev, data }) => {
+const StepTwo = ({ next, prev, data, isUpdateAction }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -49,6 +49,7 @@ const StepTwo = ({ next, prev, data }) => {
       initialValues={data}
       validationSchema={schema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       {({ values, setFieldValue }) => {
         return (
@@ -58,21 +59,29 @@ const StepTwo = ({ next, prev, data }) => {
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
                 <Dropzone
                   className="dropZone"
-                  acceptedFiles=".jpg,.jpeg,.png"
+                  accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
                   multiple={false}
                   onDrop={acceptedFiles =>
                     fileHandler(acceptedFiles, setFieldValue)
                   }
                 >
                   {({ getRootProps, getInputProps }) => (
-                    <DropZoneBox {...getRootProps()}>
+                    <DropZoneBox
+                      sx={{
+                        backgroundImage: `url(${data.avatarUrl})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                      }}
+                      {...getRootProps()}
+                    >
                       <input {...getInputProps()} />
                       {!values.avatarUrl ? (
                         <Box>
                           <img src={addIconSVG} alt="add pet avatar" />
                         </Box>
                       ) : (
-                        <DropZonePreviewBox>
+                        <DropZonePreviewBox sx={{ backgroundColor: 'blue' }}>
                           {images.length > 0 && (
                             <img
                               style={{ height: '100%', objectFit: 'cover' }}

@@ -25,7 +25,20 @@ function UserData() {
   const isBeingUpdated = useSelector(isLoadingUpdate);
   const theme = useTheme();
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
-  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({});
+  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+    accept: {
+      'image/jpeg': ['.jpg', '.jpeg', '.png'],
+    },
+  });
+
+  // ========================= regex Patterns ==========================
+  const datePattern = /^[0-3][0-9].[0-3][0-9].(?:[0-9][0-9])?[0-9][0-9]$/;
+  const phonePattern =
+    /^(?=(?:\D*\d){10,15}\D*$)\+?[0-9]{1,3}[\s-]?(?:\(0?[0-9]{1,5}\)|[0-9]{1,5})[-\s]?[0-9][\d\s-]{5,7}\s?(?:x[\d-]{0,4})?$/;
+  const locationPattern = /^[A-Z][a-zA-Z\s]+,\s+[A-Z][a-zA-Z\s]*$/;
+  const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/;
+  const namePattern = /[A-Za-z]{6}/;
+  // ========================= regex Patterns ==========================
 
   useEffect(() => {
     if (acceptedFiles.length > 0) {
@@ -88,11 +101,42 @@ function UserData() {
             <WrapperBox>
               {user && (
                 <>
-                  <UserDataItem title={'Name'} value={user.name} />
-                  <UserDataItem title={'Email'} value={user.email} />
-                  <UserDataItem title={'Birthday'} value={user.birthdate} />
-                  <UserDataItem title={'Phone'} value={user.phone} />
-                  <UserDataItem title={'City'} value={user.city} />
+                  <UserDataItem
+                    title={'Name'}
+                    value={user.name}
+                    pattern={namePattern}
+                    textMessage={'Enter valid full name, at least 6 cheracter'}
+                  />
+                  <UserDataItem
+                    title={'Email'}
+                    value={user.email}
+                    pattern={emailPattern}
+                    textMessage={'Enter valid email'}
+                  />
+                  <UserDataItem
+                    title={'Birthday'}
+                    value={user.birthdate}
+                    pattern={datePattern}
+                    textMessage={
+                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
+                    }
+                  />
+                  <UserDataItem
+                    title={'Phone'}
+                    value={user.phone}
+                    pattern={phonePattern}
+                    textMessage={
+                      'Enter valid phone number range 10 to 15 digits'
+                    }
+                  />
+                  <UserDataItem
+                    title={'City'}
+                    value={user.city}
+                    pattern={locationPattern}
+                    textMessage={
+                      'Location name should begin with capital letters,and devided by comma and space'
+                    }
+                  />
                 </>
               )}
             </WrapperBox>

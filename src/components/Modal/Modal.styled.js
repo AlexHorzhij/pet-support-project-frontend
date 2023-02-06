@@ -6,6 +6,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,10 +16,10 @@ export const Overlay = styled.div`
 `;
 export const ModalWrapper = styled.div`
   position: relative;
-  /* max-width: calc(100vw - 750px);
-  max-height: calc(100vh - 100px); */
+  max-width: calc(100vw - 50px);
+  max-height: calc(100vh - 20px);
   border-radius: 30px;
-  overflow: hidden;
+  overflow: scroll;
   z-index: 1300;
 `;
 export const ModalButton = styled.button`
