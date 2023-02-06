@@ -25,6 +25,7 @@
     "react-ellipsis-text": "^1.2.1",
     "react-hot-toast": "^2.4.0",
     "react-loader-spinner": "^5.3.4",
+    "react-multi-clamp": "^2.0.6",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
