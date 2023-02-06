@@ -4,8 +4,9 @@ import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
-import { PrivateRoute, PublicRoute } from '../services/RouteManager';
 import { SharedLayout } from 'components';
+import { PrivateRoute, PublicRoute } from '../services/RouteManager';
+
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
