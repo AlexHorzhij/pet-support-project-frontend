@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {
-  requestNotices,
+  requestPublicNotices,
   removeNoticesById,
   requestFavoriteNotices,
   requestOwnNotices,
@@ -9,26 +9,9 @@ import {
 
 export const fetchNotices = createAsyncThunk(
   'fetchNotices',
-  async (request, { rejectWithValue }) => {
-    try {
-      const notices = await requestNotices({
-        category: request.categoryName,
-        search: request.search || null,
-      });
-      return notices;
-    } catch (error) {
-      rejectWithValue(error.message);
-    }
-  }
-);
+  async ({ categoryName, search }, { rejectWithValue }) => {
 
-export const fetchPrivateNotices = createAsyncThunk(
-  'fetchNotices',
-  async (request, { rejectWithValue }) => {
-
-    const { flag, search } = request
-
-    if (flag === 'favorite') {
+    if (categoryName === 'favorite') {
       try {
         const notices = await requestFavoriteNotices(search);
         return notices;
@@ -37,7 +20,7 @@ export const fetchPrivateNotices = createAsyncThunk(
       }
     }
 
-    if (flag === 'own') {
+    if (categoryName === 'own') {
       try {
         const notices = await requestOwnNotices(search);
         return notices;
@@ -45,8 +28,19 @@ export const fetchPrivateNotices = createAsyncThunk(
         rejectWithValue(error.message);
       }
     }
+
+    try {
+      const notices = await requestPublicNotices({
+        category: categoryName,
+        search: search,
+      });
+      return notices;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
   }
 );
+
 
 export const removeNoticeFromUserById = createAsyncThunk(
   'removNotices',
