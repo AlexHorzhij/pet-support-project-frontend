@@ -4,6 +4,7 @@ import { List, ListItem, ListItemText, Card, Button } from '@mui/material';
 export const NoticeCard = styled(Card)`
   width: 280px;
   margin: 50px 0 0 0;
+  padding-bottom: 0;
 
   @media (min-width: 767.99px) {
     width: 336px;
@@ -41,6 +42,8 @@ export const ItemText = styled(ListItemText)`
 `;
 
 export const Title = styled.h2`
+  display: inline-flex;
+  height: 76px;
   align-self: start;
   font-weight: 700;
   font-size: 28px;

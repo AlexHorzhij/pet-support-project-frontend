@@ -1,18 +1,38 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {
-  requestNotices,
+  requestPublicNotices,
   removeNoticesById,
-  // requestPrivateNotices
+  requestFavoriteNotices,
+  requestOwnNotices,
 } from 'API/api';
 
 export const fetchNotices = createAsyncThunk(
   'fetchNotices',
-  async (request, { rejectWithValue }) => {
+  async ({ categoryName, search }, { rejectWithValue }) => {
+
+    if (categoryName === 'favorite') {
+      try {
+        const notices = await requestFavoriteNotices(search);
+        return notices;
+      } catch (error) {
+        rejectWithValue(error.message);
+      }
+    }
+
+    if (categoryName === 'own') {
+      try {
+        const notices = await requestOwnNotices(search);
+        return notices;
+      } catch (error) {
+        rejectWithValue(error.message);
+      }
+    }
+
     try {
-      const notices = await requestNotices({
-        category: request.categoryName,
-        search: request.search || null,
+      const notices = await requestPublicNotices({
+        category: categoryName,
+        search: search,
       });
       return notices;
     } catch (error) {
@@ -21,20 +41,6 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
-// export const fetchPrivateNotices = createAsyncThunk(
-//   'fetchNotices',
-//   async (request, { rejectWithValue }) => {
-//     try {
-//       const notices = await requestPrivateNotices({
-//         category: request.categoryName,
-//         search: request.filterValue,
-//       });
-//       return notices;
-//     } catch (error) {
-//       rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const removeNoticeFromUserById = createAsyncThunk(
   'removNotices',
