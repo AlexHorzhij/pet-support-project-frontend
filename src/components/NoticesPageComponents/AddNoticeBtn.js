@@ -3,18 +3,18 @@ import React from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Button, Typography } from '@mui/material';
 import { DialogContent, Dialog, DialogContentText, DialogTitle, DialogActions } from '@mui/material';
-import { NoticeAddForm } from 'components'
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getAuth } from 'redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+// import { getAuth } from 'redux/auth/authSelectors';
+import { NoticeAddSellForm } from 'components/NoticeAddSellForm/NoticeAddSellForm';
 
 export default function AddNoticeBtn() {
   const [openNotification, setOpenNotification] = React.useState(false);
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
   const navigate = useNavigate()
-  const { isLoggedIn } = useSelector(getAuth);
-  // const isLoggedIn = true
+  // const { isLoggedIn } = useSelector(getAuth);
+  const isLoggedIn = true
 
   const handleAddNotice = () => {
     if (isLoggedIn) {
@@ -49,12 +49,11 @@ export default function AddNoticeBtn() {
         />
       </Button>
       <Dialog
-        maxWidth="xs"
         sx={{ backdropFilter: "blur(5px)" }}
+        maxWidth="md"
         open={openNotification} onClose={handleCloseNotification}>
         <DialogTitle>You are not authorized</DialogTitle>
-        <DialogContent
-          sx={{ backdropFilter: "blur(5px)", }}>
+        <DialogContent>
           <DialogContentText>
             Lorem ipsuur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem psum dolor sit amet, consectet sectetur Lorem  ipsum color sit amet, consectetur  Lorem  ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur.
           </DialogContentText>
@@ -64,16 +63,18 @@ export default function AddNoticeBtn() {
         </DialogActions>
       </Dialog>
       <Dialog
-        maxWidth="xl"
+        sx={{ backdropFilter: "blur(5px)" }}
+        maxWidth='xl'
         open={openAddPetForm} onClose={handleCloseAddNotice}
       >
-        <NoticeAddForm handleClose={handleCloseAddNotice} />
+        <DialogContent
+        >
+          <NoticeAddSellForm
+            style={{ width: '800px' }}
+            handleClose={handleCloseAddNotice} />
+        </DialogContent>
       </Dialog>
     </div>
 
   )
-}
-
-export {
-  AddNoticeBtn
 }

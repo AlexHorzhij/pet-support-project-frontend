@@ -12,7 +12,7 @@ import {
   CardFooter,
 } from './newsItem.styled';
 import { transformDate } from 'services/transformNewsDate';
-import NanoClamp from 'nanoclamp';
+// import NanoClamp from 'nanoclamp';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
@@ -36,7 +36,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>
           <NewsTitle variant="h5" component="div">
-            <NanoClamp is="p" lines={2} text={title} ellipsis="..." />
+            {/* <NanoClamp is="p" lines={2} text={title} ellipsis="..." /> */}
           </NewsTitle>
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
