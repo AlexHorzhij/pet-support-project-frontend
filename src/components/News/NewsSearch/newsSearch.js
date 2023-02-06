@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { FormSearch } from './newsSearch.styled';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { useDispatch } from 'react-redux';
-import { fetchSearchNews } from 'redux/news/newsOperations';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+
+import { FormSearch } from './newsSearch.styled';
+import { fetchSearchNews } from 'redux/news/newsOperations';
 
 export default function NewsSearch() {
   const dispatch = useDispatch();
@@ -19,6 +21,12 @@ export default function NewsSearch() {
   const handleInputSubmit = event => {
     event.preventDefault();
     console.log(search);
+
+    if (search.trim() === "") {
+      toast.error("Please, enter search value!")
+      return
+    }
+
     dispatch(fetchSearchNews(search));
   };
 
