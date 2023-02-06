@@ -48,7 +48,8 @@ export const NoticeAddSellForm = (handleClose) => {
     };
 
     const steps = [
-        <StepOneAddSellNotice next={handleNextStep} data={data} handleClose={handleClose} />,
+        <StepOneAddSellNotice next={handleNextStep} data={data}
+         handleClose={handleClose} />,
         <div next={handleNextStep} prev={handlePrevStep} data={data} />,
     ];
 

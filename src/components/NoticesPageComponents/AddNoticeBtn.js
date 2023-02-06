@@ -11,7 +11,7 @@ import { NoticeAddSellForm } from 'components/NoticeAddSellForm/NoticeAddSellFor
 
 export default function AddNoticeBtn() {
   const [openNotification, setOpenNotification] = React.useState(false);
-  const [openAddPetForm, setOpenAddPetForm] = React.useState(true);
+  const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
   const navigate = useNavigate()
   // const { isLoggedIn } = useSelector(getAuth);
   const isLoggedIn = true

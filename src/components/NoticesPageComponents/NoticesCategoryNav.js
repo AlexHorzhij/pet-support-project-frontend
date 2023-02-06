@@ -6,7 +6,7 @@ import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
 import {
   fetchNotices,
-  // fetchPrivateNotices
+  fetchPrivateNotices
 } from 'redux/notices/noticesOperations';
 
 
@@ -20,10 +20,11 @@ export default function NoticesCategoryList() {
   const { categoryName } = params
 
   useEffect(() => {
-    // if (isLoggedIn) {
-      // dispatch(fetchPrivateNotices(categoryName))
-      // return    }
-    dispatch(fetchNotices({categoryName}))
+    if (categoryName === 'favorite' || categoryName === 'own') {
+      dispatch(fetchPrivateNotices({flag: categoryName }))
+      return
+    }
+    dispatch(fetchNotices({ categoryName }))
   }, [categoryName, dispatch, isLoggedIn])
 
   return (

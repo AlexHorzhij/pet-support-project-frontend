@@ -50,7 +50,8 @@ export const StepOneAddSellNotice = ({ next, data, handleClose }) => {
                 />
                 <Grid container spacing={4}>
                     <Grid item xs={6}>
-                        <FormButton variant="contained" onChange={handleClose}>
+                        <FormButton variant="contained" 
+                        onClick={handleClose}>
                             Cancel
                         </FormButton>
                     </Grid>
