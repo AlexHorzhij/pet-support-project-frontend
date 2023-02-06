@@ -9,7 +9,7 @@ import {
   ItemTitle,
   ContactLink,
 } from './OurFiendsPage.styled';
-import defaultLogo from 'images/default_logo.png';
+import defaultLogo from 'images/default_logo.webp';
 
 const OurFriendsItem = ({ partner }) => {
   const { title, url, addressUrl, address, imageUrl, phone, email, workDays } =

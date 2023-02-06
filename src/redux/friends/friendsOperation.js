@@ -9,7 +9,7 @@ export const fetchFriends = createAsyncThunk(
       const friends = await getOurFriends();
       return friends;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
