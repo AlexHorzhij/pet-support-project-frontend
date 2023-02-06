@@ -16,7 +16,6 @@ import {
   ModalCardContent,
   AddPetTitle,
   ModalGrid,
-  ModalField,
   SecondStepBox,
   AddPetComment,
   DropZoneBox,
@@ -24,6 +23,7 @@ import {
   ModalMultiLineField,
   ModalCloseButton,
 } from 'components/UserPage/ModalAddsPet/ModalAddsPet.styled';
+
 import { TextField } from 'formik-material-ui';
 import addIconSVG from 'assets/images/myPets/addImage.svg';
 
@@ -53,16 +53,6 @@ export default function NoticeAddForm({ handleClose }) {
     });
   };
 
-  // const targetData = {
-  //   name: '',
-  //   dateOfBirth: '',
-  //   breed: '',
-  //   comment: '',
-  //   picture: '',
-  //   avatarURL: '',
-  //   owner: '1',
-  // }
-
   return (
     <Formik>
       <ModalCard>
@@ -89,39 +79,12 @@ export default function NoticeAddForm({ handleClose }) {
                   <ModalGrid item md={6}>
                     <AddPetComment>Lorem ipsum dolor</AddPetComment>
                     <ModalTypography>Tittle of ad</ModalTypography>
-                    <ModalField
-                      fullWidth
-                      name="name"
-                      component={TextField}
-                      label="Type name"
-                    />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Name pet</ModalTypography>
-                    <ModalField
-                      fullWidth
-                      name="name"
-                      component={TextField}
-                      label="Name of birth"
-                    />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Date of birth</ModalTypography>
-                    <ModalField
-                      fullWidth
-                      name="dateOfBirth"
-                      component={TextField}
-                      label="Type date of birth"
-                    />
                   </ModalGrid>
                   <ModalGrid item md={6}>
-                    <ModalTypography>Breed</ModalTypography>
-                    <ModalField
-                      fullWidth
-                      name="breed"
-                      component={TextField}
-                      label="Type breed"
-                    />
                   </ModalGrid>
                 </Box>
                 <SecondStepBox>
