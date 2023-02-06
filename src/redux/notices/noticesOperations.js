@@ -3,7 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   requestNotices,
   removeNoticesById,
-  // requestPrivateNotices
+  requestFavoriteNotices,
+  requestOwnNotices,
 } from 'API/api';
 
 export const fetchNotices = createAsyncThunk(
@@ -21,20 +22,31 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
-// export const fetchPrivateNotices = createAsyncThunk(
-//   'fetchNotices',
-//   async (request, { rejectWithValue }) => {
-//     try {
-//       const notices = await requestPrivateNotices({
-//         category: request.categoryName,
-//         search: request.filterValue,
-//       });
-//       return notices;
-//     } catch (error) {
-//       rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const fetchPrivateNotices = createAsyncThunk(
+  'fetchNotices',
+  async (request, { rejectWithValue }) => {
+
+    const { flag, search } = request
+
+    if (flag === 'favorite') {
+      try {
+        const notices = await requestFavoriteNotices(search);
+        return notices;
+      } catch (error) {
+        rejectWithValue(error.message);
+      }
+    }
+
+    if (flag === 'own') {
+      try {
+        const notices = await requestOwnNotices(search);
+        return notices;
+      } catch (error) {
+        rejectWithValue(error.message);
+      }
+    }
+  }
+);
 
 export const removeNoticeFromUserById = createAsyncThunk(
   'removNotices',

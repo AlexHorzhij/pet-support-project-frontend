@@ -65,6 +65,7 @@ export default function NoticesCardItem({
           <CategoryLable>{category}</CategoryLable>
           {token && (
             <AddToFavorite
+              bg={'rgba(255, 255, 255, 0.6)'}
               id={_id}
               favorite={favorite}
               right="50px"

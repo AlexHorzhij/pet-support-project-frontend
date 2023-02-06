@@ -81,11 +81,11 @@ export async function requestNotices(request) {
   }
 }
 
-export async function requestPrivateNotices(request) {
-  const { category } = request;
-  if (category) {
+export async function requestFavoriteNotices(search) {
+
+  if (search) {
     try {
-      const { data } = await instance.get(`user/notices/${category}`);
+      const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
       return data;
     } catch (error) {
       throw error;
@@ -93,7 +93,25 @@ export async function requestPrivateNotices(request) {
   }
 
   try {
-    const { data } = await instance.get(`user/notices/`);
+    const { data } = await instance.get(`notices/user/favorite`, { params: { query: 'sell' } });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function requestOwnNotices(search) {
+  if (search) {
+    try {
+      const { data } = await instance.get(`notices/user/`, { params: { query: 'sell' } });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  try {
+    const { data } = await instance.get(`notices/user`);
     return data;
   } catch (error) {
     throw error;
