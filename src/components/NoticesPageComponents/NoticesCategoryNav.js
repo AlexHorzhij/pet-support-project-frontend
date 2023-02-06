@@ -36,7 +36,6 @@ export default function NoticesCategoryList() {
         sell
       </Button>
       <Button
-      onFocus='true'
         variant="outlined"
         sx={{ textTransform: 'lowercase' }}
         onClick={() => navigate('/notices/lost-found')}

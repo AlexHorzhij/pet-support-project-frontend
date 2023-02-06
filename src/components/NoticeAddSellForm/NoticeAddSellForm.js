@@ -5,7 +5,7 @@ import { registerUser } from 'redux/auth/authOperations';
 import { StepOneAddSellNotice } from 'components/NoticeAddSellForm/StepOneAddSellNotice'
 // import StepTwo from './StepTwo';
 
-export const NoticeAddSellForm = () => {
+export const NoticeAddSellForm = (handleClose) => {
     const [data, setData] = useState({
         // step-1:
         tittle: '',
@@ -48,7 +48,7 @@ export const NoticeAddSellForm = () => {
     };
 
     const steps = [
-        <StepOneAddSellNotice next={handleNextStep} data={data} />,
+        <StepOneAddSellNotice next={handleNextStep} data={data} handleClose={handleClose} />,
         <div next={handleNextStep} prev={handlePrevStep} data={data} />,
     ];
 

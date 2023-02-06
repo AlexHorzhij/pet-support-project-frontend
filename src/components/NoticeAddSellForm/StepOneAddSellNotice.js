@@ -6,7 +6,7 @@ import {
     ErrorText,
     FormButton,
 } from 'components/RegisterForm/Forms.styled';
-import { Typography } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 
 const schema = yup.object().shape({
     tittle: yup
@@ -16,7 +16,7 @@ const schema = yup.object().shape({
         .required(),
 });
 
-export const StepOneAddSellNotice = ({ next, data }) => {
+export const StepOneAddSellNotice = ({ next, data, handleClose }) => {
     const handleSubmit = values => {
         next(values);
     };
@@ -28,31 +28,38 @@ export const StepOneAddSellNotice = ({ next, data }) => {
             onSubmit={handleSubmit}
         >
             <Form>
-                <Typography>Lorem ips lm ipsum dolor</Typography>
-                <Typography>Tittle of ad *</Typography>
-                <StyledInput
+                <Typography variant='h4'>Tittle of ad *</Typography>
+                <StyledInput sx={{ mt: 2, mb: 4 }}
                     name="tittle"
                     disableunderline="true"
                 />
                 <ErrorMessage component="div" name="tittle">
                     {msg => <ErrorText>*{msg}</ErrorText>}
                 </ErrorMessage>
-                <Typography>Name pet</Typography>
-                <StyledInput
-                    sx={{width: '608px'}}
+                <Typography variant='h4'>Name pet</Typography>
+                <StyledInput sx={{ mt: 2, mb: 4 }}
                     name="namePet"
                 />
-                <Typography>Date of birth</Typography>
-                <StyledInput
+                <Typography variant='h4'>Date of birth</Typography>
+                <StyledInput sx={{ mt: 2, mb: 4 }}
                     name="dateOfBirth"
                 />
-                <Typography>Breed</Typography>
-                <StyledInput
+                <Typography variant='h4'>Breed</Typography>
+                <StyledInput sx={{ mt: 2, mb: 4 }}
                     name="breed"
                 />
-                <FormButton variant="contained" type="submit">
-                    Next
-                </FormButton>
+                <Grid container spacing={4}>
+                    <Grid item xs={6}>
+                        <FormButton variant="contained" onChange={handleClose}>
+                            Cancel
+                        </FormButton>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <FormButton variant="contained" type="submit">
+                            Next
+                        </FormButton>
+                    </Grid>
+                </Grid>
             </Form>
         </Formik>
     );

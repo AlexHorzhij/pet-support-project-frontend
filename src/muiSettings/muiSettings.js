@@ -57,6 +57,7 @@ export const ThemeOptions = {
     },
     h4: {
       fontSize: 24,
+      fontWeight: 500,
       lineHeight: 1.35,
     },
     h5: {
@@ -154,7 +155,7 @@ export const ThemeOptions = {
       md: 767.98,
       lg: 1279.98,
       xl: 1535.98,
-
+      modal: 608,
     },
   },
 };
