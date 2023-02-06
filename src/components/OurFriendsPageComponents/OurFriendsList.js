@@ -7,14 +7,19 @@ import { useSelector } from 'react-redux';
 const OurFriendsList = () => {
   const { friends, error, isLoading } = useSelector(getFriends);
 
-  if (isLoading) {
-    return <Loader />;
+  if (!!error) {
+    return (
+      <>
+        {isLoading && <Loader />}
+        <p>{error}</p>
+      </>
+    );
   }
 
   return (
     <>
-      {error && <p>{error.data}</p>}
-      {friends.length === 0 ? (
+      {isLoading && <Loader />}
+      {friends.length === 0 && !isLoading ? (
         <p>We have not any friends on this topic</p>
       ) : (
         <ListGrid container component="ul">
