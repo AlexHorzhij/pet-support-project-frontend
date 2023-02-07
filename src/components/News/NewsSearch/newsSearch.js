@@ -9,25 +9,31 @@ import { toast } from 'react-hot-toast';
 import { FormSearch } from './newsSearch.styled';
 import { fetchSearchNews } from 'redux/news/newsOperations';
 
+
 export default function NewsSearch() {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const search = !searchParams.get('search') ? '' : searchParams.get('search');
+  const [searchParams, setSearchParams] = useSearchParams({});
+
+  const searchValue = searchParams.get('search')
+
 
   const handleInputChange = event => {
-    setSearchParams({ search: event.currentTarget.value });
-  };
+
+    setSearchParams( {'search':event.currentTarget.value});
+    };
 
   const handleInputSubmit = event => {
     event.preventDefault();
-    console.log(search);
 
-    if (search.trim() === "") {
+    if (searchValue?.trim() === "" || !searchValue) {
+
+  
       toast.error("Please, enter search value!")
       return
     }
 
-    dispatch(fetchSearchNews(search));
+    dispatch(fetchSearchNews(searchValue));
+
   };
 
   return (
@@ -42,9 +48,11 @@ export default function NewsSearch() {
       onSubmit={handleInputSubmit}
     >
       <InputBase
+        type='text'
         sx={{ ml: 1, flex: 1, pl: 1 }}
         placeholder="Search news"
         inputProps={{ 'aria-label': 'search' }}
+        defaultValue = {searchValue}
         onChange={handleInputChange}
       />
       <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">

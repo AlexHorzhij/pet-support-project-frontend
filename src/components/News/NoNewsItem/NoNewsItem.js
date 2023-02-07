@@ -2,14 +2,15 @@ import {
   Background,
   ContentWrapper,
   Text,
-  NewsTextFound,
+  // NewsTextFound,
 } from './NoNewsItem.styled';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const NoNewsItem = () => {
-  const [searchParams] = useSearchParams();
 
-  const topic = searchParams.get('search');
+
+
+
 
   return (
     // <Background>
@@ -28,10 +29,14 @@ export const NoNewsItem = () => {
           SORRY!
         </Text>
         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
-          But we don't have news about
-          <NewsTextFound component="div">"{topic}"</NewsTextFound>
+          But we don't have news for this topic
+          {/* <NewsTextFound component="div">"{search}"</NewsTextFound> */}
         </Text>
+        <NavLink to='/news'>News</NavLink>
+        <NavLink to='/notices/sell'>Find pet</NavLink>
+        <NavLink to='/friends'>Our friends</NavLink>
       </ContentWrapper>
+
     </Background>
   );
 };
