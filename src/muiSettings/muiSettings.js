@@ -94,8 +94,21 @@ export const ThemeOptions = {
   shape: {
     borderRadius: 40,
     borderRadius20: 20,
+    borderRadius8: 8,
   },
   components: {
+    // MuiPaper: {
+    //   variants: [
+    //     {
+    //       props: { variant: 'elevation' },
+    //       style: {
+    //         borderRadius: '8px',
+    //         border: '2px '
+    //       }
+    //     }
+    //   ]
+    // },
+
     MuiCard: {
       variants: [
         {

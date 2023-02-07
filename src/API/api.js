@@ -27,7 +27,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-//======================== AUTH  ==========================
+//======================== AUNTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -62,10 +62,7 @@ export async function requestPublicNotices(request) {
   console.log(request);
   if (search) {
     try {
-      const { data } = await instance.get(`/notices?category=${category}`, {
-        params: { search: 'sell' },
-      });
-      console.log(`data for category "${category}", search "${search}"`, data);
+      const { data } = await instance.get(`/notices?category=${category}`, { params: { search: 'sell' } });
       return data;
     } catch (error) {
       throw error;
@@ -84,9 +81,7 @@ export async function requestPublicNotices(request) {
 export async function requestFavoriteNotices(search) {
   if (search) {
     try {
-      const { data } = await instance.get(`notices/user/favorite`, {
-        params: { query: 'sell' },
-      });
+      const { data } = await instance.get(`notices/user/favorite`, { params: { query: `search` } });
       return data;
     } catch (error) {
       throw error;
@@ -94,9 +89,7 @@ export async function requestFavoriteNotices(search) {
   }
 
   try {
-    const { data } = await instance.get(`notices/user/favorite`, {
-      params: { query: 'sell' },
-    });
+    const { data } = await instance.get(`notices/user/favorite`);
     return data;
   } catch (error) {
     throw error;
@@ -106,10 +99,8 @@ export async function requestFavoriteNotices(search) {
 export async function requestOwnNotices(search) {
   if (search) {
     try {
-      console.log(search);
-      const { data } = await instance.get(`notices/user/`, {
-        params: { query: 'sell' },
-      });
+      console.log(search)
+      const { data } = await instance.get(`notices/user/`, { params: { query: 'sell' } });
       return data;
     } catch (error) {
       throw error;
@@ -117,12 +108,17 @@ export async function requestOwnNotices(search) {
   }
 
   try {
-    console.log('asdf');
     const { data } = await instance.get(`notices/user`);
     return data;
   } catch (error) {
     throw error;
   }
+}
+
+export async function writeNewNotice(req) {
+  console.log(req)
+  await instance.post(`notices/user`, req)
+  return
 }
 
 export async function removeNoticesById(id) {

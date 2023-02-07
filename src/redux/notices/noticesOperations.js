@@ -5,6 +5,7 @@ import {
   removeNoticesById,
   requestFavoriteNotices,
   requestOwnNotices,
+  writeNewNotice
 } from 'API/api';
 
 export const fetchNotices = createAsyncThunk(
@@ -32,7 +33,7 @@ export const fetchNotices = createAsyncThunk(
     try {
       const notices = await requestPublicNotices({
         category: categoryName,
-        search: search,
+        search: search || null,
       });
       return notices;
     } catch (error) {
@@ -41,6 +42,17 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
+export const addNewNotice = createAsyncThunk('addNotice',
+  async (data, { rejectWithValue }) => {
+    console.log('dataOperation: ', data);
+    try {
+      const res = await writeNewNotice(data)
+      console.log('res', res)
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
 
 export const removeNoticeFromUserById = createAsyncThunk(
   'removNotices',
@@ -49,7 +61,7 @@ export const removeNoticeFromUserById = createAsyncThunk(
       const notices = await removeNoticesById(id);
       return notices;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

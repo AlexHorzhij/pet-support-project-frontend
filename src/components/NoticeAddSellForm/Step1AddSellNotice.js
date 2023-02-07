@@ -7,16 +7,17 @@ import {
     FormButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Typography, Grid } from '@mui/material';
+import { Button, DialogContentText, DialogActions } from '@mui/material';
 
 const schema = yup.object().shape({
     tittle: yup
         .string()
-        .min(3)
+        .min(2)
         .max(40)
         .required(),
 });
 
-export const StepOneAddSellNotice = ({ next, data, handleClose }) => {
+export const Step1AddSellNotice = ({ next, data, handleClose }) => {
     const handleSubmit = values => {
         next(values);
     };
@@ -28,6 +29,29 @@ export const StepOneAddSellNotice = ({ next, data, handleClose }) => {
             onSubmit={handleSubmit}
         >
             <Form>
+                <DialogContentText sx={{ color: 'text.primary', fontSize: 20, fontWeight: 500, lineHeight: 1.37, textAlign: 'center', pb: 2 }}
+                >Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur </DialogContentText>
+                <DialogActions sx={{ justifyContent: 'center', mb: 2 }}>
+                    <Button
+                        variant="contained"
+                        sx={{ textTransform: 'lowercase' }}
+                    >
+                        sell
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        sx={{ textTransform: 'lowercase' }}
+                    >
+                        lost/found
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        sx={{ textTransform: 'lowercase' }}
+                    >
+                        in good hands
+                    </Button>
+                </DialogActions>
+
                 <Typography variant='h4'>Tittle of ad *</Typography>
                 <StyledInput sx={{ mt: 2, mb: 4 }}
                     name="tittle"
@@ -50,8 +74,9 @@ export const StepOneAddSellNotice = ({ next, data, handleClose }) => {
                 />
                 <Grid container spacing={4}>
                     <Grid item xs={6}>
-                        <FormButton variant="contained" 
-                        onClick={handleClose}>
+                        <FormButton variant="contained"
+                            onClick={handleClose}
+                        >
                             Cancel
                         </FormButton>
                     </Grid>
