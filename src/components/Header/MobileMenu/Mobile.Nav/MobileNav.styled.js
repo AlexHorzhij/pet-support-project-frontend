@@ -5,6 +5,7 @@ export const MobileNavigation = styled(Navigation)({
   '@media screen and (max-width: 1279px)': {
     display: 'flex',
     flexDirection: 'column',
+    height: '100vw',
   },
   '@media screen and (min-width: 768px) and (max-width: 1279px)': {
     marginTop: '88px',
