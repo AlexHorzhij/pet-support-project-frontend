@@ -7,7 +7,10 @@ import { Container, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { fetchNotices } from 'redux/notices/noticesOperations';
+import {
+  fetchNotices,
+  fetchAuthNotices,
+} from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
 import { getAuth } from 'redux/auth/authSelectors';
 
@@ -19,10 +22,14 @@ export default function NoticesFilter() {
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
-  console.log('token filter', token);
+  console.log('categoryName', categoryName);
   const handleFilter = e => {
     e.preventDefault();
-    dispatch(fetchNotices({ categoryName, search }, token));
+    if (token) {
+      dispatch(fetchAuthNotices({ token, categoryName, search }));
+    } else {
+      dispatch(fetchNotices({ categoryName, search }));
+    }
   };
 
   return (
