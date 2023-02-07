@@ -93,7 +93,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
 
           <Typography variant="h4">Load the pet’s image:</Typography>
           <Dropzone
-            acceptedFiles=".jpg,.jpeg,.png"
+            accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
             multiple={false}
             onDrop={acceptedFiles => fileHandler(acceptedFiles, setFieldValue)}
           >
