@@ -2,28 +2,14 @@ import {
   Background,
   ContentWrapper,
   Text,
-  // NewsTextFound,
+  NewsTextFound,
 } from './NoNewsItem.styled';
 import { NavLink } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
 
-export const NoNewsItem = () => {
-
-
-
-
+export const NoNewsItem = ({value}) => {
 
   return (
-    // <Background>
-    //     <ContentWrapper>
-    //         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
-    //             SORRY!
-    //         </Text>
-    //          <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
-    //             But we don't have news about {topic}
-    //         </Text>
-    //     </ContentWrapper>
-    // </Background>
     <Background>
       <ContentWrapper>
         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
@@ -31,7 +17,7 @@ export const NoNewsItem = () => {
         </Text>
         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
           But we don't have news for this topic
-          {/* <NewsTextFound component="div">"{search}"</NewsTextFound> */}
+          <NewsTextFound component="div">"{value}"</NewsTextFound>
         </Text>
         <Box
         sx={{textAlign: 'center'}}>
