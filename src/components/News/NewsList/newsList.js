@@ -12,8 +12,6 @@ import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from '../../../services/pagination';
 
-// import { useSearchParams } from 'react-router-dom';
-
 export const NewsList = () => {
   const dispatch = useDispatch();
 
