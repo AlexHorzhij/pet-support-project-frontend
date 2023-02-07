@@ -7,7 +7,9 @@ import {
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Typography, Grid, Box } from '@mui/material';
-
+import { StyledInputChechBox, StyledLabel } from './NoticeAddForm.styled';
+import MaleIcon from '../../assets/images/addNoticeSellIcons/male.svg';
+import FemaleIcon from '../../assets/images/addNoticeSellIcons/female.svg';
 import Dropzone from 'react-dropzone';
 import {
   DropZoneBox,
@@ -64,15 +66,29 @@ export const Step2AddNotice = ({ next, prev, data }) => {
         <Form>
           <Typography variant="h4">Sex *</Typography>
 
-          <div role="group" aria-labelledby="my-radio-group">
-            <label>
-              <Field type="radio" name="sex" value="male" />
+          <div
+            style={{ display: 'flex' }}
+            role="group"
+            aria-labelledby="my-radio-group"
+          >
+            <StyledLabel>
+              <StyledInputChechBox
+                style={{ backgroundImage: `url(${MaleIcon})` }}
+                type="radio"
+                name="sex"
+                value="male"
+              />
               Male
-            </label>
-            <label>
-              <Field type="radio" name="sex" value="female" />
+            </StyledLabel>
+            <StyledLabel>
+              <StyledInputChechBox
+                style={{ backgroundImage: `url(${FemaleIcon})` }}
+                type="radio"
+                name="sex"
+                value="female"
+              />
               Female
-            </label>
+            </StyledLabel>
           </div>
 
           <Typography variant="h4">Location *</Typography>
@@ -101,6 +117,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
 
           <Typography variant="h4">Load the pet’s image:</Typography>
           <Dropzone
+            sx={{ width: '100%' }}
             accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
             multiple={false}
             onDrop={acceptedFiles => fileHandler(acceptedFiles, setFieldValue)}

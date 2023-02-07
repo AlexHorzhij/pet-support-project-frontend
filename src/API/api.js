@@ -124,8 +124,13 @@ export async function requestOwnNotices(search, token) {
 }
 
 export async function writeNewNotice(req) {
+  console.log('req: ', req);
   console.log(req);
-  await instance.post(`notices/user`, req);
+  await instance.post(`notices/user`, req, {
+    headers: {
+      'Content-Type': `multipart/form-data;`,
+    },
+  });
   return;
 }
 
