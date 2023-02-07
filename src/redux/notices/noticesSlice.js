@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchNotices,
   removeNoticeFromUserById,
@@ -53,15 +53,11 @@ export const noticesSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(setFavorite.fulfilled, (state, { payload }) => {
-        console.log('slice payload', current(state.items));
-        console.log('slice payload', state);
-
-        state.items = state.items.map(item => {
-          console.log('slice payload22', item._id);
-          return item._id === payload.result.notice
-            ? (item.favorite = payload.favorite)
-            : item;
-        });
+        const index = state.items.findIndex(
+          item => item._id === payload.result.notice
+        );
+        state.items[index].favorite = payload.favorite;
+        state.isLoading = true;
       })
       .addCase(setFavorite.rejected, state => {
         state.isLoading = false;

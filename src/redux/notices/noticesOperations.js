@@ -11,22 +11,27 @@ import {
 
 export const fetchNotices = createAsyncThunk(
   'fetchNotices',
-  async ({ categoryName, search }, { rejectWithValue }) => {
+  async ({ categoryName, search }, { rejectWithValue, getState }) => {
+    const { token } = getState();
+    console.log('tokenOper', token);
     if (categoryName === 'favorite') {
       try {
         const notices = await requestFavoriteNotices(search);
+        console.log('notices favorite', notices);
         return notices;
       } catch (error) {
-        rejectWithValue(error.message);
+        return rejectWithValue(error.message);
       }
     }
 
     if (categoryName === 'own') {
       try {
-        const notices = await requestOwnNotices(search);
+        const notices = await requestOwnNotices(search, token);
+        console.log('notices own', notices);
+
         return notices;
       } catch (error) {
-        rejectWithValue(error.message);
+        return rejectWithValue(error.message);
       }
     }
 
@@ -35,9 +40,11 @@ export const fetchNotices = createAsyncThunk(
         category: categoryName,
         search: search || null,
       });
+      console.log('notices else', notices);
+
       return notices;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

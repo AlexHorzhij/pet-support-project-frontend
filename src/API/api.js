@@ -58,12 +58,12 @@ export async function logout() {
 //======================== NOTICES  ==========================
 
 export async function requestPublicNotices(request) {
-  const { category, search } = request;
+  const { category = 'sell', search } = request;
   console.log(request);
   if (search) {
     try {
-      const { data } = await instance.get(`/notices?category=${category}`, {
-        params: { search: 'sell' },
+      const { data } = await instance.get(`/notices`, {
+        params: { search, category },
       });
       return data;
     } catch (error) {
@@ -100,12 +100,14 @@ export async function requestFavoriteNotices(search) {
   }
 }
 
-export async function requestOwnNotices(search) {
+export async function requestOwnNotices(search, token) {
+  setToken.set(token);
+
   if (search) {
     try {
-      console.log(search);
-      const { data } = await instance.get(`notices/user/`, {
-        params: { query: 'sell' },
+      console.log('requestOwnNotices search', search);
+      const { data } = await instance.get(`notices/user?category=own`, {
+        params: { query: search },
       });
       return data;
     } catch (error) {
