@@ -4,12 +4,7 @@ import {
   addPetToList,
   updatePetFromList,
 } from 'redux/userData/userDataOperations';
-import {
-  AddPetTitle,
-  // ModalCard,
-  // ModalCardContent,
-  ModalCloseButton,
-} from './Forms.styled';
+import { AddPetTitle, ModalCloseButton } from './ModalAddPetsNew.styled';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -64,18 +59,12 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   };
 
   const steps = [
-    <StepOne
-      next={handleNextStep}
-      data={data}
-      onModalClose={onModalClose}
-      isUpdateAction
-    />,
+    <StepOne next={handleNextStep} data={data} onModalClose={onModalClose} />,
     <StepTwo
       next={handleNextStep}
       prev={handlePrevStep}
       data={data}
       onModalClose={onModalClose}
-      isUpdateAction
     />,
   ];
 

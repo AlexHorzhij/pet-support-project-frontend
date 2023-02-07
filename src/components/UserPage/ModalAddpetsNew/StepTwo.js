@@ -12,8 +12,7 @@ import {
   ModalMultiLineField,
   ModalTypography,
   SecondStepBox,
-} from 'components/UserPage/ModalAddpetsNew/Forms.styled';
-import DropZoneComponent from 'components/DropZone/DropZone';
+} from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
 import Dropzone from 'react-dropzone';
 
 import { Box } from '@mui/material';
@@ -25,7 +24,7 @@ const schema = yup.object().shape({
   avatarUrl: yup.mixed().required('File is required'),
 });
 
-const StepTwo = ({ next, prev, data, isUpdateAction }) => {
+const StepTwo = ({ next, prev, data }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -58,11 +57,6 @@ const StepTwo = ({ next, prev, data, isUpdateAction }) => {
             <SecondStepBox>
               <AddPetComment>Add photo and some comments</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
-                <DropZoneComponent
-                  setFieldValue={setFieldValue}
-                  data={data}
-                  values={values}
-                />
                 <Dropzone
                   className="dropZone"
                   accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}

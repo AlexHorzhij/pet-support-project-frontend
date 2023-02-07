@@ -17,7 +17,6 @@ export const StyledInput = styled(Field)(({ theme }) => ({
   border: `1px solid ${theme.palette.outlines.inputBorder}`,
   borderRadius: theme.shape.borderRadius,
   padding: '0 32px',
-  marginBottom: '5px',
 
   '&::placeholder': {
     fontWeight: '400',
@@ -40,8 +39,9 @@ export const StyledInput = styled(Field)(({ theme }) => ({
 }));
 
 export const ErrorText = styled(Box)(({ theme }) => ({
+  fontSize: '12px',
   position: 'absolute',
-  padding: '5px 20px',
+  padding: '5px 5px',
   color: theme.palette.warning.main,
   textAlign: 'center',
 }));
@@ -102,7 +102,7 @@ export const ModalGrid = styled(Grid)({
   width: '100%',
   textAlign: 'center',
   '&:not(:last-child)': {
-    marginBottom: '35px',
+    marginBottom: '25px',
   },
 });
 export const ModalTypography = styled(Typography)({

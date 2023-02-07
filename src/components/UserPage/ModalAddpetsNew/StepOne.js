@@ -8,10 +8,15 @@ import {
   StepperBox,
   ModalGrid,
   ModalTypography,
-} from 'components/UserPage/ModalAddpetsNew/Forms.styled';
+} from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
 import parse from 'date-fns/parse';
 const schema = yup.object().shape({
-  name: yup.string().required(),
+  name: yup
+    .string()
+    .required()
+    .min(2)
+    .max(16)
+    .matches(/^[A-Za-z]+$/, 'Name must contain only latin letters'),
   date: yup
     .date()
     .transform(function (value, originalValue) {
@@ -24,10 +29,15 @@ const schema = yup.object().shape({
     .typeError('please enter a valid date')
     .required()
     .min('1969-11-13', 'Date is too early'),
-  breed: yup.string().required(),
+  breed: yup
+    .string()
+    .required()
+    .min(2)
+    .max(16)
+    .matches(/^[A-Za-z]+$/, 'Breed must contain only latin letters'),
 });
 
-const StepOne = ({ next, data, isUpdateAction, onModalClose }) => {
+const StepOne = ({ next, data, onModalClose }) => {
   const handleSubmit = async values => {
     next(values);
   };

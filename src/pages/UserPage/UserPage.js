@@ -21,7 +21,7 @@ import {
 import { useTheme } from '@mui/system';
 import { ThreeCircles } from 'react-loader-spinner';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
-import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/RegisterForm';
+import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew';
 import { ModalDialogContent } from 'components/UserPage/PetItem/PetItem.styled';
 
 function UserPage() {

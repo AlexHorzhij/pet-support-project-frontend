@@ -20,7 +20,7 @@ import { Dialog, useTheme } from '@mui/material';
 import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
 import { useState } from 'react';
 
-import ModalAddPetsNew from '../ModalAddpetsNew/RegisterForm';
+import ModalAddPetsNew from '../ModalAddpetsNew/ModalAddPetsNew';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
