@@ -56,8 +56,7 @@ export const addNewNotice = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     // console.log('dataOperation: ', data);
     try {
-      const res = await writeNewNotice(data);
-      // console.log('res', res);
+      await writeNewNotice(data);
     } catch (error) {
       return rejectWithValue(error.message);
     }
