@@ -28,7 +28,7 @@ export default function NewsPage() {
   }, [dispatch, searchValue]);
 
   const handleInputChange = event => {
-    setValue(event.currentTarget.value)
+    setValue(event.currentTarget.value.toLowerCase())
     };
 
   const handleInputSubmit = event => {
