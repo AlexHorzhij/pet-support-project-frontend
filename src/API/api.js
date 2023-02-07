@@ -67,7 +67,6 @@ export async function requestPublicNotices(
     const { data } = await instance.get(`/notices`, {
       params: { search, category: categoryName },
     });
-    console.log('requestPublicNotices data', data);
 
     return data;
   } catch (error) {
@@ -79,14 +78,12 @@ export async function requestPublicNotices(
 
 export async function getRegisterNotices(token, categoryName, search = null) {
   setToken.set(token);
-  console.log('favorite true categoryName', categoryName);
 
   if (categoryName === 'favorite') {
     try {
       const { data } = await instance.get(`notices/user`, {
         params: { search, favorite: true },
       });
-      console.log('favorite true search', data);
 
       return data;
     } catch (error) {
@@ -99,7 +96,6 @@ export async function getRegisterNotices(token, categoryName, search = null) {
       const { data } = await instance.get(`notices/user`, {
         params: { search, myNotice: true },
       });
-      console.log('myNotice true search', data);
 
       return data;
     } catch (error) {
@@ -111,7 +107,6 @@ export async function getRegisterNotices(token, categoryName, search = null) {
     const { data } = await instance.get(`notices/user`, {
       params: { search, category: categoryName },
     });
-    console.log('requestOwnNoticesR search', data);
 
     return data;
   } catch (error) {
@@ -131,7 +126,6 @@ export async function writeNewNotice(req) {
 }
 
 export async function removeNoticesById(id) {
-  console.log('id', id);
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
     console.log('remove data', data);
