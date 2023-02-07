@@ -79,6 +79,33 @@ export async function requestPublicNotices(
 
 export async function getRegisterNotices(token, categoryName, search = null) {
   setToken.set(token);
+  console.log('favorite true categoryName', categoryName);
+
+  if (categoryName === 'favorite') {
+    try {
+      const { data } = await instance.get(`notices/user`, {
+        params: { search, favorite: true },
+      });
+      console.log('favorite true search', data);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  if (categoryName === 'own') {
+    try {
+      const { data } = await instance.get(`notices/user`, {
+        params: { search, myNotice: true },
+      });
+      console.log('myNotice true search', data);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   try {
     const { data } = await instance.get(`notices/user`, {

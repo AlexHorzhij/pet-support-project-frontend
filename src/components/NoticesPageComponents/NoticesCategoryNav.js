@@ -32,6 +32,11 @@ export default function NoticesCategoryList() {
     navigate(`/notices/${name}`);
   };
 
+  // const findFavorite = e => {
+  //   const { name } = e.target;
+  //   dispatch(fetchFavorite({ token, categoryName }));
+  // };
+
   return (
     <Container sx={{ mb: 6 }}>
       <Button
