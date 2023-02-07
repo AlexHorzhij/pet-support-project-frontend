@@ -26,8 +26,13 @@ export const LinkNav = styled(NavLink)`
   &:focus {
     color: rgba(245, 146, 86, 1);
     text-decoration-line: underline;
+    &.Mui-selected {
+      color: rgba(245, 146, 86, 1);
+      text-decoration-line: underline;
+    }
   }
 `;
+
 export const NavList = styled.ul`
   display: flex;
   justify-content: center;

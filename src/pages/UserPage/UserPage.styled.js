@@ -57,6 +57,7 @@ export const UserDataTypography = styled(Typography)(({ theme }) => ({
 //     fontSize: '20px',
 //   },
 // });
+
 export const AddPetTypography = styled(Typography)({
   fontWeight: '500',
 });

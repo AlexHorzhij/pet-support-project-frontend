@@ -12,8 +12,7 @@ import {
   ModalMultiLineField,
   ModalTypography,
   SecondStepBox,
-} from 'components/UserPage/ModalAddpetsNew/Forms.styled';
-
+} from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
 import Dropzone from 'react-dropzone';
 
 import { Box } from '@mui/material';
@@ -25,13 +24,14 @@ const schema = yup.object().shape({
   avatarUrl: yup.mixed().required('File is required'),
 });
 
-const StepTwo = ({ next, prev, data, isUpdateAction }) => {
+const StepTwo = ({ next, prev, data }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = async (values, { resetForm }) => {
     next(values, true);
     resetForm();
   };
+
   const fileHandler = (acceptedFiles, setFieldValue) => {
     setFieldValue('avatarUrl', acceptedFiles[0]);
     acceptedFiles.map(file => {

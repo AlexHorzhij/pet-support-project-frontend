@@ -9,6 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { fetchNotices } from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
+
 import { getAuth } from 'redux/auth/authSelectors';
 
 export default function NoticesFilter() {
@@ -52,7 +53,15 @@ export default function NoticesFilter() {
           sx={{ ml: 1, flex: 1, pl: 1 }}
           placeholder="Search"
           inputProps={{ 'aria-label': 'search' }}
-          onChange={e => setSearchParams({ search: e.target.value })}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleFilter(e);
+            }
+          }}
+          onChange={e => {
+            setSearchParams({ search: e.target.value });
+          }}
           value={search}
         />
         <IconButton

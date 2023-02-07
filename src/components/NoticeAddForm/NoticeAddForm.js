@@ -7,7 +7,7 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { toast } from 'react-hot-toast';
 
 export const NoticeAddForm = ({ handleClose }) => {
-  const [status, setStatus] = useState(null);
+  const [category, setСategory] = useState(null);
   const [data, setData] = useState({
     // step-1:
     title: '',
@@ -27,32 +27,24 @@ export const NoticeAddForm = ({ handleClose }) => {
 
   const handleStatus = (e, newStatus) => {
     if (newStatus !== null) {
-      setStatus(newStatus);
+      setСategory(newStatus);
     }
   };
 
   const handleNextStep = (newData, final = false) => {
-    if (!status) {
+    if (!category) {
       toast.error('choose status');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, status: status }));
+    setData(prev => ({ ...prev, ...newData, category: category }));
 
     if (final) {
-      //   const formData = new FormData();
-      //   for (let value in newData) {
-      //     formData.append(value, newData[value]);
+      const formData = new FormData();
+      for (let value in newData) {
+        formData.append(value, newData[value]);
+      }
 
-      //     if (value === 'title') {
-      //       console.log('value: ', value);
-      //       formData.append('title', newData[value]);
-      //     }
-      //   }
-      //   //   formData.append('status', status);
-
-      //   formDataEntries(formData);
-
-      dispatch(addNewNotice(newData));
+      dispatch(addNewNotice(formData));
 
       handleClose();
 
@@ -82,11 +74,11 @@ export const NoticeAddForm = ({ handleClose }) => {
       {currentStep === 0 && (
         <ToggleButtonGroup
           color="primary"
-          value={status}
+          value={category}
           exclusive
-          name="status"
+          name="category"
           onChange={handleStatus}
-          aria-label="status"
+          aria-label="category"
           sx={{ display: 'flex', flexWrap: 'wrap' }}
         >
           <ToggleButton value="sell">sell</ToggleButton>

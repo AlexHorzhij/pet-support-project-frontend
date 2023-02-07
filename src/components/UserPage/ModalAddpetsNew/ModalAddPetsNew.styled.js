@@ -17,7 +17,6 @@ export const StyledInput = styled(Field)(({ theme }) => ({
   border: `1px solid ${theme.palette.outlines.inputBorder}`,
   borderRadius: theme.shape.borderRadius,
   padding: '0 32px',
-  marginBottom: '5px',
 
   '&::placeholder': {
     fontWeight: '400',
@@ -27,7 +26,7 @@ export const StyledInput = styled(Field)(({ theme }) => ({
     color: theme.palette.text.label,
   },
   [theme.breakpoints.down('md')]: {
-    width: '240px',
+    width: '100%',
   },
   [theme.breakpoints.up('md')]: {
     height: '48px',
@@ -40,8 +39,9 @@ export const StyledInput = styled(Field)(({ theme }) => ({
 }));
 
 export const ErrorText = styled(Box)(({ theme }) => ({
+  fontSize: '12px',
   position: 'absolute',
-  padding: '5px 20px',
+  padding: '5px 5px',
   color: theme.palette.warning.main,
   textAlign: 'center',
 }));
@@ -89,9 +89,10 @@ export const ModalCardContent = styled(CardContent)(({ theme }) => ({
   },
 }));
 export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
-  position: 'absolute',
-  top: '24px',
-  right: '24px',
+  // position: 'absolute',
+  // top: '24px',
+  // right: '24px',
+  justifySelf: 'flex-end',
   backgroundColor: theme.palette.background.default,
   width: '44px',
   height: '44px',
@@ -101,7 +102,7 @@ export const ModalGrid = styled(Grid)({
   width: '100%',
   textAlign: 'center',
   '&:not(:last-child)': {
-    marginBottom: '35px',
+    marginBottom: '25px',
   },
 });
 export const ModalTypography = styled(Typography)({

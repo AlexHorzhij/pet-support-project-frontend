@@ -93,8 +93,13 @@ export async function getRegisterNotices(token, categoryName, search = null) {
 }
 
 export async function writeNewNotice(req) {
+  console.log('req: ', req);
   console.log(req);
-  await instance.post(`notices/user`, req);
+  await instance.post(`notices/user`, req, {
+    headers: {
+      'Content-Type': `multipart/form-data;`,
+    },
+  });
   return;
 }
 
@@ -176,7 +181,6 @@ export async function requestUserData(token) {
   setToken.set(token);
   try {
     const { data } = await instance.get('/user');
-    console.log('data redux', data);
     return data;
   } catch (error) {
     throw error;
