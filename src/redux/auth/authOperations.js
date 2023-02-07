@@ -88,7 +88,7 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
-      const response = await fetchCurrent(auth.token);
+      const response = await fetchCurrent(auth);
       return response;
     } catch ({ response }) {
       const error = {
