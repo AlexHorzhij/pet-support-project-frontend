@@ -3,6 +3,7 @@ export const MobileMenuContainer = styled.div`
   height: 100vw;
   position: relative;
   padding-top: 48px;
+  overflow: auto;
 `;
 export const MobileMenu = styled.div`
   position: absolute;
@@ -16,6 +17,7 @@ export const MobileMenu = styled.div`
   padding-bottom: 12px;
   flex-direction: column;
   z-index: 99;
+  overflow-y: auto;
   @media screen and (min-width: 1280px) {
     display: none;
   }
