@@ -10,7 +10,7 @@ import UserData from './UserPage/UserData/UserData';
 import PetsData from './UserPage/PetsData/PetsData';
 import Modal from './Modal/Modal';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
-import NoticeAddForm from './NoticeAddSellForm/OldNoticeAddSellForm';
+import NoticeAddForm from './NoticeAddForm/OldNoticeAddSellForm';
 import LearnMoreModal from './NoticesPageComponents/LearnMoreModal/LearnMoreModal';
 
 export {
