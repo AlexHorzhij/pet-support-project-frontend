@@ -19,11 +19,19 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 import { TextField } from 'formik-material-ui';
 
 const schema = yup.object().shape({
-  sex: yup.string().min(3).max(40).required(),
-  location: yup.string().min(3).max(40).required(),
-  price: yup.string().min(1).max(8),
+  sex: yup.string().oneOf(['male', 'female']).required(),
+  location: yup
+    .string()
+    .min(3)
+    .max(40)
+    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .required(),
+  price: yup
+    .string()
+    .matches(/^[1-9]\d*$/, 'String must contain only positive number')
+    .required(),
   avatarUrl: yup.string().required(),
-  description: yup.string().min(1).required(),
+  description: yup.string().required(),
 });
 
 export const Step2AddNotice = ({ next, prev, data }) => {
@@ -77,19 +85,19 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
 
-          {data.status === 'sell' && (
-            <>
-              <Typography variant="h4">Price *</Typography>
-              <StyledInput
-                sx={{ mt: 2, mb: 4 }}
-                name="price"
-                disableunderline="true"
-              />
-              <ErrorMessage component="div" name="price">
-                {msg => <ErrorText>*{msg}</ErrorText>}
-              </ErrorMessage>
-            </>
-          )}
+          {/* {data.status === 'sell' && ( */}
+          <>
+            <Typography variant="h4">Price *</Typography>
+            <StyledInput
+              sx={{ mt: 2, mb: 4 }}
+              name="price"
+              disableunderline="true"
+            />
+            <ErrorMessage component="div" name="price">
+              {msg => <ErrorText>*{msg}</ErrorText>}
+            </ErrorMessage>
+          </>
+          {/* )} */}
 
           <Typography variant="h4">Load the pet’s image:</Typography>
           <Dropzone

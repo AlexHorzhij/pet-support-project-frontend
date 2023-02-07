@@ -10,8 +10,13 @@ import { Grid } from '@mui/material';
 import { TypographyStyled } from './NoticeAddForm.styled';
 
 const schema = yup.object().shape({
-  title: yup.string().min(2).max(40).required(),
-  name: yup.string().min(2).max(40).required(),
+  title: yup.string().min(2).max(48).required(),
+  name: yup
+    .string()
+    .min(2)
+    .max(16)
+    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .required(),
   birthdate: yup
     .string()
     .matches(
@@ -19,7 +24,12 @@ const schema = yup.object().shape({
       'Input correct date'
     )
     .required(),
-  breed: yup.string().min(2).max(40).required(),
+  breed: yup
+    .string()
+    .min(2)
+    .max(16)
+    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .required(),
 });
 
 export const Step1AddNotice = ({ next, data, handleClose }) => {
@@ -45,10 +55,19 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
         </ErrorMessage>
         <TypographyStyled variant="h4">Name pet</TypographyStyled>
         <StyledInput sx={{ mt: 2, mb: 4 }} name="name" />
+        <ErrorMessage component="div" name="name">
+          {msg => <ErrorText>*{msg}</ErrorText>}
+        </ErrorMessage>
         <TypographyStyled variant="h4">Date of birth</TypographyStyled>
         <StyledInput sx={{ mt: 2, mb: 4 }} name="birthdate" />
+        <ErrorMessage component="div" name="birthdate">
+          {msg => <ErrorText>*{msg}</ErrorText>}
+        </ErrorMessage>
         <TypographyStyled variant="h4">Breed</TypographyStyled>
         <StyledInput sx={{ mt: 2, mb: 4 }} name="breed" />
+        <ErrorMessage component="div" name="breed">
+          {msg => <ErrorText>*{msg}</ErrorText>}
+        </ErrorMessage>
         <Grid container spacing={4}>
           <Grid item xs={6}>
             <FormButton variant="contained" onClick={handleClose}>
