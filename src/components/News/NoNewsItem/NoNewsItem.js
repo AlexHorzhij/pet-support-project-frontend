@@ -2,14 +2,16 @@ import {
   Background,
   ContentWrapper,
   Text,
-  NewsTextFound,
+  // NewsTextFound,
 } from './NoNewsItem.styled';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Button, Box } from '@mui/material';
 
 export const NoNewsItem = () => {
-  const [searchParams] = useSearchParams();
 
-  const topic = searchParams.get('search');
+
+
+
 
   return (
     // <Background>
@@ -28,10 +30,32 @@ export const NoNewsItem = () => {
           SORRY!
         </Text>
         <Text sx={{ textAlign: 'center', mb: '40px' }} variant="h3">
-          But we don't have news about
-          <NewsTextFound component="div">"{topic}"</NewsTextFound>
+          But we don't have news for this topic
+          {/* <NewsTextFound component="div">"{search}"</NewsTextFound> */}
         </Text>
+        <Box
+        sx={{textAlign: 'center'}}>
+          <NavLink to='/news' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              News
+            </Button>
+          </NavLink>
+          <NavLink to='/notices/sell' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              Find pet
+            </Button>         
+          </NavLink>
+          <NavLink to='/friends' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              Our friends
+            </Button>          
+          </NavLink>  
+        </Box>
       </ContentWrapper>
+
     </Background>
   );
 };
