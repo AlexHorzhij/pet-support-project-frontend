@@ -28,7 +28,6 @@ const schema = yup.object().shape({
 });
 
 const StepOne = ({ next, data, isUpdateAction, onModalClose }) => {
-  console.log('isUpdateAction: ', isUpdateAction);
   const handleSubmit = async values => {
     next(values);
   };

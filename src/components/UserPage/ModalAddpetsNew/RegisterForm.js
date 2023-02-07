@@ -6,14 +6,15 @@ import {
 } from 'redux/userData/userDataOperations';
 import {
   AddPetTitle,
-  ModalCard,
-  ModalCardContent,
+  // ModalCard,
+  // ModalCardContent,
   ModalCloseButton,
 } from './Forms.styled';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { getPets } from 'redux/userData/userDataSelectors';
+import { Box } from '@mui/material';
 
 const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const [data, setData] = useState({
@@ -80,15 +81,21 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
 
   return (
     <>
-      <ModalCard>
-        <ModalCardContent>
-          <ModalCloseButton onClick={onModalClose}>
-            <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
-          </ModalCloseButton>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+        }}
+      >
+        <Box sx={{ width: '100%' }}>
           <AddPetTitle>{isUpdateAction ? 'Edit pet' : 'Add pet'}</AddPetTitle>
-          {steps[currentStep]}
-        </ModalCardContent>
-      </ModalCard>
+        </Box>
+        <ModalCloseButton onClick={onModalClose}>
+          <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
+        </ModalCloseButton>
+      </Box>
+      {steps[currentStep]}
     </>
   );
 };

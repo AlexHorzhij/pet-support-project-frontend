@@ -13,7 +13,7 @@ import {
   ModalTypography,
   SecondStepBox,
 } from 'components/UserPage/ModalAddpetsNew/Forms.styled';
-
+import DropZoneComponent from 'components/DropZone/DropZone';
 import Dropzone from 'react-dropzone';
 
 import { Box } from '@mui/material';
@@ -32,6 +32,7 @@ const StepTwo = ({ next, prev, data, isUpdateAction }) => {
     next(values, true);
     resetForm();
   };
+
   const fileHandler = (acceptedFiles, setFieldValue) => {
     setFieldValue('avatarUrl', acceptedFiles[0]);
     acceptedFiles.map(file => {
@@ -57,6 +58,11 @@ const StepTwo = ({ next, prev, data, isUpdateAction }) => {
             <SecondStepBox>
               <AddPetComment>Add photo and some comments</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
+                <DropZoneComponent
+                  setFieldValue={setFieldValue}
+                  data={data}
+                  values={values}
+                />
                 <Dropzone
                   className="dropZone"
                   accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}

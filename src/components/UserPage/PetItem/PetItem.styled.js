@@ -2,7 +2,13 @@ import { styled } from '@mui/material/styles';
 import styledEmotion from '@emotion/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { Typography, Box, ListItem, IconButton } from '@mui/material';
+import {
+  Typography,
+  Box,
+  ListItem,
+  IconButton,
+  DialogContent,
+} from '@mui/material';
 
 export const PetListItem = styled(ListItem)(({ theme }) => ({
   boxSizing: 'border-box',
@@ -86,6 +92,13 @@ export const PetInfoTypography = styled(Typography)(({ theme }) => ({
     '&:not(:last-child)': {
       marginBottom: '12px',
     },
+  },
+}));
+export const ModalDialogContent = styled(DialogContent)(({ theme }) => ({
+  padding: '40px',
+
+  [theme.breakpoints.down('md')]: {
+    padding: '20px',
   },
 }));
 

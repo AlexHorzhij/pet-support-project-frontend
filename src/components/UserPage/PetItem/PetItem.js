@@ -12,14 +12,16 @@ import {
   IconButtonWrapper,
   DaleteIconStyled,
   IconButtonStyled,
+  ModalDialogContent,
 } from './PetItem.styled';
 import { useSelector } from 'react-redux';
 import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme } from '@mui/material';
+import { Dialog, DialogContent, useTheme } from '@mui/material';
 import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
 import { useState } from 'react';
-import Modal from 'components/Modal/Modal';
+
 import ModalAddPetsNew from '../ModalAddpetsNew/RegisterForm';
+import { Box } from '@mui/system';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
@@ -28,13 +30,15 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const isUpdating = useSelector(isUpdatingPet);
 
   const theme = useTheme();
-  const [modalIsShown, setModalIsShown] = useState(false);
 
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
   };
-  const togleModal = () => {
-    setModalIsShown(prev => !prev);
+
+  const [openAddPetForm, setOpenAddPetForm] = useState(false);
+
+  const handleCloseAddNotice = () => {
+    setOpenAddPetForm(prev => !prev);
   };
 
   return (
@@ -71,7 +75,7 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
               <DaleteIconStyled />
             )}
           </IconButtonStyled>
-          <IconButtonStyled onClick={togleModal}>
+          <IconButtonStyled onClick={handleCloseAddNotice}>
             {isUpdating === id ? (
               <ThreeCircles
                 height="20"
@@ -86,15 +90,20 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
           </IconButtonStyled>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>
-      {modalIsShown && (
-        <Modal onModalClose={togleModal}>
+      <Dialog
+        sx={{ backdropFilter: 'blur(5px)' }}
+        maxWidth="modal"
+        open={openAddPetForm}
+        onClose={handleCloseAddNotice}
+      >
+        <ModalDialogContent>
           <ModalAddPetsNew
-            onModalClose={togleModal}
+            onModalClose={handleCloseAddNotice}
             isUpdateAction={true}
             petId={id}
           />
-        </Modal>
-      )}
+        </ModalDialogContent>
+      </Dialog>
     </PetListItem>
   );
 }

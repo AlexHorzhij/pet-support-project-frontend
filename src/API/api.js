@@ -160,7 +160,6 @@ export async function requestUserData(token) {
   setToken.set(token);
   try {
     const { data } = await instance.get('/user');
-    console.log('data redux', data);
     return data;
   } catch (error) {
     throw error;

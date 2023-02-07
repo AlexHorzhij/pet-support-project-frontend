@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import { UserData, PetsData, Modal } from 'components';
+import React, { useEffect } from 'react';
+import { Box, Dialog, DialogContent, Typography } from '@mui/material';
+import { UserData, PetsData } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -22,21 +22,25 @@ import { useTheme } from '@mui/system';
 import { ThreeCircles } from 'react-loader-spinner';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/RegisterForm';
+import { ModalDialogContent } from 'components/UserPage/PetItem/PetItem.styled';
 
 function UserPage() {
-  const [modalIsShown, setModalIsShown] = useState(false);
+  const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
+
+  const handleCloseAddNotice = () => {
+    setOpenAddPetForm(prev => !prev);
+  };
+
   const isLoadindUser = useSelector(isLoading);
   const pets = useSelector(getPets);
   const dispatch = useDispatch();
   const theme = useTheme();
   const isUploadingPetData = useSelector(isUploadingPet);
+
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
 
-  const togleModal = () => {
-    setModalIsShown(prev => !prev);
-  };
   return (
     <UserDataContainer component="main">
       {!isLoadindUser && (
@@ -49,7 +53,7 @@ function UserPage() {
           </Box>
           <PetDataBox>
             <UserDataTypography variant="h3">My pets:</UserDataTypography>
-            <UserDataIconButton onClick={togleModal}>
+            <UserDataIconButton onClick={handleCloseAddNotice}>
               <AddPetTypography variant="h5" color="text.primary">
                 Add pet
               </AddPetTypography>
@@ -89,11 +93,16 @@ function UserPage() {
               </Box>
             )}
           </PetDataBox>
-          {modalIsShown && (
-            <Modal onModalClose={togleModal}>
-              <ModalAddPetsNew onModalClose={togleModal} />
-            </Modal>
-          )}
+          <Dialog
+            sx={{ backdropFilter: 'blur(5px)' }}
+            maxWidth="modal"
+            open={openAddPetForm}
+            onClose={handleCloseAddNotice}
+          >
+            <ModalDialogContent>
+              <ModalAddPetsNew onModalClose={handleCloseAddNotice} />
+            </ModalDialogContent>
+          </Dialog>
         </>
       )}
     </UserDataContainer>

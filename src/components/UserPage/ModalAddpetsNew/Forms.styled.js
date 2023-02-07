@@ -27,7 +27,7 @@ export const StyledInput = styled(Field)(({ theme }) => ({
     color: theme.palette.text.label,
   },
   [theme.breakpoints.down('md')]: {
-    width: '240px',
+    width: '100%',
   },
   [theme.breakpoints.up('md')]: {
     height: '48px',
@@ -89,9 +89,10 @@ export const ModalCardContent = styled(CardContent)(({ theme }) => ({
   },
 }));
 export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
-  position: 'absolute',
-  top: '24px',
-  right: '24px',
+  // position: 'absolute',
+  // top: '24px',
+  // right: '24px',
+  justifySelf: 'flex-end',
   backgroundColor: theme.palette.background.default,
   width: '44px',
   height: '44px',
