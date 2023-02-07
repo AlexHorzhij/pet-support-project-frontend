@@ -87,7 +87,7 @@ export default function AddNoticeBtn() {
       </Dialog>
 
       <Dialog
-        sx={{ backdropFilter: 'blur(5px)' }}
+        sx={{ backdropFilter: 'blur(5px)'}}
         maxWidth="modal"
         open={openAddPetForm}
         onClose={handleCloseAddNotice}

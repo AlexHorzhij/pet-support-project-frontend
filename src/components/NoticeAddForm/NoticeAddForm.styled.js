@@ -62,6 +62,7 @@ export const StyledInputChechBox = styled(Field)(({ theme }) => ({
   transition: 'background-color 250ms ease',
   '&:checked ': {
     backgroundColor: '#fdf7f2',
+    border: `2px solid ${theme.palette.primary.main}`,
   },
 }));
 export const StyledLabel = EmotionStyled.label`

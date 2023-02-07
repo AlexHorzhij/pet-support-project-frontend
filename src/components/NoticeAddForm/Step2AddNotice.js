@@ -20,24 +20,32 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 import { TextField } from 'formik-material-ui';
 
-const schema = yup.object().shape({
-  sex: yup.string().oneOf(['male', 'female']).required(),
-  location: yup
-    .string()
-    .min(3)
-    .max(40)
-    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
-    .required(),
-  price: yup
-    .string()
-    .matches(/^[1-9]\d*$/, 'String must contain only positive number')
-    .required(),
-  avatarUrl: yup.string().required(),
-  description: yup.string().required(),
-});
+
+
 
 export const Step2AddNotice = ({ next, prev, data }) => {
   const [images, setImages] = useState([]);
+
+  const validateSchema = {
+    sex: yup.string().oneOf(['male', 'female']).required(),
+    location: yup
+      .string()
+      .min(3)
+      .max(40)
+      .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+      .required(),
+    avatarUrl: yup.string().required(),
+    description: yup.string().required(),
+  }
+
+  if (data.status === "sell") {
+    validateSchema.price = yup
+      .string()
+      .matches(/^[1-9]\d*$/, 'String must contain only positive number')
+      .required()
+  }
+
+  const schema = yup.object().shape(validateSchema);
 
   const handleSubmit = (values, { resetForm }) => {
     next(values, true);
@@ -64,7 +72,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
     >
       {({ values, setFieldValue }) => (
         <Form>
-          <Typography variant="h4">Sex *</Typography>
+          <Typography sx={{ mb: 1 }} variant="h4">Sex *</Typography>
 
           <div
             style={{ display: 'flex' }}
@@ -91,9 +99,9 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             </StyledLabel>
           </div>
 
-          <Typography variant="h4">Location *</Typography>
+          <Typography variant="h4" sx={{ mt: 2 }}>Location *</Typography>
           <StyledInput
-            sx={{ mt: 2, mb: 4 }}
+            sx={{ mt: 1, mb: 4 }}
             name="location"
             disableunderline="true"
           />
@@ -101,21 +109,21 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
 
-          {/* {data.status === 'sell' && ( */}
-          <>
-            <Typography variant="h4">Price *</Typography>
-            <StyledInput
-              sx={{ mt: 2, mb: 4 }}
-              name="price"
-              disableunderline="true"
-            />
-            <ErrorMessage component="div" name="price">
-              {msg => <ErrorText>*{msg}</ErrorText>}
-            </ErrorMessage>
-          </>
-          {/* )} */}
+          {data.status === 'sell' && (
+            <>
+              <Typography variant="h4">Price *</Typography>
+              <StyledInput
+                sx={{ mt: 2, mb: 4 }}
+                name="price"
+                disableunderline="true"
+              />
+              <ErrorMessage component="div" name="price">
+                {msg => <ErrorText>*{msg}</ErrorText>}
+              </ErrorMessage>
+            </>
+          )}
 
-          <Typography variant="h4">Load the pet’s image:</Typography>
+          <Typography sx={{ mb: 1 }} variant="h4">Load the pet’s image:</Typography>
           <Dropzone
             sx={{ width: '100%' }}
             accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
@@ -145,7 +153,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
           </Dropzone>
 
           <Grid item md={6} sx={{ mt: '40px' }}>
-            <Typography>Comments</Typography>
+            <Typography sx={{ mb: 1 }}>Comments</Typography>
             <ModalMultiLineField
               multiline={true}
               rows={3.5}

@@ -20,7 +20,6 @@ export default function NoticesFilter() {
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
-  console.log('token filter', token);
   const handleFilter = e => {
     e.preventDefault();
     dispatch(fetchNotices({ categoryName, search }, token));
