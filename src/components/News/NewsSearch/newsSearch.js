@@ -30,7 +30,7 @@ export default function NewsSearch() {
       toast.error("Please, enter search value!")
       return
     }
-    if (text.trim().length < 3) {
+    if (text.trim().length < 3 || text.includes('*')) {
       toast.error("Please, enter no less 3 letters for a correct search!")
       return
     }
