@@ -5,8 +5,13 @@ import { Box, Container, Card, CardActions, Link } from '@mui/material';
 
 export const Main = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  paddingTop: '10px',
+  paddingTop: '42px',
   marginTop: '49px',
+  paddingBottom: '64px',
+
+  [theme.breakpoints.up('md')]: {
+    paddingTop: '64px',
+  },
 }));
 
 export const NewsContainer = styled(Container)(({ theme }) => ({
