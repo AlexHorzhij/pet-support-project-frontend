@@ -10,45 +10,63 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchNotices } from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
 
-
 export default function NoticesFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const params = useParams()
-  const dispatch = useDispatch()
+  const params = useParams();
+  const dispatch = useDispatch();
 
-  const { categoryName } = params
-  const search = searchParams.get('search') || ''
+  const { categoryName } = params;
+  const search = searchParams.get('search') || '';
 
-  const handleFilter = (e) => {
-    e.preventDefault()
-    dispatch(fetchNotices({ categoryName, search }))
-  }
+  const handleFilter = e => {
+    e.preventDefault();
+    dispatch(fetchNotices({ categoryName, search }));
+  };
 
   return (
-    <Container    >
-      {(<Typography variant='h2'
-        align='center'
-        sx={{ mt: 8, mb: 6, mx: 'auto' }}
-      >
-        Find your favorite pet
-      </Typography>)}
+    <Container>
+      {
+        <Typography
+          variant="h2"
+          align="center"
+          sx={{ mt: 8, mb: 6, mx: 'auto' }}
+        >
+          Find your favorite pet
+        </Typography>
+      }
       <Paper
         component="form"
         sx={{
-          p: '2px 4px', display: 'flex', alignItems: 'center', mb: 6,
-          maxWidth: 608, height: 44, mx: 'auto',
+          p: '2px 4px',
+          display: 'flex',
+          alignItems: 'center',
+          mb: 6,
+          maxWidth: 608,
+          height: 44,
+          mx: 'auto',
         }}
       >
         <InputBase
-          sx={{ ml: 1, flex: 1, pl: 1, }}
+          sx={{ ml: 1, flex: 1, pl: 1 }}
           placeholder="Search"
           inputProps={{ 'aria-label': 'search' }}
-          onChange={e => setSearchParams({ search: e.target.value })}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleFilter(e);
+            }
+          }}
+          onChange={e => {
+            setSearchParams({ search: e.target.value });
+          }}
           value={search}
         />
         <IconButton
-          onClick={handleFilter} type="button"
-          sx={{ p: '10px' }} aria-label="search" >
+          onClick={handleFilter}
+          type="button"
+          sx={{ p: '10px' }}
+          aria-label="search"
+        >
           <SearchIcon />
         </IconButton>
       </Paper>
