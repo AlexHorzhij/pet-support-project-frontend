@@ -79,14 +79,14 @@ export async function requestPublicNotices(
 
 export async function getRegisterNotices(token, categoryName, search = null) {
   setToken.set(token);
-  console.log('favorite true categoryName', categoryName);
+  // console.log('favorite true categoryName', categoryName);
 
   if (categoryName === 'favorite') {
     try {
       const { data } = await instance.get(`notices/user`, {
         params: { search, favorite: true },
       });
-      console.log('favorite true search', data);
+      // console.log('favorite true search', data);
 
       return data;
     } catch (error) {
@@ -99,7 +99,7 @@ export async function getRegisterNotices(token, categoryName, search = null) {
       const { data } = await instance.get(`notices/user`, {
         params: { search, myNotice: true },
       });
-      console.log('myNotice true search', data);
+      // console.log('myNotice true search', data);
 
       return data;
     } catch (error) {
@@ -122,12 +122,12 @@ export async function getRegisterNotices(token, categoryName, search = null) {
 export async function writeNewNotice(req) {
   // console.log('req: ', req);
   // console.log(req);
-  await instance.post(`notices/user`, req, {
+  const { data } = await instance.post(`notices/user`, req, {
     headers: {
       'Content-Type': `multipart/form-data;`,
     },
   });
-  return;
+  return data
 }
 
 export async function removeNoticesById(id) {
@@ -187,9 +187,9 @@ export async function removeNoticesById(id) {
 //========================== FAVORITE  =============================
 
 export async function toggleFavorite({ id, token, req }) {
-  console.log('id', id);
-  console.log('token', token);
-  console.log('req', req);
+  // console.log('id', id);
+  // console.log('token', token);
+  // console.log('req', req);
   setToken.set(token);
   // setCurrentToken(token);
 
