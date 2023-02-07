@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Grid } from '@mui/material';
 import { DialogContent, Dialog, DialogContentText, DialogTitle, DialogActions } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
@@ -55,15 +55,24 @@ export default function AddNoticeBtn() {
         maxWidth="sm"
         open={openNotification} onClose={handleCloseNotification}>
         <DialogTitle
-        sx={{textAlign: 'center'}}
-        >You are not authorized</DialogTitle>
+          sx={{ textAlign: 'center' }}
+        >You are not authorized!</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            If you'd like to add an ad about your pet you should sign up! Press the button below to register!
+          <DialogContentText sx={{textAlign: 'center'}}>
+            If you'd like to add an ad with your pet you should register or login!
+            Press the button below with your paw!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button sx={{mx: 'auto'}} onClick={() => navigate('/register')} variant='contained'>Sign Up</Button>
+          <Grid sx={{mx: 'auto', mb: 2}} container spacing={2}>
+            <Grid item xs={7}>
+              <Button onClick={() => navigate('/register')} variant='contained'>Sign Up</Button>
+            </Grid>
+            <Grid item xs={5}>
+              <Button onClick={() => navigate('/login')} variant='contained'>Login</Button>
+            </Grid>
+          </Grid>
+
         </DialogActions>
       </Dialog>
 

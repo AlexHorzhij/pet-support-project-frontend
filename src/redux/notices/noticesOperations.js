@@ -33,7 +33,7 @@ export const fetchNotices = createAsyncThunk(
     try {
       const notices = await requestPublicNotices({
         category: categoryName,
-        search: search,
+        search: search || null,
       });
       return notices;
     } catch (error) {
