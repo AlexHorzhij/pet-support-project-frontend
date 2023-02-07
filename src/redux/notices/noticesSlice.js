@@ -1,7 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import {
   fetchNotices,
   removeNoticeFromUserById,
+  addNewNotice,
+  setFavorite,
 } from './noticesOperations';
 
 const initialState = {
@@ -37,6 +39,32 @@ export const noticesSlice = createSlice({
       .addCase(removeNoticeFromUserById.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(addNewNotice.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addNewNotice.fulfilled, state => {
+        state.isLoading = false;
+      })
+      .addCase(addNewNotice.rejected, state => {
+        state.isLoading = false;
+      })
+      .addCase(setFavorite.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(setFavorite.fulfilled, (state, { payload }) => {
+        console.log('slice payload', current(state.items));
+        console.log('slice payload', state);
+
+        state.items = state.items.map(item => {
+          console.log('slice payload22', item._id);
+          return item._id === payload.result.notice
+            ? (item.favorite = payload.favorite)
+            : item;
+        });
+      })
+      .addCase(setFavorite.rejected, state => {
+        state.isLoading = false;
       });
   },
 });

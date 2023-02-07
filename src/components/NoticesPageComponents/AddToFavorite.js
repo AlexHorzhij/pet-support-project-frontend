@@ -1,20 +1,21 @@
 import Checkbox from '@mui/material/Checkbox';
 import { Favorite } from '@mui/icons-material';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 
-import { toggleFavorite } from 'API/api';
+// import { toggleFavorite } from 'API/api';
+import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function AddToFavorite({ favorite = false, id, bg }) {
   const [checked, setChecked] = useState(favorite);
   const { token } = useSelector(getAuth);
-
+  const dispatch = useDispatch();
   const handleChange = event => {
     const favorite = event.target.checked;
     const req = favorite ? 'post' : 'delete';
-
-    toggleFavorite(id, token, req);
+    const data = { id, token, req };
+    dispatch(setFavorite(data));
 
     setChecked(favorite);
   };

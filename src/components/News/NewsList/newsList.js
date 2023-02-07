@@ -12,11 +12,8 @@ import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from '../../../services/pagination';
 
-import { useSearchParams } from 'react-router-dom';
-
 export const NewsList = () => {
   const dispatch = useDispatch();
-  const [search] = useSearchParams('search')
 
   useEffect(() => {
     dispatch(fetchNews());
@@ -41,32 +38,34 @@ export const NewsList = () => {
   return (
     <>
       {error && <p>{error.data}</p>}
-      {isLoading ? <Loader /> : ''}
+      {isLoading && <Loader />}
       {news.length === 0 && <NoNewsItem />}
-      {(news || search === '') && (
-        <NewsGrid component="ul" container columnSpacing={4} rowSpacing={7}>
-          {paginationData.currentData().map(({ _id, title, description, date, url }) => (
-            <NewsItem
-              key={_id}
-              title={title}
-              date={date}
-              description={description}
-              id={_id}
-              url={url}
-            />
-          ))}
-        </NewsGrid>
+      {news.length !== 0 && (
+        <>
+          <NewsGrid component="ul" container columnSpacing={4} rowSpacing={7}>
+            {paginationData.currentData().map(({ _id, title, description, date, url }) => (
+              <NewsItem
+                key={_id}
+                title={title}
+                date={date}
+                description={description}
+                id={_id}
+                url={url}
+              />
+            ))}
+          </NewsGrid>
+          <Pagination
+            color="primary" 
+            count={count}
+            size="large"
+            page={page}
+            variant="outlined"
+            shape="rounded"
+            onChange={handleChangePagination}
+            style={{display: 'flex', justifyContent: 'center'}}
+          />
+        </>
       )}
-      <Pagination
-        color="primary" 
-        count={count}
-        size="large"
-        page={page}
-        variant="outlined"
-        shape="rounded"
-        onChange={handleChangePagination}
-        style={{display: 'flex', justifyContent: 'center'}}
-      />
     </>
   );
 };

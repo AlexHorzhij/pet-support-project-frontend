@@ -40,14 +40,14 @@ export default function NoticesCardItem({
     category,
     favorite = false,
   } = data;
-  // console.log(data);
+  console.log(data);
   const age = distanceBetweenDateAndNowWords(birthdate);
 
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
 
-  console.log('userId === owner._id', userId === owner._id);
+  // console.log('userId === owner._id', userId === owner._id);
 
   return (
     <>
@@ -101,26 +101,26 @@ export default function NoticesCardItem({
               </Li>
             )}
           </ItemsList>
+        </CardContent>
+        <Btn
+          id={_id}
+          onClick={toggleModal}
+          variant="outlined"
+          sx={{ width: '100%', color: '#F59256', mt: 'auto' }}
+        >
+          Learn more
+        </Btn>
+        {userId === owner._id && (
           <Btn
             id={_id}
-            onClick={toggleModal}
+            onClick={deleteCard}
             variant="outlined"
-            sx={{ width: '100%', color: '#F59256' }}
+            sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+            endIcon={<DeleteOutlineIcon />}
           >
-            Learn more
+            Delete
           </Btn>
-          {userId === owner._id && (
-            <Btn
-              id={_id}
-              onClick={deleteCard}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256', mb: '12px' }}
-              endIcon={<DeleteOutlineIcon />}
-            >
-              Delete
-            </Btn>
-          )}
-        </CardContent>
+        )}
       </NoticeCard>
       {modalIsShown && (
         <Modal onModalClose={toggleModal}>
