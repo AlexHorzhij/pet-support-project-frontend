@@ -13,7 +13,7 @@ export default function MobileUserNav() {
   return (
     <AuthWrapper>
       <MobileAuthNavigation>
-        <Button variant="outlined">
+        <Button variant="contained">
           <AccountCircleIcon />
           <MobileAuthLink to="/login" onClick={close}>
             Account
