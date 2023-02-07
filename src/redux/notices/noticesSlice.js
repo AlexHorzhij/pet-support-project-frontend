@@ -55,8 +55,9 @@ export const noticesSlice = createSlice({
       .addCase(addNewNotice.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addNewNotice.fulfilled, state => {
+      .addCase(addNewNotice.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.items.push(payload)
       })
       .addCase(addNewNotice.rejected, state => {
         state.isLoading = false;

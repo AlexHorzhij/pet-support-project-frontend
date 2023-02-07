@@ -115,20 +115,20 @@ export async function getRegisterNotices(token, categoryName, search = null) {
 }
 
 export async function writeNewNotice(req) {
-  console.log('req: ', req);
-  console.log(req);
-  await instance.post(`notices/user`, req, {
+  // console.log('req: ', req);
+  // console.log(req);
+  const { data } = await instance.post(`notices/user`, req, {
     headers: {
       'Content-Type': `multipart/form-data;`,
     },
   });
-  return;
+  return data;
 }
 
 export async function removeNoticesById(id) {
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
-    console.log('remove data', data);
+    // console.log('remove data', data);
     return data.data.result;
   } catch (error) {
     throw error;
@@ -181,9 +181,9 @@ export async function removeNoticesById(id) {
 //========================== FAVORITE  =============================
 
 export async function toggleFavorite({ id, token, req }) {
-  console.log('id', id);
-  console.log('token', token);
-  console.log('req', req);
+  // console.log('id', id);
+  // console.log('token', token);
+  // console.log('req', req);
   setToken.set(token);
   // setCurrentToken(token);
 
