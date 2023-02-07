@@ -1,12 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { addPet, deletePet, requestUserData, updatePetsData, updateUserData } from 'API/api';
+import {
+  addPet,
+  deletePet,
+  requestUserData,
+  updatePetsData,
+  updateUserData,
+} from 'API/api';
 
 export const fetchUserData = createAsyncThunk(
   'userData/fetchUserData',
   async (_, { rejectWithValue, getState }) => {
     const { auth } = getState();
-    console.log(auth.token);
     try {
       const userData = await requestUserData(auth.token);
       if (!userData) {
@@ -14,7 +19,7 @@ export const fetchUserData = createAsyncThunk(
       }
       return userData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -25,7 +30,7 @@ export const updateUser = createAsyncThunk(
       const updatedUserData = await updateUserData(data);
       return updatedUserData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -36,7 +41,7 @@ export const updateUserAvatar = createAsyncThunk(
       const updatedUserData = await updateUserData(data);
       return updatedUserData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -47,7 +52,7 @@ export const addPetToList = createAsyncThunk(
       const updatedPetsData = await addPet(pet);
       return updatedPetsData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -58,7 +63,7 @@ export const deletePetFromList = createAsyncThunk(
       const updatedPetsData = await deletePet(_id);
       return updatedPetsData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -69,7 +74,7 @@ export const updatePetFromList = createAsyncThunk(
       const updatedPetsData = await updatePetsData(petData);
       return updatedPetsData;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
