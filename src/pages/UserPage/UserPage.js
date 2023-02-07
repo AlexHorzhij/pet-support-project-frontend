@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Dialog, DialogContent, Typography } from '@mui/material';
+import { Box, Dialog, Typography } from '@mui/material';
 import { UserData, PetsData } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 

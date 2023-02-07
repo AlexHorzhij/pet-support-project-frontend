@@ -16,12 +16,11 @@ import {
 } from './PetItem.styled';
 import { useSelector } from 'react-redux';
 import { ThreeCircles } from 'react-loader-spinner';
-import { Dialog, DialogContent, useTheme } from '@mui/material';
+import { Dialog, useTheme } from '@mui/material';
 import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
 import { useState } from 'react';
 
 import ModalAddPetsNew from '../ModalAddpetsNew/RegisterForm';
-import { Box } from '@mui/system';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
