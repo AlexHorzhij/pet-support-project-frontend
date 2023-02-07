@@ -38,9 +38,8 @@ export default function NoticesCardItem({
     price,
     avatarUrl,
     category,
-    favorite = false,
+    favorite,
   } = data;
-  console.log(data);
   const age = distanceBetweenDateAndNowWords(birthdate);
 
   const toggleModal = () => {

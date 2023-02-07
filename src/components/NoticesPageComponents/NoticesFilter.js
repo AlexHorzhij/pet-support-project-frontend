@@ -4,23 +4,26 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Container, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
 import { fetchNotices } from 'redux/notices/noticesOperations';
 import { useParams } from 'react-router-dom';
 
+import { getAuth } from 'redux/auth/authSelectors';
+
 export default function NoticesFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { token } = useSelector(getAuth);
   const params = useParams();
   const dispatch = useDispatch();
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
-
+  console.log('token filter', token);
   const handleFilter = e => {
     e.preventDefault();
-    dispatch(fetchNotices({ categoryName, search }));
+    dispatch(fetchNotices({ categoryName, search }, token));
   };
 
   return (

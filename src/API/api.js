@@ -57,66 +57,35 @@ export async function logout() {
 
 //======================== NOTICES  ==========================
 
-export async function requestPublicNotices(request) {
-  const { category = 'sell', search } = request;
-  console.log(request);
-  if (search) {
-    try {
-      const { data } = await instance.get(`/notices`, {
-        params: { search, category },
-      });
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  }
+// ---------------------for all
 
+export async function requestPublicNotices(
+  categoryName = 'sell',
+  search = null
+) {
   try {
-    const { data } = await instance.get(`/notices?category=${category}`);
-    console.log(`data for category "${category}"`, data);
+    const { data } = await instance.get(`/notices`, {
+      params: { search, category: categoryName },
+    });
+    console.log('requestPublicNotices data', data);
+
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function requestFavoriteNotices(search) {
-  if (search) {
-    try {
-      const { data } = await instance.get(`notices/user/favorite`, {
-        params: { query: `search` },
-      });
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  }
+// ------------------------- for register user
 
-  try {
-    const { data } = await instance.get(`notices/user/favorite`);
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function requestOwnNotices(search, token) {
+export async function getRegisterNotices(token, categoryName, search = null) {
   setToken.set(token);
 
-  if (search) {
-    try {
-      console.log('requestOwnNotices search', search);
-      const { data } = await instance.get(`notices/user?category=own`, {
-        params: { query: search },
-      });
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   try {
-    const { data } = await instance.get(`notices/user`);
+    const { data } = await instance.get(`notices/user`, {
+      params: { search, category: categoryName },
+    });
+    console.log('requestOwnNoticesR search', data);
+
     return data;
   } catch (error) {
     throw error;
@@ -137,13 +106,56 @@ export async function writeNewNotice(req) {
 export async function removeNoticesById(id) {
   console.log('id', id);
   try {
-    // const { data } = await instance.delete(`user/notices/${id}`, id);
-    // console.log('remove data', data);
-    // return data.data.result;
+    const { data } = await instance.delete(`notices/user/${id}`);
+    console.log('remove data', data);
+    return data.data.result;
   } catch (error) {
     throw error;
   }
 }
+
+// export async function requestFavoriteNotices(search) {
+//   if (search) {
+//     try {
+//       const { data } = await instance.get(`notices/user/favorite`, {
+//         params: { query: `search` },
+//       });
+//       return data;
+//     } catch (error) {
+//       throw error;
+//     }
+//   }
+
+//   try {
+//     const { data } = await instance.get(`notices/user/favorite`);
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+// export async function requestOwnNotices(search, token) {
+//   setToken.set(token);
+
+//   if (search) {
+//     try {
+//       console.log('requestOwnNotices search', search);
+//       const { data } = await instance.get(`notices/user?category=own`, {
+//         params: { query: search },
+//       });
+//       return data;
+//     } catch (error) {
+//       throw error;
+//     }
+//   }
+
+//   try {
+//     const { data } = await instance.get(`notices/user`);
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 //========================== FAVORITE  =============================
 

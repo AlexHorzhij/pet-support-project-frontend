@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchNotices,
+  fetchAuthNotices,
   removeNoticeFromUserById,
   addNewNotice,
   setFavorite,
@@ -26,6 +27,17 @@ export const noticesSlice = createSlice({
         state.items = payload;
       })
       .addCase(fetchNotices.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchAuthNotices.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAuthNotices.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = payload;
+      })
+      .addCase(fetchAuthNotices.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })

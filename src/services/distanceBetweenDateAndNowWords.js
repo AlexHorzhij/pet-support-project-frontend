@@ -1,10 +1,11 @@
 import formatDistanceStrict from 'date-fns/formatDistanceStrict';
 import { ToWords } from 'to-words';
+import isDate from 'date-fns/isDate';
 
 export default function distanceBetweenDateAndNowWords(birthdate) {
   const toWords = new ToWords();
 
-  if (birthdate) {
+  if (isDate(birthdate)) {
     const ageArr = formatDistanceStrict(
       Date.now(),
       Date.parse(birthdate)
