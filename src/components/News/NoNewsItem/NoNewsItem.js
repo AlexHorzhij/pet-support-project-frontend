@@ -5,6 +5,7 @@ import {
   // NewsTextFound,
 } from './NoNewsItem.styled';
 import { NavLink } from 'react-router-dom';
+import { Button, Box } from '@mui/material';
 
 export const NoNewsItem = () => {
 
@@ -32,9 +33,27 @@ export const NoNewsItem = () => {
           But we don't have news for this topic
           {/* <NewsTextFound component="div">"{search}"</NewsTextFound> */}
         </Text>
-        <NavLink to='/news'>News</NavLink>
-        <NavLink to='/notices/sell'>Find pet</NavLink>
-        <NavLink to='/friends'>Our friends</NavLink>
+        <Box
+        sx={{textAlign: 'center'}}>
+          <NavLink to='/news' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              News
+            </Button>
+          </NavLink>
+          <NavLink to='/notices/sell' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              Find pet
+            </Button>         
+          </NavLink>
+          <NavLink to='/friends' style={{ textDecoration: 'none'}}>
+            <Button
+              variant="outlined">
+              Our friends
+            </Button>          
+          </NavLink>  
+        </Box>
       </ContentWrapper>
 
     </Background>
