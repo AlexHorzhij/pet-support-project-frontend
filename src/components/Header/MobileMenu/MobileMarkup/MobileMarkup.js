@@ -20,7 +20,6 @@ export default function MobileMarkup({ onClose }) {
       <Logo />
       <MobileMenuContainer>
         {isLoggedIn ? <MobileUserNav /> : <MobileAuth />}
-
         <MobileNav />
       </MobileMenuContainer>
       <BtnClose onClick={onClose}>

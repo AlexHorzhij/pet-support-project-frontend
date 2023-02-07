@@ -40,14 +40,14 @@ export default function NoticesCardItem({
     category,
     favorite = false,
   } = data;
-  // console.log(data);
+  console.log(data);
   const age = distanceBetweenDateAndNowWords(birthdate);
 
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
 
-  console.log('userId === owner._id', userId === owner._id);
+  // console.log('userId === owner._id', userId === owner._id);
 
   return (
     <>

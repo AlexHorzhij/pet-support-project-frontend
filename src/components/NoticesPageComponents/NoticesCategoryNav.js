@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
@@ -8,6 +8,7 @@ import { fetchNotices } from 'redux/notices/noticesOperations';
 
 
 export default function NoticesCategoryList() {
+  const [active, setActive] = useState('')
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -20,41 +21,52 @@ export default function NoticesCategoryList() {
     dispatch(fetchNotices({ categoryName }))
   }, [categoryName, dispatch])
 
+  const onClick = (e) => {
+    const { name } = e.target
+    setActive(name)
+    navigate(`/notices/${name}`)
+  }
+
   return (
     <Container sx={{ mb: 6 }}>
       <Button
-        variant="outlined"
+        name='sell'
+        variant={active === 'sell' ? "contained" : "outlined"}
         sx={{ textTransform: 'lowercase' }}
-        onClick={() => navigate('/notices/sell')}
+        onClick={onClick}
       >
         sell
       </Button>
       <Button
-        variant="outlined"
+        name='lost-found'
+        variant={active === 'lost-found' ? "contained" : "outlined"}
         sx={{ textTransform: 'lowercase' }}
-        onClick={() => navigate('/notices/lost-found')}
+        onClick={onClick}
       >
         lost/found
       </Button>
       <Button
-        variant="outlined"
+        variant={active === 'for-free' ? "contained" : "outlined"}
+        name='for-free'
         sx={{ textTransform: 'lowercase' }}
-        onClick={() => navigate('/notices/for-free')}
+        onClick={onClick}
       >
         in good hands
       </Button>
       {isLoggedIn && <>
         <Button
-          variant="outlined"
+          variant={active === 'favorite' ? "contained" : "outlined"}
+          name='favorite'
           sx={{ textTransform: 'lowercase' }}
-          onClick={() => navigate('/notices/favorite')}
+          onClick={onClick}
         >
           favorite ads
         </Button>
         <Button
-          variant="outlined"
+          variant={active === 'own' ? "contained" : "outlined"}
+          name='own'
           sx={{ textTransform: 'lowercase' }}
-          onClick={() => navigate('/notices/own')}
+          onClick={onClick}
         >
           my ads
         </Button>

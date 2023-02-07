@@ -27,7 +27,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-//======================== AUTH  ==========================
+//======================== AUNTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -65,7 +65,6 @@ export async function requestPublicNotices(request) {
       const { data } = await instance.get(`/notices?category=${category}`, {
         params: { search: 'sell' },
       });
-      console.log(`data for category "${category}", search "${search}"`, data);
       return data;
     } catch (error) {
       throw error;
@@ -85,7 +84,7 @@ export async function requestFavoriteNotices(search) {
   if (search) {
     try {
       const { data } = await instance.get(`notices/user/favorite`, {
-        params: { query: 'sell' },
+        params: { query: `search` },
       });
       return data;
     } catch (error) {
@@ -94,9 +93,7 @@ export async function requestFavoriteNotices(search) {
   }
 
   try {
-    const { data } = await instance.get(`notices/user/favorite`, {
-      params: { query: 'sell' },
-    });
+    const { data } = await instance.get(`notices/user/favorite`);
     return data;
   } catch (error) {
     throw error;
@@ -117,12 +114,17 @@ export async function requestOwnNotices(search) {
   }
 
   try {
-    console.log('asdf');
     const { data } = await instance.get(`notices/user`);
     return data;
   } catch (error) {
     throw error;
   }
+}
+
+export async function writeNewNotice(req) {
+  console.log(req);
+  await instance.post(`notices/user`, req);
+  return;
 }
 
 export async function removeNoticesById(id) {
@@ -138,7 +140,7 @@ export async function removeNoticesById(id) {
 
 //========================== FAVORITE  =============================
 
-export async function toggleFavorite(id, token, req) {
+export async function toggleFavorite({ id, token, req }) {
   console.log('id', id);
   console.log('token', token);
   console.log('req', req);
@@ -146,9 +148,9 @@ export async function toggleFavorite(id, token, req) {
   // setCurrentToken(token);
 
   try {
-    const { data } = await instance[req](`user/notices/${id}/favorite`);
+    const { data } = await instance[req](`notices/user/${id}/favorite`);
     console.log('favAdd data', data);
-    return data.data.result;
+    return data;
   } catch (error) {
     throw error;
   }

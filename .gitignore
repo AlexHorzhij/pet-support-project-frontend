@@ -24,5 +24,9 @@ yarn-error.log*
 
 package-lock.json
 .vscode
+<<<<<<< HEAD
 # Local Netlify folder
 .netlify
+=======
+settings.json
+>>>>>>> 41f32c9392d1a29a8c266eeb28f3529e083e95b8

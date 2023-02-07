@@ -9,7 +9,6 @@ import OurFriendsItem from './OurFriendsPageComponents/OurFriendsItem';
 import UserData from './UserPage/UserData/UserData';
 import PetsData from './UserPage/PetsData/PetsData';
 import Modal from './Modal/Modal';
-import ModalAddsPet from './UserPage/ModalAddsPet/ModalAddsPet';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
 import NoticeAddForm from './NoticeAddSellForm/OldNoticeAddSellForm';
 import LearnMoreModal from './NoticesPageComponents/LearnMoreModal/LearnMoreModal';
@@ -22,7 +21,6 @@ export {
   NoticesFilter,
   UserData,
   PetsData,
-  ModalAddsPet,
   Modal,
   AddToFavorite,
   OurFriendsList,
