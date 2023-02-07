@@ -11,13 +11,6 @@ export const MobileNavigation = styled(Navigation)({
     marginTop: '88px',
   },
 });
-// export const MobileNavigation = styled.nav`
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   align-items: center;
-//   flexdirection: column;
-// `;
 
 export const MobileNavList = styled(NavList)({
   display: 'flex',
@@ -28,26 +21,12 @@ export const MobileNavList = styled(NavList)({
   listStyle: 'none',
 });
 
-// export const MobileNavList = styled.ul`
-//   display: flex;
-//   justifycontent: center;
-//   aligncontent: center;
-//   margin: 0;
-//   padding: 0;
-//   flexdirection: column;
-//   liststyle: none;
-// `;
 
-// export const MobileNavListItem = styled(ListItem)({
-//   marginBottom: '40px',
-//   marginLeft: 0,
-// });
 export const MobileNavListItem = styled.li`
       margin-bottom: 40px;
   }
 `;
-// export const MobileNavListItem = styled.li`marginBottom: '40px',
-//   marginLeft: '0',`;
+
 
 export const MobileNavLink = styled(LinkNav)({
   fontFamily: 'Manrope',
@@ -69,20 +48,3 @@ export const MobileNavLink = styled(LinkNav)({
     lineHeight: '66px',
   },
 });
-
-// export const MobileNavLink = styled.a`
-//     font-family: 'Manrope';
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 32px;
-//     line-height: 44px;
-//     letter-spacing: 0.04em;
-//     color: inherit;
-//     display: flex;
-//    alignItems: center;
-//   }
-//   &:hover,
-//   &:focus {
-//     color: rgba(245, 146, 86, 1);
-//   }
-//   text-decoration: none;`;
