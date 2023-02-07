@@ -44,7 +44,7 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <TypographyStyled variant="h4">Title of ad *</TypographyStyled>
+        <TypographyStyled sx={{mt: 2}} variant="h4">Title of ad *</TypographyStyled>
         <StyledInput
           sx={{ mt: 2, mb: 4 }}
           name="title"

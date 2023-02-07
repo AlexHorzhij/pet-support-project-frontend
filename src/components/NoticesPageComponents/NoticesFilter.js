@@ -23,7 +23,7 @@ export default function NoticesFilter() {
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
-  console.log('categoryName', categoryName);
+ 
   const handleFilter = e => {
     e.preventDefault();
     if (token) {

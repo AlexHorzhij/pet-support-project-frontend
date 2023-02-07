@@ -15,7 +15,7 @@ export const fetchNotices = createAsyncThunk(
   async ({ categoryName, search }, { rejectWithValue }) => {
     try {
       const notices = await requestPublicNotices(categoryName, search);
-      console.log('requestPublicNotices', notices);
+      // console.log('requestPublicNotices', notices);
       return notices;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -26,11 +26,11 @@ export const fetchNotices = createAsyncThunk(
 export const fetchAuthNotices = createAsyncThunk(
   'fetchAuthNotices',
   async ({ token, categoryName, search = null }, { rejectWithValue }) => {
-    console.log('tokenOper', token);
+    // console.log('tokenOper', token);
 
     try {
       const notices = await getRegisterNotices(token, categoryName, search);
-      console.log('fetchAuthNotices', notices);
+      // console.log('fetchAuthNotices', notices);
       return notices;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,7 +43,7 @@ export const setFavorite = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const favorite = await toggleFavorite(data);
-      console.log('favorite Oper', favorite);
+      // console.log('favorite Oper', favorite);
       return favorite;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -54,10 +54,9 @@ export const setFavorite = createAsyncThunk(
 export const addNewNotice = createAsyncThunk(
   'addNotice',
   async (data, { rejectWithValue }) => {
-    console.log('dataOperation: ', data);
+    // console.log('dataOperation: ', data);
     try {
-      const res = await writeNewNotice(data);
-      console.log('res', res);
+      await writeNewNotice(data);
     } catch (error) {
       return rejectWithValue(error.message);
     }

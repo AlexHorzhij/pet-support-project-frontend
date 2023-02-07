@@ -7,7 +7,7 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { toast } from 'react-hot-toast';
 
 export const NoticeAddForm = ({ handleClose }) => {
-  const [category, setСategory] = useState(null);
+  const [category, setCategory] = useState(null);
   const [data, setData] = useState({
     // step-1:
     title: '',
@@ -27,7 +27,7 @@ export const NoticeAddForm = ({ handleClose }) => {
 
   const handleStatus = (e, newStatus) => {
     if (newStatus !== null) {
-      setСategory(newStatus);
+      setCategory(newStatus);
     }
   };
 

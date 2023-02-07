@@ -67,7 +67,7 @@ export async function requestPublicNotices(
     const { data } = await instance.get(`/notices`, {
       params: { search, category: categoryName },
     });
-    console.log('requestPublicNotices data', data);
+    // console.log('requestPublicNotices data', data);
 
     return data;
   } catch (error) {
@@ -111,7 +111,7 @@ export async function getRegisterNotices(token, categoryName, search = null) {
     const { data } = await instance.get(`notices/user`, {
       params: { search, category: categoryName },
     });
-    console.log('requestOwnNoticesR search', data);
+    // console.log('requestOwnNoticesR search', data);
 
     return data;
   } catch (error) {
@@ -120,8 +120,8 @@ export async function getRegisterNotices(token, categoryName, search = null) {
 }
 
 export async function writeNewNotice(req) {
-  console.log('req: ', req);
-  console.log(req);
+  // console.log('req: ', req);
+  // console.log(req);
   await instance.post(`notices/user`, req, {
     headers: {
       'Content-Type': `multipart/form-data;`,
@@ -134,7 +134,7 @@ export async function removeNoticesById(id) {
   console.log('id', id);
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
-    console.log('remove data', data);
+    // console.log('remove data', data);
     return data.data.result;
   } catch (error) {
     throw error;
