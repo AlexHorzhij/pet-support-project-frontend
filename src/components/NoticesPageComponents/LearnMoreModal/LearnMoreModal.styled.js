@@ -114,7 +114,7 @@ export const AddFavouriteButton = styled(Button)(({ theme }) => ({
   },
 
   [theme.breakpoints.up('md')]: {
-    width: '160px',
+    width: '180px',
     marginRight: '12px',
   },
 }));
@@ -123,6 +123,6 @@ export const ContactButton = styled(Button)(({ theme }) => ({
   fontSize: '16px',
 
   [theme.breakpoints.up('md')]: {
-    width: '160px',
+    width: '180px',
   },
 }));
