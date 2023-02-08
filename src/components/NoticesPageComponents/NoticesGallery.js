@@ -12,6 +12,7 @@ import { fetchUserData } from 'redux/userData/userDataOperations';
 import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from 'services/pagination';
+import { getUser } from 'redux/userData/userDataSelectors';
 
 export default function NoticesGallery() {
   const {
@@ -19,7 +20,7 @@ export default function NoticesGallery() {
     // error, isLoading
   } = useSelector(getNotices);
   const { token } = useSelector(getAuth);
-
+  const user = useSelector(getUser);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
   console.log('data: ', data);
@@ -70,6 +71,7 @@ export default function NoticesGallery() {
                   token={token}
                   data={item}
                   deleteCard={deleteCard}
+                  user={user}
                   // openModal={openModal}
                 />
               </Grid>
