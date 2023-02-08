@@ -36,7 +36,7 @@ export default function NoticesCategoryList() {
     <Container sx={{ mb: 6 }}>
       <Button
         name="sell"
-        variant={active === 'sell' ? 'contained' : 'outlined'}
+        variant={categoryName === 'sell' ? 'contained' : 'outlined'}
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
@@ -44,14 +44,14 @@ export default function NoticesCategoryList() {
       </Button>
       <Button
         name="lost-found"
-        variant={active === 'lost-found' ? 'contained' : 'outlined'}
+        variant={categoryName === 'lost-found' ? 'contained' : 'outlined'}
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
         lost/found
       </Button>
       <Button
-        variant={active === 'for-free' ? 'contained' : 'outlined'}
+        variant={categoryName === 'for-free' ? 'contained' : 'outlined'}
         name="for-free"
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
@@ -61,7 +61,7 @@ export default function NoticesCategoryList() {
       {isLoggedIn && (
         <>
           <Button
-            variant={active === 'favorite' ? 'contained' : 'outlined'}
+            variant={categoryName === 'favorite' ? 'contained' : 'outlined'}
             name="favorite"
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
@@ -69,7 +69,7 @@ export default function NoticesCategoryList() {
             favorite ads
           </Button>
           <Button
-            variant={active === 'own' ? 'contained' : 'outlined'}
+            variant={categoryName === 'own' ? 'contained' : 'outlined'}
             name="own"
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
