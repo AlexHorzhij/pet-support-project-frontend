@@ -45,16 +45,13 @@ function UserDataItem({
       name = inputName;
     }
     let result = value.match(pattern);
-		console.log('value: ', value);
-		console.log('pattern: ', pattern);
-    console.log('result: ', result);
 
     if (!result) {
       toast.error(textMessage, { duration: 3000 });
       return;
     }
     dispatch(updateUser({ name, value }));
-  }, 500);
+  }, 2000);
 
   return (
     <UserDataItemBox>
@@ -77,7 +74,12 @@ function UserDataItem({
       />
       <IconButton
         onClick={changeInputState}
-        sx={{ backgroundColor: '#FDF7F2', width: '32px', height: '32px' }}
+        sx={{
+          backgroundColor: '#FDF7F2',
+          width: '32px',
+          height: '32px',
+          '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
+        }}
       >
         {inputState ? (
           <ModeEditOutlineRoundedIconStyled />

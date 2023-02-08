@@ -62,7 +62,8 @@ export const IconButtonWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 export const DaleteIconStyled = styled(DeleteIcon)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: 'transparent',
+  // backgroundColor: theme.palette.background.default,
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
@@ -76,6 +77,7 @@ export const IconButtonStyled = styled(IconButton)(({ theme }) => ({
   '&:not(:last-child)': {
     marginBottom: '13px',
   },
+  '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
 }));
 
 export const PetInfoTypography = styled(Typography)(({ theme }) => ({
