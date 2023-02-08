@@ -37,7 +37,7 @@ function UserData() {
     /^(?=(?:\D*\d){10,15}\D*$)\+?[0-9]{1,3}[\s-]?(?:\(0?[0-9]{1,5}\)|[0-9]{1,5})[-\s]?[0-9][\d\s-]{5,7}\s?(?:x[\d-]{0,4})?$/;
   const locationPattern = /^[A-Z][a-zA-Z\s]+,\s+[A-Z][a-zA-Z\s]*$/;
   const emailPattern = /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/;
-  const namePattern = /[A-Za-z]{6}/;
+  const namePattern = /^[a-zA-Z\s]*$/;
   // ========================= regex Patterns ==========================
 
   useEffect(() => {
@@ -105,7 +105,7 @@ function UserData() {
                     title={'Name'}
                     value={user.name}
                     pattern={namePattern}
-                    textMessage={'Enter valid full name, at least 6 cheracter'}
+                    textMessage={'Enter valid full name, at least 2 cheracter'}
                   />
                   <UserDataItem
                     title={'Email'}

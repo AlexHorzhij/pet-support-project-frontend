@@ -16,14 +16,14 @@ const schema = yup.object().shape({
     .required()
     .min(2)
     .max(16)
-    .matches(/^[A-Za-z]+$/, 'Name must contain only latin letters'),
+    .matches(/^[a-zA-Z\s]*$/, 'Name must contain only latin letters'),
   date: yup
     .date()
     .transform(function (value, originalValue) {
       if (this.isType(value)) {
         return value;
       }
-      const result = parse(originalValue, 'dd.MM.yyyy', new Date());
+      const result = parse(originalValue, 'DD.MM.YYYY', new Date());
       return result;
     })
     .typeError('please enter a valid date')
@@ -34,7 +34,7 @@ const schema = yup.object().shape({
     .required()
     .min(2)
     .max(16)
-    .matches(/^[A-Za-z]+$/, 'Breed must contain only latin letters'),
+    .matches(/^[a-zA-Z\s]*$/, 'Breed must contain only latin letters'),
 });
 
 const StepOne = ({ next, data, onModalClose }) => {
