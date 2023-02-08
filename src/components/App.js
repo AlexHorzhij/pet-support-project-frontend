@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<LoaderPage />}>
+      <Suspense fallback={<LoaderPage style={{position: 'absolute'}} />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />

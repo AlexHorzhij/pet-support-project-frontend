@@ -36,6 +36,7 @@ export async function register(signupData) {
 
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
+  console.log('data: ', data);
   setToken.set(data.token);
   return data;
 }
@@ -134,8 +135,8 @@ export async function removeNoticesById(id) {
   console.log('id', id);
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
-    // console.log('remove data', data);
-    return data.data.result;
+    console.log('remove data', data);
+    return data.result;
   } catch (error) {
     throw error;
   }
