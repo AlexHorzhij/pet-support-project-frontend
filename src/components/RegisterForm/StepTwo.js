@@ -9,6 +9,7 @@ import {
   ErrorText,
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
+import { Box } from '@mui/material';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -43,33 +44,39 @@ const StepTwo = ({ next, prev, data }) => {
       {({ values }) => {
         return (
           <Form>
-            <StyledInput
-              type="text"
-              name="name"
-              placeholder="Name"
-              disableunderline="true"
-            />
-            <ErrorMessage component="div" name="name">
-              {msg => <ErrorText>*{msg}</ErrorText>}
-            </ErrorMessage>
-            <StyledInput
-              type="text"
-              name="city"
-              placeholder="City, Region"
-              disableunderline="true"
-            />
-            <ErrorMessage component="div" name="city">
-              {msg => <ErrorText>*{msg}</ErrorText>}
-            </ErrorMessage>
-            <StyledInput
-              type="tel"
-              name="phone"
-              placeholder="Mobile phone"
-              disableunderline="true"
-            />
-            <ErrorMessage component="div" name="phone">
-              {msg => <ErrorText>*{msg}</ErrorText>}
-            </ErrorMessage>
+            <Box sx={{ position: 'relative' }}>
+              <StyledInput
+                type="text"
+                name="name"
+                placeholder="Name"
+                disableunderline="true"
+              />
+              <ErrorMessage component="div" name="name">
+                {msg => <ErrorText>*{msg}</ErrorText>}
+              </ErrorMessage>
+            </Box>
+            <Box sx={{ position: 'relative' }}>
+              <StyledInput
+                type="text"
+                name="city"
+                placeholder="City, Region"
+                disableunderline="true"
+              />
+              <ErrorMessage component="div" name="city">
+                {msg => <ErrorText>*{msg}</ErrorText>}
+              </ErrorMessage>
+            </Box>
+            <Box sx={{ position: 'relative' }}>
+              <StyledInput
+                type="tel"
+                name="phone"
+                placeholder="Mobile phone"
+                disableunderline="true"
+              />
+              <ErrorMessage component="div" name="phone">
+                {msg => <ErrorText>*{msg}</ErrorText>}
+              </ErrorMessage>
+            </Box>
             <FormButton variant="contained" type="submit">
               {!isLoading ? 'Register' : <Loader />}
             </FormButton>

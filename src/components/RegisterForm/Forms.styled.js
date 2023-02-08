@@ -9,7 +9,7 @@ export const StyledInput = styled(Field)(({ theme }) => ({
   border: `1px solid ${theme.palette.outlines.inputBorder}`,
   borderRadius: theme.shape.borderRadius,
   padding: '0 32px',
-  marginBottom: '16px',
+  marginBottom: '25px',
 
   '&::placeholder': {
     fontWeight: '400',
@@ -30,9 +30,17 @@ export const StyledInput = styled(Field)(({ theme }) => ({
 }));
 
 export const ErrorText = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '33px',
+  fontSize: '14px',
+  left: '0',
   padding: '5px 20px',
-  marginBottom: '10px',
   color: theme.palette.warning.main,
+  zIndex: '5',
+
+  [theme.breakpoints.up('md')]: {
+    top: '48px',
+  },
 }));
 
 export const FormButton = styled(Button)(({ theme }) => ({
