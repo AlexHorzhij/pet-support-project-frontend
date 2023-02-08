@@ -1,13 +1,14 @@
 import WorkDays from './WorkDays';
 
-import { Link, Box, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import {
   ContactsItem,
   ContactsTypography,
   FriendsLogo,
   ItemGrid,
-  ItemTitle,
   ContactLink,
+  TitleLink,
+  BoxTitle,
 } from './OurFiendsPage.styled';
 import defaultLogo from 'images/default_logo.webp';
 
@@ -61,16 +62,17 @@ const OurFriendsItem = ({ partner }) => {
 
   return (
     <ItemGrid item component="li">
-      <ItemTitle>
-        <Link
+      <BoxTitle>
+        <TitleLink
           href={url}
           target="_blank"
           rel="noopener noreferrer nofollow"
           color="inherit"
         >
           {title}
-        </Link>
-      </ItemTitle>
+        </TitleLink>
+      </BoxTitle>
+
       <Box
         sx={{
           display: 'flex',
