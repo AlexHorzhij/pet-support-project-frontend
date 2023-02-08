@@ -6,7 +6,7 @@ import {
   ErrorText,
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import { TypographyStyled } from './NoticeAddForm.styled';
 
 const schema = yup.object().shape({
@@ -19,6 +19,7 @@ const schema = yup.object().shape({
     .required(),
   birthdate: yup
     .string()
+    .max(10)
     .matches(
       /(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).(19|20)/,
       'Input correct date'
@@ -47,15 +48,17 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
         <TypographyStyled sx={{ mt: 2 }} variant="h4">
           Title of ad *
         </TypographyStyled>
-        <StyledInput
-          sx={{ mt: 2, mb: 4 }}
-          name="title"
-          disableunderline="true"
-          placeholder="Type title"
-        />
-        <ErrorMessage component="div" name="title">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
+        <Box sx={{position: "relative"}}>
+          <StyledInput
+            sx={{ mt: 2, mb: 4 }}
+            name="title"
+            disableunderline="true"
+            placeholder="Type title"
+          />
+          <ErrorMessage component="div" name="title">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
         <TypographyStyled variant="h4">Name pet</TypographyStyled>
         <StyledInput
           sx={{ mt: 2, mb: 4 }}

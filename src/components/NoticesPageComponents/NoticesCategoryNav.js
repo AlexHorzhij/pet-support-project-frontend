@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
@@ -10,8 +10,6 @@ import {
 } from 'redux/notices/noticesOperations';
 
 export default function NoticesCategoryList() {
-  const [active, setActive] = useState('');
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
@@ -28,7 +26,6 @@ export default function NoticesCategoryList() {
 
   const onClick = e => {
     const { name } = e.target;
-    setActive(name);
     navigate(`/notices/${name}`);
   };
 

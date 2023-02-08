@@ -25,7 +25,7 @@ export const NoticeAddForm = ({ handleClose }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const dispatch = useDispatch();
 
-  const handleStatus = (e, newStatus) => {
+  const handleStatus = (newStatus) => {
     if (newStatus !== null) {
       setCategory(newStatus);
     }
