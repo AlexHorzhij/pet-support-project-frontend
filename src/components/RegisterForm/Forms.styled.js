@@ -10,6 +10,7 @@ export const StyledInput = styled(Field)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   padding: '0 32px',
   marginBottom: '25px',
+  fontSize: '20px',
 
   '&::placeholder': {
     fontWeight: '400',

@@ -61,14 +61,20 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-
       .addCase(fetchCurrentUser.pending, state => {
         state.isLoadingUser = true;
         state.error = null;
       })
-      .addCase(fetchCurrentUser.fulfilled, state => {
+      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.isLoadingUser = false;
-        state.token ? (state.isLoggedIn = true) : (state.isLoggedIn = false);
+        state.userEmail = payload.user.email;
+        state.isLoggedIn = true;
+      })
+      .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isLoggedIn = false;
+        state.error = payload;
       });
   },
 });
