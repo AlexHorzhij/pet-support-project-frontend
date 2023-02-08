@@ -65,7 +65,7 @@ export const addNewNotice = createAsyncThunk(
 );
 
 export const removeNoticeFromUserById = createAsyncThunk(
-  'removNotices',
+  'removeNotices',
   async (id, { rejectWithValue }) => {
     try {
       const notices = await removeNoticesById(id);

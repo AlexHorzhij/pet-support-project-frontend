@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
-import { Loader } from 'components/index';
+// import { Loader } from 'components/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
@@ -8,7 +8,9 @@ import { sortObjByDate } from 'services/sortObjByDate';
 import { removeNoticeFromUserById } from 'redux/notices/noticesOperations';
 
 export default function NoticesGallery() {
-  const { items, error, isLoading } = useSelector(getNotices);
+  const { items, 
+    // error, isLoading
+   } = useSelector(getNotices);
   const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
@@ -22,9 +24,11 @@ export default function NoticesGallery() {
   // };
 
   return (
-    <Grid container>
-      {error && <p>{error.data}</p>}
-      {isLoading ? <Loader /> : ''}
+    <Grid container sx={{ pb: 6 }}>
+      {/* {error && <p>{error.data}</p>}
+      <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
+        {isLoading ? <Loader /> : ''}
+      </div> */}
       {data &&
         data.map(item => {
           return (
@@ -43,7 +47,7 @@ export default function NoticesGallery() {
                 token={token}
                 data={item}
                 deleteCard={deleteCard}
-                // openModal={openModal}
+              // openModal={openModal}
               />
             </Grid>
           );

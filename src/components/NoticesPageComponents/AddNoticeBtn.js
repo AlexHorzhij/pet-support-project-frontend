@@ -51,7 +51,7 @@ export default function AddNoticeBtn() {
           '&:hover': { cursor: 'pointer' },
         }}
       >
-        <Typography sx={{ marginRight: '5px' }}> Add pet</Typography>
+        <Typography sx={{ marginRight: '5px' }}> Add advertise</Typography>
         <AddCircleIcon color="primary" fontSize="large" />
       </Button>
 
