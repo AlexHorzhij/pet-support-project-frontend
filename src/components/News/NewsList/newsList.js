@@ -1,12 +1,10 @@
 import { NewsItem } from '../NewsItem/newsItem';
-import { Loader } from 'components/Loader/Loader';
 import { NewsGrid } from './newsList.styled';
-import { NoNewsItem } from '../NoNewsItem/NoNewsItem';
 import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from '../../../services/pagination';
 
-export const NewsList = ({news, error, isLoading, value}) => {
+export const NewsList = ({news, error, isLoading}) => {
 
 
   // ==============Pagination================
@@ -22,11 +20,6 @@ export const NewsList = ({news, error, isLoading, value}) => {
 //============================================
 
   return (
-    <>
-      {error && <p>{error.data}</p>}
-      {isLoading && <Loader />}
-      {news.length === 0 && <NoNewsItem value={value} />}
-      {news.length !== 0 && (
         <>
           <NewsGrid component="ul" container columnSpacing={4} rowSpacing={7}>
             {paginationData.currentData().map(({ _id, title, description, date, url }) => (
@@ -51,7 +44,5 @@ export const NewsList = ({news, error, isLoading, value}) => {
             style={{display: 'flex', justifyContent: 'center'}}
           />
         </>
-      )}
-    </>
   );
 };

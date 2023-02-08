@@ -3,29 +3,19 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { FormSearch } from './newsSearch.styled';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
-export default function NewsSearch({ onSubmit, }) {
-  const [searchParams] = useSearchParams();
+import { toast } from 'react-hot-toast';
 
-  const searchValue = searchParams.get('search')
-  const [inputValue, setInputValue] = useState(searchValue)
-  
-  useEffect(() => {
-    if (searchValue) {
-      setInputValue(searchValue)
-    }
-  }, [searchValue])
-
-  const handleInputChange = event => {
-    setInputValue(event.currentTarget.value)
-  };
+export default function NewsSearch({ onSubmit, value}) {
   
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(inputValue)
-    // setInputValue('')
+    const form = event.target;
+    if (form.elements.search.value.trim() === '') {
+            toast.error('Enter search value')
+            return
+        }
+    onSubmit(form.elements.search.value)
   }
 
   return (
@@ -41,11 +31,12 @@ export default function NewsSearch({ onSubmit, }) {
     >
       <InputBase
         type='text'
+        name='search'
+        autoComplete='off'
+        autoFocus
         sx={{ ml: 1, flex: 1, pl: 1 }}
         placeholder="Search news"
-        inputProps={{ 'aria-label': 'search' }}
-        defaultValue={inputValue}
-        onChange={handleInputChange}
+        defaultValue={value}
       />
       <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />
