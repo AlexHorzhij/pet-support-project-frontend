@@ -69,7 +69,9 @@ export default function LearnMoreModal({ onModalClose, data }) {
       </ModalCloseButton>
       <BoxFlex>
         <Box style={{ position: 'relative' }}>
-          {avatarUrl ? <Image src={avatarUrl} /> : <Image src={nophoto} />}
+          <Image image={nophoto}>
+            <Image image={avatarUrl} />
+          </Image>
           <CategoryLable>{category}</CategoryLable>
         </Box>
         <Box>

@@ -35,10 +35,12 @@ export const BoxFlex = styled(Box)(({ theme }) => ({
 }));
 
 export const Image = styled(CardMedia)(({ theme }) => ({
+  position: 'relative',
   wigth: '240px',
   height: '240px',
   borderRadius: '0 0 40px 40px',
   marginBottom: '16px',
+  objectFit: 'cover',
 
   [theme.breakpoints.up('md')]: {
     width: '288px',
