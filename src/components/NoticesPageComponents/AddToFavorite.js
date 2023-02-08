@@ -3,7 +3,6 @@ import { Favorite } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 
-// import { toggleFavorite } from 'API/api';
 import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function AddToFavorite({ favorite, id, bg }) {
@@ -14,7 +13,6 @@ export default function AddToFavorite({ favorite, id, bg }) {
     const favorite = event.target.checked;
     const req = favorite ? 'post' : 'delete';
     const data = { id, token, req };
-    console.log(data);
     dispatch(setFavorite(data));
   };
 

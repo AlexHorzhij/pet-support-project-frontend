@@ -29,7 +29,6 @@ export default function NewsPage() {
   }, [dispatch, searchValue]);
 
  const { news, error, isLoading } = useSelector(getNews);
- console.log('news: ', news);
 
   const handleInputSubmit = (query) => {
 
