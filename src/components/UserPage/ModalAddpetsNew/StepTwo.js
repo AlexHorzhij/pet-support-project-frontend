@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   avatarUrl: yup.mixed().required('File is required'),
 });
 
-const StepTwo = ({ next, prev, data }) => {
+const StepTwo = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -68,7 +68,9 @@ const StepTwo = ({ next, prev, data }) => {
                   {({ getRootProps, getInputProps }) => (
                     <DropZoneBox
                       sx={{
-                        backgroundImage: `url(${data.avatarUrl})`,
+                        backgroundImage: `url(${
+                          preview ? preview : data.avatarUrl
+                        })`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
@@ -86,7 +88,7 @@ const StepTwo = ({ next, prev, data }) => {
                             <img
                               style={{ height: '100%', objectFit: 'cover' }}
                               alt="preview"
-                              src={images[0]?.src}
+                              src={images[0].src}
                             />
                           )}
                         </DropZonePreviewBox>
@@ -117,7 +119,9 @@ const StepTwo = ({ next, prev, data }) => {
                 <FormButton
                   variant="outlined"
                   type="button"
-                  onClick={() => prev(values)}
+                  onClick={() => {
+                    prev(values);
+                  }}
                 >
                   Back
                 </FormButton>
