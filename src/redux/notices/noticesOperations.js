@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import {
   requestPublicNotices,
   // requestRegisterNotices,
@@ -54,10 +53,10 @@ export const setFavorite = createAsyncThunk(
 export const addNewNotice = createAsyncThunk(
   'addNotice',
   async (data, { rejectWithValue }) => {
-    // console.log('dataOperation: ', data);
+
     try {
       const newNotice = await writeNewNotice(data);
-      return newNotice
+      return newNotice;
     } catch (error) {
       return rejectWithValue(error.message);
     }

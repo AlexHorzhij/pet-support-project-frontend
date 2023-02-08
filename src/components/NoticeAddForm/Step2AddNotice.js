@@ -20,9 +20,6 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 import { TextField } from 'formik-material-ui';
 
-
-
-
 export const Step2AddNotice = ({ next, prev, data }) => {
   const [images, setImages] = useState([]);
 
@@ -35,14 +32,21 @@ export const Step2AddNotice = ({ next, prev, data }) => {
       .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
     avatarUrl: yup.string().required(),
-    description: yup.string().required(),
-  }
+    comments: yup
+      .string()
+      .required()
+      .max(100, 'Comment should be no longer than 100 characters'),
+  };
 
-  if (data.status === "sell") {
+  if (data.category === 'sell') {
     validateSchema.price = yup
       .string()
-      .matches(/^[1-9]\d*$/, 'String must contain only positive number')
+      .matches(
+        /^[1-9]\d*$/,
+        'String must contain only positive number, and no more that 6'
+      )
       .required()
+      .max(6);
   }
 
   const schema = yup.object().shape(validateSchema);
@@ -72,7 +76,9 @@ export const Step2AddNotice = ({ next, prev, data }) => {
     >
       {({ values, setFieldValue }) => (
         <Form>
-          <Typography sx={{ mb: 1 }} variant="h4">Sex *</Typography>
+          <Typography sx={{ mb: 1 }} variant="h4">
+            Sex *
+          </Typography>
 
           <div
             style={{ display: 'flex' }}
@@ -99,23 +105,27 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             </StyledLabel>
           </div>
 
-          <Typography variant="h4" sx={{ mt: 2 }}>Location *</Typography>
+          <Typography variant="h4" sx={{ mt: 2 }}>
+            Location *
+          </Typography>
           <StyledInput
             sx={{ mt: 1, mb: 4 }}
             name="location"
             disableunderline="true"
+            placeholder="Type location"
           />
           <ErrorMessage component="div" name="location">
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
 
-          {data.status === 'sell' && (
+          {data.category === 'sell' && (
             <>
               <Typography variant="h4">Price *</Typography>
               <StyledInput
                 sx={{ mt: 2, mb: 4 }}
                 name="price"
                 disableunderline="true"
+                placeholder="Type price"
               />
               <ErrorMessage component="div" name="price">
                 {msg => <ErrorText>*{msg}</ErrorText>}
@@ -123,7 +133,9 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             </>
           )}
 
-          <Typography sx={{ mb: 1 }} variant="h4">Load the pet’s image:</Typography>
+          <Typography sx={{ mb: 1 }} variant="h4">
+            Load the pet’s image:
+          </Typography>
           <Dropzone
             sx={{ width: '100%' }}
             accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
@@ -158,7 +170,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
               multiline={true}
               rows={3.5}
               fullWidth
-              name="description"
+              name="comments"
               component={TextField}
               label="Type comment"
             />

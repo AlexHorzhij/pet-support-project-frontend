@@ -6,14 +6,25 @@ import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { removeNoticeFromUserById } from 'redux/notices/noticesOperations';
+import { useEffect } from 'react';
+import { fetchUserData } from 'redux/userData/userDataOperations';
+import { getUser } from 'redux/userData/userDataSelectors';
 
 export default function NoticesGallery() {
-  const { items, 
+  const {
+    items,
     // error, isLoading
-   } = useSelector(getNotices);
+  } = useSelector(getNotices);
   const { token } = useSelector(getAuth);
+  const user = useSelector(getUser);
+
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
+  console.log('data: ', data);
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
   const deleteCard = e => {
     dispatch(removeNoticeFromUserById(e.target.id));
@@ -29,7 +40,7 @@ export default function NoticesGallery() {
       <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
         {isLoading ? <Loader /> : ''}
       </div> */}
-      {data &&
+      {data.length > 0 &&
         data.map(item => {
           return (
             <Grid
@@ -44,10 +55,11 @@ export default function NoticesGallery() {
               key={item._id}
             >
               <NoticesCardItem
+                user={user}
                 token={token}
                 data={item}
                 deleteCard={deleteCard}
-              // openModal={openModal}
+                // openModal={openModal}
               />
             </Grid>
           );

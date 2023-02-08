@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import { useSelector } from 'react-redux';
 // import { getUser } from 'redux/userData/userDataSelectors';
 import { CardMedia, CardContent, Box } from '@mui/material';
@@ -15,28 +15,21 @@ import {
   Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from 'redux/userData/userDataSelectors';
-import { fetchUserData } from 'redux/userData/userDataOperations';
 
 export default function NoticesCardItem({
   data,
   deleteCard,
   token,
+  user = null,
 }) {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
-
-
-  const user = useSelector(getUser)
-  console.log('user: ', user);
-  const userID = user?._id ? user._id : null
-  console.log('userID: ', userID);
+  // console.log('data: ', data);
+  // const user = useSelector(getUser);
+  // console.log('user: ', user);
+  // const userID = user?._id ? user._id : null;
+  // // console.log('userID: ', userID);
 
   const [modalIsShown, setModalIsShown] = useState(false);
+
   const {
     owner,
     _id,
@@ -49,19 +42,30 @@ export default function NoticesCardItem({
     category,
     favorite,
   } = data;
-  const age = distanceBetweenDateAndNowWords(birthdate);
 
+  const age = distanceBetweenDateAndNowWords(birthdate);
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
 
+  // useEffect(() => {
+  //   if (data && user) {
+  //     // console.log('isDelete: ', owner._id === user._id);
+  //     // console.log('user._id: ', user._id);
+  //     // console.log('owner._id: ', owner._id);
+  //   }
+  // }, [data, owner, user]);
+
   return (
     <>
-      <NoticeCard variant="notice"
+      <NoticeCard
+        variant="notice"
         sx={{
-          width: '280px', height: '660px',
-          borderRadius: '0 0 40px 40px'
-        }}>
+          width: '280px',
+          height: '660px',
+          borderRadius: '0 0 40px 40px',
+        }}
+      >
         <CardMedia
           image={nophoto}
           style={{
@@ -89,10 +93,13 @@ export default function NoticesCardItem({
             />
           )}
         </CardMedia>
-        <Box sx={{
-          px: 2, display: 'flex',
-          flexDirection: 'column'
-        }}>
+        <Box
+          sx={{
+            px: 2,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <CardContent style={{ padding: '20px 16px 0px 16px' }}>
             <Title>{title}</Title>
             <ItemsList>
@@ -111,15 +118,24 @@ export default function NoticesCardItem({
 
               <Li>
                 <ItemText>Price:</ItemText>
-                {price ? <ItemText>{price} $</ItemText> : <ItemText>free</ItemText>}
+                {price ? (
+                  <ItemText>{price} $</ItemText>
+                ) : (
+                  <ItemText>free</ItemText>
+                )}
               </Li>
-
             </ItemsList>
           </CardContent>
-          <div style={{
-            display: 'flex', flexDirection: 'column', padding: '4px',
-            justifyContent: 'center', alignItems: 'center', height: '100px'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '4px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100px',
+            }}
+          >
             <Btn
               id={_id}
               onClick={toggleModal}
@@ -128,7 +144,7 @@ export default function NoticesCardItem({
             >
               Learn more
             </Btn>
-            {(userID === owner._id) && (
+            {user?._id === owner?._id && (
               <Btn
                 id={_id}
                 onClick={deleteCard}

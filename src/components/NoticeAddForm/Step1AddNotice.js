@@ -15,7 +15,7 @@ const schema = yup.object().shape({
     .string()
     .min(2)
     .max(16)
-    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
     .required(),
   birthdate: yup
     .string()
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
     .string()
     .min(2)
     .max(16)
-    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
     .required(),
 });
 
@@ -44,27 +44,42 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <TypographyStyled sx={{mt: 2}} variant="h4">Title of ad *</TypographyStyled>
+        <TypographyStyled sx={{ mt: 2 }} variant="h4">
+          Title of ad *
+        </TypographyStyled>
         <StyledInput
           sx={{ mt: 2, mb: 4 }}
           name="title"
           disableunderline="true"
+          placeholder="Type title"
         />
         <ErrorMessage component="div" name="title">
           {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
         <TypographyStyled variant="h4">Name pet</TypographyStyled>
-        <StyledInput sx={{ mt: 2, mb: 4 }} name="name" />
+        <StyledInput
+          sx={{ mt: 2, mb: 4 }}
+          name="name"
+          placeholder="Type name"
+        />
         <ErrorMessage component="div" name="name">
           {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
         <TypographyStyled variant="h4">Date of birth</TypographyStyled>
-        <StyledInput sx={{ mt: 2, mb: 4 }} name="birthdate" />
+        <StyledInput
+          sx={{ mt: 2, mb: 4 }}
+          name="birthdate"
+          placeholder="Type date of birth MM.DD.YYYY"
+        />
         <ErrorMessage component="div" name="birthdate">
           {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
         <TypographyStyled variant="h4">Breed</TypographyStyled>
-        <StyledInput sx={{ mt: 2, mb: 4 }} name="breed" />
+        <StyledInput
+          sx={{ mt: 2, mb: 4 }}
+          name="breed"
+          placeholder="Type breed"
+        />
         <ErrorMessage component="div" name="breed">
           {msg => <ErrorText>*{msg}</ErrorText>}
         </ErrorMessage>
