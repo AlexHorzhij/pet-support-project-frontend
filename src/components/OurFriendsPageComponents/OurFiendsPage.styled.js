@@ -55,14 +55,17 @@ export const ListGrid = styled(Grid)(({ theme }) => ({
 
 export const ItemGrid = styled(Grid)(({ theme }) => ({
   maxWidth: '430px',
-  backgroundColor: theme.palette.background.paper,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
   padding: '12px 4px',
+  backgroundColor: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius20,
   boxShadow: '7px 4px 14px 0px rgba(49, 21, 4, 0.07)',
 
   [theme.breakpoints.up('md')]: {
     maxWidth: '336px',
-    padding: '16px 17px 16px 4px',
+    padding: '16px 12px 16px 8px',
     borderRadius: theme.shape.borderRadius,
   },
 
@@ -71,13 +74,31 @@ export const ItemGrid = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const ItemTitle = styled(Box)(({ theme }) => ({
+export const BoxTitle = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   marginBottom: '12px',
+  padding: '0 15px',
+
+  [theme.breakpoints.up('md')]: {
+    marginBottom: '16px',
+  },
+}));
+
+export const TitleLink = styled(Link)(({ theme }) => ({
   fontWeight: '700',
   fontSize: '12px',
   lineHeight: '1.33',
   color: theme.palette.primary.main,
+  transition: 'text-shadow 250ms linear',
+
+  '&:hover': {
+    textDecoration: 'none',
+    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)',
+  },
+  '&:focus': {
+    textDecoration: 'none',
+    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)',
+  },
 
   [theme.breakpoints.up('md')]: {
     marginBottom: '16px',

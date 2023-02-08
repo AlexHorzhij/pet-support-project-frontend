@@ -61,7 +61,6 @@ const WorkDays = ({ workDays }) => {
         id="mouse-over-popover"
         sx={{
           pointerEvents: 'none',
-          borderRadius: '8px',
         }}
         open={open}
         anchorEl={anchorEl}
@@ -78,12 +77,12 @@ const WorkDays = ({ workDays }) => {
       >
         <Box
           sx={{
-            width: '130px',
+            width: '135px',
             height: '160px',
-            padding: '12px',
+            padding: '12px 17px',
             border: '1px solid #F59256',
             boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.25)',
-            borderRadius: '8px',
+            borderRadius: '40px',
           }}
         >
           {workDays.map(workDay => (
