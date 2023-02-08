@@ -75,6 +75,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'center',
+          position: 'relative',
         }}
       >
         <Box sx={{ width: '100%' }}>

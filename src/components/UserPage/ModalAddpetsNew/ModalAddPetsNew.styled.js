@@ -89,13 +89,17 @@ export const ModalCardContent = styled(CardContent)(({ theme }) => ({
   },
 }));
 export const ModalCloseButton = styled(IconButton)(({ theme }) => ({
-  // position: 'absolute',
-  // top: '24px',
-  // right: '24px',
+  position: 'absolute',
+  top: '-20px',
+  right: '-55px',
   justifySelf: 'flex-end',
   backgroundColor: theme.palette.background.default,
   width: '44px',
   height: '44px',
+  [theme.breakpoints.down('md')]: {
+    top: '-10px',
+    right: '-10px',
+  },
 }));
 export const ModalGrid = styled(Grid)({
   position: 'relative',
