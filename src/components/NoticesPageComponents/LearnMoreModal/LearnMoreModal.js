@@ -3,9 +3,8 @@ import nophoto from 'assets/images/nophoto.gif';
 import { Typography, Box, Checkbox } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { Favorite } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
-import { toggleFavorite } from 'API/api';
 import { toast } from 'react-hot-toast';
 import {
   ModalCard,
@@ -20,6 +19,7 @@ import {
   AddFavouriteButton,
   ContactButton,
 } from './LearnMoreModal.styled';
+import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function LearnMoreModal({ onModalClose, data }) {
   const {
@@ -39,14 +39,17 @@ export default function LearnMoreModal({ onModalClose, data }) {
   } = data;
 
   const [checked, setChecked] = useState(favorite);
-  const { token, isLoggedIn } = useSelector(getAuth);
+  const { token } = useSelector(getAuth);
+  const dispatch = useDispatch();
 
   const onFavoriteClick = () => {
-    if (isLoggedIn) {
+    if (token) {
       const req = checked ? 'delete' : 'post';
-      toggleFavorite(_id, token, req);
+      const reqData = { id: _id, token: token, req: req };
       setChecked(prev => !prev);
+      dispatch(setFavorite(reqData));
     } else {
+      setChecked(false);
       toast.error('To add or remove favorites you have to be LOGGED IN');
     }
   };
@@ -66,7 +69,9 @@ export default function LearnMoreModal({ onModalClose, data }) {
       </ModalCloseButton>
       <BoxFlex>
         <Box style={{ position: 'relative' }}>
-          {avatarUrl ? <Image src={avatarUrl} /> : <Image src={nophoto} />}
+          <Image image={nophoto}>
+            <Image image={avatarUrl} />
+          </Image>
           <CategoryLable>{category}</CategoryLable>
         </Box>
         <Box>
@@ -123,6 +128,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
               ml: 1,
             }}
             inputProps={{ 'aria-label': 'favorite' }}
+            onChange={onFavoriteClick}
             icon={
               <Favorite
                 sx={{
