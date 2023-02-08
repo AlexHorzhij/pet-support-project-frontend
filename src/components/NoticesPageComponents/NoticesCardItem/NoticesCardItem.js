@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+
 import { CardMedia, CardContent, Box } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
@@ -13,23 +15,24 @@ import {
   Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from 'redux/userData/userDataSelectors';
-import { fetchUserData } from 'redux/userData/userDataOperations';
 
-export default function NoticesCardItem({ data, deleteCard, token }) {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (token) {
-      dispatch(fetchUserData());
-    }
-  }, [dispatch, token]);
+export default function NoticesCardItem({
+  data,
+  deleteCard,
+  token,
+  user = null,
+}) {
+  // console.log('data: ', data);
+  // const user = useSelector(getUser);
+  // console.log('user: ', user);
+  // const userID = user?._id ? user._id : null;
+  // // console.log('userID: ', userID);
 
-  const user = useSelector(getUser);
-  const userID = user?._id ? user._id : null;
+
 
   const [modalIsShown, setModalIsShown] = useState(false);
+
   const {
     owner,
     _id,
@@ -42,11 +45,19 @@ export default function NoticesCardItem({ data, deleteCard, token }) {
     category,
     favorite,
   } = data;
-  const age = distanceBetweenDateAndNowWords(birthdate);
 
+  const age = distanceBetweenDateAndNowWords(birthdate);
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
+
+  // useEffect(() => {
+  //   if (data && user) {
+  //     // console.log('isDelete: ', owner._id === user._id);
+  //     // console.log('user._id: ', user._id);
+  //     // console.log('owner._id: ', owner._id);
+  //   }
+  // }, [data, owner, user]);
 
   return (
     <>
@@ -134,7 +145,9 @@ export default function NoticesCardItem({ data, deleteCard, token }) {
             >
               Learn more
             </Btn>
-            {userID === owner._id && (
+
+            {user?._id === owner?._id && (
+
               <Btn
                 id={_id}
                 onClick={deleteCard}

@@ -6,6 +6,8 @@ import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { removeNoticeFromUserById } from 'redux/notices/noticesOperations';
+import { useEffect } from 'react';
+import { fetchUserData } from 'redux/userData/userDataOperations';
 
 import { useState } from 'react';
 import { Pagination } from '@mui/material';
@@ -17,8 +19,14 @@ export default function NoticesGallery() {
     // error, isLoading
   } = useSelector(getNotices);
   const { token } = useSelector(getAuth);
+
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
+  console.log('data: ', data);
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
   // ===========================
   const [page, setPage] = useState(8);
@@ -43,7 +51,8 @@ export default function NoticesGallery() {
       <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
         {isLoading ? <Loader /> : ''}
       </div> */}
-        {data &&
+
+        {data.length > 0 &&
           paginationData.currentData().map(item => {
             return (
               <Grid
