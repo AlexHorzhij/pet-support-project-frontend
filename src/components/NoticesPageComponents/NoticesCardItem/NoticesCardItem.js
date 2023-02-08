@@ -21,8 +21,10 @@ export default function NoticesCardItem({ data, deleteCard, token }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
+    if (token) {
+      dispatch(fetchUserData());
+    }
+  }, [dispatch, token]);
 
   const user = useSelector(getUser);
   const userID = user?._id ? user._id : null;
@@ -72,16 +74,14 @@ export default function NoticesCardItem({ data, deleteCard, token }) {
             }}
           />
           <CategoryLable>{category}</CategoryLable>
-          {token && (
-            <AddToFavorite
-              bg={'rgba(255, 255, 255, 0.6)'}
-              id={_id}
-              favorite={favorite}
-              right="50px"
-              top="50px"
-              style={{ position: 'absolute', right: '50px', top: '50px' }}
-            />
-          )}
+          <AddToFavorite
+            bg={'rgba(255, 255, 255, 0.6)'}
+            id={_id}
+            favorite={favorite}
+            right="50px"
+            top="50px"
+            style={{ position: 'absolute', right: '50px', top: '50px' }}
+          />
         </CardMedia>
         <Box
           sx={{
