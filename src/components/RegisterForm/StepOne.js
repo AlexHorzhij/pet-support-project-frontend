@@ -6,6 +6,7 @@ import {
   ErrorText,
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
+import { Box } from '@mui/material';
 
 const schema = yup.object().shape({
   email: yup
@@ -47,33 +48,39 @@ const StepOne = ({ next, data }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <StyledInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          disableunderline="true"
-        />
-        <ErrorMessage component="div" name="email">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
-        <StyledInput
-          type="password"
-          name="password"
-          placeholder="Password"
-          disableunderline="true"
-        />
-        <ErrorMessage component="div" name="password">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
-        <StyledInput
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          disableunderline="true"
-        />
-        <ErrorMessage component="div" name="confirmPassword">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            disableunderline="true"
+          />
+          <ErrorMessage component="div" name="email">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            disableunderline="true"
+          />
+          <ErrorMessage component="div" name="password">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            disableunderline="true"
+          />
+          <ErrorMessage component="div" name="confirmPassword">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
         <FormButton variant="contained" type="submit">
           Next
         </FormButton>

@@ -9,6 +9,7 @@ import {
   ErrorText,
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
+import { Box } from '@mui/system';
 
 const schema = yup.object().shape({
   email: yup
@@ -53,24 +54,28 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <StyledInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          disableunderline="true"
-        />
-        <ErrorMessage name="email">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
-        <StyledInput
-          type="password"
-          name="password"
-          placeholder="Password"
-          disableunderline="true"
-        />
-        <ErrorMessage name="password">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            disableunderline="true"
+          />
+          <ErrorMessage name="email">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            disableunderline="true"
+          />
+          <ErrorMessage name="password">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
         <FormButton variant="contained" type="submit">
           {!isLoading ? 'Login' : <Loader />}
         </FormButton>
