@@ -14,7 +14,7 @@ export const registerUser = createAsyncThunk(
           <div style={{ position: 'relative' }}>
             <p>
               Successfully registered! You can log in after
-              <b>confirming your email</b>. Check your mailbox!
+              <b> confirming your email</b>. Check your mailbox!
               <br />
               <Button
                 style={{
@@ -95,8 +95,8 @@ export const fetchCurrentUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      await logout();
       toast.error('Oops! Something went wrong, please, login again');
+      await logout();
       return rejectWithValue(error);
     }
   }

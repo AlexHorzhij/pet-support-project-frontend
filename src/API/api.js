@@ -39,6 +39,8 @@ export async function login(signupData) {
 export async function fetchCurrent(token) {
   try {
     setCurrentToken(token);
+    const { data } = await instance.get('/user');
+    return data;
   } catch (error) {
     setCurrentToken();
     throw error;

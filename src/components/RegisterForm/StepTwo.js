@@ -15,7 +15,7 @@ const schema = yup.object().shape({
   name: yup.string().required(),
   city: yup
     .string()
-    .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .matches(/^[A-Za-z,\s\u0400-\u04FF]*$/, 'String must contain only letters')
     .required(),
   phone: yup
     .string()

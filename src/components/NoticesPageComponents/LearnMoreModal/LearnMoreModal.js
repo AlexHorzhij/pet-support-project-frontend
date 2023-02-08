@@ -69,7 +69,6 @@ export default function LearnMoreModal({ onModalClose, data }) {
       </ModalCloseButton>
       <BoxFlex>
         <Box style={{ position: 'relative' }}>
-
           {avatarUrl ? <Image image={avatarUrl} /> : <Image src={nophoto} />}
 
           <CategoryLable>{category}</CategoryLable>
@@ -87,7 +86,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {sex && <HeadText variant="body2">The sex: </HeadText>}
               {owner.name && <HeadText variant="body2">Owner: </HeadText>}
               {owner.phone && <HeadText variant="body2">Phone: </HeadText>}
-              {price && <HeadText variant="body2">Sell: </HeadText>}
+              {price && <HeadText variant="body2">Price: </HeadText>}
             </Box>
             <Box>
               {name && <Text>{name}</Text>}
