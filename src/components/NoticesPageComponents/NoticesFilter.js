@@ -52,7 +52,6 @@ export default function NoticesFilter() {
           alignItems: 'center',
           mb: 6,
           maxWidth: 608,
-          height: 44,
           mx: 'auto',
         }}
       >

@@ -7,7 +7,6 @@ import { LoaderPage } from 'components';
 import { SharedLayout } from 'components';
 import { PrivateRoute, PublicRoute } from '../services/RouteManager';
 
-
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));

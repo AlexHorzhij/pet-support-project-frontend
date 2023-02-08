@@ -2,22 +2,27 @@ import Checkbox from '@mui/material/Checkbox';
 import { Favorite } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
-
-// import { toggleFavorite } from 'API/api';
+import { toast } from 'react-hot-toast';
 import { setFavorite } from 'redux/notices/noticesOperations';
+import { useState } from 'react';
 
-export default function AddToFavorite({ favorite, id, bg }) {
+export default function AddToFavorite({ favorite = false, id, bg }) {
+  const [check, setCheck] = useState(favorite);
   const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
 
   const handleChange = event => {
     const favorite = event.target.checked;
+    if (!token) {
+      setCheck(false);
+      return toast.error(`Please authorize for using this option`);
+    }
+    setCheck(favorite);
     const req = favorite ? 'post' : 'delete';
     const data = { id, token, req };
-    console.log(data);
+
     dispatch(setFavorite(data));
   };
-
   return (
     <>
       <Checkbox
@@ -37,7 +42,7 @@ export default function AddToFavorite({ favorite, id, bg }) {
           />
         }
         onChange={handleChange}
-        checked={favorite}
+        checked={check}
         checkedIcon={
           <Favorite
             sx={{

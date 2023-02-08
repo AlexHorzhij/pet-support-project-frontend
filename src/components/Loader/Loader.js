@@ -7,7 +7,7 @@ export const Loader = () => {
       <ThreeCircles
         height="30"
         width="30"
-        color="#fff"
+        color="#f59256"
         visible={true}
         ariaLabel="three-circles-rotating"
       />

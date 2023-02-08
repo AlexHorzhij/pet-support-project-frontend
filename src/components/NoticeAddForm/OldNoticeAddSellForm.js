@@ -1,13 +1,8 @@
-// import { InputLabel, InputBase, Paper } from '@mui/material'
-// import { useTheme } from '@mui/material'
-// 
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Grid, Box } from '@mui/material';
 import { FormStepper } from 'components/UserPage/FormStepper/FormStepper';
 import Dropzone from 'react-dropzone';
-// import { useDispatch } from 'react-redux';
-// import { addNotice } from 'redux/''
 import { nanoid } from 'nanoid';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import {
@@ -28,14 +23,11 @@ import { TextField } from 'formik-material-ui';
 import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 export default function NoticeAddForm({ handleClose }) {
-  // const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const formSubmitHandler = async (values, onSubmitProps) => {
     const preview = URL.createObjectURL(values.picture);
     values.picture = preview;
     values.id = nanoid();
-
-    // dispatch(addNotice(values));
 
     onSubmitProps.resetForm();
     handleClose();
