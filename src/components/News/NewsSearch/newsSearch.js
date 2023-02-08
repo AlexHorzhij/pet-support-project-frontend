@@ -44,7 +44,7 @@ export default function NewsSearch({ onSubmit, }) {
         sx={{ ml: 1, flex: 1, pl: 1 }}
         placeholder="Search news"
         inputProps={{ 'aria-label': 'search' }}
-        value={inputValue}
+        defaultValue={inputValue}
         onChange={handleInputChange}
       />
       <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
