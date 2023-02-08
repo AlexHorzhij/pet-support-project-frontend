@@ -166,6 +166,6 @@ export const ModalMultiLineField = styled(Field)(({ theme }) => ({
     display: 'none',
   },
   [theme.breakpoints.down('md')]: {
-    width: '240px',
+    width: '100%',
   },
 }));
