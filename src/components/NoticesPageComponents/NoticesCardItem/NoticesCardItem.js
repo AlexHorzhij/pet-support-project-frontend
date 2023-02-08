@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { getUser } from 'redux/userData/userDataSelectors';
+
 import { CardMedia, CardContent, Box } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
@@ -16,6 +16,7 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
+
 export default function NoticesCardItem({
   data,
   deleteCard,
@@ -27,6 +28,8 @@ export default function NoticesCardItem({
   // console.log('user: ', user);
   // const userID = user?._id ? user._id : null;
   // // console.log('userID: ', userID);
+
+
 
   const [modalIsShown, setModalIsShown] = useState(false);
 
@@ -82,16 +85,14 @@ export default function NoticesCardItem({
             }}
           />
           <CategoryLable>{category}</CategoryLable>
-          {token && (
-            <AddToFavorite
-              bg={'rgba(255, 255, 255, 0.6)'}
-              id={_id}
-              favorite={favorite}
-              right="50px"
-              top="50px"
-              style={{ position: 'absolute', right: '50px', top: '50px' }}
-            />
-          )}
+          <AddToFavorite
+            bg={'rgba(255, 255, 255, 0.6)'}
+            id={_id}
+            favorite={favorite}
+            right="50px"
+            top="50px"
+            style={{ position: 'absolute', right: '50px', top: '50px' }}
+          />
         </CardMedia>
         <Box
           sx={{
@@ -144,7 +145,9 @@ export default function NoticesCardItem({
             >
               Learn more
             </Btn>
+
             {user?._id === owner?._id && (
+
               <Btn
                 id={_id}
                 onClick={deleteCard}

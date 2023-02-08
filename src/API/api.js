@@ -1,8 +1,4 @@
-// import cat from '../assets/images/myPets/cat.png';
-// import dog from '../assets/images/myPets/dog.png';
 import axios from 'axios';
-// const URL = process.env.REACT_APP_BASE_URL;
-// console.log(URL);
 
 const BASE_URL = 'https://pet-support-project.onrender.com/api';
 
@@ -36,7 +32,6 @@ export async function register(signupData) {
 
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
-  console.log('data: ', data);
   setToken.set(data.token);
   return data;
 }
@@ -116,8 +111,6 @@ export async function getRegisterNotices(token, categoryName, search = null) {
 }
 
 export async function writeNewNotice(req) {
-  // console.log('req: ', req);
-  // console.log(req);
   const { data } = await instance.post(`notices/user`, req, {
     headers: {
       'Content-Type': `multipart/form-data;`,
@@ -129,68 +122,19 @@ export async function writeNewNotice(req) {
 export async function removeNoticesById(id) {
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
-    console.log('remove data', data);
     return data.result;
   } catch (error) {
     throw error;
   }
 }
 
-// export async function requestFavoriteNotices(search) {
-//   if (search) {
-//     try {
-//       const { data } = await instance.get(`notices/user/favorite`, {
-//         params: { query: `search` },
-//       });
-//       return data;
-//     } catch (error) {
-//       throw error;
-//     }
-//   }
-
-//   try {
-//     const { data } = await instance.get(`notices/user/favorite`);
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-// export async function requestOwnNotices(search, token) {
-//   setToken.set(token);
-
-//   if (search) {
-//     try {
-//       console.log('requestOwnNotices search', search);
-//       const { data } = await instance.get(`notices/user?category=own`, {
-//         params: { query: search },
-//       });
-//       return data;
-//     } catch (error) {
-//       throw error;
-//     }
-//   }
-
-//   try {
-//     const { data } = await instance.get(`notices/user`);
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
 //========================== FAVORITE  =============================
 
 export async function toggleFavorite({ id, token, req }) {
-  // console.log('id', id);
-  // console.log('token', token);
-  // console.log('req', req);
   setToken.set(token);
-  // setCurrentToken(token);
 
   try {
     const { data } = await instance[req](`notices/user/${id}/favorite`);
-    console.log('favAdd data', data);
     return data;
   } catch (error) {
     throw error;
