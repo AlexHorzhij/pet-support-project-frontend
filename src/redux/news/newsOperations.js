@@ -9,7 +9,7 @@ export const fetchNews = createAsyncThunk(
       const news = await getAllNews();
       return news;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -21,7 +21,7 @@ export const fetchSearchNews = createAsyncThunk(
       const news = await getSearchNews(searchValue);
       return news;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
