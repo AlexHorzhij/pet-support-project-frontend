@@ -100,7 +100,7 @@ export const ModalDialogContent = styled(DialogContent)(({ theme }) => ({
   padding: '40px 80px',
 
   [theme.breakpoints.down('md')]: {
-    padding: '20px',
+    padding: '30px',
   },
 }));
 

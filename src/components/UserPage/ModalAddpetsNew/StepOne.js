@@ -9,32 +9,40 @@ import {
   ModalGrid,
   ModalTypography,
 } from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
-import parse from 'date-fns/parse';
+const min = '1990-01-01';
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required()
     .min(2)
     .max(16)
-    .matches(/^[a-zA-Z\s]*$/, 'Name must contain only latin letters'),
+    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .required(),
   date: yup
     .date()
-    .transform(function (value, originalValue) {
-      if (this.isType(value)) {
-        return value;
-      }
-      const result = parse(originalValue, 'DD.MM.YYYY', new Date());
-      return result;
-    })
-    .typeError('please enter a valid date')
-    .required()
-    .min('1969-11-13', 'Date is too early'),
+    .max(
+      new Date(Date.now()),
+      `Input correct date MM.DD.YYYY no later than today`
+    )
+    .min(new Date(min), `Input correct  no erlier than 1990`)
+    .required(),
+  // date: yup
+  //   .date()
+  //   .transform(function (value, originalValue) {
+  //     if (this.isType(value)) {
+  //       return value;
+  //     }
+  //     const result = parse(originalValue, 'DD.MM.YYYY', new Date());
+  //     return result;
+  //   })
+  //   .typeError('please enter a valid date')
+  //   .required()
+  //   .min('1969-11-13', 'Date is too early'),
   breed: yup
     .string()
-    .required()
     .min(2)
     .max(16)
-    .matches(/^[a-zA-Z\s]*$/, 'Breed must contain only latin letters'),
+    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
+    .required(),
 });
 
 const StepOne = ({ next, data, onModalClose }) => {

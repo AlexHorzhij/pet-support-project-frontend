@@ -20,6 +20,8 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
     avatarUrl: '',
   });
   const pets = useSelector(getPets);
+  const [preview, setPreview] = useState(null);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const updatedPet = pets.find(value => value._id === petId);
@@ -53,7 +55,19 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
     setCurrentStep(prev => prev + 1);
   };
 
+  const fileHandler = prevData => {
+    if (typeof prevData.avatarUrl !== 'string') {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setImages([{ src: e.target.result }]);
+      };
+      reader.readAsDataURL(prevData?.avatarUrl);
+    }
+  };
+
   const handlePrevStep = newData => {
+    setPreview(preview);
+    fileHandler(newData);
     setData(prev => ({ ...prev, ...newData }));
     setCurrentStep(prev => prev - 1);
   };
@@ -61,6 +75,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const steps = [
     <StepOne next={handleNextStep} data={data} onModalClose={onModalClose} />,
     <StepTwo
+      preview={images[0]?.src}
       next={handleNextStep}
       prev={handlePrevStep}
       data={data}
@@ -75,6 +90,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'center',
+          position: 'relative',
         }}
       >
         <Box sx={{ width: '100%' }}>
