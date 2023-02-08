@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Container, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -23,7 +24,7 @@ export default function NoticesFilter() {
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
- 
+
   const handleFilter = e => {
     e.preventDefault();
     if (token) {
@@ -32,6 +33,10 @@ export default function NoticesFilter() {
       dispatch(fetchNotices({ categoryName, search }));
     }
   };
+
+  const handleClearSearch = () => {
+    setSearchParams('')
+  }
 
   return (
     <Container>
@@ -70,14 +75,25 @@ export default function NoticesFilter() {
           }}
           value={search}
         />
-        <IconButton
-          onClick={handleFilter}
+
+        {(search !== '') ? <IconButton
+          onClick={handleClearSearch}
           type="button"
           sx={{ p: '10px' }}
-          aria-label="search"
+          aria-label="close"
         >
-          <SearchIcon />
+          < HighlightOffIcon />
         </IconButton>
+          :
+          <IconButton
+            onClick={handleFilter}
+            type="button"
+            sx={{ p: '10px' }}
+            aria-label="search"
+          >
+            <SearchIcon />
+          </IconButton>}
+
       </Paper>
     </Container>
   );
