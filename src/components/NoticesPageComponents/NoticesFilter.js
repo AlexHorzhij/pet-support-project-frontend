@@ -36,6 +36,8 @@ export default function NoticesFilter() {
 
   const handleClearSearch = () => {
     setSearchParams('')
+    dispatch(fetchNotices({ categoryName }));
+
   }
 
   return (
