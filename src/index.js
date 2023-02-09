@@ -11,6 +11,8 @@ import { ThemeProvider } from '@mui/system';
 import { createTheme } from '@mui/material/styles';
 import { ThemeOptions } from 'muiSettings/muiSettings';
 
+import './i18n'
+
 const theme = createTheme(ThemeOptions);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

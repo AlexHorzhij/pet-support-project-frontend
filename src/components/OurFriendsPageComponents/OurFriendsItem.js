@@ -11,8 +11,10 @@ import {
   BoxTitle,
 } from './OurFiendsPage.styled';
 import defaultLogo from 'images/default_logo.webp';
+import { useTranslation } from 'react-i18next';
 
 const OurFriendsItem = ({ partner }) => {
+  const { t } = useTranslation();
   const { title, url, addressUrl, address, imageUrl, phone, email, workDays } =
     partner;
 
@@ -86,25 +88,25 @@ const OurFriendsItem = ({ partner }) => {
         <Grid container component="ul">
           <ContactsItem item component="li" md={6}>
             <ContactsTypography component="span">
-              Time:
+              {t('Time')}:
               {renderDate(workDays)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              Address:
+              {t('Address')}:
               {renderAddress(addressUrl)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              Email:
+              {t('Email')}:
               {renderEmail(email)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              Phone:
+              {t('Phone')}:
               {renderPhone(phone)}
             </ContactsTypography>
           </ContactsItem>

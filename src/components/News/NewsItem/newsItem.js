@@ -4,6 +4,8 @@ import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
 import MultiClamp from 'react-multi-clamp';
+import { useTranslation } from 'react-i18next';
+
 
 import {
   NewsCard,
@@ -18,6 +20,7 @@ import { transformDate } from 'services/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
+  const { t } = useTranslation()
 
   return (
     <Grid
@@ -53,7 +56,8 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
               {publicationDate}
             </NewsDate>
             <Link href={url} target="_blank" rel="noopener" color="primary">
-              Read more
+              {t('read')}
+              {/* Read more */}
             </Link>
           </CardFooter>
         </CardContent>

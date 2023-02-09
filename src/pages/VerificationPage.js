@@ -1,9 +1,9 @@
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { verifyUser } from 'redux/auth/authOperations';
-import { HomeContainer, RelativeContainer } from './HomePage/HomePage.styled';
+import { HomeContainer } from './HomePage/HomePage.styled';
 
 export default function VerificationPage() {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ export default function VerificationPage() {
 
   return (
     <HomeContainer>
-      <RelativeContainer>
+      <Box textAlign="center">
         <Typography variant="h3" sx={{ mb: 5 }}>
           Click to switch to the login page
         </Typography>
         <Button variant="contained" onClick={onButtonClick}>
           Login
         </Button>
-      </RelativeContainer>
+      </Box>
     </HomeContainer>
   );
 }

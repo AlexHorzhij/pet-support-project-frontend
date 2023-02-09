@@ -7,9 +7,11 @@ import {
   CustomContainer,
   Main,
 } from 'components/OurFriendsPageComponents/OurFiendsPage.styled';
+import { useTranslation } from 'react-i18next';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();
+  const {t} = useTranslation()
 
   useEffect(() => {
     dispatch(fetchFriends());
@@ -18,7 +20,7 @@ const OurFriendsPage = () => {
   return (
     <Main>
       <CustomContainer>
-        <Title text="Our Friends" />
+        <Title text={t("friends")} />
         <OurFriendsList />
       </CustomContainer>
     </Main>
