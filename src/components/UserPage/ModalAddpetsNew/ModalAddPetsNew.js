@@ -10,6 +10,7 @@ import StepTwo from './StepTwo';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { getPets } from 'redux/userData/userDataSelectors';
 import { Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const [data, setData] = useState({
@@ -22,6 +23,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const pets = useSelector(getPets);
   const [preview, setPreview] = useState(null);
   const [images, setImages] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const updatedPet = pets.find(value => value._id === petId);
@@ -94,7 +96,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
         }}
       >
         <Box sx={{ width: '100%' }}>
-          <AddPetTitle>{isUpdateAction ? 'Edit pet' : 'Add pet'}</AddPetTitle>
+          <AddPetTitle>{isUpdateAction ? t('EditPet') : t('AddPet')}</AddPetTitle>
         </Box>
         <ModalCloseButton onClick={onModalClose}>
           <CloseOutlinedIcon sx={{ fontSize: '30px' }} />

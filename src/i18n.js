@@ -13,6 +13,7 @@ i18next
                     // A 
                     Account: 'Account',
                     Address: 'Address',
+                    AddPet: 'Add Pet',
 
                     // B
                     Back: 'Back',
@@ -22,6 +23,7 @@ i18next
                     // D
                     Done: 'Done',
                     // E
+                    EditPet: 'Edit Pet',
                     Email: 'Email',
 
                     // F
@@ -82,9 +84,9 @@ i18next
             ua: {
                 translation: {
                     // A 
-                    Address: 'Адреса',
                     Account: 'Акаунт',
-
+                    Address: 'Адреса',
+                    AddPet: 'Додати улюбленця',
                     // B
                     Back: 'Повернутись',
                     // C
@@ -93,6 +95,7 @@ i18next
                     // D
                     Done: 'Готово',
                     // E
+                    EditPet: 'Додати улюбленця',
                     Email: 'Електронна адреса',
                     
                     // F
