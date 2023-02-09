@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { Pagination } from '@mui/material';
 
-import { NewsItem } from '../NewsItem/NewsItem';
+import { NewsItem } from '../NewsItem/newsItem';
 import { NewsGrid } from './newsList.styled';
 import usePagination from '../../../services/pagination';
 
