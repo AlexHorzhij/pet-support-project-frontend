@@ -30,6 +30,11 @@ export async function register(signupData) {
   return data;
 }
 
+export async function verify(verificationToken) {
+  const { data } = await instance.get(`auth/verify/${verificationToken}`);
+  return data;
+}
+
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
   setToken.set(data.token);
