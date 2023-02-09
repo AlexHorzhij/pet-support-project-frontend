@@ -97,7 +97,7 @@ function UserDataItem({
             height: '32px',
           }}
         >
-          <DoneRoundedIconStyled sx={{ color: 'grey' }} />
+          <DoneRoundedIconStyled sx={{ color: 'transparent' }} />
         </IconButton>
       )}
     </UserDataItemBox>
