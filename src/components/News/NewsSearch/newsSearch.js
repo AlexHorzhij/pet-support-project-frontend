@@ -9,11 +9,14 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Divider } from '@mui/material';
 
 import { FormSearch } from './newsSearch.styled';
+import { useTranslation } from 'react-i18next';
+
 
 export function NewsSearch({ onSubmit }) {
   
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
+  const { t } = useTranslation();
   
   const handleClearSearch = (event) => {
     event.preventDefault()
@@ -50,7 +53,7 @@ export function NewsSearch({ onSubmit }) {
         autoComplete='off'
         autoFocus
         sx={{ ml: 1, flex: 1, pl: 1 }}
-        placeholder="Search news"
+        placeholder={t('SearchNews')}
       />
 
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> {/* vertical line in input */}

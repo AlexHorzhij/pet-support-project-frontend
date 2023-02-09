@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Form } from 'formik';
 import { StepperBox, StepperButton } from './FormStepper.styled';
+import { useTranslation } from 'react-i18next';
+
 export const FormStepper = ({ children, onClose }) => {
   console.log('children: ', children);
   const stepsArray = React.Children.toArray(children);
   const [step, setStep] = useState(0);
   const currentStep = stepsArray[step];
+  const { t } = useTranslation();
 
   return (
     <Form className="addForm">
@@ -14,7 +17,7 @@ export const FormStepper = ({ children, onClose }) => {
         {step === 0 && (
           <>
             <StepperButton onClick={onClose} variant="outlined">
-              Cancel
+              { t('Cancel')}
             </StepperButton>
             <StepperButton
               variant={'contained'}
@@ -22,7 +25,8 @@ export const FormStepper = ({ children, onClose }) => {
                 step === 0 ? setStep(1) : setStep(0);
               }}
             >
-              Next
+              { t('Next')}
+              
             </StepperButton>
           </>
         )}
@@ -34,10 +38,10 @@ export const FormStepper = ({ children, onClose }) => {
                 step === 0 ? setStep(1) : setStep(0);
               }}
             >
-              Back
+              { t('Back')}
             </StepperButton>
             <StepperButton variant="contained" type="submit">
-              Done
+              { t('Done')}
             </StepperButton>
           </>
         )}

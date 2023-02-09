@@ -6,7 +6,7 @@ import { useMenu } from '../Context/menuContext';
 
 export default function MobileMenu() {
   const { isOpen, open, close } = useMenu();
-
+  
   return (
     <div>
       <Btn onClick={open}>
