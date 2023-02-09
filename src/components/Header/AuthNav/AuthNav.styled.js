@@ -50,28 +50,29 @@ export const AuthItem = styled.li`
   }
 `;
 
-export const AuthBtn = styled(Button)`
-  @media screen and (min-width: 768px) {
-    &:not(:last-child) {
-      margin-right: 12px;
-    }
-  }
-  @media screen and (min-width: 1280px) {
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-  }
-  &.active {
-    color: #ffffff;
-    background: #f59256;
-  }
-`;
+// export const AuthBtn = styled(Button)`
+//   @media screen and (min-width: 768px) {
+//     &:not(:last-child) {
+//       margin-right: 12px;
+//     }
+//   }
+//   @media screen and (min-width: 1280px) {
+//     &:not(:last-child) {
+//       margin-right: 20px;
+//     }
+//   }
+//   &.active {
+//     color: #ffffff;
+//     background: #f59256;
+//   }
+// `;
+
 export const AuthLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: flex-start;
-  padding: 10px 28px;  
+  padding: 10px 28px;
   align-items: center;
   pointer-events: initial;
   height: 44px;
@@ -79,10 +80,12 @@ export const AuthLink = styled(NavLink)`
   background: #ffffff;
   border: 2px solid #f59256;
   border-radius: 40px;
- text-decoration: none; 
-  &.active {
-  color: #ffffff;
-  background: #f59256;
+  text-decoration: none;
+  &:first-child.active {
+    border-radius: 40px;
+    color: #ffffff;
+    background: #f59256;
+  }
 `;
 
 // export const AuthLink = styled(NavLink)`
