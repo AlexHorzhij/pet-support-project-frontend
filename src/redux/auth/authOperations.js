@@ -2,7 +2,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Button } from '@mui/material';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { register, login, logout, fetchCurrent } from '../../API/api';
+import { register, verify, login, logout, fetchCurrent } from '../../API/api';
 
 export const registerUser = createAsyncThunk(
   'register',
@@ -46,6 +46,27 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const verifyUser = createAsyncThunk(
+  'verify',
+  async (data, { rejectWithValue }) => {
+    try {
+      console.log('Verification data-token', data);
+      const res = await verify(data);
+      console.log('Verification result', res);
+      toast.success('Verification successful!');
+      return res;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      console.log('Verification error', response.data.message);
+      toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const loginUser = createAsyncThunk(
   'login',
   async (data, { rejectWithValue }) => {
@@ -58,7 +79,6 @@ export const loginUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      console.log(response.data.message);
       toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }
@@ -95,7 +115,7 @@ export const fetchCurrentUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      toast.error('Oops! Something went wrong, please, login again');
+      // toast.error('Oops! Something went wrong, please, login again');
       await logout();
       return rejectWithValue(error);
     }
