@@ -15,6 +15,20 @@ export const Loader = () => {
   );
 };
 
+export const LoaderWhite = () => {
+  return (
+    <LoaderWrapper>
+      <ThreeCircles
+        height="30"
+        width="30"
+        color="#fff"
+        visible={true}
+        ariaLabel="three-circles-rotating"
+      />
+    </LoaderWrapper>
+  );
+};
+
 export const LoaderPage = () => {
   return (
     <LoaderPageWrapper>

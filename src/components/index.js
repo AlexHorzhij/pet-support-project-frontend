@@ -1,5 +1,5 @@
 import SharedLayout from './SharedLayout/SharedLayout';
-import { Loader, LoaderPage } from './Loader/Loader';
+import { Loader, LoaderWhite, LoaderPage } from './Loader/Loader';
 import NoticesCategoryNav from './NoticesPageComponents/NoticesCategoryNav';
 import NoticesFilter from './NoticesPageComponents/NoticesFilter';
 import NoticesGallery from './NoticesPageComponents/NoticesGallery';
@@ -14,11 +14,12 @@ import NoticeAddForm from './NoticeAddForm/OldNoticeAddSellForm';
 import LearnMoreModal from './NoticesPageComponents/LearnMoreModal/LearnMoreModal';
 import { Title } from './Title/Title';
 import { NewsSearch } from './News/NewsSearch/newsSearch';
-import { NewsList }  from './News/NewsList/newsList';
+import { NewsList } from './News/NewsList/newsList';
 import { NoNewsItem } from './News/NoNewsItem/NoNewsItem';
 
 export {
   Loader,
+  LoaderWhite,
   LoaderPage,
   SharedLayout,
   NoticesCategoryNav,
