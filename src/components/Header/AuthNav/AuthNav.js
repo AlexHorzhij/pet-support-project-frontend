@@ -1,17 +1,16 @@
 import React from 'react';
-// import { AuthNavigation, AuthItem, AuthLink } from './AuthNav.styled';
-import { AuthNavigation, AuthLink } from './AuthNav.styled';
-import { Button } from '@mui/material';
+
+import { AuthNavigation, AuthBtn, AuthLink } from './AuthNav.styled';
 
 export default function AuthNav() {
   return (
     <AuthNavigation>
-      <Button variant="outlined">
+      <AuthBtn variant="outlined">
         <AuthLink to="/login">Login</AuthLink>
-      </Button>
-      <Button variant="outlined">
+      </AuthBtn>
+      <AuthBtn variant="outlined">
         <AuthLink to="register">Registration</AuthLink>
-      </Button>
+      </AuthBtn>
     </AuthNavigation>
   );
 }
