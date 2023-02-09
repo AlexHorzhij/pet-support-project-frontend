@@ -60,6 +60,7 @@ export const SceletonWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
+  justifyContent: 'center',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '20px',

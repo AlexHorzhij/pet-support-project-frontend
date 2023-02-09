@@ -72,7 +72,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
                           preview ? preview : data.avatarUrl
                         })`,
                         backgroundPosition: 'center',
-                        backgroundSize: 'cover',
+                        backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                       }}
                       {...getRootProps()}
