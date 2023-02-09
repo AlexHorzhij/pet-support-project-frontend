@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import {
@@ -6,7 +6,7 @@ import {
   ErrorText,
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
-import { Grid, Box, Button, Container } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import { TypographyStyled } from './NoticeAddForm.styled';
 
 // const min = '1990-01-01';

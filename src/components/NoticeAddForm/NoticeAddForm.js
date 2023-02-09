@@ -3,13 +3,15 @@ import { useDispatch } from 'react-redux';
 import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
 import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import { addNewNotice } from 'redux/notices/noticesOperations';
-import { ToggleButton, ToggleButtonGroup, Button, Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { toast } from 'react-hot-toast';
 
 import { useParams } from 'react-router-dom';
 
 export const NoticeAddForm = ({ handleClose }) => {
   const { categoryName } = useParams()
+  const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
     category: categoryName,
@@ -26,10 +28,6 @@ export const NoticeAddForm = ({ handleClose }) => {
   });
   console.log('data.category: ', data.category);
 
-
-  const [currentStep, setCurrentStep] = useState(0);
-  const dispatch = useDispatch();
-
   // const handleStatus = (_, newStatus) => {
   //   if (newStatus !== null) {
   //     setCategory(newStatus);
@@ -42,7 +40,7 @@ export const NoticeAddForm = ({ handleClose }) => {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData }));
+    setData(prev => ({ ...prev, ...newData, category: data.category }));
 
     if (final) {
       const formData = new FormData();
