@@ -9,8 +9,10 @@ import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
 export const NoticeAddForm = ({ handleClose }) => {
-  const { categoryName } = useParams()
+  const { categoryName } = useParams();
   const [currentStep, setCurrentStep] = useState(0);
+  const [images, setImages] = useState([]);
+
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
@@ -57,8 +59,18 @@ export const NoticeAddForm = ({ handleClose }) => {
 
     setCurrentStep(prev => prev + 1);
   };
+  const fileHandler = prevData => {
+    if (typeof prevData.avatarUrl !== 'string') {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setImages([{ src: e.target.result }]);
+      };
+      reader.readAsDataURL(prevData?.avatarUrl);
+    }
+  };
 
   const handlePrevStep = newData => {
+    fileHandler(newData);
     setData(prev => ({ ...prev, ...newData }));
     setCurrentStep(prev => prev - 1);
   };
@@ -70,17 +82,21 @@ export const NoticeAddForm = ({ handleClose }) => {
       handleClose={handleClose}
     />,
 
-    <Step2AddNotice next={handleNextStep} prev={handlePrevStep} data={data} />,
+    <Step2AddNotice
+      next={handleNextStep}
+      prev={handlePrevStep}
+      data={data}
+      preview={images[0]?.src}
+    />,
   ];
 
-  const onClickCategory = async (e) => {
-    setData(prev => ({ ...prev, category: e.target.name }))
-  }
+  const onClickCategory = async e => {
+    setData(prev => ({ ...prev, category: e.target.name }));
+  };
 
   return (
     <>
       {currentStep === 0 && (
-
         <Container sx={{ mb: 6 }}>
           <Button
             name="sell"
