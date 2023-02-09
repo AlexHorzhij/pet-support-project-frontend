@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 import { CardMedia, CardContent, Box } from '@mui/material';
@@ -16,11 +15,10 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 
-
 export default function NoticesCardItem({
   data,
   deleteCard,
-  token,
+  handleChange,
   user = null,
 }) {
   // console.log('data: ', data);
@@ -28,8 +26,6 @@ export default function NoticesCardItem({
   // console.log('user: ', user);
   // const userID = user?._id ? user._id : null;
   // // console.log('userID: ', userID);
-
-
 
   const [modalIsShown, setModalIsShown] = useState(false);
 
@@ -86,6 +82,7 @@ export default function NoticesCardItem({
           />
           <CategoryLable>{category}</CategoryLable>
           <AddToFavorite
+            handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
             id={_id}
             favorite={favorite}
@@ -147,7 +144,6 @@ export default function NoticesCardItem({
             </Btn>
 
             {user?._id === owner?._id && (
-
               <Btn
                 id={_id}
                 onClick={deleteCard}
