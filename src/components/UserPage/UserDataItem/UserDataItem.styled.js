@@ -61,15 +61,3 @@ export const UserDataItemInput = styledEmotion.input`
   }
   },
 `;
-// export const UserDataItemtitle = styled(Box)({
-//   marginRight: 'auto',
-//   '@media screen and (max-width: 768px)': {
-//     width: '80px',
-//   },
-// });
-// export const UserDataTitle = styled(Typography)({
-//   fontSize: '18px',
-//   '@media screen and (max-width: 768px)': {
-//     fontSize: '12px',
-//   },
-// });

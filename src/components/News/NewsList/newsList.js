@@ -1,11 +1,13 @@
+
+import { useState } from 'react';
+import { PropTypes } from 'prop-types';
+import { Pagination } from '@mui/material';
+
 import { NewsItem } from '../NewsItem/newsItem';
 import { NewsGrid } from './newsList.styled';
-import { useState } from 'react';
-import { Pagination } from '@mui/material';
 import usePagination from '../../../services/pagination';
 
-export const NewsList = ({news, error, isLoading}) => {
-
+export const NewsList = ({news}) => {
 
   // ==============Pagination================
   const [page, setPage] = useState(1);
@@ -33,6 +35,7 @@ export const NewsList = ({news, error, isLoading}) => {
               />
             ))}
           </NewsGrid>
+      
           <Pagination
             color="primary" 
             count={count}
@@ -45,4 +48,8 @@ export const NewsList = ({news, error, isLoading}) => {
           />
         </>
   );
+};
+
+NewsList.propTypes = {
+  news: PropTypes.array.isRequired
 };

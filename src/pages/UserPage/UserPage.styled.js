@@ -8,29 +8,20 @@ export const UserDataContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   backgroundColor: theme.palette.background.default,
   gap: '32px',
-  marginTop: '50px',
-  paddingTop: '30px',
   paddingBottom: '50px',
+  marginTop: '58px',
+  marginBottom: '58px',
 
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column',
+    marginTop: '88px',
+    marginBottom: '88px',
+  },
+  [theme.breakpoints.down('md')]: {
+    marginTop: '60px',
+    marginBottom: '60px',
   },
 }));
-
-// export const UserDataContainer = styled(Container)({
-//   flexDirection: 'row',
-//   justifyContent: 'center',
-//   display: 'flex',
-//   backgroundColor: '#FDF7F2',
-//   gap: '32px',
-//   marginTop: '50px',
-//   paddingTop: '30px',
-//   paddingBottom: '50px',
-
-//   '@media screen and (max-width: 1280px)': {
-//     flexDirection: 'column',
-//   },
-// });
 
 export const UserDataTypography = styled(Typography)(({ theme }) => ({
   marginLeft: '17px',
@@ -45,18 +36,6 @@ export const UserDataTypography = styled(Typography)(({ theme }) => ({
     marginBottom: '18px',
   },
 }));
-
-// export const UserDataTypography = styled(Typography)({
-//   marginLeft: '17px',
-//   fontSize: '28px',
-//   marginBottom: '24px',
-//   fontWeight: '500',
-//   lineHeight: '100%',
-
-//   '@media screen and (max-width: 768px)': {
-//     fontSize: '20px',
-//   },
-// });
 
 export const AddPetTypography = styled(Typography)({
   fontWeight: '500',

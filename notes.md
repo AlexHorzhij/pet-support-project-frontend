@@ -3,4 +3,4 @@
 3. loader in NoticeGalery
 
 
-5, 11, 13, btns-checks, wrap inputs
+5, 11, 13

@@ -6,13 +6,13 @@ import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { removeNoticeFromUserById } from 'redux/notices/noticesOperations';
-import { useEffect } from 'react';
-import { fetchUserData } from 'redux/userData/userDataOperations';
-
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Pagination } from '@mui/material';
 import usePagination from 'services/pagination';
 import { getUser } from 'redux/userData/userDataSelectors';
+import { toast } from 'react-hot-toast';
+import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function NoticesGallery() {
   const {
@@ -23,14 +23,25 @@ export default function NoticesGallery() {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
-  console.log('data: ', data);
 
-  useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
+  const params = useParams();
+  const { categoryName } = params;
+
+  const handleChange = event => {
+    const favorite = event.target.checked;
+    const id = event.target.id;
+    if (!token) {
+      return toast.error(`Please authorize for using this option`);
+    }
+    const req = favorite ? 'post' : 'delete';
+    const data = { id, req, categoryName };
+    console.log('id: ', id);
+
+    dispatch(setFavorite(data));
+  };
 
   // ===========================
-  const [page, setPage] = useState(8);
+  const [page, setPage] = useState(1);
   const PER_PAGE = 8;
 
   const count = Math.ceil(data.length / PER_PAGE);
@@ -39,7 +50,6 @@ export default function NoticesGallery() {
     setPage(page);
     paginationData.jump(page);
   };
-  // =========================
 
   const deleteCard = e => {
     dispatch(removeNoticeFromUserById(e.target.id));
@@ -68,11 +78,11 @@ export default function NoticesGallery() {
                 key={item._id}
               >
                 <NoticesCardItem
+                  handleChange={handleChange}
                   token={token}
                   data={item}
                   deleteCard={deleteCard}
                   user={user}
-                  // openModal={openModal}
                 />
               </Grid>
             );

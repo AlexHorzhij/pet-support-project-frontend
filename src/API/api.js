@@ -137,12 +137,10 @@ export async function removeNoticesById(id) {
 
 //========================== FAVORITE  =============================
 
-export async function toggleFavorite({ id, token, req }) {
-  setToken.set(token);
-
+export async function toggleFavorite({ id, req, categoryName }) {
   try {
     const { data } = await instance[req](`notices/user/${id}/favorite`);
-    return data;
+    return { ...data, categoryName };
   } catch (error) {
     throw error;
   }

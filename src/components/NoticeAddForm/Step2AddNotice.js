@@ -20,7 +20,7 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 import { TextField } from 'formik-material-ui';
 
-export const Step2AddNotice = ({ next, prev, data }) => {
+export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
 
   const validateSchema = {
@@ -31,12 +31,14 @@ export const Step2AddNotice = ({ next, prev, data }) => {
       .max(40)
       .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
-    avatarUrl: yup.string().required(),
+    avatarUrl: yup.string(),
     comments: yup
       .string()
-      .required()
+      // .required()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
+
+  console.log(data);
 
   if (data.category === 'sell') {
     validateSchema.price = yup
@@ -67,6 +69,8 @@ export const Step2AddNotice = ({ next, prev, data }) => {
       return file;
     });
   };
+
+  console.log('data.category: ', data.category);
 
   return (
     <Formik
@@ -103,21 +107,25 @@ export const Step2AddNotice = ({ next, prev, data }) => {
               />
               Female
             </StyledLabel>
+            <ErrorMessage component="div" name="sex">
+              {msg => <ErrorText>*{msg}</ErrorText>}
+            </ErrorMessage>
           </div>
 
-          <Typography variant="h4" sx={{ mt: 2 }}>
+          <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
             Location *
           </Typography>
-          <StyledInput
-            sx={{ mt: 1, mb: 4 }}
-            name="location"
-            disableunderline="true"
-            placeholder="Type location"
-          />
-          <ErrorMessage component="div" name="location">
-            {msg => <ErrorText>*{msg}</ErrorText>}
-          </ErrorMessage>
-
+          <Box sx={{ position: 'relative' }}>
+            <StyledInput
+              style={{ mt: 2, mb: 4 }}
+              name="location"
+              disableunderline="true"
+              placeholder="Type location"
+            />
+            <ErrorMessage component="div" name="location">
+              {msg => <ErrorText>*{msg}</ErrorText>}
+            </ErrorMessage>
+          </Box>
           {data.category === 'sell' && (
             <>
               <Typography variant="h4">Price *</Typography>
@@ -133,7 +141,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             </>
           )}
 
-          <Typography sx={{ mb: 1 }} variant="h4">
+          <Typography sx={{ mb: 1, mt: 2 }} variant="h4">
             Load the pet’s image:
           </Typography>
           <Dropzone
@@ -143,7 +151,15 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             onDrop={acceptedFiles => fileHandler(acceptedFiles, setFieldValue)}
           >
             {({ getRootProps, getInputProps }) => (
-              <DropZoneBox {...getRootProps()}>
+              <DropZoneBox
+                sx={{
+                  backgroundImage: `url(${preview ? preview : data.avatarUrl})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                }}
+                {...getRootProps()}
+              >
                 <input {...getInputProps()} />
                 {!values.avatarUrl ? (
                   <Box>
@@ -165,7 +181,9 @@ export const Step2AddNotice = ({ next, prev, data }) => {
           </Dropzone>
 
           <Grid item md={6} sx={{ mt: '40px' }}>
-            <Typography sx={{ mb: 1 }}>Comments</Typography>
+            <Typography variant="h4" sx={{ mb: 1 }}>
+              Comments:
+            </Typography>
             <ModalMultiLineField
               multiline={true}
               rows={3.5}

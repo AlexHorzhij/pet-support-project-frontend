@@ -14,7 +14,6 @@ const initialState = {
   error: null,
 };
 
-
 export const noticesSlice = createSlice({
   name: 'notices',
   initialState,
@@ -79,8 +78,12 @@ export const noticesSlice = createSlice({
         const index = state.items.findIndex(
           item => item._id === payload.result.notice
         );
-        state.items[index].favorite = payload.favorite;
-        state.isLoading = true;
+        if (payload.categoryName === 'favorite') {
+          state.items.splice(index, 1);
+        } else {
+          state.items[index].favorite = payload.favorite;
+        }
+        state.isLoading = false;
       })
       .addCase(setFavorite.rejected, state => {
         state.isLoading = false;

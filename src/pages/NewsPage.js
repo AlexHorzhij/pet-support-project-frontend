@@ -1,31 +1,33 @@
-import React from 'react';
-import { NewsSearch } from 'components/News/NewsSearch/newsSearch';
-import { Title } from 'components/Title/Title';
-import { NewsList } from '../components/News/NewsList/newsList';
-import { Main, NewsContainer } from 'components/News/NewsItem/newsItem.styled';
-
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-import { LoaderPage } from 'components';
+import {
+  Title,
+  LoaderPage,
+  NewsSearch,
+  NewsList,
+  NoNewsItem,
+} from 'components';
+import { Main, NewsContainer } from 'components/News/NewsItem/newsItem.styled';
+
 import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
 import { getNews } from 'redux/news/newsSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
-import { NoNewsItem } from 'components/News/NoNewsItem/NoNewsItem';
 
 export default function NewsPage() {
+
   const { news, error, isLoading } = useSelector(getNews);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('search')
   const dispatch = useDispatch();
 
   useEffect(() => {
-      if (query === '' || query === null) {
+    if (query === '' || query === null) {
         dispatch(fetchNews())
         return
-      }
+    }
     dispatch(fetchSearchNews(query));
   }, [dispatch, query]);
   
@@ -58,7 +60,7 @@ export default function NewsPage() {
         {error && <p>{error.data}</p>}
         {isLoading && <LoaderPage />}
         {news.length !== 0
-          ? <NewsList news={sortedNews} value={query} />
+          ? <NewsList news={sortedNews}/>
           : <NoNewsItem value={query}/>}
       
       </NewsContainer>

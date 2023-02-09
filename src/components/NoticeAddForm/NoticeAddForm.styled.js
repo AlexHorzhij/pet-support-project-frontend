@@ -80,3 +80,23 @@ export const StyledLabel = EmotionStyled.label`
     margin-right: 80px;
   }
 `;
+
+export const StyledCategoryCheckBox = styled(Field)(({ theme }) => ({
+
+  boxSizing: 'border-box',
+  padding: '5px',
+  marginBottom: '10px',
+  width: '70px',
+  height: '70px',
+  background: '#ffffff',
+  borderRadius: '10px',
+  appearance: 'none',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '50%',
+  transition: 'background-color 250ms ease',
+  '&:checked ': {
+    backgroundColor: '#fdf7f2',
+    border: `2px solid ${theme.palette.primary.main}`,
+  },
+
+}));
