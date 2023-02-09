@@ -12,11 +12,12 @@ export const NoticeAddForm = ({ handleClose }) => {
   const { categoryName } = useParams();
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
+  const [categoryNameBtn, setcategoryNameBtn] = useState();
 
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
-    category: categoryName,
+    category: '',
     title: '',
     name: '',
     birthdate: '',
@@ -107,16 +108,18 @@ export const NoticeAddForm = ({ handleClose }) => {
             sell
           </Button>
           <Button
-            name="lost-found"
-            variant={data.category === 'lost-found' ? 'contained' : 'outlined'}
+            name="lost/found"
+            variant={data.category === 'lost/found' ? 'contained' : 'outlined'}
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >
             lost/found
           </Button>
           <Button
-            variant={data.category === 'for-free' ? 'contained' : 'outlined'}
-            name="for-free"
+            variant={
+              data.category === 'in good hands' ? 'contained' : 'outlined'
+            }
+            name="in good hands"
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >

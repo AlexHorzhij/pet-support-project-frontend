@@ -3,19 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
-import { Button, Container } from '@mui/material';
+import { Box, Button, Container } from '@mui/material';
 import {
   fetchNotices,
   fetchAuthNotices,
 } from 'redux/notices/noticesOperations';
-
+import { ThreeCircles } from 'react-loader-spinner';
+import { useTheme } from '@mui/material';
+import { getNotices } from 'redux/notices/noticesSelectors';
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const { isLoggedIn, token } = useSelector(getAuth);
   const { categoryName } = params;
+  const { isLoading } = useSelector(getNotices);
 
+  const theme = useTheme();
   useEffect(() => {
     if (token) {
       dispatch(fetchAuthNotices({ token, categoryName }));
@@ -30,7 +34,7 @@ export default function NoticesCategoryList() {
   };
 
   return (
-    <Container sx={{ mb: 6 }}>
+    <Container sx={{ mb: 6, position: 'relative' }}>
       <Button
         name="sell"
         variant={categoryName === 'sell' ? 'contained' : 'outlined'}
@@ -74,6 +78,27 @@ export default function NoticesCategoryList() {
             my ads
           </Button>
         </>
+      )}
+      {isLoading && (
+        <Box
+          sx={{
+            position: 'absolute',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bottom: '-45px',
+
+            // transform: 'translate(-50%,-50%)',
+          }}
+        >
+          <ThreeCircles
+            height="40"
+            width="40"
+            color={theme.palette.primary.main}
+            visible={true}
+            ariaLabel="three-circles-rotating"
+          />
+        </Box>
       )}
     </Container>
   );
