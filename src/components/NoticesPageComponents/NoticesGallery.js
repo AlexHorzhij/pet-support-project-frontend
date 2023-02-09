@@ -16,7 +16,6 @@ import { Box, Pagination, Typography } from '@mui/material';
 import usePagination from 'services/pagination';
 import { getUser } from 'redux/userData/userDataSelectors';
 import { toast } from 'react-hot-toast';
-import { fetchUserData } from 'redux/userData/userDataOperations';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
 export default function NoticesGallery() {
   const {
@@ -30,10 +29,6 @@ export default function NoticesGallery() {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
-
-  useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
 
   const newData = data.filter(value => {
     if (categoryName === 'lost-found') {
