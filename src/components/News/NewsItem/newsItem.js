@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
+import MultiClamp from 'react-multi-clamp';
+
 import {
   NewsCard,
   Rectangle,
@@ -12,7 +14,7 @@ import {
   CardFooter,
 } from './newsItem.styled';
 import { transformDate } from 'services/transformNewsDate';
-import MultiClamp from 'react-multi-clamp';
+
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
@@ -41,7 +43,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
               {' '}
               {title}
             </MultiClamp>
-           </NewsTitle>
+          </NewsTitle>
           <NewsText style={{ maxHeight: '110px', overflow: 'hidden' }}>
             {description}
             <br />
@@ -59,6 +61,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
     </Grid>
   );
 };
+
 NewsItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
