@@ -3,10 +3,11 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { Container, Typography } from '@mui/material';
+import { Container, Divider, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 import {
   fetchNotices,
@@ -37,7 +38,6 @@ export default function NoticesFilter() {
   const handleClearSearch = () => {
     setSearchParams('')
     dispatch(fetchNotices({ categoryName }));
-
   }
 
   return (
@@ -60,10 +60,12 @@ export default function NoticesFilter() {
           mb: 6,
           maxWidth: 608,
           mx: 'auto',
+          textAlign: 'center'
         }}
       >
+
         <InputBase
-          sx={{ ml: 1, flex: 1, pl: 1 }}
+          sx={{ ml: 1, flex: 1, pl: 1, textAlign: 'center' }}
           placeholder="Search"
           inputProps={{ 'aria-label': 'search' }}
           onKeyPress={e => {
@@ -72,29 +74,27 @@ export default function NoticesFilter() {
               handleFilter(e);
             }
           }}
-          onChange={e => {
-            setSearchParams({ search: e.target.value });
-          }}
+          onChange={e => { setSearchParams({ search: e.target.value }); }}
           value={search}
         />
 
-        {(search !== '') ? <IconButton
+        {(search !== '') && <IconButton
           onClick={handleClearSearch}
           type="button"
           sx={{ p: '10px' }}
           aria-label="close"
         >
-          < HighlightOffIcon />
+          <CloseIcon />
+        </IconButton>}
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <IconButton
+          onClick={handleFilter}
+          type="button"
+          sx={{ p: '10px' }}
+          aria-label="search"
+        >
+          <SearchIcon />
         </IconButton>
-          :
-          <IconButton
-            onClick={handleFilter}
-            type="button"
-            sx={{ p: '10px' }}
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>}
 
       </Paper>
     </Container>
