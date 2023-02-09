@@ -10,40 +10,151 @@ i18next
         resources: {
             en: {
                 translation: {
-                    read: 'Read more',
+                    // A 
                     Account: 'Account',
-                    News: 'News',
+                    Address: 'Address',
+
+                    // B
+                    Back: 'Back',
+                    // C
+                    Cancel: 'Cancel',
+                    
+                    // D
+                    Done: 'Done',
+                    // E
+                    Email: 'Email',
+
+                    // F
                     Find: 'Find Pet',
                     friends: 'Our friends',
-                    homeTitle: 'Take good care of your small pets',
-                    Login: 'Login',
-                    Registration: 'Registration',
-                    SearchNews: 'Search news',
                     friendsError: 'We have not any friends on this topic',
-                    Time: 'Time',
-                    Address: 'Address',
-                    Email: 'Email',
+
+                    // G
+                    
+                    // H
+                    homeTitle: 'Take good care of your small pets',
+                    // I
+                    
+                    // J
+                    
+                    // K
+                    
+                    // L
+                    Login: 'Login',
+
+                    // M
+                    
+                    // N
+                    Next: 'Next',
+                    News: 'News',
+                    
+                    // O
+                    
+                    // P
                     Phone: 'Phone',
+
+                    // Q
+                    
+                    // R
+                    Registration: 'Registration',
+                    read: 'Read more',
+                    
+                    // S
+                    SearchNews: 'Search news',
+
+                    // T
+                    Time: 'Time',
+
+                    // U
+                    
+                    // V
+                    
+                    // W
+                    
+                    // X
+                    
+                    // Y
+                    
+                    // Z
 
                 }
             },
             ua: {
                 translation: {
-                    read: 'Докладніше',
-                    Account: 'Акаунт',
-                    News: 'Новини',
-                    Find: 'Знайти улюбленця',
-                    friends: 'Наші друзі',
-                    homeTitle: 'Дбайте про своїх маленьких домашніх улюбленців',
-                    Login: 'Вхід',
-                    Registration: 'Реєстрація',
-                    SearchNews: 'Пошук новин',
-                    friendsError: 'Нажаль, наразі друзів нема',
-                    Time: 'Робочі години',
+                    // A 
                     Address: 'Адреса',
-                    Email: 'Електронна адреса',
-                    Phone: 'Телефон',
+                    Account: 'Акаунт',
 
+                    // B
+                    Back: 'Повернутись',
+                    // C
+                    Cancel: 'Скасувати',
+                    
+                    // D
+                    Done: 'Готово',
+                    // E
+                    Email: 'Електронна адреса',
+                    
+                    // F
+                    Find: 'Знайти улюбленця',
+                    friendsError: 'Нажаль, наразі друзів нема',
+                    friends: 'Наші друзі',
+
+                    // G
+                    
+                    // H
+                    homeTitle: 'Дбайте про своїх маленьких домашніх улюбленців',
+                    
+                    // I
+                    
+                    // J
+                    
+                    // K
+                    
+                    // L
+                    Login: 'Вхід',
+                    
+                    // M
+                    
+                    // N
+                    Next: 'Далі',
+                    News: 'Новини',
+                    
+                    // O
+                    
+                    // P
+                    Phone: 'Телефон',
+                    
+                    // Q
+                    
+                    // R
+                    Registration: 'Реєстрація',
+                    read: 'Докладніше',
+
+                    // S
+                    SearchNews: 'Пошук новин',
+
+                    // T
+                    Time: 'Робочі години',
+                    
+                    // U
+                    
+                    // V
+                    
+                    // W
+                    
+                    // X
+                    
+                    // Y
+                    
+                    // Z
+                    
+                    
+                    
+                    
+
+                    
+                    
                 }
 
             }
