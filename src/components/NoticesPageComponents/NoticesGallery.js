@@ -40,7 +40,8 @@ export default function NoticesGallery() {
     dispatch(setFavorite(data));
   };
 
-  const [page, setPage] = useState(8);
+  // ===========================
+  const [page, setPage] = useState(1);
   const PER_PAGE = 8;
 
   const count = Math.ceil(data.length / PER_PAGE);
