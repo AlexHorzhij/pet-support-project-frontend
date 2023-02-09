@@ -20,7 +20,7 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 import { TextField } from 'formik-material-ui';
 
-export const Step2AddNotice = ({ next, prev, data }) => {
+export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
 
   const validateSchema = {
@@ -70,7 +70,7 @@ export const Step2AddNotice = ({ next, prev, data }) => {
     });
   };
 
-  console.log('data.category: ', data.category)
+  console.log('data.category: ', data.category);
 
   return (
     <Formik
@@ -126,21 +126,20 @@ export const Step2AddNotice = ({ next, prev, data }) => {
               {msg => <ErrorText>*{msg}</ErrorText>}
             </ErrorMessage>
           </Box>
-          {
-            data.category === 'sell' && (
-              <>
-                <Typography variant="h4">Price *</Typography>
-                <StyledInput
-                  sx={{ mt: 2, mb: 4 }}
-                  name="price"
-                  disableunderline="true"
-                  placeholder="Type price"
-                />
-                <ErrorMessage component="div" name="price">
-                  {msg => <ErrorText>*{msg}</ErrorText>}
-                </ErrorMessage>
-              </>
-            )}
+          {data.category === 'sell' && (
+            <>
+              <Typography variant="h4">Price *</Typography>
+              <StyledInput
+                sx={{ mt: 2, mb: 4 }}
+                name="price"
+                disableunderline="true"
+                placeholder="Type price"
+              />
+              <ErrorMessage component="div" name="price">
+                {msg => <ErrorText>*{msg}</ErrorText>}
+              </ErrorMessage>
+            </>
+          )}
 
           <Typography sx={{ mb: 1, mt: 2 }} variant="h4">
             Load the pet’s image:
@@ -152,7 +151,15 @@ export const Step2AddNotice = ({ next, prev, data }) => {
             onDrop={acceptedFiles => fileHandler(acceptedFiles, setFieldValue)}
           >
             {({ getRootProps, getInputProps }) => (
-              <DropZoneBox {...getRootProps()}>
+              <DropZoneBox
+                sx={{
+                  backgroundImage: `url(${preview ? preview : data.avatarUrl})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                }}
+                {...getRootProps()}
+              >
                 <input {...getInputProps()} />
                 {!values.avatarUrl ? (
                   <Box>
@@ -174,7 +181,9 @@ export const Step2AddNotice = ({ next, prev, data }) => {
           </Dropzone>
 
           <Grid item md={6} sx={{ mt: '40px' }}>
-            <Typography variant='h4' sx={{ mb: 1 }}>Comments:</Typography>
+            <Typography variant="h4" sx={{ mb: 1 }}>
+              Comments:
+            </Typography>
             <ModalMultiLineField
               multiline={true}
               rows={3.5}
