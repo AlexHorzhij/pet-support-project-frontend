@@ -22,6 +22,7 @@ import {
 import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function LearnMoreModal({ onModalClose, data }) {
+  console.log('data: ', data);
   const {
     _id,
     avatarUrl,
@@ -56,7 +57,10 @@ export default function LearnMoreModal({ onModalClose, data }) {
 
   const Contact = ({ children }) => {
     return (
-      <OwnerContact href={`tel:${owner.phone}`} sx={{ mb: 0 }}>
+      <OwnerContact
+        href={`tel:${owner !== null && owner.phone}`}
+        sx={{ mb: 0 }}
+      >
         {children}
       </OwnerContact>
     );
@@ -84,8 +88,12 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {breed && <HeadText variant="body2">Breed: </HeadText>}
               {location && <HeadText variant="body2">Location: </HeadText>}
               {sex && <HeadText variant="body2">The sex: </HeadText>}
-              {owner.name && <HeadText variant="body2">Owner: </HeadText>}
-              {owner.phone && <HeadText variant="body2">Phone: </HeadText>}
+              {owner !== null && owner.name && (
+                <HeadText variant="body2">Owner: </HeadText>
+              )}
+              {owner !== null && owner.phone && (
+                <HeadText variant="body2">Phone: </HeadText>
+              )}
               {price && <HeadText variant="body2">Price: </HeadText>}
             </Box>
             <Box>
@@ -94,13 +102,19 @@ export default function LearnMoreModal({ onModalClose, data }) {
               {breed && <Text>{breed}</Text>}
               {location && <Text>{location}</Text>}
               {sex && <Text>{sex}</Text>}
-              {owner.name && (
-                <OwnerContact underline="hover" href={`mailto:${owner.name}`}>
+              {owner !== null && owner.name && (
+                <OwnerContact
+                  underline="hover"
+                  href={`mailto:${owner !== null && owner.name}`}
+                >
                   <Text>{owner.name}</Text>
                 </OwnerContact>
               )}
-              {owner.phone && (
-                <OwnerContact underline="hover" href={`tel:${owner.phone}`}>
+              {owner !== null && owner.phone && (
+                <OwnerContact
+                  underline="hover"
+                  href={`tel:${owner !== null && owner.phone}`}
+                >
                   <Text>{owner.phone}</Text>
                 </OwnerContact>
               )}
