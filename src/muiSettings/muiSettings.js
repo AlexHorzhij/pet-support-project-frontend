@@ -142,7 +142,6 @@ export const ThemeOptions = {
           props: { component: 'main' },
           style: {
             backgroundColor: palette.background.default,
-            marginTop: 49,
             paddingTop: 10,
           },
         },
