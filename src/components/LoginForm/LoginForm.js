@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { loginUser } from 'redux/auth/authOperations';
-import { Loader } from 'components';
+import { LoaderWhite } from 'components';
 import {
   StyledInput,
   ErrorText,
@@ -77,7 +77,7 @@ const LoginForm = () => {
           </ErrorMessage>
         </Box>
         <FormButton variant="contained" type="submit">
-          {!isLoading ? 'Login' : <Loader />}
+          {!isLoading ? 'Login' : <LoaderWhite />}
         </FormButton>
       </Form>
     </Formik>

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
-import { Loader } from 'components';
+import { LoaderWhite } from 'components';
 import {
   StyledInput,
   ErrorText,
@@ -78,7 +78,7 @@ const StepTwo = ({ next, prev, data }) => {
               </ErrorMessage>
             </Box>
             <FormButton variant="contained" type="submit">
-              {!isLoading ? 'Register' : <Loader />}
+              {!isLoading ? 'Register' : <LoaderWhite />}
             </FormButton>
             <FormButton
               variant="outlined"
