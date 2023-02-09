@@ -123,11 +123,11 @@ export default function LearnMoreModal({ onModalClose, data }) {
           </Box>
         </Box>
       </BoxFlex>
-      <Text>
-        <HeadText variant="body1" sx={{ mb: 4 }}>
-          Comments: {comments}
-        </HeadText>
-      </Text>
+
+      <HeadText variant="body1" sx={{ mb: 4 }}>
+        Comments: {comments}
+      </HeadText>
+
       <ButtonsWrapper>
         <ContactButton variant="contained">
           <Contact>Contact</Contact>
