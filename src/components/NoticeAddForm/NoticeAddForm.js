@@ -6,13 +6,9 @@ import { addNewNotice } from 'redux/notices/noticesOperations';
 import { Button, Container } from '@mui/material';
 import { toast } from 'react-hot-toast';
 
-import { useParams } from 'react-router-dom';
-
 export const NoticeAddForm = ({ handleClose }) => {
-  const { categoryName } = useParams();
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
-  const [categoryNameBtn, setcategoryNameBtn] = useState();
 
   const dispatch = useDispatch();
   const [data, setData] = useState({

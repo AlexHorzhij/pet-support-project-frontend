@@ -21,7 +21,7 @@ import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
 export default function NoticesGallery() {
   const {
     items,
-    isLoading,
+    // isLoading,
     // error,
   } = useSelector(getNotices);
   const { categoryName } = useParams();
