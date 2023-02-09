@@ -5,7 +5,6 @@ import { LogoInfo, Span } from '../Logo/Logo.styled';
 import AuthNav from '../AuthNav/AuthNav';
 import { NavWrapper } from '../Header/Header.styled';
 import UserNav from '../UserNav/UserNav';
-// import MobileMenu from '../MobileMenu/MobileMenu';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import { MenuProvider } from '../Context/menuContext';
 
@@ -16,16 +15,18 @@ import { Box, Button } from '@mui/material';
 const lngs = {
   en: {
     nativeName: 'English',
-    shortName: 'EN'  },
+    shortName: 'EN',
+  },
   ua: {
     nativeName: 'Ukrainian',
-    shortName: 'UA'  }
-}
-
+    shortName: 'UA',
+  },
+};
 
 export default function ApplicationBar() {
   const { isLoggedIn } = useSelector(getAuth);
   const { i18n } = useTranslation();
+
   return (
     <MenuProvider>
       <Header>
@@ -35,27 +36,35 @@ export default function ApplicationBar() {
           </LogoInfo>
 
           <Nav />
-{/* ====================Multilanguage===================== */}
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            }}>
-            {Object.keys(lngs).map((lng) => {
-              return <Button
-                variant="contained"
-                size="small"
-                type='submit'
-                key={lng}
-                sx={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }}
-                onClick={() => i18n.changeLanguage(lng)}
-                disabled={i18n.resolvedLanguage === lng}
+          {/* ====================Multilanguage===================== */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            {Object.keys(lngs).map(lng => {
+              return (
+                <Button
+                  variant={
+                    i18n.resolvedLanguage === lng ? 'contained' : 'outlined'
+                  }
+                  size="small"
+                  type="submit"
+                  key={lng}
+                  sx={{
+                    fontWeight:
+                      i18n.resolvedLanguage === lng ? 'bold' : 'normal',
+                  }}
+                  onClick={() => i18n.changeLanguage(lng)}
+                  // disabled={i18n.resolvedLanguage === lng}
                 >
                   {lngs[lng].shortName}
                 </Button>
-              })
-            }
+              );
+            })}
           </Box>
-{/* ====================================================== */}          
+          {/* ====================================================== */}
           <NavWrapper>
             {isLoggedIn ? <UserNav /> : <AuthNav />}
             <MobileMenu />

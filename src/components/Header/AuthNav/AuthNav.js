@@ -5,8 +5,8 @@ import { AuthList, AuthItem, AuthLink } from './AuthNav.styled';
 import { useTranslation } from 'react-i18next';
 
 export default function AuthNav() {
-  const [isActive, setIsOpen] = useState(true);
-  const toggle = () => setIsOpen(isActive => !isActive);
+  const [isActive, setisActive] = useState(true);
+  const toggle = () => setisActive(isActive => !isActive);
   const activeStyle = { color: '#ffffff', background: '#f59256' };
   const { t } = useTranslation();
   return (
