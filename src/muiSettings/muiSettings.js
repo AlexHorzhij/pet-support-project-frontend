@@ -97,7 +97,6 @@ export const ThemeOptions = {
     borderRadius8: 8,
   },
   components: {
-
     MuiCard: {
       variants: [
         {
@@ -133,8 +132,8 @@ export const ThemeOptions = {
         },
         {
           props: { variant: 'text' },
-          style: { color: palette.text.primary }
-        }
+          style: { color: palette.text.primary },
+        },
       ],
     },
     MuiContainer: {
