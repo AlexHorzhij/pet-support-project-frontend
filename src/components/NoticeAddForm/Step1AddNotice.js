@@ -35,7 +35,7 @@ const schema = yup.object().shape({
 });
 
 export const Step1AddNotice = ({ next, data, handleClose }) => {
-  console.log('data: ', data.category);
+  // console.log('data: ', data.category);
   // const [dataForm, setDataForm] = useState(data)
 
 

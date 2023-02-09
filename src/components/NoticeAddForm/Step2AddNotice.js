@@ -31,10 +31,10 @@ export const Step2AddNotice = ({ next, prev, data }) => {
       .max(40)
       .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
-    avatarUrl: yup.string().required(),
+    avatarUrl: yup.string(),
     comments: yup
       .string()
-      .required()
+      // .required()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
 

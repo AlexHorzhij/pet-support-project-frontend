@@ -6,14 +6,13 @@ import { addNewNotice } from 'redux/notices/noticesOperations';
 import { ToggleButton, ToggleButtonGroup, Button, Container } from '@mui/material';
 import { toast } from 'react-hot-toast';
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const NoticeAddForm = ({ handleClose }) => {
-  const {categoryName} = useParams()
-  console.log('categoryName: ', categoryName);
-  const [category, setCategory] = useState(null);
+  const { categoryName } = useParams()
   const [data, setData] = useState({
     // step-1:
+    category: categoryName,
     title: '',
     name: '',
     birthdate: '',
@@ -25,6 +24,8 @@ export const NoticeAddForm = ({ handleClose }) => {
     avatarUrl: '',
     description: '',
   });
+  console.log('data.category: ', data.category);
+
 
   const [currentStep, setCurrentStep] = useState(0);
   const dispatch = useDispatch();
@@ -37,11 +38,11 @@ export const NoticeAddForm = ({ handleClose }) => {
   // };
 
   const handleNextStep = (newData, final = false) => {
-    if (!category) {
-      toast.error('choose status');
+    if (!data.category) {
+      toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, category: category }));
+    setData(prev => ({ ...prev, ...newData }));
 
     if (final) {
       const formData = new FormData();
@@ -76,7 +77,6 @@ export const NoticeAddForm = ({ handleClose }) => {
 
   const onClickCategory = async (e) => {
     setData(prev => ({ ...prev, category: e.target.name }))
-    console.log('asdf')
   }
 
   return (
