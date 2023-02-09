@@ -50,9 +50,7 @@ export const verifyUser = createAsyncThunk(
   'verify',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('Verification data-token', data);
       const res = await verify(data);
-      console.log('Verification result', res);
       toast.success('Verification successful!');
       return res;
     } catch ({ response }) {
@@ -97,7 +95,7 @@ export const logoutUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      toast.error('Oops! Something went wrong, please, try again');
+      toast.error('Oops! Logging out went wrong, please, try again');
       return rejectWithValue(error);
     }
   }
@@ -115,7 +113,6 @@ export const fetchCurrentUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      // toast.error('Oops! Something went wrong, please, login again');
       await logout();
       return rejectWithValue(error);
     }
