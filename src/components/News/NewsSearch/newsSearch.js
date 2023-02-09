@@ -43,6 +43,7 @@ export default function NewsSearch({ onSubmit }) {
       onSubmit={handleSubmit}
       id="searchForm"
     >
+      
       <InputBase
         type='text'
         name='search'
@@ -51,22 +52,27 @@ export default function NewsSearch({ onSubmit }) {
         sx={{ ml: 1, flex: 1, pl: 1 }}
         placeholder="Search news"
       />
-      {(search !== '') && <IconButton
-        onClick={handleClearSearch}
-        type="submit"
-        sx={{ p: '10px' }}
-        aria-label="close"
-      >
-        <CloseIcon />
-      </IconButton>}
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton
+
+      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> {/* vertical line in input */}
+      
+      {(search !== '')
+        ? <IconButton
+            onClick={handleClearSearch}
+            type="submit"
+            sx={{ p: '10px' }}
+            aria-label="close"
+          >
+              <CloseIcon />
+          </IconButton>
+        :  
+          <IconButton
             type="submit"
             sx={{ p: '10px' }}
             aria-label="search"
-          >
-          <SearchIcon />
-      </IconButton>
+            >
+              <SearchIcon />
+          </IconButton>
+      }
     </FormSearch>
   );
 }
