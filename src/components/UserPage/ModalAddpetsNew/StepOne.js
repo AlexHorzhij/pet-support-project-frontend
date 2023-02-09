@@ -25,18 +25,6 @@ const schema = yup.object().shape({
     )
     .min(new Date(min), `Input correct  no erlier than 1990`)
     .required(),
-  // date: yup
-  //   .date()
-  //   .transform(function (value, originalValue) {
-  //     if (this.isType(value)) {
-  //       return value;
-  //     }
-  //     const result = parse(originalValue, 'DD.MM.YYYY', new Date());
-  //     return result;
-  //   })
-  //   .typeError('please enter a valid date')
-  //   .required()
-  //   .min('1969-11-13', 'Date is too early'),
   breed: yup
     .string()
     .min(2)
