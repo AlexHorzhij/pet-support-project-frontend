@@ -23,7 +23,6 @@ export default function NoticesGallery() {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const data = sortObjByDate(items, 'create_at');
-  console.log('data: ', data);
 
   useEffect(() => {
     dispatch(fetchUserData());
