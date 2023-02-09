@@ -9,6 +9,7 @@ import {
 import { Grid, Box } from '@mui/material';
 import { TypographyStyled } from './NoticeAddForm.styled';
 
+// const min = '1990-01-01';
 const schema = yup.object().shape({
   title: yup.string().min(2).max(48).required(),
   name: yup
@@ -18,12 +19,12 @@ const schema = yup.object().shape({
     .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
     .required(),
   birthdate: yup
-    .string()
-    .max(10)
-    .matches(
-      /(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).(19|20)/,
-      'Input correct date'
+    .date()
+    .max(
+      new Date(Date.now()),
+      `Input correct date MM.DD.YYYY no later than today`
     )
+    .min(new Date('1990-01-01'), `Input correct  no erlier than 1990`)
     .required(),
   breed: yup
     .string()
@@ -34,9 +35,19 @@ const schema = yup.object().shape({
 });
 
 export const Step1AddNotice = ({ next, data, handleClose }) => {
+  // console.log('data: ', data.category);
+  // const [dataForm, setDataForm] = useState(data)
+
+
   const handleSubmit = values => {
     next(values);
   };
+
+  // const onClickCategory = async (e) => {
+  //   data.category = e.target.name
+  //   await setDataForm(e.target.name)
+  //   console.log('setDataForm: ', dataForm);
+  // }
 
   return (
     <Formik
@@ -45,12 +56,38 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <TypographyStyled sx={{ mt: 2 }} variant="h4">
-          Title of ad *
+        {/* <Container sx={{ mb: 6 }}>
+          <Button
+            name="sell"
+            variant={data.category === 'sell' ? 'contained' : 'outlined'}
+            sx={{ textTransform: 'lowercase' }}
+            onClick={onClickCategory}
+          >
+            sell
+          </Button>
+          <Button
+            name="lost-found"
+            variant={data.category === 'lost-found' ? 'contained' : 'outlined'}
+            sx={{ textTransform: 'lowercase' }}
+            onClick={onClickCategory}
+          >
+            lost/found
+          </Button>
+          <Button
+            variant={data.category === 'for-free' ? 'contained' : 'outlined'}
+            name="for-free"
+            sx={{ textTransform: 'lowercase' }}
+            onClick={onClickCategory}
+          >
+            in good hands
+          </Button>
+        </Container> */}
+        <TypographyStyled sx={{ mt: 2, mb: 1 }} variant="h4">
+          Title of ad: *
         </TypographyStyled>
-        <Box sx={{position: "relative"}}>
+        <Box sx={{ position: 'relative' }}>
           <StyledInput
-            sx={{ mt: 2, mb: 4 }}
+            style={{ mt: 2, mb: 4 }}
             name="title"
             disableunderline="true"
             placeholder="Type title"
@@ -59,33 +96,39 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
         </Box>
-        <TypographyStyled variant="h4">Name pet</TypographyStyled>
-        <StyledInput
-          sx={{ mt: 2, mb: 4 }}
-          name="name"
-          placeholder="Type name"
-        />
-        <ErrorMessage component="div" name="name">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
-        <TypographyStyled variant="h4">Date of birth</TypographyStyled>
-        <StyledInput
-          sx={{ mt: 2, mb: 4 }}
-          name="birthdate"
-          placeholder="Type date of birth MM.DD.YYYY"
-        />
-        <ErrorMessage component="div" name="birthdate">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
-        <TypographyStyled variant="h4">Breed</TypographyStyled>
-        <StyledInput
-          sx={{ mt: 2, mb: 4 }}
-          name="breed"
-          placeholder="Type breed"
-        />
-        <ErrorMessage component="div" name="breed">
-          {msg => <ErrorText>*{msg}</ErrorText>}
-        </ErrorMessage>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">Name pet:</TypographyStyled>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            style={{ mt: 2, mb: 4 }}
+            name="name"
+            placeholder="Type name"
+          />
+          <ErrorMessage component="div" name="name">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">Date of birth:</TypographyStyled>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            style={{ mt: 2, mb: 4 }}
+            name="birthdate"
+            placeholder="Type date of birth MM.DD.YYYY"
+          />
+          <ErrorMessage component="div" name="birthdate">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">Breed:</TypographyStyled>
+        <Box sx={{ position: 'relative' }}>
+          <StyledInput
+            style={{ mt: 2, mb: 4 }}
+            name="breed"
+            placeholder="Type breed"
+          />
+          <ErrorMessage component="div" name="breed">
+            {msg => <ErrorText>*{msg}</ErrorText>}
+          </ErrorMessage>
+        </Box>
         <Grid container spacing={4}>
           <Grid item xs={6}>
             <FormButton variant="contained" onClick={handleClose}>
@@ -99,6 +142,6 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
           </Grid>
         </Grid>
       </Form>
-    </Formik>
+    </Formik >
   );
 };

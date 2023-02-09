@@ -77,10 +77,11 @@ export const noticesSlice = createSlice({
       })
       .addCase(setFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
-          item => item._id === payload.result.notice
+          item => item._id === payload.result._id
         );
+        // console.log('state.items[]: ', state);
         state.items[index].favorite = payload.favorite;
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(setFavorite.rejected, state => {
         state.isLoading = false;
