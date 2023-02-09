@@ -15,6 +15,8 @@ import { Main, NewsContainer } from 'components/News/NewsItem/newsItem.styled';
 import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
 import { getNews } from 'redux/news/newsSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
+import { useTranslation } from 'react-i18next';
+
 
 export default function NewsPage() {
 
@@ -22,6 +24,7 @@ export default function NewsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('search')
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (query === '' || query === null) {
@@ -55,7 +58,7 @@ export default function NewsPage() {
   return (
     <Main>
       <NewsContainer>
-        <Title text="News" />
+        <Title text={ t('News')} />
         <NewsSearch onSubmit={onFormSubmit} value={query} />
         {error && <p>{error.data}</p>}
         {isLoading && <LoaderPage />}
