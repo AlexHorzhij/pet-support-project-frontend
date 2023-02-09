@@ -6,9 +6,12 @@ import {
   StyledButtonTitle,
   StyledLogoutIcon,
 } from './Logput.styled';
+import { useTranslation } from 'react-i18next';
+
 
 function Logout() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onLogoutClick = () => {
     dispatch(logoutUser());
@@ -17,7 +20,7 @@ function Logout() {
   return (
     <StyledLogoutButton onClick={onLogoutClick}>
       <StyledLogoutIcon />
-      <StyledButtonTitle>Log Out</StyledButtonTitle>
+      <StyledButtonTitle>{ t('LogOut')}</StyledButtonTitle>
     </StyledLogoutButton>
   );
 }

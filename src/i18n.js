@@ -41,7 +41,7 @@ i18next
                     
                     // L
                     Login: 'Login',
-
+                    LogOut: 'Log Out',
                     // M
                     
                     // N
@@ -113,7 +113,7 @@ i18next
                     
                     // L
                     Login: 'Вхід',
-                    
+                    LogOut: 'Вихід',
                     // M
                     
                     // N
