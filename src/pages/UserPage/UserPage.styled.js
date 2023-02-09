@@ -8,12 +8,18 @@ export const UserDataContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   backgroundColor: theme.palette.background.default,
   gap: '32px',
-  marginTop: '50px',
-  paddingTop: '30px',
   paddingBottom: '50px',
+  marginTop: '58px',
+  marginBottom: '58px',
 
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column',
+    marginTop: '88px',
+    marginBottom: '88px',
+  },
+  [theme.breakpoints.down('md')]: {
+    marginTop: '60px',
+    marginBottom: '60px',
   },
 }));
 
