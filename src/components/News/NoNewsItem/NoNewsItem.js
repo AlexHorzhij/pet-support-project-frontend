@@ -4,8 +4,12 @@ import {
   Text,
   NewsTextFound,
 } from './NoNewsItem.styled';
+
 import { NavLink } from 'react-router-dom';
 import { Button, Box } from '@mui/material';
+import { PropTypes } from 'prop-types';
+
+
 
 export const NoNewsItem = ({value}) => {
 
@@ -44,4 +48,8 @@ export const NoNewsItem = ({value}) => {
 
     </Background>
   );
+};
+
+NoNewsItem.propTypes = {
+  value: PropTypes.string
 };
