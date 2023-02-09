@@ -10,7 +10,7 @@ import { Divider } from '@mui/material';
 
 import { FormSearch } from './newsSearch.styled';
 
-export default function NewsSearch({ onSubmit }) {
+export function NewsSearch({ onSubmit }) {
   
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
