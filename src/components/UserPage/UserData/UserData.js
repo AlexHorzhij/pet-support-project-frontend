@@ -102,25 +102,18 @@ function UserData() {
               {user && (
                 <>
                   <UserDataItem
-                    title={'Name'}
-                    value={user.name}
-                    pattern={namePattern}
-                    textMessage={'Enter valid full name, at least 2 cheracter'}
-                  />
-                  <UserDataItem
                     title={'Email'}
                     value={user.email}
                     pattern={emailPattern}
                     textMessage={'Enter valid email'}
                   />
                   <UserDataItem
-                    title={'Birthday'}
-                    value={user.birthdate}
-                    pattern={datePattern}
-                    textMessage={
-                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
-                    }
+                    title={'Name'}
+                    value={user.name}
+                    pattern={namePattern}
+                    textMessage={'Enter valid full name, at least 2 cheracter'}
                   />
+
                   <UserDataItem
                     title={'Phone'}
                     value={user.phone}
@@ -135,6 +128,14 @@ function UserData() {
                     pattern={locationPattern}
                     textMessage={
                       'Location name should begin with capital letters,and devided by comma and space'
+                    }
+                  />
+                  <UserDataItem
+                    title={'Birthday'}
+                    value={user.birthdate}
+                    pattern={datePattern}
+                    textMessage={
+                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
                     }
                   />
                 </>
