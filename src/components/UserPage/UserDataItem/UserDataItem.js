@@ -72,21 +72,34 @@ function UserDataItem({
         }}
         onBlur={changeInputState}
       />
-      <IconButton
-        onClick={changeInputState}
-        sx={{
-          backgroundColor: '#FDF7F2',
-          width: '32px',
-          height: '32px',
-          '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
-        }}
-      >
-        {inputState ? (
-          <ModeEditOutlineRoundedIconStyled />
-        ) : (
-          <DoneRoundedIconStyled />
-        )}
-      </IconButton>
+      {inputName !== 'email' ? (
+        <IconButton
+          onClick={changeInputState}
+          sx={{
+            backgroundColor: '#FDF7F2',
+            width: '32px',
+            height: '32px',
+            '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
+          }}
+        >
+          {inputState ? (
+            <ModeEditOutlineRoundedIconStyled />
+          ) : (
+            <DoneRoundedIconStyled />
+          )}
+        </IconButton>
+      ) : (
+        <IconButton
+          disabled={true}
+          sx={{
+            backgroundColor: '#FDF7F2',
+            width: '32px',
+            height: '32px',
+          }}
+        >
+          <DoneRoundedIconStyled sx={{ color: 'transparent' }} />
+        </IconButton>
+      )}
     </UserDataItemBox>
   );
 }
