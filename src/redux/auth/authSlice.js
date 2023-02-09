@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   registerUser,
+  verifyUser,
   loginUser,
   logoutUser,
   fetchCurrentUser,
@@ -29,6 +30,17 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(verifyUser.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(verifyUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+      })
+      .addCase(verifyUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
