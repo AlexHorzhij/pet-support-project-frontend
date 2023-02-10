@@ -45,6 +45,15 @@ export const BoxImageWrapper = styled(Box)(({ theme }) => ({
     marginBottom: '70px',
   },
 }));
+export const LoaderWrapper = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '20px',
+  right: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+}));
 
 export const BoxImageBackdrop = styled(Box)(({ theme }) => ({
   width: '233px',
