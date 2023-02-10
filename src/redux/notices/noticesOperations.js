@@ -5,6 +5,7 @@ import {
   getRegisterNotices,
   writeNewNotice,
   toggleFavorite,
+  patchNotice,
 } from 'API/api';
 
 export const fetchNotices = createAsyncThunk(
@@ -66,3 +67,15 @@ export const removeNoticeFromUserById = createAsyncThunk(
     }
   }
 );
+
+export const updateNotice = createAsyncThunk(
+  'updateNotice',
+  async ({ editID, formData }, { rejectWithValue }) => {
+    console.log('editID: ', editID);
+    try {
+      const updatedNotice = await patchNotice(editID, formData)
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)

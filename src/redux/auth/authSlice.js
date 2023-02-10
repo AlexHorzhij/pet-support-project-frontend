@@ -78,7 +78,6 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.isLoadingUser = false;
         state.userEmail = payload.user.email;
         state.isLoggedIn = true;
