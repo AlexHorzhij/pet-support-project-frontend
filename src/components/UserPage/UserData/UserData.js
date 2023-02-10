@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
