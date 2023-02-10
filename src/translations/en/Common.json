@@ -25,6 +25,11 @@
 	"MainPage": {
 		"title": "Take good care of your small pets"
 	},
+	"MobileMenu": {
+		"1link": "News",
+		"2link": "Find pet",
+		"3link": "Our Friends"
+	},
 	"NewsPage": {
 		"item": {
 			"readMoreBtn": "Read more"
