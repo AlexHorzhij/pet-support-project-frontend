@@ -113,31 +113,25 @@ function UserData() {
                     title={t('User.card.2line')}
                     value={user.email}
                     pattern={emailPattern}
-                    textMessage={'Enter valid email'}
+                    textMessage={t('User.card.2lineErrMsg')}
                   />
                   <UserDataItem
                     title={t('User.card.3line')}
                     value={user.birthdate}
                     pattern={datePattern}
-                    textMessage={
-                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
-                    }
+                    textMessage={t('User.card.3lineErrMsg')}
                   />
                   <UserDataItem
                     title={t('User.card.4line')}
                     value={user.phone}
                     pattern={phonePattern}
-                    textMessage={
-                      'Enter valid phone number range 10 to 15 digits'
-                    }
+                    textMessage={t('User.card.4lineErrMsg')}
                   />
                   <UserDataItem
                     title={t('User.card.5line')}
                     value={user.city}
                     pattern={locationPattern}
-                    textMessage={
-                      'Location name should begin with capital letters,and devided by comma and space'
-                    }
+                    textMessage={t('User.card.5lineErrMsg')}
                   />
                 </>
               )}
