@@ -21,11 +21,7 @@ export default function NoticesCardItem({
   handleChange,
   user = null,
 }) {
-  // console.log('data: ', data);
-  // const user = useSelector(getUser);
-  // console.log('user: ', user);
-  // const userID = user?._id ? user._id : null;
-  // // console.log('userID: ', userID);
+
 
   const [modalIsShown, setModalIsShown] = useState(false);
 

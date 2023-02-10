@@ -117,10 +117,11 @@ function UserData() {
                   />
                   <UserDataItem
                     title={t('User.card.3line')}
-                    value={user.birthdate}
-                    pattern={datePattern}
+                    value={user.name}
+                    pattern={namePattern}
                     textMessage={t('User.card.3lineErrMsg')}
                   />
+
                   <UserDataItem
                     title={t('User.card.4line')}
                     value={user.phone}
@@ -132,6 +133,14 @@ function UserData() {
                     value={user.city}
                     pattern={locationPattern}
                     textMessage={t('User.card.5lineErrMsg')}
+                  />
+                  <UserDataItem
+                    title={'Birthday'}
+                    value={user.birthdate}
+                    pattern={datePattern}
+                    textMessage={
+                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
+                    }
                   />
                 </>
               )}

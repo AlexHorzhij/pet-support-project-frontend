@@ -5,15 +5,23 @@ import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import { addNewNotice } from 'redux/notices/noticesOperations';
 import { Button, Container } from '@mui/material';
 import { toast } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
 
 export const NoticeAddForm = ({ handleClose }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
+  const { categoryName } = useParams()
+
+  const NOTICE_CATEGORY = {
+    'lost-found': 'lost/found',
+    'for-free': 'in good hands',
+    sell: 'sell',
+  };
 
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
-    category: '',
+    category: NOTICE_CATEGORY[categoryName],
     title: '',
     name: '',
     birthdate: '',
@@ -25,7 +33,6 @@ export const NoticeAddForm = ({ handleClose }) => {
     avatarUrl: '',
     description: '',
   });
-  console.log('data.category: ', data.category);
 
   // const handleStatus = (_, newStatus) => {
   //   if (newStatus !== null) {
@@ -113,7 +120,7 @@ export const NoticeAddForm = ({ handleClose }) => {
           </Button>
           <Button
             variant={
-              data.category === 'in good hands' ? 'contained' : 'outlined'
+              data.category === 'in a good hands' ? 'contained' : 'outlined'
             }
             name="in good hands"
             sx={{ textTransform: 'lowercase' }}
