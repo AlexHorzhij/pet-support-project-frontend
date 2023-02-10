@@ -35,6 +35,31 @@
 			"accBtn": "Account"
 		}
 	},
+	"ModalAddPetNew": {
+		"1line": {
+			"placeholder": "Type pet name",
+			"title": "Name Pet"
+		},
+		"2line": {
+			"placeholder": "Type date of birth DD.MM.YYYY",
+			"title": "Date of birth"
+		},
+		"3line": {
+			"placeholder": "Type Breed",
+			"title": "Breed"
+		},
+		"4lineTitle": "Add photo and some comments",
+		"5line": {
+			"placeholder": "Type comment",
+			"title": "Comments"
+		},
+		"addTitle": "Add Pet",
+		"backBtn": "Back",
+		"cancelBtn": "Cancel",
+		"editTitle": "Edit Pet",
+		"finalBtn": "Done",
+		"nextBtn": "Next"
+	},
 	"NewsPage": {
 		"item": {
 			"readMoreBtn": "Read more"
@@ -88,8 +113,16 @@
 			"5lineErrMsg": "Location name should begin with capital letters, and devided by comma and space",
 			"editPhotoBtn": "Edit photo",
 			"logoutBtn": "LogOut",
-			"onUpdate": "Updating",
-			"title": "My Information:"
-		}
+			"onUpdate": "Updating"
+		},
+		"nonePetsMsg": "Your pets will be shown here",
+		"petCard": {
+			"1line": "Name:",
+			"2line": "Date of birth:",
+			"3line": "Breed:",
+			"4line": "Description:"
+		},
+		"title": "My Information:",
+		"title2": "My pets:"
 	}
 }

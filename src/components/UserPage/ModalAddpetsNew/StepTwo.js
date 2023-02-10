@@ -27,7 +27,7 @@ const schema = yup.object().shape({
 
 const StepTwo = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const handleSubmit = async (values, { resetForm }) => {
     next(values, true);
@@ -57,7 +57,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
         return (
           <Form>
             <SecondStepBox>
-              <AddPetComment>{ t('AddPC')}</AddPetComment>
+              <AddPetComment>{ t('ModalAddPetNew.4lineTitle')}</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
                 <Dropzone
                   className="dropZone"
@@ -103,14 +103,14 @@ const StepTwo = ({ next, prev, data, preview }) => {
                 </ErrorMessage>
               </Box>
               <ModalGrid>
-                <ModalTypography>{ t('Comments')}*</ModalTypography>
+                <ModalTypography>{ t('ModalAddPetNew.5line.title')}*</ModalTypography>
                 <ModalMultiLineField
                   multiline={true}
                   rows={3.5}
                   fullWidth
                   name="description"
                   component={TextField}
-                  label={t('TypeComment')}
+                  label={t('ModalAddPetNew.5line.placeholder')}
                   disableunderline="true"
                 />
                 <ErrorMessage component="div" name="description">
@@ -125,10 +125,10 @@ const StepTwo = ({ next, prev, data, preview }) => {
                     prev(values);
                   }}
                 >
-                  {t('Back')}
+                  {t('ModalAddPetNew.backBtn')}
                 </FormButton>
                 <FormButton variant="contained" type="submit">
-                  {t('Done')}
+                  {t('ModalAddPetNew.finalBtn')}
                 </FormButton>
               </StepperBox>
             </SecondStepBox>

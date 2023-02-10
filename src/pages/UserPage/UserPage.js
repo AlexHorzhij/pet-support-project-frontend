@@ -49,12 +49,12 @@ function UserPage() {
         <>
           <Box>
             <UserDataTypography variant="h3">
-              {t('User.card.title')}
+              {t('User.title')}
             </UserDataTypography>
             <UserData />
           </Box>
           <PetDataBox>
-            <UserDataTypography variant="h3">My pets:</UserDataTypography>
+            <UserDataTypography variant="h3">{t('User.title2')}</UserDataTypography>
             <UserDataIconButton onClick={handleCloseAddNotice}>
               <AddPetTypography variant="h5" color="text.primary">
                 Add pet
@@ -68,7 +68,7 @@ function UserPage() {
             ) : (
               <SceletonWrapper>
                 <Typography sx={{ fontSize: '30px' }}>
-                  Your pets will be shown here
+                  {t('User.nonePetsMsg')}
                 </Typography>
                 <PetsOutlinedIcon
                   sx={{ marginTop: '30px', fontSize: '100px', color: 'grey' }}
