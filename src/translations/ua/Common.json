@@ -1,0 +1,67 @@
+{
+	"Header": {
+		"auth": {
+			"login": "Вхід",
+			"reg": "Реєстрація"
+		},
+		"nav": {
+			"find": "Знайти улюбленця",
+			"friends": "Наші друзі",
+			"news": "Новини"
+		}
+	},
+	"Login": {
+		"form": {
+			"btn": "Вхід",
+			"emailPlaceholder": "Електронна пошта",
+			"footer": {
+				"link": "Зареєструватися",
+				"msg": "Не маєте облікового запису?"
+			},
+			"passwordPlaceholder": "Пароль"
+		},
+		"title": "Вхід"
+	},
+	"MainPage": {
+		"title": "Дбайте про своїх маленьких улюбленців"
+	},
+	"NewsPage": {
+		"item": {
+			"readMoreBtn": "Докладніше"
+		},
+		"search": {
+			"input": {
+				"placeholder": "Пошук"
+			}
+		},
+		"title": "Новини"
+	},
+	"OurFriendsPage": {
+		"error": "Наразі друзі відсутні",
+		"item": {
+			"address": "Адреса",
+			"email": "Електронна пошта",
+			"phone": "Телефон",
+			"time": "Робочі години"
+		},
+		"title": "Наші друзі"
+	},
+	"Registration": {
+		"footer": {
+			"link": "Вхід",
+			"msg": "Вже маєте аккаунт?"
+		},
+		"form": {
+			"1linePlaceholder": "Електронна пошта",
+			"2linePlaceholder": "Пароль",
+			"3linePassPlaceholder": "Підтвердьте пароль",
+			"4linePlaceholder": "Ім'я",
+			"5linePlaceholder": "Місто, Регіон/Країна",
+			"6linePlaceholder": "Мобільний телефон",
+			"backBtn": "Назад",
+			"btn": "Далі",
+			"finalBtn": "Зареєструватися"
+		},
+		"title": "Реєстрація"
+	}
+}

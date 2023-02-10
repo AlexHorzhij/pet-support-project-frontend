@@ -1,0 +1,67 @@
+{
+	"Header": {
+		"auth": {
+			"login": "Login",
+			"reg": "Registration"
+		},
+		"nav": {
+			"find": "Find pets",
+			"friends": "Our friends",
+			"news": "News"
+		}
+	},
+	"Login": {
+		"form": {
+			"btn": "Login",
+			"emailPlaceholder": "Email",
+			"footer": {
+				"link": "Register",
+				"msg": "Don't have an account?"
+			},
+			"passwordPlaceholder": "Password"
+		},
+		"title": "Login"
+	},
+	"MainPage": {
+		"title": "Take good care of your small pets"
+	},
+	"NewsPage": {
+		"item": {
+			"readMoreBtn": "Read more"
+		},
+		"search": {
+			"input": {
+				"placeholder": "Search"
+			}
+		},
+		"title": "News"
+	},
+	"OurFriendsPage": {
+		"error": "We have not any friends on time",
+		"item": {
+			"address": "Address",
+			"email": "Email",
+			"phone": "Phone",
+			"time": "Time"
+		},
+		"title": "Our friends"
+	},
+	"Registration": {
+		"footer": {
+			"link": "Login",
+			"msg": "Already have an account?"
+		},
+		"form": {
+			"1linePlaceholder": "Email",
+			"2linePlaceholder": "Password",
+			"3linePassPlaceholder": "Confirm Password",
+			"4linePlaceholder": "Name",
+			"5linePlaceholder": "City, Region/Country",
+			"6linePlaceholder": "Mobile phone",
+			"backBtn": "Back",
+			"btn": "Next",
+			"finalBtn": "Register"
+		},
+		"title": "Registration"
+	}
+}

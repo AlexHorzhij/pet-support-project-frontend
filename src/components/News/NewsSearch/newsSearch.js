@@ -16,7 +16,7 @@ export function NewsSearch({ onSubmit }) {
   
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   
   const handleClearSearch = (event) => {
     event.preventDefault()
@@ -53,7 +53,7 @@ export function NewsSearch({ onSubmit }) {
         autoComplete='off'
         autoFocus
         sx={{ ml: 1, flex: 1, pl: 1 }}
-        placeholder={t('SearchNews')}
+        placeholder={t('NewsPage.search.input.placeholder')}
       />
 
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> {/* vertical line in input */}
