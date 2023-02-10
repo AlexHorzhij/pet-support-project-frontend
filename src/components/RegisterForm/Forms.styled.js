@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import { Field } from 'formik';
 
 export const StyledInput = styled(Field)(({ theme }) => ({
@@ -51,5 +51,15 @@ export const FormButton = styled(Button)(({ theme }) => ({
 
   [theme.breakpoints.up('lg')]: {
     height: '48px',
+  },
+}));
+
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  position: 'absolute',
+  top: '-2px',
+  right: '20px',
+
+  [theme.breakpoints.up('md')]: {
+    top: '4px',
   },
 }));

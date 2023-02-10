@@ -8,8 +8,11 @@ import {
   StyledInput,
   ErrorText,
   FormButton,
+  StyledIconButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/system';
+import { useState } from 'react';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const schema = yup.object().shape({
   email: yup
@@ -28,7 +31,7 @@ const schema = yup.object().shape({
     .max(32)
     .matches(
       /^[a-zA-Z0-9]*$/,
-      'Password must contain only letters and/or numbers'
+      'Password must contain only latin letters and/or numbers'
     )
     .required(),
 });
@@ -39,8 +42,15 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const { isLoading } = useSelector(getAuth);
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
   const handleSubmit = values => {
     const { email, password } = values;
@@ -67,11 +77,19 @@ const LoginForm = () => {
         </Box>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             placeholder="Password"
             disableunderline="true"
           />
+          <StyledIconButton
+            aria-label="toggle password visibility"
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+            edge="end"
+          >
+            {showPassword ? <VisibilityOff /> : <Visibility />}
+          </StyledIconButton>
           <ErrorMessage name="password">
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
