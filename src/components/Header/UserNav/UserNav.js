@@ -12,7 +12,7 @@ export default function UserNav() {
     <AuthNavigation>
       <Button variant="contained">
         <AccountCircleIcon />
-        <AuthLink to="/login">{t('Account')}</AuthLink>
+        <AuthLink to="/login">{t('Header.accountBtn')}</AuthLink>
       </Button>
     </AuthNavigation>
   );

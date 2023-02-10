@@ -1,5 +1,6 @@
 {
 	"Header": {
+		"accountBtn": "Account",
 		"auth": {
 			"login": "Login",
 			"reg": "Registration"
@@ -100,6 +101,7 @@
 		"title": "Registration"
 	},
 	"User": {
+		"addPetBtn": "Add Pet",
 		"card": {
 			"1line": "Name",
 			"1lineErrMsg": "Enter valid full name, at least 2 character",

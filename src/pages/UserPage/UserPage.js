@@ -57,7 +57,7 @@ function UserPage() {
             <UserDataTypography variant="h3">{t('User.title2')}</UserDataTypography>
             <UserDataIconButton onClick={handleCloseAddNotice}>
               <AddPetTypography variant="h5" color="text.primary">
-                Add pet
+                {t('User.addPetBtn')}
               </AddPetTypography>
               <AddPetIcon />
             </UserDataIconButton>
