@@ -36,7 +36,7 @@ const schema = yup.object().shape({
 });
 
 const StepOne = ({ next, data, onModalClose }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const handleSubmit = async values => {
     next(values);
   };
@@ -50,10 +50,10 @@ const StepOne = ({ next, data, onModalClose }) => {
     >
       <Form>
         <ModalGrid>
-          <ModalTypography>{t('PetName')}*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.1line.title') }*</ModalTypography>
           <StyledInput
             name="name"
-            placeholder={t('TypePetName')}
+            placeholder={ t('ModalAddPetNew.1line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="name">
@@ -61,10 +61,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{t('DateOfBirth')}*</ModalTypography>
+          <ModalTypography>{ t('ModalAddPetNew.2line.title')}*</ModalTypography>
           <StyledInput
             name="date"
-            placeholder={t('TypeDoB')}
+            placeholder={t('ModalAddPetNew.2line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="date">
@@ -72,10 +72,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{t('Breed')}*</ModalTypography>
+          <ModalTypography>{ t('ModalAddPetNew.3line.title')}*</ModalTypography>
           <StyledInput
             name="breed"
-            placeholder={t('TypeBreed')}
+            placeholder={t("ModalAddPetNew.3line.placeholder")}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="breed">
@@ -84,10 +84,10 @@ const StepOne = ({ next, data, onModalClose }) => {
         </ModalGrid>
         <StepperBox>
           <FormButton onClick={onModalClose} variant="outlined">
-            {t('Cancel')}
+            {t('ModalAddPetNew.cancelBtn')}
           </FormButton>
           <FormButton variant="contained" type="submit">
-            {t('Next')}
+            {t('ModalAddPetNew.nextBtn')}
           </FormButton>
         </StepperBox>
       </Form>

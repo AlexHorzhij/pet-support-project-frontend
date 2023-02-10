@@ -7,6 +7,7 @@ import {
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
@@ -37,6 +38,7 @@ const schema = yup.object().shape({
 });
 
 const StepOne = ({ next, data }) => {
+  const {t} = useTranslation('common')
   const handleSubmit = values => {
     next(values);
   };
@@ -52,7 +54,7 @@ const StepOne = ({ next, data }) => {
           <StyledInput
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t('Registration.form.1linePlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="email">
@@ -63,7 +65,7 @@ const StepOne = ({ next, data }) => {
           <StyledInput
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t('Registration.form.2linePlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="password">
@@ -74,7 +76,7 @@ const StepOne = ({ next, data }) => {
           <StyledInput
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password"
+            placeholder={t('Registration.form.3linePassPlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="confirmPassword">
@@ -82,7 +84,7 @@ const StepOne = ({ next, data }) => {
           </ErrorMessage>
         </Box>
         <FormButton variant="contained" type="submit">
-          Next
+          {t('Registration.form.btn')}
         </FormButton>
       </Form>
     </Formik>

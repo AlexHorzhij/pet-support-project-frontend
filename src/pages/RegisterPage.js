@@ -7,15 +7,17 @@ import {
   HeaderText,
   Switcher,
 } from 'pages/LoginPage/LoginPage.styled';
+import { useTranslation } from 'react-i18next';
 
 function RegisterPage() {
+  const {t} = useTranslation('common')
   return (
     <AuthContainer>
       <ContentWrapper>
-        <HeaderText>Registration</HeaderText>
+        <HeaderText> {t('Registration.title')} </HeaderText>
         <RegisterForm />
         <Switcher>
-          Already have an account? <Link to="/login">Login</Link>
+          {t('Registration.footer.msg')} <Link to="/login">{ t('Registration.footer.link')}</Link>
         </Switcher>
       </ContentWrapper>
     </AuthContainer>

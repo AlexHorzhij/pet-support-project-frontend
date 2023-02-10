@@ -20,7 +20,7 @@ import { transformDate } from 'services/transformNewsDate';
 
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
     <Grid
@@ -56,7 +56,7 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
               {publicationDate}
             </NewsDate>
             <Link href={url} target="_blank" rel="noopener" color="primary">
-              {t('read')}
+              {t('NewsPage.item.readMoreBtn')}
               {/* Read more */}
             </Link>
           </CardFooter>
