@@ -16,7 +16,6 @@ import {
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 import { useParams } from 'react-router-dom';
-import { NoticeUpdateModal } from 'components'
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
 import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
 
@@ -28,7 +27,7 @@ export default function NoticesCardItem({
   const { categoryName } = useParams()
 
   const {
-    owner, _id, title, breed, location, birthdate,
+    _id, title, breed, location, birthdate,
     price, avatarUrl, category, favorite,
   } = data;
 

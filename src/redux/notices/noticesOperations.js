@@ -74,6 +74,7 @@ export const updateNotice = createAsyncThunk(
     console.log('editID: ', editID);
     try {
       const updatedNotice = await patchNotice(editID, formData)
+      return updatedNotice
     } catch (error) {
       return rejectWithValue(error.message)
     }
