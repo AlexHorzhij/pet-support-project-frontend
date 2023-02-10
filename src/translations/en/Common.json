@@ -28,7 +28,12 @@
 	"MobileMenu": {
 		"1link": "News",
 		"2link": "Find pet",
-		"3link": "Our Friends"
+		"3link": "Our Friends",
+		"auth": {
+			"1line": "Login",
+			"2line": "Register",
+			"accBtn": "Account"
+		}
 	},
 	"NewsPage": {
 		"item": {
@@ -68,5 +73,18 @@
 			"finalBtn": "Register"
 		},
 		"title": "Registration"
+	},
+	"User": {
+		"card": {
+			"1line": "Name",
+			"2line": "Email",
+			"3line": "Birthday",
+			"4line": "Phone",
+			"5line": "City",
+			"editPhotoBtn": "Edit photo",
+			"logoutBtn": "LogOut",
+			"onUpdate": "Updating",
+			"title": "My Information:"
+		}
 	}
 }

@@ -23,9 +23,11 @@ import { ThreeCircles } from 'react-loader-spinner';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew';
 import { ModalDialogContent } from 'components/UserPage/PetItem/PetItem.styled';
+import { useTranslation } from 'react-i18next';
 
 function UserPage() {
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
+  const { t } = useTranslation('common'); 
 
   const handleCloseAddNotice = () => {
     setOpenAddPetForm(prev => !prev);
@@ -47,7 +49,7 @@ function UserPage() {
         <>
           <Box>
             <UserDataTypography variant="h3">
-              My information:
+              {t('User.card.title')}
             </UserDataTypography>
             <UserData />
           </Box>
