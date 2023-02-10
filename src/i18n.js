@@ -6,6 +6,7 @@ i18next
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
+        debug: true,
         fallbackLng: 'en',
         resources: {
             en: {
@@ -49,6 +50,7 @@ i18next
                     // L
                     Login: 'Login',
                     LogOut: 'Log Out',
+                    loginFooter: "Don't have an account? <1>Register</1>",
                     // M
                     
                     // N
@@ -75,7 +77,7 @@ i18next
                     TypeBreed: 'Type Breed',
                     TypeDoB: 'Type date of birth DD.MM.YYYY',
                     TypeComment: 'TypeComment',
-                    
+
                     // U
                     
                     // V
@@ -131,6 +133,7 @@ i18next
                     // L
                     Login: 'Вхід',
                     LogOut: 'Вихід',
+                    loginFooter: 'Немає облікового запису? <1>Зареєструватися</1>',
                     // M
                     
                     // N
@@ -182,4 +185,7 @@ i18next
 
             }
         }
-})
+    })
+
+// const sss = i18next.t('')
+    

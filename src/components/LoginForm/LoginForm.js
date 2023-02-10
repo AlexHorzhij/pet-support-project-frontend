@@ -11,6 +11,7 @@ import {
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/system';
 
+
 const schema = yup.object().shape({
   email: yup
     .string()

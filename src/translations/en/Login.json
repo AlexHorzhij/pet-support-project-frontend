@@ -1,0 +1,8 @@
+{
+	"card": {
+		"emailPlaceholder": "Email",
+		"footer": "Don't have an account? <1>Register</1>",
+		"passwordPlaceholder": "Password"
+	},
+	"title": "Login"
+}

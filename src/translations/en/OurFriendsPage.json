@@ -1,0 +1,9 @@
+{
+	"item": {
+		"address": "Address",
+		"email": "Email",
+		"phone": "Phone",
+		"time": "Time"
+	},
+	"title": "Our friends"
+}

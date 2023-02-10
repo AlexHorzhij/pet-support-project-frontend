@@ -7,6 +7,7 @@ import {
   HeaderText,
   Switcher,
 } from './LoginPage.styled';
+import { useTranslation, Trans } from 'react-i18next';
 
 function LoginPage() {
   return (
@@ -15,7 +16,9 @@ function LoginPage() {
         <HeaderText>Login</HeaderText>
         <LoginForm />
         <Switcher>
-          Don't have an account? <Link to="/register">Register</Link>
+          <Trans i18nKey='loginFooter'>
+            Don't have an account? <Link to="/register">Register</Link>
+          </Trans>
         </Switcher>
       </ContentWrapper>
     </AuthContainer>
