@@ -7,12 +7,12 @@ import { useTranslation } from 'react-i18next';
 
 
 export default function UserNav() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   return (
     <AuthNavigation>
       <Button variant="contained">
         <AccountCircleIcon />
-        <AuthLink to="/login">{t('Account')}</AuthLink>
+        <AuthLink to="/login">{t('Header.accountBtn')}</AuthLink>
       </Button>
     </AuthNavigation>
   );

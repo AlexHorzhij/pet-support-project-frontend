@@ -2,37 +2,38 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
 import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
-import { addNewNotice } from 'redux/notices/noticesOperations';
+import { addNewNotice, updateNotice } from 'redux/notices/noticesOperations';
 import { Button, Container } from '@mui/material';
 import { toast } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
 
-export const NoticeAddForm = ({ handleClose }) => {
+export const NoticeAddForm = ({ handleClose, oldData, editID }) => {
+  console.log('editID: ', editID);
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
+  const { categoryName } = useParams()
+
+  const NOTICE_CATEGORY = {
+    'lost-found': 'lost/found',
+    'for-free': 'in good hands',
+    sell: 'sell',
+  };
 
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
-    category: '',
-    title: '',
-    name: '',
-    birthdate: '',
-    breed: '',
+    category: oldData?.category || NOTICE_CATEGORY[categoryName],
+    title: oldData?.title || '',
+    name: oldData?.name || '',
+    birthdate: oldData?.birthdate || '',
+    breed: oldData?.breed || '',
     // step-2:
-    sex: '',
-    location: '',
-    price: '',
-    avatarUrl: '',
-    description: '',
+    sex: oldData?.sex || '',
+    location: oldData?.location || '',
+    price: oldData?.price || '',
+    avatarUrl: oldData?.avatarUrl || '',
+    description: oldData?.description || '',
   });
-  console.log('data.category: ', data.category);
-
-  // const handleStatus = (_, newStatus) => {
-  //   if (newStatus !== null) {
-  //     setCategory(newStatus);
-  //   }
-  //   console.log(category);
-  // };
 
   const handleNextStep = (newData, final = false) => {
     if (!data.category) {
@@ -47,6 +48,9 @@ export const NoticeAddForm = ({ handleClose }) => {
         formData.append(value, newData[value]);
       }
 
+      if (editID) {
+        dispatch(updateNotice({editID, formData}))
+      }
       dispatch(addNewNotice(formData));
 
       handleClose();
@@ -123,21 +127,6 @@ export const NoticeAddForm = ({ handleClose }) => {
           </Button>
         </Container>
       )}
-      {/* {currentStep === 0 && (
-        <ToggleButtonGroup
-          color="primary"
-          value={category}
-          exclusive
-          name="category"
-          onChange={handleStatus}
-          aria-label="category"
-          sx={{ display: 'flex', flexWrap: 'wrap' }}
-        >
-          <ToggleButton value="sell">sell</ToggleButton>
-          <ToggleButton value="lost/found">lost/found</ToggleButton>
-          <ToggleButton value="in good hands">in good hands</ToggleButton>
-        </ToggleButtonGroup>
-      )} */}
       {steps[currentStep]}
     </>
   );

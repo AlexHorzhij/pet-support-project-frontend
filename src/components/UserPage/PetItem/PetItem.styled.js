@@ -73,6 +73,9 @@ export const DaleteIconStyled = styled(DeleteIcon)(({ theme }) => ({
 }));
 
 export const IconButtonStyled = styled(IconButton)(({ theme }) => ({
+  width: '41px',
+  height: '41px',
+  borderRadius: '50%',
   backgroundColor: theme.palette.background.default,
   '&:not(:last-child)': {
     marginBottom: '13px',
@@ -98,6 +101,7 @@ export const PetInfoTypography = styled(Typography)(({ theme }) => ({
 }));
 export const ModalDialogContent = styled(DialogContent)(({ theme }) => ({
   padding: '40px 80px',
+  height: '550px',
 
   [theme.breakpoints.down('md')]: {
     padding: '30px',
