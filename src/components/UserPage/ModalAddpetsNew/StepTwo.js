@@ -57,7 +57,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
         return (
           <Form>
             <SecondStepBox>
-              <AddPetComment>{ t('AddPC')}</AddPetComment>
+              <AddPetComment>{t('AddPC')}</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
                 <Dropzone
                   className="dropZone"
@@ -73,9 +73,6 @@ const StepTwo = ({ next, prev, data, preview }) => {
                         backgroundImage: `url(${
                           preview ? preview : data.avatarUrl
                         })`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
                       }}
                       {...getRootProps()}
                     >
@@ -85,7 +82,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
                           <img src={addIconSVG} alt="add pet avatar" />
                         </Box>
                       ) : (
-                        <DropZonePreviewBox sx={{ backgroundColor: 'blue' }}>
+                        <DropZonePreviewBox>
                           {images.length > 0 && (
                             <img
                               style={{ height: '100%', objectFit: 'cover' }}
@@ -103,7 +100,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
                 </ErrorMessage>
               </Box>
               <ModalGrid>
-                <ModalTypography>{ t('Comments')}*</ModalTypography>
+                <ModalTypography>{t('Comments')}*</ModalTypography>
                 <ModalMultiLineField
                   multiline={true}
                   rows={3.5}

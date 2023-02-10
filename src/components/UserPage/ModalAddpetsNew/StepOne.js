@@ -50,10 +50,10 @@ const StepOne = ({ next, data, onModalClose }) => {
     >
       <Form>
         <ModalGrid>
-          <ModalTypography>{t('PetName') }*</ModalTypography>
+          <ModalTypography>{t('PetName')}*</ModalTypography>
           <StyledInput
             name="name"
-            placeholder={ t('TypePetName')}
+            placeholder={t('TypePetName')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="name">
@@ -61,7 +61,7 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{ t('DateOfBirth')}*</ModalTypography>
+          <ModalTypography>{t('DateOfBirth')}*</ModalTypography>
           <StyledInput
             name="date"
             placeholder={t('TypeDoB')}
@@ -72,10 +72,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{ t('Breed')}*</ModalTypography>
+          <ModalTypography>{t('Breed')}*</ModalTypography>
           <StyledInput
             name="breed"
-            placeholder={t("TypeBreed")}
+            placeholder={t('TypeBreed')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="breed">

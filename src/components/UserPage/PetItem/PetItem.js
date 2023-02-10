@@ -15,20 +15,18 @@ import {
   ModalDialogContent,
 } from './PetItem.styled';
 import { useSelector } from 'react-redux';
-import { ThreeCircles } from 'react-loader-spinner';
-import { Dialog, useTheme } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
 import { useState } from 'react';
 
 import ModalAddPetsNew from '../ModalAddpetsNew/ModalAddPetsNew';
+import { Loader25 } from 'components/Loader/Loader';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
 
   const isDeleting = useSelector(isDeletingPet);
   const isUpdating = useSelector(isUpdatingPet);
-
-  const theme = useTheme();
 
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
@@ -62,30 +60,10 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
         </PetInfoBox>
         <IconButtonWrapper>
           <IconButtonStyled onClick={() => handlePetDelete(id)}>
-            {isDeleting === id ? (
-              <ThreeCircles
-                height="20"
-                width="20"
-                color={theme.palette.primary.main}
-                visible={true}
-                ariaLabel="three-circles-rotating"
-              />
-            ) : (
-              <DaleteIconStyled />
-            )}
+            {isDeleting === id ? <Loader25 /> : <DaleteIconStyled />}
           </IconButtonStyled>
           <IconButtonStyled onClick={handleCloseAddNotice}>
-            {isUpdating === id ? (
-              <ThreeCircles
-                height="20"
-                width="20"
-                color={theme.palette.primary.main}
-                visible={true}
-                ariaLabel="three-circles-rotating"
-              />
-            ) : (
-              <EditRoundedIcon />
-            )}
+            {isUpdating === id ? <Loader25 /> : <EditRoundedIcon />}
           </IconButtonStyled>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>

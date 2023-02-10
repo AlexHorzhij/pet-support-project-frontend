@@ -68,11 +68,14 @@ export const StepperBox = styled(Box)(({ theme }) => ({
     minWidth: '100%',
   },
 }));
-export const AddPetTitle = styled(Typography)({
+export const AddPetTitle = styled(Typography)(({ theme }) => ({
   fontSize: '36px',
   textAlign: 'center',
   marginBottom: '25px',
-});
+  [theme.breakpoints.down('md')]: {
+    fontSize: '25px',
+  },
+}));
 export const ModalCard = styled(Card)(({ theme }) => ({
   width: '608px',
   [theme.breakpoints.down('md')]: {
@@ -109,14 +112,17 @@ export const ModalGrid = styled(Grid)({
     marginBottom: '25px',
   },
 });
-export const ModalTypography = styled(Typography)({
+export const ModalTypography = styled(Typography)(({ theme }) => ({
   fontSize: '24px',
   fontWeight: '500',
   lineHeight: '27px',
   letterSpacing: ' 0px',
   textAlign: 'left',
   marginBottom: '12px',
-});
+  [theme.breakpoints.down('md')]: {
+    fontSize: '20px',
+  },
+}));
 export const AddPetComment = styled(Typography)({
   fontSize: '20px',
   textAlign: 'center',
@@ -140,12 +146,24 @@ export const DropZoneBox = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.default,
   margin: '0',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
 }));
 
 export const DropZonePreviewBox = styled(Box)(({ theme }) => ({
   height: '100%',
   borderRadius: theme.shape.borderRadius,
   overflow: 'hidden',
+}));
+export const BoxWidthMax = styled(Box)(({ theme }) => ({
+  width: '100%',
+}));
+export const ModalHeadingWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  position: 'relative',
 }));
 
 export const ModalMultiLineField = styled(Field)(({ theme }) => ({
