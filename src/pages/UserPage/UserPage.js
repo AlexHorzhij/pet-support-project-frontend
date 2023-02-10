@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Dialog } from '@mui/material';
+import { Box, Dialog, Typography } from '@mui/material';
 import { UserData, PetsData } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ import {
   AddPetIcon,
   PetDataBox,
   SceletonWrapper,
-  PetsPawIcon,
+  // PetsPawIcon,
 } from './UserPage.styled';
 import { fetchUserData } from 'redux/userData/userDataOperations';
 import {
@@ -26,7 +26,7 @@ import { useTranslation } from 'react-i18next';
 
 function UserPage() {
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
-  const { t } = useTranslation('common'); 
+  const { t } = useTranslation('common');
 
   const handleCloseAddNotice = () => {
     setOpenAddPetForm(prev => !prev);
@@ -52,7 +52,9 @@ function UserPage() {
             <UserData />
           </Box>
           <PetDataBox>
-            <UserDataTypography variant="h3">{t('User.title2')}</UserDataTypography>
+            <UserDataTypography variant="h3">
+              {t('User.title2')}
+            </UserDataTypography>
             <UserDataIconButton onClick={handleCloseAddNotice}>
               <AddPetTypography variant="h5" color="text.primary">
                 {t('User.addPetBtn')}
