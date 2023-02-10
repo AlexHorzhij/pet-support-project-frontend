@@ -1,6 +1,5 @@
 import Grid from '@mui/material/Grid';
 import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
-// import { Loader } from 'components/index';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotices } from 'redux/notices/noticesSelectors';
@@ -18,11 +17,7 @@ import { getUser } from 'redux/userData/userDataSelectors';
 import { toast } from 'react-hot-toast';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
 export default function NoticesGallery() {
-  const {
-    items,
-    // isLoading,
-    // error,
-  } = useSelector(getNotices);
+  const { items } = useSelector(getNotices);
   const { categoryName } = useParams();
 
   const { token } = useSelector(getAuth);
@@ -62,27 +57,27 @@ export default function NoticesGallery() {
     switch (category) {
       case 'lost-found':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'sell':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'for-free':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'favorite':
         setTitle(
-          'This section is temporary emrty, you can add your favorite advertisements here'
+          'This section is temporary emrpy, you can add your favorite advertisements here'
         );
         break;
       case 'own':
         setTitle(
-          'This section is temporary emrty, here will be shown all your advertisements'
+          'This section is temporary empty, here will be shown all your advertisements'
         );
         break;
 
@@ -108,7 +103,13 @@ export default function NoticesGallery() {
 
   return (
     <>
-      <Grid container sx={{ pb: 6 }}>
+      <Grid
+        container
+        sx={{
+          pb: 6,
+          gap: '32px',
+        }}
+      >
         {/* {error && <p>{error.data}</p>}
       <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
         {isLoading ? <Loader /> : ''}
@@ -149,16 +150,18 @@ export default function NoticesGallery() {
           </Box>
         )}
       </Grid>
-      <Pagination
-        color="primary"
-        count={count}
-        size="large"
-        page={page}
-        variant="outlined"
-        shape="rounded"
-        onChange={handleChangePagination}
-        style={{ display: 'flex', justifyContent: 'center' }}
-      />
+      {newData.length > 0 && (
+        <Pagination
+          color="primary"
+          count={count}
+          size="large"
+          page={page}
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChangePagination}
+          style={{ display: 'flex', justifyContent: 'center' }}
+        />
+      )}
     </>
   );
 }

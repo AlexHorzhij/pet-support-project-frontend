@@ -69,6 +69,7 @@ export default function NoticesCardItem({
           image={nophoto}
           style={{
             height: '288px',
+            width: '100%',
             position: 'relative',
             objectFit: 'cover',
           }}
@@ -77,7 +78,9 @@ export default function NoticesCardItem({
             image={avatarUrl}
             style={{
               height: '100%',
+              width: '100%',
               objectFit: 'cover',
+              backgroundPosition: '50% 50%',
             }}
           />
           <CategoryLable>{category}</CategoryLable>
