@@ -18,6 +18,7 @@ import Dropzone from 'react-dropzone';
 import { Box } from '@mui/material';
 import addIconSVG from '../../../assets/images/myPets/addImage.svg';
 import { TextField } from 'formik-material-ui';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   description: yup.string().required(),
@@ -26,6 +27,7 @@ const schema = yup.object().shape({
 
 const StepTwo = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
+  const { t } = useTranslation();
 
   const handleSubmit = async (values, { resetForm }) => {
     next(values, true);
@@ -55,7 +57,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
         return (
           <Form>
             <SecondStepBox>
-              <AddPetComment>Add photo and some comments</AddPetComment>
+              <AddPetComment>{ t('AddPC')}</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
                 <Dropzone
                   className="dropZone"
@@ -101,14 +103,14 @@ const StepTwo = ({ next, prev, data, preview }) => {
                 </ErrorMessage>
               </Box>
               <ModalGrid>
-                <ModalTypography>Name pet*</ModalTypography>
+                <ModalTypography>{ t('Comments')}*</ModalTypography>
                 <ModalMultiLineField
                   multiline={true}
                   rows={3.5}
                   fullWidth
                   name="description"
                   component={TextField}
-                  label="Type comment"
+                  label={t('TypeComment')}
                   disableunderline="true"
                 />
                 <ErrorMessage component="div" name="description">
@@ -123,10 +125,10 @@ const StepTwo = ({ next, prev, data, preview }) => {
                     prev(values);
                   }}
                 >
-                  Back
+                  {t('Back')}
                 </FormButton>
                 <FormButton variant="contained" type="submit">
-                  Done
+                  {t('Done')}
                 </FormButton>
               </StepperBox>
             </SecondStepBox>

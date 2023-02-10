@@ -13,15 +13,22 @@ i18next
                     // A 
                     Account: 'Account',
                     Address: 'Address',
+                    AddPet: 'Add Pet',
+                    AddPC: 'Add photo and some comments',
+                    
 
                     // B
                     Back: 'Back',
+                    Breed: 'Breed',
                     // C
                     Cancel: 'Cancel',
-                    
+                    Comments: 'Comments',
+
                     // D
                     Done: 'Done',
+                    DateOfBirth: 'Date of birth',
                     // E
+                    EditPet: 'Edit Pet',
                     Email: 'Email',
 
                     // F
@@ -52,7 +59,7 @@ i18next
                     
                     // P
                     Phone: 'Phone',
-
+                    PetName: 'Name pet',
                     // Q
                     
                     // R
@@ -64,7 +71,11 @@ i18next
 
                     // T
                     Time: 'Time',
-
+                    TypePetName: 'Type pet name',
+                    TypeBreed: 'Type Breed',
+                    TypeDoB: 'Type date of birth DD.MM.YYYY',
+                    TypeComment: 'TypeComment',
+                    
                     // U
                     
                     // V
@@ -82,17 +93,23 @@ i18next
             ua: {
                 translation: {
                     // A 
-                    Address: 'Адреса',
                     Account: 'Акаунт',
+                    Address: 'Адреса',
+                    AddPet: 'Додайте улюбленця',
+                    AddPC: 'Додайте фото та коментарі',
 
                     // B
                     Back: 'Повернутись',
+                    Breed: 'Порода',
                     // C
                     Cancel: 'Скасувати',
-                    
+                    Comments: 'Коментарі',
                     // D
                     Done: 'Готово',
+                    DateOfBirth: 'Дата народження',
+
                     // E
+                    EditPet: 'Додати улюбленця',
                     Email: 'Електронна адреса',
                     
                     // F
@@ -124,7 +141,9 @@ i18next
                     
                     // P
                     Phone: 'Телефон',
-                    
+                    petName: 'імʼя улюбленця',
+                    PetName: 'Імʼя улюбленця',
+
                     // Q
                     
                     // R
@@ -136,7 +155,11 @@ i18next
 
                     // T
                     Time: 'Робочі години',
-                    
+                    Type: 'Введіть', 
+                    TypePetName: 'Введіть імʼя улюбленця',
+                    TypeBreed: 'Введіть породу',
+                    TypeDoB: 'Введіть дату народження DD.MM.YYYY',
+                    TypeComment: 'Введіть коментар',
                     // U
                     
                     // V
