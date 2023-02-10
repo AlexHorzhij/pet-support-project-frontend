@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { CardMedia, CardContent, Box } from '@mui/material';
+import ModeIcon from '@mui/icons-material/Mode';
+import { CardMedia, CardContent, Box, IconButton, Dialog, DialogContent } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
 import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
@@ -14,42 +15,37 @@ import {
   Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
+import { useParams } from 'react-router-dom';
+import { NoticeUpdateModal } from 'components'
+import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
+import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
 
 export default function NoticesCardItem({
-  data,
-  deleteCard,
-  handleChange,
-  user = null,
-}) {
+  data, deleteCard, handleChange, user = null, }) {
 
-
+  const [isEditing, setIsEditing] = useState(false)
   const [modalIsShown, setModalIsShown] = useState(false);
+  const { categoryName } = useParams()
 
   const {
-    owner,
-    _id,
-    title,
-    breed,
-    location,
-    birthdate,
-    price,
-    avatarUrl,
-    category,
-    favorite,
+    owner, _id, title, breed, location, birthdate,
+    price, avatarUrl, category, favorite,
   } = data;
 
-  const age = distanceBetweenDateAndNowWords(birthdate);
+  const age = birthdate && distanceBetweenDateAndNowWords(birthdate);
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
   };
 
-  // useEffect(() => {
-  //   if (data && user) {
-  //     // console.log('isDelete: ', owner._id === user._id);
-  //     // console.log('user._id: ', user._id);
-  //     // console.log('owner._id: ', owner._id);
-  //   }
-  // }, [data, owner, user]);
+
+  const handleOpenEdit = () => {
+    setIsEditing(true)
+  }
+
+  const handleCloseAddNotice = () => {
+    setIsEditing(false);
+  };
+
 
   return (
     <>
@@ -57,8 +53,8 @@ export default function NoticesCardItem({
         variant="notice"
         sx={{
           width: '280px',
-          height: '660px',
           borderRadius: '0 0 40px 40px',
+          position: 'relative',
         }}
       >
         <CardMedia
@@ -77,21 +73,40 @@ export default function NoticesCardItem({
             }}
           />
           <CategoryLable>{category}</CategoryLable>
-          <AddToFavorite
-            handleChange={handleChange}
+          <AddToFavorite handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
-            id={_id}
-            favorite={favorite}
-            right="50px"
-            top="50px"
+            id={_id} favorite={favorite}
+            right="50px" top="50px"
             style={{ position: 'absolute', right: '50px', top: '50px' }}
           />
+          {categoryName === 'own' &&
+            (<div>
+              < IconButton aria-label='edit' variant="outlined"
+                sx={{ color: 'primary.main', position: 'absolute', right: '12px', top: '70px' }}
+                onClick={handleOpenEdit}
+              > <ModeIcon />
+              </IconButton>
+
+              <Dialog
+                sx={{ backdropFilter: 'blur(5px)' }}
+                maxWidth="modal"
+                open={isEditing}
+                onClose={handleCloseAddNotice}
+              >
+                <DialogContent>
+                  <DialogTitleStyled>Edit pet</DialogTitleStyled>
+                  <NoticeAddForm handleClose={handleCloseAddNotice} oldData={data} editID={_id} />
+                </DialogContent>
+              </Dialog >
+            </div>)}
         </CardMedia>
         <Box
           sx={{
             px: 2,
+            pb: 2,
             display: 'flex',
             flexDirection: 'column',
+
           }}
         >
           <CardContent style={{ padding: '20px 16px 0px 16px' }}>
@@ -103,7 +118,7 @@ export default function NoticesCardItem({
               </Li>
               <Li>
                 <ItemText>Breed:</ItemText>
-                <ItemText>{breed}</ItemText>
+                <ItemText>{breed || '-'}</ItemText>
               </Li>
               <Li>
                 <ItemText>Age:</ItemText>
@@ -120,16 +135,17 @@ export default function NoticesCardItem({
               </Li>
             </ItemsList>
           </CardContent>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '4px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100px',
-            }}
-          >
+
+          {categoryName === 'own' ? (
+            <Btn
+              id={_id}
+              onClick={deleteCard}
+              variant="outlined"
+              sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+              endIcon={<DeleteOutlineIcon />}
+            >
+              Delete
+            </Btn>) : (
             <Btn
               id={_id}
               onClick={toggleModal}
@@ -138,26 +154,16 @@ export default function NoticesCardItem({
             >
               Learn more
             </Btn>
-
-            {user?._id === owner?._id && (
-              <Btn
-                id={_id}
-                onClick={deleteCard}
-                variant="outlined"
-                sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
-                endIcon={<DeleteOutlineIcon />}
-              >
-                Delete
-              </Btn>
-            )}
-          </div>
+          )}
         </Box>
       </NoticeCard>
-      {modalIsShown && (
-        <Modal onModalClose={toggleModal}>
-          <LearnMoreModal onModalClose={toggleModal} data={data} />
-        </Modal>
-      )}
+      {
+        modalIsShown && (
+          <Modal onModalClose={toggleModal}>
+            <LearnMoreModal onModalClose={toggleModal} data={data} />
+          </Modal>
+        )
+      }
     </>
   );
 }

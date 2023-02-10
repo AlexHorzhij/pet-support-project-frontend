@@ -6,6 +6,7 @@ import {
   removeNoticeFromUserById,
   addNewNotice,
   setFavorite,
+  updateNotice,
 } from './noticesOperations';
 
 const initialState = {
@@ -87,6 +88,20 @@ export const noticesSlice = createSlice({
       })
       .addCase(setFavorite.rejected, state => {
         state.isLoading = false;
-      });
+      })
+      .addCase(updateNotice.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(updateNotice.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        const index = state.items.findIndex(
+          item => item._id === payload._id
+        );
+        state.items.splice(index, 1, payload,)
+      })
+      .addCase(updateNotice.rejected, (state, { payload }) => {
+        state.isLoading = false
+        state.error = payload.error
+      })
   },
 });
