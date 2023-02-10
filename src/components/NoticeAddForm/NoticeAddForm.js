@@ -12,10 +12,16 @@ export const NoticeAddForm = ({ handleClose }) => {
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
 
+  const NOTICE_CATEGORY = {
+    'lost-found': 'lost/found',
+    'for-free': 'in good hands',
+    sell: 'sell',
+  };
+
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
-    category: categoryName,
+    category: NOTICE_CATEGORY[categoryName],
     title: '',
     name: '',
     birthdate: '',
@@ -27,7 +33,6 @@ export const NoticeAddForm = ({ handleClose }) => {
     avatarUrl: '',
     description: '',
   });
-  console.log('data.category: ', data.category);
 
   // const handleStatus = (_, newStatus) => {
   //   if (newStatus !== null) {
@@ -107,7 +112,7 @@ export const NoticeAddForm = ({ handleClose }) => {
           </Button>
           <Button
             name="lost/found"
-            variant={data.category === 'lost-found' ? 'contained' : 'outlined'}
+            variant={data.category === 'lost/found' ? 'contained' : 'outlined'}
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >
@@ -115,7 +120,7 @@ export const NoticeAddForm = ({ handleClose }) => {
           </Button>
           <Button
             variant={
-              data.category === 'for-free' ? 'contained' : 'outlined'
+              data.category === 'in a good hands' ? 'contained' : 'outlined'
             }
             name="in good hands"
             sx={{ textTransform: 'lowercase' }}

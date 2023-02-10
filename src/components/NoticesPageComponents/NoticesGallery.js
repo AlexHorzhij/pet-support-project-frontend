@@ -53,7 +53,6 @@ export default function NoticesGallery() {
     }
     const req = favorite ? 'post' : 'delete';
     const newData = { id, req, categoryName };
-    console.log('id: ', id);
 
     dispatch(setFavorite(newData));
   };
