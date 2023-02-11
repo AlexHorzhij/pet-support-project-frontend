@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addNewNotice, updateNotice } from 'redux/notices/noticesOperations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
@@ -38,20 +38,25 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
   });
   console.log(data);
 
-  if (oldData?.price) {
-    setData(prev => ({ ...prev, price: oldData.price }))
-  }
+  useEffect(() => {
+    if (oldData?.category === 'sell') {
+      setData(prev => ({ ...prev, price: oldData.price }))
+    }
+  }, [oldData])
 
   const handleNextStep = (newData, final = false) => {
     if (!data.category) {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData }));
+    setData(prev => ({ ...prev, ...newData, category: data.category }));
 
     if (final) {
       if (data.category !== 'sell') {
-        setData(prev => ({ ...prev, price: 0 }))
+        setData(prev => {
+          const date = prev
+          delete date.price
+          return { ...date, price: 0 }})
       }
 
       const formData = new FormData();
