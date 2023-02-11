@@ -26,11 +26,10 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
       .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
     avatarUrl: yup.string(),
-    description: yup
+    comments: yup
       .string()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
-
   if (data.category === 'sell') {
     validateSchema.price = yup
       .string()
@@ -45,6 +44,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const schema = yup.object().shape(validateSchema);
 
   const handleSubmit = (values, { resetForm }) => {
+    console.log('values: ', values);
     next(values, true);
     resetForm();
   };
@@ -172,7 +172,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             <Typography variant="h4" sx={{ mb: 1 }}>
               Comments:
             </Typography>
-            <ModalMultiLineField name="description"
+            <ModalMultiLineField name="comments"
               fullWidth
               multiline={true} rows={3.5}
               component={TextField} label="Type comment"

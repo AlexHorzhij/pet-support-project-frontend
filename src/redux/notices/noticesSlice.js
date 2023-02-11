@@ -95,7 +95,7 @@ export const noticesSlice = createSlice({
         const index = state.items.findIndex(
           item => item._id === payload._id
         );
-        state.items.splice(index, 1, payload,)
+        state.items.splice(index, 1, payload)
       })
       .addCase(updateNotice.rejected, (state, { payload }) => {
         state.isLoading = false
