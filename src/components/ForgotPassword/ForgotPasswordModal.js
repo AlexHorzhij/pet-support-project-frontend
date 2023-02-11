@@ -1,8 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalCloseButton } from '../NoticesPageComponents/LearnMoreModal/LearnMoreModal.styled';
 import {
   StyledInput,
@@ -14,6 +13,7 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
 import { LoaderWhite } from 'components/Loader/Loader';
+import { sendResetPasswordEmail } from 'redux/auth/authOperations';
 
 const schema = yup.object().shape({
   email: yup
@@ -30,15 +30,10 @@ const schema = yup.object().shape({
 
 export default function ForgotPasswordModal({ onModalClose }) {
   const { isLoading } = useSelector(getAuth);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = ({ email }) => {
-    // dispatch(resetPassword({ email: email }));
-    toast.success(
-      'We sent you an email with further instructions. Check your mailbox',
-      { duration: 10000 }
-    );
-
+    dispatch(sendResetPasswordEmail({ email: email }));
     onModalClose();
   };
 

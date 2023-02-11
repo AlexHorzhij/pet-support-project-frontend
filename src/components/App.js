@@ -46,7 +46,7 @@ function App() {
               />
               <Route path="verification" element={<ResendEmailPage />} />
               <Route
-                path="resetpassword/:verificationToken"
+                path="resetpassword/:confirmationToken"
                 element={<ResetPasswordPage />}
               />
             </Route>
