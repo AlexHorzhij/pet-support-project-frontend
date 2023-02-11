@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useParams } from 'react-router-dom';
 import { CardMedia, CardContent, Box } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
@@ -21,8 +21,8 @@ export default function NoticesCardItem({
   handleChange,
   user = null,
 }) {
-
-
+  const { categoryName } = useParams();
+  console.log('categoryName: ', categoryName);
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const {
