@@ -74,7 +74,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             Sex *
           </Typography>
 
-          <div
+          <Box sx={{ position: 'relative' }}
             style={{ display: 'flex' }}
             role="group"
             aria-label="my-radio-group"
@@ -82,25 +82,21 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             <StyledLabel>
               <StyledInputCheckBox
                 style={{ backgroundImage: `url(${MaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="male"
+                type="radio" name="sex" value="male"
               />
               Male
             </StyledLabel>
             <StyledLabel>
               <StyledInputCheckBox
                 style={{ backgroundImage: `url(${FemaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="female"
+                type="radio" name="sex" value="female"
               />
               Female
             </StyledLabel>
             <ErrorMessage component="div" name="sex">
-              {msg => <ErrorText>*{msg}</ErrorText>}
+              {msg => <ErrorText style={{top: "-32px", left: "50px"}}>*{msg}</ErrorText>}
             </ErrorMessage>
-          </div>
+          </Box>
 
           <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
             Location *

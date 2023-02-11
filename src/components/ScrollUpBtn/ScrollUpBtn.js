@@ -30,9 +30,7 @@ export default function ScrollUpBtn() {
                     boxShadow: `inset 0 0 0 5px ${palette.primary.main}`,
                     transition: '0.4s',
                     transform: offset > 100 ? 'translateY(0)' : 'translateY(150px)',
-                    '&:hover': {
-                        color: 'primary.main'
-                    },
+                    '&:hover': { color: 'primary.main' },
                 }
                 } />
         </IconButton>

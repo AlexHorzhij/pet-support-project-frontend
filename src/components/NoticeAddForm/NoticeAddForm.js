@@ -53,7 +53,10 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
       if (editID) {
         dispatch(updateNotice({ editID, formData }))
       }
-      dispatch(addNewNotice(formData));
+      
+      if (!editID) {
+        dispatch(addNewNotice(formData));
+      }
 
       handleClose();
 
