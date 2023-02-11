@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 import mobile from '../../assets/backgrounds/mobile.png';
 import tablet from '../../assets/backgrounds/tablet.png';
@@ -70,4 +70,16 @@ export const Switcher = styled(Typography)(() => ({
   fontSize: '12px',
   lineHeight: '1.3',
   textAlign: 'center',
+
+  '&:last-child': {
+    marginTop: '20px',
+  },
+}));
+
+export const RemindButton = styled(Button)(() => ({
+  marginLeft: '10px',
+  height: '25px',
+  fontWeight: '400',
+  fontSize: '12px',
+  lineHeight: '1.3',
 }));
