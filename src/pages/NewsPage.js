@@ -24,7 +24,7 @@ export default function NewsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('search')
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     if (query === '' || query === null) {
@@ -58,7 +58,7 @@ export default function NewsPage() {
   return (
     <Main>
       <NewsContainer>
-        <Title text={ t('News')} />
+        <Title text={ t('NewsPage.title')} />
         <NewsSearch onSubmit={onFormSubmit} value={query} />
         {error && <p>{error.data}</p>}
         {isLoading && <LoaderPage />}

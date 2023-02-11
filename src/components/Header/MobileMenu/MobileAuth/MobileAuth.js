@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 export default function MobileAuth() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { close } = useMenu();
 
   return (
@@ -17,12 +17,12 @@ export default function MobileAuth() {
       <MobileAuthNavigation>
         <Button variant="outlined">
           <MobileAuthLink to="/login" onClick={close}>
-            { t('Login') }
+            { t('MobileMenu.auth.1line') }
           </MobileAuthLink>
         </Button>
         <Button variant="outlined">
           <MobileAuthLink to="register" onClick={close}>
-            {t('Registration')} 
+            {t('MobileMenu.auth.2line')} 
           </MobileAuthLink>
         </Button>
       </MobileAuthNavigation>

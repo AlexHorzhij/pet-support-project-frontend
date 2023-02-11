@@ -27,7 +27,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
   const pets = useSelector(getPets);
   const [preview, setPreview] = useState(null);
   const [images, setImages] = useState([]);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     const updatedPet = pets.find(value => value._id === petId);
@@ -97,6 +97,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
             {isUpdateAction ? t('EditPet') : t('AddPet')}
           </AddPetTitle>
         </BoxWidthMax>
+
         <ModalCloseButton onClick={onModalClose}>
           <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
         </ModalCloseButton>

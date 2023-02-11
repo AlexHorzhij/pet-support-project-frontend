@@ -15,22 +15,19 @@ const schema = yup.object().shape({
     .string()
     .min(2)
     .max(16)
-    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
-    .required(),
+    .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters'),
   birthdate: yup
     .date()
     .max(
       new Date(Date.now()),
       `Input correct date MM.DD.YYYY no later than today`
     )
-    .min(new Date('1990-01-01'), `Input correct  no erlier than 1990`)
-    .required(),
+    .min(new Date('1990-01-01'), `Input correct  no erlier than 1990`),
   breed: yup
     .string()
     .min(2)
     .max(16)
     .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
-    .required(),
 });
 
 export const Step1AddNotice = ({ next, data, handleClose }) => {
@@ -39,8 +36,6 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
   const handleSubmit = values => {
     next(values);
   };
-
-
 
   return (
     <Formik
