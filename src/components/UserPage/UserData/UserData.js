@@ -56,7 +56,9 @@ function UserData() {
             {isBeingUpdated ? (
               <>
                 {isMobileScreens ? null : (
-                  <Typography sx={{ marginBottom: '5px' }}>{ t('User.card.onUpdate')}</Typography>
+                  <Typography sx={{ marginBottom: '5px' }}>
+                    {t('User.card.onUpdate')}
+                  </Typography>
                 )}
                 <Loader />
               </>
@@ -77,7 +79,9 @@ function UserData() {
                 <input {...getInputProps()} />
                 <StyledButton>
                   <PhotoCameraIconStyled />
-                  <Typography sx={{ fontSize: '12px' }}>{ t('User.card.editPhotoBtn')}</Typography>
+                  <Typography sx={{ fontSize: '12px' }}>
+                    {t('User.card.editPhotoBtn')}
+                  </Typography>
                 </StyledButton>
               </div>
             </div>
@@ -87,17 +91,18 @@ function UserData() {
               {user && (
                 <>
                   <UserDataItem
-                    title={t('User.card.1line')}
-                    value={user.name}
-                    pattern={namePattern}
-                    textMessage={t('User.card.1lineErrMsg')}
-                  />
-                  <UserDataItem
                     title={t('User.card.2line')}
                     value={user.email}
                     pattern={emailPattern}
                     textMessage={t('User.card.2lineErrMsg')}
                   />
+                  <UserDataItem
+                    title={t('User.card.1line')}
+                    value={user.name}
+                    pattern={namePattern}
+                    textMessage={t('User.card.1lineErrMsg')}
+                  />
+
                   <UserDataItem
                     title={t('User.card.3line')}
                     value={user.name}

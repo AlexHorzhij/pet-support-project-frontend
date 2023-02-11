@@ -21,7 +21,7 @@ import { TextField } from 'formik-material-ui';
 import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
-  description: yup.string().required(),
+  description: yup.string().required().min(8).max(120),
   avatarUrl: yup.mixed().required('File is required'),
 });
 
@@ -57,7 +57,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
         return (
           <Form>
             <SecondStepBox>
-              <AddPetComment>{ t('ModalAddPetNew.4lineTitle')}</AddPetComment>
+              <AddPetComment>{t('ModalAddPetNew.4lineTitle')}</AddPetComment>
               <Box sx={{ position: 'relative', marginBottom: '30px' }}>
                 <Dropzone
                   className="dropZone"
@@ -100,7 +100,9 @@ const StepTwo = ({ next, prev, data, preview }) => {
                 </ErrorMessage>
               </Box>
               <ModalGrid>
-                <ModalTypography>{ t('ModalAddPetNew.5line.title')}*</ModalTypography>
+                <ModalTypography>
+                  {t('ModalAddPetNew.5line.title')}*
+                </ModalTypography>
                 <ModalMultiLineField
                   multiline={true}
                   rows={3.5}
