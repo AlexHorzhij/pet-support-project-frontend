@@ -10,7 +10,7 @@ import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import React from 'react'
 
 
-export default function NoticeAddForm({ handleClose, oldData, editID })  {
+export default function NoticeAddForm({ handleClose, oldData, editID }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
@@ -36,15 +36,24 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
     avatarUrl: oldData?.avatarUrl || '',
     comments: oldData?.comments || '',
   });
+  console.log(data);
+
+  if (oldData?.price) {
+    setData(prev => ({ ...prev, price: oldData.price }))
+  }
 
   const handleNextStep = (newData, final = false) => {
     if (!data.category) {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, category: data.category }));
+    setData(prev => ({ ...prev, ...newData }));
 
     if (final) {
+      if (data.category !== 'sell') {
+        setData(prev => ({ ...prev, price: 0 }))
+      }
+
       const formData = new FormData();
       for (let value in newData) {
         formData.append(value, newData[value]);
@@ -53,7 +62,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
       if (editID) {
         dispatch(updateNotice({ editID, formData }))
       }
-      
+
       if (!editID) {
         dispatch(addNewNotice(formData));
       }
@@ -98,6 +107,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
   ];
 
   const onClickCategory = async e => {
+    console.log('e.target.name: ', e.target.name);
     setData(prev => ({ ...prev, category: e.target.name }));
   };
 
