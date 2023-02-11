@@ -34,11 +34,9 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
     avatarUrl: yup.string(),
     comments: yup
       .string()
-      // .required()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
 
-  console.log(data);
 
   if (data.category === 'sell') {
     validateSchema.price = yup
@@ -70,7 +68,6 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
     });
   };
 
-  console.log('data.category: ', data.category);
 
   return (
     <Formik

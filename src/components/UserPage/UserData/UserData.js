@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
-import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import {
   BoxWrapper,
   BoxImageWrapper,
@@ -14,17 +13,18 @@ import {
   ImageBox,
   PhotoCameraIconStyled,
   WrapperBox,
+  LoaderWrapper,
 } from './UserData.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, isLoadingUpdate } from 'redux/userData/userDataSelectors';
 import { updateUser } from 'redux/userData/userDataOperations';
+import { Loader } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 
 function UserData() {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const isBeingUpdated = useSelector(isLoadingUpdate);
-  const theme = useTheme();
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     accept: {
@@ -52,33 +52,16 @@ function UserData() {
     <>
       {user && (
         <BoxWrapper>
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
+          <LoaderWrapper>
             {isBeingUpdated ? (
               <>
                 {isMobileScreens ? null : (
                   <Typography sx={{ marginBottom: '5px' }}>{ t('User.card.onUpdate')}</Typography>
                 )}
-
-                <ThreeCircles
-                  height="30"
-                  width="30"
-                  color={theme.palette.primary.main}
-                  visible={true}
-                  ariaLabel="three-circles-rotating"
-                />
+                <Loader />
               </>
             ) : null}
-          </Box>
+          </LoaderWrapper>
           <BoxImageWrapper>
             <BoxImageBackdrop>
               <BoxImageContainer>
@@ -117,10 +100,11 @@ function UserData() {
                   />
                   <UserDataItem
                     title={t('User.card.3line')}
-                    value={user.birthdate}
-                    pattern={datePattern}
+                    value={user.name}
+                    pattern={namePattern}
                     textMessage={t('User.card.3lineErrMsg')}
                   />
+
                   <UserDataItem
                     title={t('User.card.4line')}
                     value={user.phone}
@@ -132,6 +116,14 @@ function UserData() {
                     value={user.city}
                     pattern={locationPattern}
                     textMessage={t('User.card.5lineErrMsg')}
+                  />
+                  <UserDataItem
+                    title={'Birthday'}
+                    value={user.birthdate}
+                    pattern={datePattern}
+                    textMessage={
+                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
+                    }
                   />
                 </>
               )}

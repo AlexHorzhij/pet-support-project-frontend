@@ -11,6 +11,7 @@ import {
   AddPetIcon,
   PetDataBox,
   SceletonWrapper,
+  // PetsPawIcon,
 } from './UserPage.styled';
 import { fetchUserData } from 'redux/userData/userDataOperations';
 import {
@@ -18,16 +19,14 @@ import {
   isLoading,
   isUploadingPet,
 } from 'redux/userData/userDataSelectors';
-import { useTheme } from '@mui/system';
-import { ThreeCircles } from 'react-loader-spinner';
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew';
 import { ModalDialogContent } from 'components/UserPage/PetItem/PetItem.styled';
+import { Loader70 } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 
 function UserPage() {
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
-  const { t } = useTranslation('common'); 
+  const { t } = useTranslation('common');
 
   const handleCloseAddNotice = () => {
     setOpenAddPetForm(prev => !prev);
@@ -36,7 +35,6 @@ function UserPage() {
   const isLoadindUser = useSelector(isLoading);
   const pets = useSelector(getPets);
   const dispatch = useDispatch();
-  const theme = useTheme();
   const isUploadingPetData = useSelector(isUploadingPet);
 
   useEffect(() => {
@@ -54,7 +52,9 @@ function UserPage() {
             <UserData />
           </Box>
           <PetDataBox>
-            <UserDataTypography variant="h3">{t('User.title2')}</UserDataTypography>
+            <UserDataTypography variant="h3">
+              {t('User.title2')}
+            </UserDataTypography>
             <UserDataIconButton onClick={handleCloseAddNotice}>
               <AddPetTypography variant="h5" color="text.primary">
                 {t('User.addPetBtn')}
@@ -75,25 +75,7 @@ function UserPage() {
                 />
               </SceletonWrapper>
             )}
-            {isUploadingPetData && (
-              <Box
-                sx={{
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: '30px',
-                }}
-              >
-                <ThreeCircles
-                  height="50"
-                  width="50"
-                  color={theme.palette.primary.main}
-                  visible={true}
-                  ariaLabel="three-circles-rotating"
-                />
-              </Box>
-            )}
+            {isUploadingPetData && <Loader70 />}
           </PetDataBox>
           <Dialog
             sx={{ backdropFilter: 'blur(5px)' }}

@@ -2,15 +2,18 @@ import styled from '@emotion/styled';
 import { List, ListItem, ListItemText, Card, Button } from '@mui/material';
 
 export const NoticeCard = styled(Card)`
-  width: 280px;
+  width: 100%;
+  max-width: 450px;
   margin: 50px 0 0 0;
   padding-bottom: 0;
+  gap: 32px;
 
   @media (min-width: 767.99px) {
-    width: 336px;
+    min-width: 336px;
   }
   @media (min-width: 1279.99px) {
-    width: 288px;
+    /* width: 288px; */
+    min-width: 288px;
   }
 `;
 
@@ -38,7 +41,7 @@ export const ItemsList = styled(List)`
 export const ItemText = styled(ListItemText)`
   padding: 0;
   margin: 0;
-  width: 90px;
+  max-width: 120px;
 `;
 
 export const Title = styled.h2`

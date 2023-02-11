@@ -22,7 +22,6 @@ import {
 import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function LearnMoreModal({ onModalClose, data }) {
-  console.log('data: ', data);
   const {
     _id,
     avatarUrl,

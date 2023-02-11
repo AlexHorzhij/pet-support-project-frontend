@@ -73,9 +73,6 @@ const StepTwo = ({ next, prev, data, preview }) => {
                         backgroundImage: `url(${
                           preview ? preview : data.avatarUrl
                         })`,
-                        backgroundPosition: 'center',
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
                       }}
                       {...getRootProps()}
                     >
@@ -85,7 +82,7 @@ const StepTwo = ({ next, prev, data, preview }) => {
                           <img src={addIconSVG} alt="add pet avatar" />
                         </Box>
                       ) : (
-                        <DropZonePreviewBox sx={{ backgroundColor: 'blue' }}>
+                        <DropZonePreviewBox>
                           {images.length > 0 && (
                             <img
                               style={{ height: '100%', objectFit: 'cover' }}

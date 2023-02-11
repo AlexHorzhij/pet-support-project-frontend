@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Container, Typography, IconButton, Box } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 export const UserDataContainer = styled(Container)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
@@ -37,9 +37,10 @@ export const UserDataTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const AddPetTypography = styled(Typography)({
+export const AddPetTypography = styled(Typography)(({ theme }) => ({
   fontWeight: '500',
-});
+	color:theme.palette.text.primary
+}));
 export const UserDataIconButton = styled(IconButton)({
   borderRadius: '10px',
   position: 'absolute',
@@ -61,6 +62,7 @@ export const SceletonWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
+  marginBottom: '30px',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '20px',
@@ -70,4 +72,9 @@ export const SceletonWrapper = styled(Box)(({ theme }) => ({
     fontSize: '20px',
     marginTop: '130px',
   },
+}));
+export const PetsPawIcon = styled(PetsOutlinedIcon)(({ theme }) => ({
+  marginTop: '30px',
+  fontSize: '100px',
+  color: theme.palette.text.secondary,
 }));

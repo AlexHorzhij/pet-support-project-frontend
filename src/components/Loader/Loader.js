@@ -42,3 +42,29 @@ export const LoaderPage = () => {
     </LoaderPageWrapper>
   );
 };
+export const Loader70 = () => {
+  return (
+    <LoaderWrapper>
+      <ThreeCircles
+        height="70"
+        width="70"
+        color="#f59256"
+        visible={true}
+        ariaLabel="three-circles-rotating"
+      />
+    </LoaderWrapper>
+  );
+};
+export const Loader25 = () => {
+  return (
+    <LoaderWrapper>
+      <ThreeCircles
+        height="25"
+        width="25"
+        color="#f59256"
+        visible={true}
+        ariaLabel="three-circles-rotating"
+      />
+    </LoaderWrapper>
+  );
+};
