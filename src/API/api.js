@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { formDataEntries } from 'services/formDataEntries';
 
 const BASE_URL = 'https://pet-support-project.onrender.com/api';
 
@@ -151,13 +152,16 @@ export async function removeNoticesById(id) {
 }
 
 export async function patchNotice(editID, formData) {
+  console.log('editID: ', editID);
+  formDataEntries(formData)
   try {
     const { data } = await instance.patch(`notices/user/${editID}`, formData, {
       headers: {
         'Content-Type': `multipart/form-data;`,
       },
     });
-    return data.result;
+    console.log('data: ', data);
+    return data;
   } catch (error) {
     throw error;
   }

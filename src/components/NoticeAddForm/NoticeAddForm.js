@@ -34,7 +34,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
     location: oldData?.location || '',
     price: oldData?.price || '',
     avatarUrl: oldData?.avatarUrl || '',
-    description: oldData?.description || '',
+    comments: oldData?.comments || '',
   });
 
   const handleNextStep = (newData, final = false) => {

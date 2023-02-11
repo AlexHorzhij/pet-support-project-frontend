@@ -58,6 +58,8 @@ export default function NoticesCardItem({
   };
 
   const handleOpenEdit = () => {
+    console.log('editID: ', _id);
+
     setIsEditing(true);
   };
 
