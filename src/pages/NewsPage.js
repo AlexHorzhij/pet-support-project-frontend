@@ -1,10 +1,9 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 import {
-  Title,
   LoaderPage,
   NewsSearch,
   NewsList,
@@ -16,6 +15,7 @@ import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
 import { getNews } from 'redux/news/newsSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '@mui/material';
 
 
 export default function NewsPage() {
@@ -28,23 +28,23 @@ export default function NewsPage() {
 
   useEffect(() => {
     if (query === '' || query === null) {
-        dispatch(fetchNews())
-        return
+      dispatch(fetchNews())
+      return
     }
     dispatch(fetchSearchNews(query));
   }, [dispatch, query]);
-  
+
   const onFormSubmit = (searchValue) => {
-    if (searchValue?.trim() === "" ) {
+    if (searchValue?.trim() === "") {
       toast.error("Please, enter search value!")
       return
     }
 
-    if (searchValue.trim().length < 3|| searchValue.includes('*')) {
+    if (searchValue.trim().length < 3 || searchValue.includes('*')) {
       toast.error("Please, enter no less 3 letters for a correct search!")
       return
     }
-    
+
     if (searchValue === query) {
       toast.error(`We have already found "${query}"! Please, enter new search value`)
       return
@@ -58,14 +58,14 @@ export default function NewsPage() {
   return (
     <Main>
       <NewsContainer>
-        <Title text={ t('NewsPage.title')} />
+        <Typography variant="h2" sx={{ textAlign: 'center' }}>{t('NewsPage.title')}</Typography>
         <NewsSearch onSubmit={onFormSubmit} value={query} />
         {error && <p>{error.data}</p>}
         {isLoading && <LoaderPage />}
         {news.length !== 0
-          ? <NewsList news={sortedNews}/>
-          : <NoNewsItem value={query}/>}
-      
+          ? <NewsList news={sortedNews} />
+          : <NoNewsItem value={query} />}
+
       </NewsContainer>
     </Main>
   );

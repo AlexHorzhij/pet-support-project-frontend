@@ -55,8 +55,6 @@ export const noticesSlice = createSlice({
         );
         state.items = newNoticeList;
         state.isLoading = false;
-
-        // state.items = state.items.filter(item => item.id !== payload.id);
       })
       .addCase(removeNoticeFromUserById.rejected, (state, { payload }) => {
         state.isLoading = false;

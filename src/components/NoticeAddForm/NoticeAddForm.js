@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
-import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import { addNewNotice, updateNotice } from 'redux/notices/noticesOperations';
-import { Button, Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import { Button, Container } from '@mui/material';
 
-export const NoticeAddForm = ({ handleClose, oldData, editID }) => {
-  console.log('editID: ', editID);
+import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
+import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
+import React from 'react'
+
+
+export default function NoticeAddForm({ handleClose, oldData, editID })  {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
@@ -49,7 +51,7 @@ export const NoticeAddForm = ({ handleClose, oldData, editID }) => {
       }
 
       if (editID) {
-        dispatch(updateNotice({editID, formData}))
+        dispatch(updateNotice({ editID, formData }))
       }
       dispatch(addNewNotice(formData));
 
@@ -60,6 +62,7 @@ export const NoticeAddForm = ({ handleClose, oldData, editID }) => {
 
     setCurrentStep(prev => prev + 1);
   };
+
   const fileHandler = prevData => {
     if (typeof prevData.avatarUrl !== 'string') {
       const reader = new FileReader();

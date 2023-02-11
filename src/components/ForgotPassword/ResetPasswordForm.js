@@ -5,7 +5,6 @@ import { LoaderWhite } from 'components/Loader/Loader';
 import { getAuth } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { resendVerificationEmail } from 'redux/auth/authOperations';
 import { useSelector } from 'react-redux';
 import {
   StyledInput,

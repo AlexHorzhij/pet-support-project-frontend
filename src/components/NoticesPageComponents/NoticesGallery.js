@@ -71,7 +71,7 @@ export default function NoticesGallery() {
         break;
       case 'favorite':
         setTitle(
-          'This section is temporary emrpy, you can add your favorite advertisements here'
+          'This section is temporary empty, you can add your favorite advertisements here'
         );
         break;
       case 'own':
@@ -104,9 +104,10 @@ export default function NoticesGallery() {
     <>
       <Grid
         container
+        spacing={4}
         sx={{
           pb: 6,
-          gap: '32px',
+          // gap: '32px',
         }}
       >
         {/* {error && <p>{error.data}</p>}

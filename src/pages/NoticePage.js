@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import { Container } from '@mui/material';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { IconButton } from '@mui/material';
-import { useTheme } from '@mui/material';
-
+import React from 'react';
 import {
   NoticesFilter,
   NoticesCategoryNav,
@@ -11,31 +6,22 @@ import {
   NoticesGallery,
 } from 'components';
 
+import { Container } from '@mui/material';
+import { ScrollUpBtn } from 'components';
+import { ThreeCircles } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
+import { getNotices } from 'redux/notices/noticesSelectors';
+import { useTheme } from '@mui/material';
+
 export default function NoticePage() {
-  const [offset, setOffset] = useState()
+  const { isLoading } = useSelector(getNotices);
   const { palette } = useTheme()
-
-  const getOffset = () => window.pageYOffset || document.documentElement.scrollTop
-  window.addEventListener('scroll', () => {
-    setOffset(getOffset)
-  })
-
-  const scrollToUp = () => {
-    window.scrollTo(
-      {
-        top: 0,
-        behavior: 'smooth',
-      })
-  }
 
   return (
     <Container component="main" >
       <NoticesFilter />
       <Container
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
+        style={{ display: 'flex', justifyContent: 'space-between', }}
       >
         <div>
           <NoticesCategoryNav />
@@ -44,23 +30,13 @@ export default function NoticePage() {
           <AddNoticeBtn />
         </div>
       </Container>
-      <NoticesGallery />
-      {
-        <IconButton onClick={scrollToUp}>
-          <KeyboardArrowUpIcon
-            sx={{
-              borderRadius: '50%',
-              width: '60px', height: '60px', color: 'lightgray',
-              position: 'fixed', right: 100, bottom: 80, zIndex: 1,
-              boxShadow: `inset 0 0 0 5px ${palette.primary.main}`,
-              transition: '0.4s',
-              transform: offset > 100 ? 'translateY(0)' : 'translateY(150px)',
-              '&:hover': {
-                color: 'primary.main'
-              },
-            }
-            } />
-        </IconButton>}
+      {isLoading ?
+        <Container sx={{ display: 'flex', justifyContent: 'center', pt: 15 }}>
+          <ThreeCircles color={palette.primary.main} />
+        </Container>
+        :
+        < NoticesGallery />}
+      <ScrollUpBtn />
     </Container >
   );
 }

@@ -19,7 +19,7 @@ import {
   ItemsList,
   ItemText,
   Title,
-  CategoryLable,
+  CategoryLabel,
   NoticeCard,
   Btn,
 } from './NoticesCardItem.styled';
@@ -27,7 +27,7 @@ import nophoto from 'assets/images/nophoto.gif';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
-import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
+import { NoticeAddForm } from 'components';
 
 export default function NoticesCardItem({
   data,
@@ -38,7 +38,7 @@ export default function NoticesCardItem({
   const [isEditing, setIsEditing] = useState(false);
   const [modalIsShown, setModalIsShown] = useState(false);
   const { t } = useTranslation('common');
-  const { categoryName } = useParams()
+  const { categoryName } = useParams();
 
   const {
     _id,
@@ -50,7 +50,6 @@ export default function NoticesCardItem({
     avatarUrl,
     category,
     favorite,
-
   } = data;
 
   const age = birthdate && distanceBetweenDateAndNowWords(birthdate);
@@ -72,8 +71,8 @@ export default function NoticesCardItem({
         variant="notice"
         sx={{
           width: '280px',
-          borderRadius: '0 0 40px 40px',
           position: 'relative',
+          borderRadius: '0 0 40px 40px',
         }}
       >
         <CardMedia
@@ -88,17 +87,18 @@ export default function NoticesCardItem({
           <CardMedia
             image={avatarUrl}
             style={{
-              height: '100%',
-              width: '100%',
               objectFit: 'cover',
-              backgroundPosition: '50% 50%',
+              backgroundPosition: 'center',
             }}
           />
-          <CategoryLable>{category}</CategoryLable>
-          <AddToFavorite handleChange={handleChange}
+          <CategoryLabel>{category}</CategoryLabel>
+          <AddToFavorite
+            handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
-            id={_id} favorite={favorite}
-            right="50px" top="50px"
+            id={_id}
+            favorite={favorite}
+            right="50px"
+            top="50px"
             style={{ position: 'absolute', right: '50px', top: '50px' }}
           />
           {categoryName === 'own' && (
@@ -108,6 +108,7 @@ export default function NoticesCardItem({
                 variant="outlined"
                 sx={{
                   color: 'primary.main',
+                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
                   position: 'absolute',
                   right: '12px',
                   top: '70px',
@@ -116,7 +117,6 @@ export default function NoticesCardItem({
               >
                 {' '}
                 <ModeIcon />
-
               </IconButton>
 
               <Dialog
@@ -143,7 +143,6 @@ export default function NoticesCardItem({
             pb: 2,
             display: 'flex',
             flexDirection: 'column',
-
           }}
         >
           <CardContent style={{ padding: '20px 16px 0px 16px' }}>
@@ -175,34 +174,35 @@ export default function NoticesCardItem({
 
           {categoryName === 'own' ? (
             <Btn
+              variant="outlined"
               id={_id}
               onClick={deleteCard}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+              sx={{
+                width: '100%',
+                color: 'primary.main',
+                mb: '12px',
+                mt: 'auto',
+              }}
               endIcon={<DeleteOutlineIcon />}
             >
               Delete
             </Btn>
           ) : (
-
             <Btn
               id={_id}
               onClick={toggleModal}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256' }}
+              sx={{ width: '100%', color: 'primary.main' }}
             >
               {t('NoticesPage.card.1btn')}
             </Btn>
           )}
         </Box>
       </NoticeCard>
-      {
-        modalIsShown && (
-          <Modal onModalClose={toggleModal}>
-            <LearnMoreModal onModalClose={toggleModal} data={data} />
-          </Modal>
-        )
-      }
+      {modalIsShown && (
+        <Modal onModalClose={toggleModal}>
+          <LearnMoreModal onModalClose={toggleModal} data={data} />
+        </Modal>
+      )}
     </>
   );
 }
