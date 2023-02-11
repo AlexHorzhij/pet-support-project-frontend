@@ -32,7 +32,7 @@ const RegisterForm = () => {
         })
       );
 
-      navigate('/login');
+      navigate('/verification');
 
       return;
     }
