@@ -3,7 +3,7 @@ import { Navigation, NavList, ListItem, LinkNav } from './Nav.styled';
 import { useTranslation } from 'react-i18next';
 
 export default function Nav() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <Navigation>

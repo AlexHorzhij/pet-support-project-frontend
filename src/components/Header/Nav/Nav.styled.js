@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
-  margin: 0;
+  margin-left: 50px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -36,11 +36,16 @@ export const LinkNav = styled(NavLink)`
 export const NavList = styled.ul`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 export const ListItem = styled.li`
-      margin-left: 80px;
+      width: 132px;          
+      &:not(:first-child){
+        margin-left: 30px;
+      }
+      text-align: center
   }
 `;

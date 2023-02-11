@@ -14,13 +14,10 @@ export const AuthNavigation = styled(Box)({
 export const AuthList = styled.ul`
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-left: 246px;
   margin-right: auto;
   @media screen and (max-width: 767px) {
     display: none;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-left: 246px;
   }
 `;
 export const AuthItem = styled.li`

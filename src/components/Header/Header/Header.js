@@ -34,39 +34,37 @@ export default function ApplicationBar() {
           <LogoInfo>
             pe<Span>t</Span>ly
           </LogoInfo>
-
           <Nav />
-          {/* ====================Multilanguage===================== */}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            {Object.keys(lngs).map(lng => {
-              return (
-                <Button
-                  variant={
-                    i18n.resolvedLanguage === lng ? 'contained' : 'outlined'
-                  }
-                  size="small"
-                  type="submit"
-                  key={lng}
-                  sx={{
-                    fontWeight:
-                      i18n.resolvedLanguage === lng ? 'bold' : 'normal',
-                  }}
-                  onClick={() => i18n.changeLanguage(lng)}
-                  // disabled={i18n.resolvedLanguage === lng}
-                >
-                  {lngs[lng].shortName}
-                </Button>
-              );
-            })}
-          </Box>
-          {/* ====================================================== */}
           <NavWrapper>
             {isLoggedIn ? <UserNav /> : <AuthNav />}
+            {/* ====================Multilanguage===================== */}
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {Object.keys(lngs).map(lng => {
+                return (
+                  <Button
+                    variant={
+                      i18n.resolvedLanguage === lng ? 'contained' : 'outlined'
+                    }
+                    size="small"
+                    type="submit"
+                    key={lng}
+                    sx={{
+                      fontWeight:
+                        i18n.resolvedLanguage === lng ? 'bold' : 'normal',
+                    }}
+                    onClick={() => i18n.changeLanguage(lng)}
+                  >
+                    {lngs[lng].shortName}
+                  </Button>
+                );
+              })}
+            </Box>
+            {/* ====================================================== */}
             <MobileMenu />
           </NavWrapper>
         </Wrapper>

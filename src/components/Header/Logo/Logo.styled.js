@@ -8,7 +8,7 @@ export const LogoWrapper = styled.div`
 
 export const LogoInfo = styled(Typography)({
   margin: '0',
-  padding: 0,
+  padding: '0',
   fontFamily: 'Poppins',
   fontWeight: '700',
   fontSize: '28px',
