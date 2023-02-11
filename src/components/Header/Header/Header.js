@@ -16,10 +16,12 @@ import { Box, Button } from '@mui/material';
 const lngs = {
   en: {
     nativeName: 'English',
-    shortName: 'EN'  },
+    shortName: 'EN'
+  },
   ua: {
     nativeName: 'Ukrainian',
-    shortName: 'UA'  }
+    shortName: 'UA'
+  }
 }
 
 
@@ -28,18 +30,18 @@ export default function ApplicationBar() {
   const { i18n } = useTranslation();
   return (
     <MenuProvider>
-      <Header>
+      <Header style={{ zIndex: 5 }}>
         <Wrapper>
           <LogoInfo>
             pe<Span>t</Span>ly
           </LogoInfo>
 
           <Nav />
-{/* ====================Multilanguage===================== */}
+          {/* ====================Multilanguage===================== */}
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            }}>
+          }}>
             {Object.keys(lngs).map((lng) => {
               return <Button
                 variant="contained"
@@ -49,13 +51,13 @@ export default function ApplicationBar() {
                 sx={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }}
                 onClick={() => i18n.changeLanguage(lng)}
                 disabled={i18n.resolvedLanguage === lng}
-                >
-                  {lngs[lng].shortName}
-                </Button>
-              })
+              >
+                {lngs[lng].shortName}
+              </Button>
+            })
             }
           </Box>
-{/* ====================================================== */}          
+          {/* ====================================================== */}
           <NavWrapper>
             {isLoggedIn ? <UserNav /> : <AuthNav />}
             <MobileMenu />

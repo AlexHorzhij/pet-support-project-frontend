@@ -21,9 +21,11 @@ import { useState } from 'react';
 
 import ModalAddPetsNew from '../ModalAddpetsNew/ModalAddPetsNew';
 import { Loader25 } from 'components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation('common');
 
   const isDeleting = useSelector(isDeletingPet);
   const isUpdating = useSelector(isUpdatingPet);
@@ -46,16 +48,16 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
       <PetInfoBoxWrapper>
         <PetInfoBox>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
+            <PetInfoTitleSpan>{ t('User.petCard.1line')}</PetInfoTitleSpan> {name}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Date of birth:</PetInfoTitleSpan> {birthDate}
+            <PetInfoTitleSpan>{ t('User.petCard.2line')}</PetInfoTitleSpan> {birthDate}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
+            <PetInfoTitleSpan>{ t('User.petCard.3line')}</PetInfoTitleSpan> {breed}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Descriptions:</PetInfoTitleSpan> {description}
+            <PetInfoTitleSpan>{ t('User.petCard.4line')}</PetInfoTitleSpan> {description}
           </PetInfoTypography>
         </PetInfoBox>
         <IconButtonWrapper>

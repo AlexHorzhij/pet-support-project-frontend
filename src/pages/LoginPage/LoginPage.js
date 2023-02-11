@@ -7,15 +7,20 @@ import {
   HeaderText,
   Switcher,
 } from './LoginPage.styled';
+import { useTranslation } from 'react-i18next';
 
 function LoginPage() {
+  const {t} = useTranslation('common')
   return (
     <AuthContainer>
       <ContentWrapper>
-        <HeaderText>Login</HeaderText>
+        <HeaderText>{t('Login.title')}</HeaderText>
         <LoginForm />
         <Switcher>
-          Don't have an account? <Link to="/register">Register</Link>
+        
+            {t('Login.form.footer.msg')} <Link to="/register">{t('Login.form.footer.link')}</Link>
+      
+          
         </Switcher>
       </ContentWrapper>
     </AuthContainer>

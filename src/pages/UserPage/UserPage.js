@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Dialog } from '@mui/material';
+import { Box, Dialog, Typography } from '@mui/material';
 import { UserData, PetsData } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,9 +22,11 @@ import {
 import ModalAddPetsNew from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew';
 import { ModalDialogContent } from 'components/UserPage/PetItem/PetItem.styled';
 import { Loader70 } from 'components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 function UserPage() {
   const [openAddPetForm, setOpenAddPetForm] = React.useState(false);
+  const { t } = useTranslation('common');
 
   const handleCloseAddNotice = () => {
     setOpenAddPetForm(prev => !prev);
@@ -45,14 +47,18 @@ function UserPage() {
         <>
           <Box>
             <UserDataTypography variant="h3">
-              My information:
+              {t('User.title')}
             </UserDataTypography>
             <UserData />
           </Box>
           <PetDataBox>
-            <UserDataTypography variant="h3">My pets:</UserDataTypography>
+            <UserDataTypography variant="h3">
+              {t('User.title2')}
+            </UserDataTypography>
             <UserDataIconButton onClick={handleCloseAddNotice}>
-              <AddPetTypography variant="h5">Add pet</AddPetTypography>
+              <AddPetTypography variant="h5" color="text.primary">
+                {t('User.addPetBtn')}
+              </AddPetTypography>
               <AddPetIcon />
             </UserDataIconButton>
             {pets.length > 0 ? (
@@ -61,9 +67,10 @@ function UserPage() {
               </>
             ) : (
               <SceletonWrapper>
-                <AddPetTypography variant="h3">
-                  Your pets will be shown here
-                </AddPetTypography>
+                <Typography sx={{ fontSize: '30px' }}>
+                  {t('User.nonePetsMsg')}
+                </Typography>
+
                 <PetsOutlinedIcon
                   sx={{ marginTop: '30px', fontSize: '100px', color: 'grey' }}
                 />

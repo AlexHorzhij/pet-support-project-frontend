@@ -10,6 +10,7 @@ import {
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
@@ -41,6 +42,7 @@ const initialValues = {
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector(getAuth);
+  const { t } = useTranslation('common');
 
   const handleSubmit = values => {
     const { email, password } = values;
@@ -58,7 +60,7 @@ const LoginForm = () => {
           <StyledInput
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t('Login.form.emailPlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage name="email">
@@ -69,7 +71,7 @@ const LoginForm = () => {
           <StyledInput
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t('Login.form.passwordPlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage name="password">
@@ -77,7 +79,7 @@ const LoginForm = () => {
           </ErrorMessage>
         </Box>
         <FormButton variant="contained" type="submit">
-          {!isLoading ? 'Login' : <LoaderWhite />}
+          {!isLoading ? t('Login.form.btn') : <LoaderWhite />}
         </FormButton>
       </Form>
     </Formik>

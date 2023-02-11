@@ -1,11 +1,12 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
 import { SharedLayout } from 'components';
 import { PrivateRoute, PublicRoute } from '../services/RouteManager';
+import { getAuth } from 'redux/auth/authSelectors';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -19,10 +20,14 @@ const VerificationPage = lazy(() => import('../pages/VerificationPage'));
 
 function App() {
   const dispatch = useDispatch();
+  const { token } = useSelector(getAuth);
 
   useEffect(() => {
-    dispatch(fetchCurrentUser());
-  }, [dispatch]);
+    if (token) {
+      console.log(token);
+      dispatch(fetchCurrentUser(token));
+    }
+  }, [dispatch, token]);
 
   return (
     <>
