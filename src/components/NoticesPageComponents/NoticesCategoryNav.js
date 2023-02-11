@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-
 import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
-import {
-  fetchNotices,
-  fetchAuthNotices,
-} from 'redux/notices/noticesOperations';
-
 import { useTranslation } from 'react-i18next';
+
+import { fetchNotices, fetchAuthNotices } from 'redux/notices/noticesOperations';
+
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { NoNewsItem } from './News/NoNewsItem/NoNewsItem';
 
 import { NewsSearch } from './News/NewsSearch/newsSearch';
 import { Loader, LoaderWhite, LoaderPage } from './Loader/Loader';
-import { NoticeAddForm } from './NoticeAddForm/NoticeAddForm';
+import NoticeAddForm from './NoticeAddForm/NoticeAddForm';
 import SharedLayout from './SharedLayout/SharedLayout';
 import NoticesCategoryNav from './NoticesPageComponents/NoticesCategoryNav';
 import NoticesFilter from './NoticesPageComponents/NoticesFilter';
