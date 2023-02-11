@@ -102,7 +102,7 @@ export const logoutUser = createAsyncThunk(
 
 export const fetchCurrentUser = createAsyncThunk(
   'current',
-  async (token, { rejectWithValue, getState }) => {
+  async (token, { rejectWithValue }) => {
     try {
       const response = await fetchCurrent(token);
       return response;
