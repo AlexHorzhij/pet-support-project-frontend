@@ -32,13 +32,13 @@ function LoginPage() {
             {t('Login.form.footer.msg')}{' '}
             <Link to="/register">{t('Login.form.footer.link')}</Link>
           </Switcher>
+          <Switcher>
+            Forgot your password?
+            <RemindButton variant="outlined" onClick={toggleModal}>
+              Remind
+            </RemindButton>
+          </Switcher>
         </ContentWrapper>
-        <Switcher>
-          Forgot your password?
-          <RemindButton variant="outlined" onClick={toggleModal}>
-            Remind
-          </RemindButton>
-        </Switcher>
       </AuthContainer>
       {modalIsShown && (
         <Modal onModalClose={toggleModal}>

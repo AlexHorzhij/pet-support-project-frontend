@@ -3,6 +3,7 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { LoaderWhite } from 'components/Loader/Loader';
 import { getAuth } from 'redux/auth/authSelectors';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
@@ -13,6 +14,7 @@ import {
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { resetUserPassword } from 'redux/auth/authOperations';
 
 const schema = yup.object().shape({
   password: yup
@@ -32,8 +34,9 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const ResetPasswordForm = ({ id }) => {
+const ResetPasswordForm = ({ confirmationToken }) => {
   const { isLoading } = useSelector(getAuth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
@@ -48,9 +51,16 @@ const ResetPasswordForm = ({ id }) => {
     event.preventDefault();
   };
 
-  const onResendClick = values => {
+  const onResendClick = ({ password }) => {
+    dispatch(
+      resetUserPassword({
+        body: { password: password },
+        resetToken: confirmationToken,
+      })
+    );
     navigate('/login');
   };
+
   return (
     <Formik
       initialValues={{ email: '' }}

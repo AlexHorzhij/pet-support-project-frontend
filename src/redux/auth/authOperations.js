@@ -5,6 +5,8 @@ import {
   verify,
   resendVerification,
   login,
+  sendResetEmail,
+  resetPassword,
   logout,
   fetchCurrent,
 } from '../../API/api';
@@ -50,7 +52,9 @@ export const resendVerificationEmail = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const res = await resendVerification(data);
-      toast.success('Verification email sent');
+      toast.success('Verification email sent', {
+        duration: 10000,
+      });
       return res;
     } catch ({ response }) {
       const error = {
@@ -70,6 +74,45 @@ export const loginUser = createAsyncThunk(
       const user = await login(data);
       toast.success('Welcome!');
       return user;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const sendResetPasswordEmail = createAsyncThunk(
+  'emailReset',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await sendResetEmail(data);
+      toast.success(
+        'We sent you an email with further instructions. Check your mailbox',
+        { duration: 10000 }
+      );
+      return res;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const resetUserPassword = createAsyncThunk(
+  'resetPassword',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await resetPassword(data);
+      toast.success('New password is set! Now you can login');
+      return res;
     } catch ({ response }) {
       const error = {
         status: response.status,
