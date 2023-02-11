@@ -23,7 +23,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-//======================== AUNTIFICATION  ==========================
+//======================== AUTHENTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -43,6 +43,16 @@ export async function resendVerification(email) {
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
   setToken.set(data.token);
+  return data;
+}
+
+export async function sendResetEmail(email) {
+  const { data } = await instance.post('auth/reset', email);
+  return data;
+}
+
+export async function resetPassword({ resetToken, body }) {
+  const { data } = await instance.patch(`auth/reset/${resetToken}`, body);
   return data;
 }
 
