@@ -11,8 +11,8 @@ import {
   AddPetIcon,
   PetDataBox,
   SceletonWrapper,
-  // PetsPawIcon,
 } from './UserPage.styled';
+import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import { fetchUserData } from 'redux/userData/userDataOperations';
 import {
   getPets,
@@ -70,6 +70,7 @@ function UserPage() {
                 <Typography sx={{ fontSize: '30px' }}>
                   {t('User.nonePetsMsg')}
                 </Typography>
+
                 <PetsOutlinedIcon
                   sx={{ marginTop: '30px', fontSize: '100px', color: 'grey' }}
                 />
