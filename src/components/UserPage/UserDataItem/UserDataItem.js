@@ -56,7 +56,9 @@ function UserDataItem({
   return (
     <UserDataItemBox>
       <UserDataItemtitle>
-        <UserDataTitle>{title}:</UserDataTitle>
+        <UserDataTitle>
+          {title !== null ? title : 'Enter your data'}:
+        </UserDataTitle>
       </UserDataItemtitle>
       <UserDataItemInput
         ref={inputRef}
@@ -65,7 +67,7 @@ function UserDataItem({
           backgroundColor: inputState ? 'transparent' : '#FDF7F2',
         }}
         disabled={inputState}
-        value={inputValue}
+        value={inputValue !== null ? inputValue : 'Enter your data'}
         onChange={e => {
           setInputValue(e.target.value);
           debouncedInputHandler(e.target.value);
