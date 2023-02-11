@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import { LoaderPage } from 'components';
 import { SharedLayout } from 'components';
-import { PrivateRoute, PublicRoute } from '../services';
+import { PrivateRoute, PublicRoute } from 'services';
 import { getAuth } from 'redux/auth/authSelectors';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
