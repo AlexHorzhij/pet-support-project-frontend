@@ -18,6 +18,7 @@ const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 const NoticePage = lazy(() => import('../pages/NoticePage'));
 const VerificationPage = lazy(() => import('../pages/VerificationPage'));
 const ResendEmailPage = lazy(() => import('../pages/ResendEmailPage'));
+const ResetPasswordPage = lazy(() => import('../pages/ResetPasswordPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ function App() {
                 element={<VerificationPage />}
               />
               <Route path="verification" element={<ResendEmailPage />} />
+              <Route
+                path="resetpassword/:verificationToken"
+                element={<ResetPasswordPage />}
+              />
             </Route>
             <Route path="news" element={<NewsPage />} />
             <Route path="friends" element={<OurFriendsPage />} />

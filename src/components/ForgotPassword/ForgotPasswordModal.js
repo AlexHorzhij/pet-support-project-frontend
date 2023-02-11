@@ -28,15 +28,17 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export default function RemindPasswordModal({ onModalClose }) {
+export default function ForgotPasswordModal({ onModalClose }) {
   const { isLoading } = useSelector(getAuth);
   //   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
+  const handleSubmit = ({ email }) => {
+    // dispatch(resetPassword({ email: email }));
     toast.success(
       'We sent you an email with further instructions. Check your mailbox',
       { duration: 10000 }
     );
+
     onModalClose();
   };
 

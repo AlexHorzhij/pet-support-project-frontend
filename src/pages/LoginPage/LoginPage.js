@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginForm from 'components/LoginForm/LoginForm';
-import RemindPasswordModal from 'components/LoginForm/RemindPasswordModal';
+import ForgotPasswordModal from 'components/ForgotPassword/ForgotPasswordModal';
 import { Link } from 'react-router-dom';
 import {
   AuthContainer,
@@ -37,7 +37,7 @@ function LoginPage() {
       </AuthContainer>
       {modalIsShown && (
         <Modal onModalClose={toggleModal}>
-          <RemindPasswordModal onModalClose={toggleModal} />
+          <ForgotPasswordModal onModalClose={toggleModal} />
         </Modal>
       )}
     </>
