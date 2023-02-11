@@ -3,9 +3,7 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { LoaderWhite } from 'components/Loader/Loader';
 import { getAuth } from 'redux/auth/authSelectors';
-// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { resendVerificationEmail } from 'redux/auth/authOperations';
 import { useSelector } from 'react-redux';
 import {
   StyledInput,
@@ -36,7 +34,6 @@ const schema = yup.object().shape({
 
 const ResetPasswordForm = ({ id }) => {
   const { isLoading } = useSelector(getAuth);
-  //   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
@@ -52,8 +49,6 @@ const ResetPasswordForm = ({ id }) => {
   };
 
   const onResendClick = values => {
-    // dispatch(resetPassword({ password: password, id: id }));
-    console.log(values.password);
     navigate('/login');
   };
   return (

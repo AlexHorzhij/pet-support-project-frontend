@@ -39,7 +39,6 @@ export const verifyUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      console.log('Verification error', response.data.message);
       toast.error(`Oops! ${response.data.message}, please, try again`);
       return rejectWithValue(error);
     }

@@ -3,37 +3,25 @@ import React, { useState } from 'react';
 import ModeIcon from '@mui/icons-material/Mode';
 
 import {
-  CardMedia,
-  CardContent,
-  Box,
-  IconButton,
-  Dialog,
-  DialogContent,
+  CardMedia, CardContent, Box,
+  IconButton, Dialog, DialogContent,
 } from '@mui/material';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
 import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
 import {
-  Li,
-  ItemsList,
-  ItemText,
-  Title,
-  CategoryLable,
-  NoticeCard,
-  Btn,
+  Li, ItemsList, ItemText, Title,
+  CategoryLabel, NoticeCard, Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
-import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
+import { NoticeAddForm } from 'components';
 
 export default function NoticesCardItem({
-  data,
-  deleteCard,
-  handleChange,
-  user = null,
+  data, deleteCard, handleChange, user = null,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [modalIsShown, setModalIsShown] = useState(false);
@@ -41,16 +29,8 @@ export default function NoticesCardItem({
   const { categoryName } = useParams()
 
   const {
-    _id,
-    title,
-    breed,
-    location,
-    birthdate,
-    price,
-    avatarUrl,
-    category,
-    favorite,
-
+    _id, title, breed, location, birthdate,
+    price, avatarUrl, category, favorite,
   } = data;
 
   const age = birthdate && distanceBetweenDateAndNowWords(birthdate);
@@ -71,30 +51,25 @@ export default function NoticesCardItem({
       <NoticeCard
         variant="notice"
         sx={{
-          width: '280px',
+          width: '280px', position: 'relative',
           borderRadius: '0 0 40px 40px',
-          position: 'relative',
         }}
       >
         <CardMedia
           image={nophoto}
           style={{
-            height: '288px',
-            width: '100%',
-            position: 'relative',
-            objectFit: 'cover',
+            height: '288px', width: '100%',
+            position: 'relative', objectFit: 'cover',
           }}
         >
           <CardMedia
             image={avatarUrl}
             style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              backgroundPosition: '50% 50%',
+              height: '100%', width: '100%',
+              objectFit: 'cover', backgroundPosition: '50% 50%',
             }}
           />
-          <CategoryLable>{category}</CategoryLable>
+          <CategoryLabel>{category}</CategoryLabel>
           <AddToFavorite handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
             id={_id} favorite={favorite}
@@ -108,9 +83,9 @@ export default function NoticesCardItem({
                 variant="outlined"
                 sx={{
                   color: 'primary.main',
+                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
                   position: 'absolute',
-                  right: '12px',
-                  top: '70px',
+                  right: '12px', top: '70px',
                 }}
                 onClick={handleOpenEdit}
               >
@@ -129,8 +104,7 @@ export default function NoticesCardItem({
                   <DialogTitleStyled>Edit pet</DialogTitleStyled>
                   <NoticeAddForm
                     handleClose={handleCloseAddNotice}
-                    oldData={data}
-                    editID={_id}
+                    oldData={data} editID={_id}
                   />
                 </DialogContent>
               </Dialog>
@@ -139,11 +113,9 @@ export default function NoticesCardItem({
         </CardMedia>
         <Box
           sx={{
-            px: 2,
-            pb: 2,
+            px: 2, pb: 2,
             display: 'flex',
             flexDirection: 'column',
-
           }}
         >
           <CardContent style={{ padding: '20px 16px 0px 16px' }}>
@@ -174,22 +146,20 @@ export default function NoticesCardItem({
           </CardContent>
 
           {categoryName === 'own' ? (
-            <Btn
+            <Btn variant="outlined"
               id={_id}
               onClick={deleteCard}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+              sx={{ width: '100%', color: 'primary.main', mb: '12px', mt: 'auto' }}
               endIcon={<DeleteOutlineIcon />}
             >
               Delete
             </Btn>
           ) : (
 
-            <Btn
+            <Btn variant="outlined"
               id={_id}
               onClick={toggleModal}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256' }}
+              sx={{ width: '100%', color: 'primary.main' }}
             >
               {t('NoticesPage.card.1btn')}
             </Btn>

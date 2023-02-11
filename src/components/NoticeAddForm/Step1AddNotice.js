@@ -1,12 +1,9 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import {
-  StyledInput,
-  ErrorText,
-  FormButton,
-} from 'components/RegisterForm/Forms.styled';
 import { Grid, Box } from '@mui/material';
+
+import { StyledInput, ErrorText, FormButton } from 'components/RegisterForm/Forms.styled';
 import { TypographyStyled } from './NoticeAddForm.styled';
 
 const schema = yup.object().shape({
@@ -30,8 +27,8 @@ const schema = yup.object().shape({
     .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
 });
 
-export const Step1AddNotice = ({ next, data, handleClose }) => {
 
+export const Step1AddNotice = ({ next, data, handleClose }) => {
 
   const handleSubmit = values => {
     next(values);

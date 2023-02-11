@@ -23,7 +23,7 @@ export default function NoticesFilter() {
   const { token } = useSelector(getAuth);
   const params = useParams();
   const dispatch = useDispatch();
-  const {t} = useTranslation('common')
+  const { t } = useTranslation('common')
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
@@ -83,7 +83,13 @@ export default function NoticesFilter() {
         {(search !== '') && <IconButton
           onClick={handleClearSearch}
           type="button"
-          sx={{ p: '10px' }}
+          sx={{
+            p: '10px',
+            '&:hover': {
+              color: 'text.primary',
+              backgroundColor: 'secondary.main',
+            }
+          }}
           aria-label="close"
         >
           <CloseIcon />
@@ -92,7 +98,13 @@ export default function NoticesFilter() {
         <IconButton
           onClick={handleFilter}
           type="button"
-          sx={{ p: '10px' }}
+          sx={{
+            p: '10px',
+            '&:hover': {
+              color: 'text.primary',
+              backgroundColor: 'secondary.main',
+            }
+          }}
           aria-label="search"
         >
           <SearchIcon />
