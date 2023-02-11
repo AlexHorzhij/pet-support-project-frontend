@@ -16,6 +16,9 @@ import { Title } from './Title/Title';
 import { NewsSearch } from './News/NewsSearch/newsSearch';
 import { NewsList } from './News/NewsList/newsList';
 import { NoNewsItem } from './News/NoNewsItem/NoNewsItem';
+import ScrollUpBtn from './ScrollUpBtn/ScrollUpBtn';
+import ForgotPasswordModal from './ForgotPassword/ForgotPasswordModal';
+import LoginForm from './LoginForm/LoginForm';
 
 export {
   Loader,
@@ -34,9 +37,12 @@ export {
   OurFriendsItem,
   NoticeAddForm,
   LearnMoreModal,
-  Title,
   NewsSearch,
+  ScrollUpBtn,
+  ForgotPasswordModal,
+  LoginForm,
+  Title,
   NewsList,
   NoNewsItem,
-  
+
 };

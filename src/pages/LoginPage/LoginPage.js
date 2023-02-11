@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import LoginForm from 'components/LoginForm/LoginForm';
-import ForgotPasswordModal from 'components/ForgotPassword/ForgotPasswordModal';
-import { Link } from 'react-router-dom';
+import {
+  ForgotPasswordModal,
+  Modal,
+  LoginForm
+} from 'components';
 import {
   AuthContainer,
   ContentWrapper,
@@ -9,8 +11,8 @@ import {
   Switcher,
   RemindButton,
 } from './LoginPage.styled';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'components';
 
 function LoginPage() {
   const { t } = useTranslation('common');
