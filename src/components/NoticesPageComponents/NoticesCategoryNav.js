@@ -90,8 +90,6 @@ export default function NoticesCategoryList() {
             alignItems: 'center',
             justifyContent: 'center',
             bottom: '-45px',
-
-            // transform: 'translate(-50%,-50%)',
           }}
         >
           <ThreeCircles

@@ -10,9 +10,8 @@ import UserData from './UserPage/UserData/UserData';
 import PetsData from './UserPage/PetsData/PetsData';
 import Modal from './Modal/Modal';
 import AddToFavorite from './NoticesPageComponents/AddToFavorite';
-import NoticeAddForm from './NoticeAddForm/OldNoticeAddSellForm';
+import { NoticeAddForm } from './NoticeAddForm/NoticeAddForm';
 import LearnMoreModal from './NoticesPageComponents/LearnMoreModal/LearnMoreModal';
-import { Title } from './Title/Title';
 import { NewsSearch } from './News/NewsSearch/newsSearch';
 import { NewsList } from './News/NewsList/newsList';
 import { NoNewsItem } from './News/NoNewsItem/NoNewsItem';
@@ -41,7 +40,6 @@ export {
   ScrollUpBtn,
   ForgotPasswordModal,
   LoginForm,
-  Title,
   NewsList,
   NoNewsItem,
 

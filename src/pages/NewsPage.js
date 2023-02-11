@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 import {
-  Title,
   LoaderPage,
   NewsSearch,
   NewsList,
@@ -16,6 +15,7 @@ import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
 import { getNews } from 'redux/news/newsSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '@mui/material';
 
 
 export default function NewsPage() {
@@ -58,7 +58,7 @@ export default function NewsPage() {
   return (
     <Main>
       <NewsContainer>
-        <Title text={ t('NewsPage.title')} />
+        <Typography variant="h2" sx={{textAlign: 'center'}}>{ t('NewsPage.title')}</Typography>
         <NewsSearch onSubmit={onFormSubmit} value={query} />
         {error && <p>{error.data}</p>}
         {isLoading && <LoaderPage />}

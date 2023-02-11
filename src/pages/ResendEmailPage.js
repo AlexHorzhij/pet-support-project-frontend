@@ -38,7 +38,6 @@ export default function ResendEmailPage() {
 
   const onResendClick = ({ email }) => {
     dispatch(resendVerificationEmail({ email: email }));
-    console.log(email);
   };
 
   const onLoginClick = () => {

@@ -8,7 +8,6 @@ import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
 export const NoticeAddForm = ({ handleClose, oldData, editID }) => {
-  console.log('editID: ', editID);
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
