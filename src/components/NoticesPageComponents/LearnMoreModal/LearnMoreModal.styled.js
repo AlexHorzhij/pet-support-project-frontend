@@ -50,7 +50,7 @@ export const Image = styled(CardMedia)(({ theme }) => ({
   },
 }));
 
-export const CategoryLable = styled(Box)(() => ({
+export const CategoryLabel = styled(Box)(() => ({
   position: 'absolute',
   top: '20px',
   left: '0',

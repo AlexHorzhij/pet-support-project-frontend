@@ -19,7 +19,7 @@ import {
   ItemsList,
   ItemText,
   Title,
-  CategoryLable,
+  CategoryLabel,
   NoticeCard,
   Btn,
 } from './NoticesCardItem.styled';
@@ -94,7 +94,7 @@ export default function NoticesCardItem({
               backgroundPosition: '50% 50%',
             }}
           />
-          <CategoryLable>{category}</CategoryLable>
+          <CategoryLabel>{category}</CategoryLabel>
           <AddToFavorite handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
             id={_id} favorite={favorite}
@@ -108,6 +108,7 @@ export default function NoticesCardItem({
                 variant="outlined"
                 sx={{
                   color: 'primary.main',
+                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
                   position: 'absolute',
                   right: '12px',
                   top: '70px',
@@ -178,7 +179,7 @@ export default function NoticesCardItem({
               id={_id}
               onClick={deleteCard}
               variant="outlined"
-              sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+              sx={{ width: '100%', color: 'primary.main', mb: '12px', mt: 'auto' }}
               endIcon={<DeleteOutlineIcon />}
             >
               Delete
@@ -189,7 +190,7 @@ export default function NoticesCardItem({
               id={_id}
               onClick={toggleModal}
               variant="outlined"
-              sx={{ width: '100%', color: '#F59256' }}
+              sx={{ width: '100%', color: 'primary.main' }}
             >
               {t('NoticesPage.card.1btn')}
             </Btn>

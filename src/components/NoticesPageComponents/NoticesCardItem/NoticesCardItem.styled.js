@@ -54,7 +54,7 @@ export const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const CategoryLable = styled.p`
+export const CategoryLabel = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;

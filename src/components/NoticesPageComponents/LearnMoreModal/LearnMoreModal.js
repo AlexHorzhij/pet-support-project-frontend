@@ -11,7 +11,7 @@ import {
   ModalCloseButton,
   BoxFlex,
   Image,
-  CategoryLable,
+  CategoryLabel,
   Text,
   HeadText,
   OwnerContact,
@@ -74,7 +74,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <Box style={{ position: 'relative' }}>
           {avatarUrl ? <Image image={avatarUrl} /> : <Image src={nophoto} />}
 
-          <CategoryLable>{category}</CategoryLable>
+          <CategoryLabel>{category}</CategoryLabel>
         </Box>
         <Box>
           <Typography variant="h3" sx={{ mb: 2, maxWidth: '300px' }}>

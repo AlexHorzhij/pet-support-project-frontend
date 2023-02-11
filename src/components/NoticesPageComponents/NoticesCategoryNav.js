@@ -9,8 +9,6 @@ import {
   fetchAuthNotices,
 } from 'redux/notices/noticesOperations';
 
-import { useTheme } from '@mui/material';
-import { getNotices } from 'redux/notices/noticesSelectors';
 import { useTranslation } from 'react-i18next';
 
 export default function NoticesCategoryList() {
@@ -21,7 +19,6 @@ export default function NoticesCategoryList() {
   const { categoryName } = params;
   const { t } = useTranslation('common');
 
-  const theme = useTheme();
   useEffect(() => {
     if (token) {
       dispatch(fetchAuthNotices({ token, categoryName }));
@@ -81,25 +78,6 @@ export default function NoticesCategoryList() {
           </Button>
         </>
       )}
-      {/* {isLoading && (
-        <Box
-          sx={{
-            position: 'absolute',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            bottom: '-45px',
-          }}
-        >
-          <ThreeCircles
-            height="40"
-            width="40"
-            color={theme.palette.primary.main}
-            visible={true}
-            ariaLabel="three-circles-rotating"
-          />
-        </Box>
-      )} */}
     </Container>
   );
 }
