@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 
 import ModeIcon from '@mui/icons-material/Mode';
-import { CardMedia, CardContent, Box, IconButton, Dialog, DialogContent } from '@mui/material';
+
+import {
+  CardMedia,
+  CardContent,
+  Box,
+  IconButton,
+  Dialog,
+  DialogContent,
+} from '@mui/material';
+
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { AddToFavorite, Modal, LearnMoreModal } from 'components';
 import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
@@ -20,18 +29,28 @@ import { useParams } from 'react-router-dom';
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
 import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
 
-
 export default function NoticesCardItem({
-  data, deleteCard, handleChange, user = null, }) {
-
-  const [isEditing, setIsEditing] = useState(false)
+  data,
+  deleteCard,
+  handleChange,
+  user = null,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
   const [modalIsShown, setModalIsShown] = useState(false);
   const { t } = useTranslation('common');
   const { categoryName } = useParams()
 
   const {
-    _id, title, breed, location, birthdate,
-    price, avatarUrl, category, favorite,
+    _id,
+    title,
+    breed,
+    location,
+    birthdate,
+    price,
+    avatarUrl,
+    category,
+    favorite,
+
   } = data;
 
   const age = birthdate && distanceBetweenDateAndNowWords(birthdate);
@@ -39,15 +58,13 @@ export default function NoticesCardItem({
     setModalIsShown(prev => !prev);
   };
 
-
   const handleOpenEdit = () => {
-    setIsEditing(true)
-  }
+    setIsEditing(true);
+  };
 
   const handleCloseAddNotice = () => {
     setIsEditing(false);
   };
-
 
   return (
     <>
@@ -84,12 +101,22 @@ export default function NoticesCardItem({
             right="50px" top="50px"
             style={{ position: 'absolute', right: '50px', top: '50px' }}
           />
-          {categoryName === 'own' &&
-            (<div>
-              < IconButton aria-label='edit' variant="outlined"
-                sx={{ color: 'primary.main', position: 'absolute', right: '12px', top: '70px' }}
+          {categoryName === 'own' && (
+            <div>
+              <IconButton
+                aria-label="edit"
+                variant="outlined"
+                sx={{
+                  color: 'primary.main',
+                  position: 'absolute',
+                  right: '12px',
+                  top: '70px',
+                }}
                 onClick={handleOpenEdit}
-              > <ModeIcon />
+              >
+                {' '}
+                <ModeIcon />
+
               </IconButton>
 
               <Dialog
@@ -100,10 +127,15 @@ export default function NoticesCardItem({
               >
                 <DialogContent>
                   <DialogTitleStyled>Edit pet</DialogTitleStyled>
-                  <NoticeAddForm handleClose={handleCloseAddNotice} oldData={data} editID={_id} />
+                  <NoticeAddForm
+                    handleClose={handleCloseAddNotice}
+                    oldData={data}
+                    editID={_id}
+                  />
                 </DialogContent>
-              </Dialog >
-            </div>)}
+              </Dialog>
+            </div>
+          )}
         </CardMedia>
         <Box
           sx={{
@@ -150,7 +182,9 @@ export default function NoticesCardItem({
               endIcon={<DeleteOutlineIcon />}
             >
               Delete
-            </Btn>) : (
+            </Btn>
+          ) : (
+
             <Btn
               id={_id}
               onClick={toggleModal}
