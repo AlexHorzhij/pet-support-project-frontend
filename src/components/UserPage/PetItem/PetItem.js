@@ -15,20 +15,20 @@ import {
   ModalDialogContent,
 } from './PetItem.styled';
 import { useSelector } from 'react-redux';
-import { ThreeCircles } from 'react-loader-spinner';
-import { Dialog, useTheme } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { isDeletingPet, isUpdatingPet } from 'redux/userData/userDataSelectors';
 import { useState } from 'react';
 
 import ModalAddPetsNew from '../ModalAddpetsNew/ModalAddPetsNew';
+import { Loader25 } from 'components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation('common');
 
   const isDeleting = useSelector(isDeletingPet);
   const isUpdating = useSelector(isUpdatingPet);
-
-  const theme = useTheme();
 
   const handlePetDelete = petId => {
     dispatch(deletePetFromList(petId));
@@ -48,44 +48,24 @@ function PetItem({ avatarUrl, name, birthDate, breed, description, id }) {
       <PetInfoBoxWrapper>
         <PetInfoBox>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Name:</PetInfoTitleSpan> {name}
+            <PetInfoTitleSpan>{ t('User.petCard.1line')}</PetInfoTitleSpan> {name}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Date of birth:</PetInfoTitleSpan> {birthDate}
+            <PetInfoTitleSpan>{ t('User.petCard.2line')}</PetInfoTitleSpan> {birthDate}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Breed:</PetInfoTitleSpan> {breed}
+            <PetInfoTitleSpan>{ t('User.petCard.3line')}</PetInfoTitleSpan> {breed}
           </PetInfoTypography>
           <PetInfoTypography>
-            <PetInfoTitleSpan>Descriptions:</PetInfoTitleSpan> {description}
+            <PetInfoTitleSpan>{ t('User.petCard.4line')}</PetInfoTitleSpan> {description}
           </PetInfoTypography>
         </PetInfoBox>
         <IconButtonWrapper>
           <IconButtonStyled onClick={() => handlePetDelete(id)}>
-            {isDeleting === id ? (
-              <ThreeCircles
-                height="20"
-                width="20"
-                color={theme.palette.primary.main}
-                visible={true}
-                ariaLabel="three-circles-rotating"
-              />
-            ) : (
-              <DaleteIconStyled />
-            )}
+            {isDeleting === id ? <Loader25 /> : <DaleteIconStyled />}
           </IconButtonStyled>
           <IconButtonStyled onClick={handleCloseAddNotice}>
-            {isUpdating === id ? (
-              <ThreeCircles
-                height="20"
-                width="20"
-                color={theme.palette.primary.main}
-                visible={true}
-                ariaLabel="three-circles-rotating"
-              />
-            ) : (
-              <EditRoundedIcon />
-            )}
+            {isUpdating === id ? <Loader25 /> : <EditRoundedIcon />}
           </IconButtonStyled>
         </IconButtonWrapper>
       </PetInfoBoxWrapper>

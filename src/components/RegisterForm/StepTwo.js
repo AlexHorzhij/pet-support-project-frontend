@@ -10,6 +10,7 @@ import {
   FormButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -29,6 +30,7 @@ const schema = yup.object().shape({
 });
 
 const StepTwo = ({ next, prev, data }) => {
+  const { t } = useTranslation('common');
   const handleSubmit = (values, { resetForm }) => {
     next(values, true);
     resetForm();
@@ -48,7 +50,7 @@ const StepTwo = ({ next, prev, data }) => {
               <StyledInput
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder={t('Registration.form.4linePlaceholder')}
                 disableunderline="true"
               />
               <ErrorMessage component="div" name="name">
@@ -59,7 +61,7 @@ const StepTwo = ({ next, prev, data }) => {
               <StyledInput
                 type="text"
                 name="city"
-                placeholder="City, Region"
+                placeholder={t('Registration.form.5linePlaceholder')}
                 disableunderline="true"
               />
               <ErrorMessage component="div" name="city">
@@ -70,7 +72,7 @@ const StepTwo = ({ next, prev, data }) => {
               <StyledInput
                 type="tel"
                 name="phone"
-                placeholder="Mobile phone"
+                placeholder={t('Registration.form.6linePlaceholder')}
                 disableunderline="true"
               />
               <ErrorMessage component="div" name="phone">
@@ -78,14 +80,14 @@ const StepTwo = ({ next, prev, data }) => {
               </ErrorMessage>
             </Box>
             <FormButton variant="contained" type="submit">
-              {!isLoading ? 'Register' : <LoaderWhite />}
+              {!isLoading ? t('Registration.form.finalBtn') : <LoaderWhite />}
             </FormButton>
             <FormButton
               variant="outlined"
               type="button"
               onClick={() => prev(values)}
             >
-              Back
+              {t('Registration.form.backBtn')}
             </FormButton>
           </Form>
         );

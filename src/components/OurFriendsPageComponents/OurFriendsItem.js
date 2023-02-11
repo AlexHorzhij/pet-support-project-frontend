@@ -14,7 +14,7 @@ import defaultLogo from 'images/default_logo.webp';
 import { useTranslation } from 'react-i18next';
 
 const OurFriendsItem = ({ partner }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { title, url, addressUrl, address, imageUrl, phone, email, workDays } =
     partner;
 
@@ -88,25 +88,25 @@ const OurFriendsItem = ({ partner }) => {
         <Grid container component="ul">
           <ContactsItem item component="li" md={6}>
             <ContactsTypography component="span">
-              {t('Time')}:
+              {t('OurFriendsPage.item.time')}:
               {renderDate(workDays)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              {t('Address')}:
+              {t('OurFriendsPage.item.address')}:
               {renderAddress(addressUrl)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              {t('Email')}:
+              {t('OurFriendsPage.item.email')}:
               {renderEmail(email)}
             </ContactsTypography>
           </ContactsItem>
           <ContactsItem item component="li">
             <ContactsTypography component="span">
-              {t('Phone')}:
+              {t('OurFriendsPage.item.phone')}:
               {renderPhone(phone)}
             </ContactsTypography>
           </ContactsItem>

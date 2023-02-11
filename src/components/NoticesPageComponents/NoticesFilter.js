@@ -16,12 +16,14 @@ import {
 import { useParams } from 'react-router-dom';
 
 import { getAuth } from 'redux/auth/authSelectors';
+import { useTranslation } from 'react-i18next';
 
 export default function NoticesFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { token } = useSelector(getAuth);
   const params = useParams();
   const dispatch = useDispatch();
+  const {t} = useTranslation('common')
 
   const { categoryName } = params;
   const search = searchParams.get('search') || '';
@@ -48,7 +50,7 @@ export default function NoticesFilter() {
           align="center"
           sx={{ mt: 8, mb: 6, mx: 'auto' }}
         >
-          Find your favorite pet
+          {t('NoticesPage.title')}
         </Typography>
       }
       <Paper
@@ -66,7 +68,7 @@ export default function NoticesFilter() {
 
         <InputBase
           sx={{ ml: 1, flex: 1, pl: 1, textAlign: 'center' }}
-          placeholder="Search"
+          placeholder={t('NoticesPage.search.placeholder')}
           inputProps={{ 'aria-label': 'search' }}
           onKeyPress={e => {
             if (e.key === 'Enter') {

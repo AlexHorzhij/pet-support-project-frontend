@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function MobileUserNav() {
   const { close } = useMenu();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   return (
     <AuthWrapper>
@@ -20,7 +20,7 @@ export default function MobileUserNav() {
         <Button variant="contained">
           <AccountCircleIcon />
           <MobileAuthLink to="/login" onClick={close}>
-            { t('Account')}
+            { t('MobileMenu.auth.accBtn')}
           </MobileAuthLink>
         </Button>
       </MobileAuthNavigation>

@@ -34,7 +34,6 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
     avatarUrl: yup.string(),
     comments: yup
       .string()
-      // .required()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
 

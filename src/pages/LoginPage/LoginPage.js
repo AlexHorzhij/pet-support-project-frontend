@@ -9,9 +9,11 @@ import {
   Switcher,
   RemindButton,
 } from './LoginPage.styled';
+import { useTranslation } from 'react-i18next';
 import { Modal } from 'components';
 
 function LoginPage() {
+  const { t } = useTranslation('common');
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const toggleModal = () => {
@@ -22,18 +24,19 @@ function LoginPage() {
     <>
       <AuthContainer>
         <ContentWrapper>
-          <HeaderText>Login</HeaderText>
+          <HeaderText>{t('Login.title')}</HeaderText>
           <LoginForm />
           <Switcher>
-            Don't have an account? <Link to="/register">Register</Link>
-          </Switcher>
-          <Switcher>
-            Forgot your password?
-            <RemindButton variant="outlined" onClick={toggleModal}>
-              Remind
-            </RemindButton>
+            {t('Login.form.footer.msg')}{' '}
+            <Link to="/register">{t('Login.form.footer.link')}</Link>
           </Switcher>
         </ContentWrapper>
+        <Switcher>
+          Forgot your password?
+          <RemindButton variant="outlined" onClick={toggleModal}>
+            Remind
+          </RemindButton>
+        </Switcher>
       </AuthContainer>
       {modalIsShown && (
         <Modal onModalClose={toggleModal}>

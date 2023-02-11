@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchCurrentUser());
+      dispatch(fetchCurrentUser(token));
     }
   }, [dispatch, token]);
 

@@ -11,6 +11,7 @@ import {
   StyledIconButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -45,6 +46,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const { isLoading } = useSelector(getAuth);
+  const { t } = useTranslation('common');
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -68,7 +70,7 @@ const LoginForm = () => {
           <StyledInput
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t('Login.form.emailPlaceholder')}
             disableunderline="true"
           />
           <ErrorMessage name="email">
@@ -79,7 +81,7 @@ const LoginForm = () => {
           <StyledInput
             type={showPassword ? 'text' : 'password'}
             name="password"
-            placeholder="Password"
+            placeholder={t('Login.form.passwordPlaceholder')}
             disableunderline="true"
           />
           <StyledIconButton
@@ -95,7 +97,7 @@ const LoginForm = () => {
           </ErrorMessage>
         </Box>
         <FormButton variant="contained" type="submit">
-          {!isLoading ? 'Login' : <LoaderWhite />}
+          {!isLoading ? t('Login.form.btn') : <LoaderWhite />}
         </FormButton>
       </Form>
     </Formik>
