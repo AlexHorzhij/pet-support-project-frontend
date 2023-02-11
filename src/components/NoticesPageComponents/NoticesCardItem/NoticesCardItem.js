@@ -14,6 +14,7 @@ import {
   Btn,
 } from './NoticesCardItem.styled';
 import nophoto from 'assets/images/nophoto.gif';
+import { useTranslation } from 'react-i18next';
 
 export default function NoticesCardItem({
   data,
@@ -28,6 +29,7 @@ export default function NoticesCardItem({
   // // console.log('userID: ', userID);
 
   const [modalIsShown, setModalIsShown] = useState(false);
+  const { t } = useTranslation('common');
 
   const {
     owner,
@@ -102,24 +104,24 @@ export default function NoticesCardItem({
             <Title>{title}</Title>
             <ItemsList>
               <Li sx={{ height: '40px' }}>
-                <ItemText>Place:</ItemText>
+                <ItemText>{t('NoticesPage.card.1line')}</ItemText>
                 <ItemText>{location}</ItemText>
               </Li>
               <Li>
-                <ItemText>Breed:</ItemText>
+                <ItemText>{t('NoticesPage.card.2line')}</ItemText>
                 <ItemText>{breed}</ItemText>
               </Li>
               <Li>
-                <ItemText>Age:</ItemText>
+                <ItemText>{t('NoticesPage.card.3line')}</ItemText>
                 {age ? <ItemText>{age}</ItemText> : <ItemText>-</ItemText>}
               </Li>
 
               <Li>
-                <ItemText>Price:</ItemText>
+                <ItemText>{t('NoticesPage.card.4line')}</ItemText>
                 {price ? (
                   <ItemText>{price} $</ItemText>
                 ) : (
-                  <ItemText>free</ItemText>
+                    <ItemText>{ t('NoticesPage.card.4lineFree')}</ItemText>
                 )}
               </Li>
             </ItemsList>
@@ -140,7 +142,7 @@ export default function NoticesCardItem({
               variant="outlined"
               sx={{ width: '100%', color: '#F59256' }}
             >
-              Learn more
+              { t('NoticesPage.card.1btn')}
             </Btn>
 
             {user?._id === owner?._id && (

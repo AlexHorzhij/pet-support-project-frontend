@@ -11,6 +11,8 @@ import {
 import { ThreeCircles } from 'react-loader-spinner';
 import { useTheme } from '@mui/material';
 import { getNotices } from 'redux/notices/noticesSelectors';
+import { useTranslation } from 'react-i18next';
+
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,6 +20,7 @@ export default function NoticesCategoryList() {
   const { isLoggedIn, token } = useSelector(getAuth);
   const { categoryName } = params;
   const { isLoading } = useSelector(getNotices);
+  const { t } = useTranslation('common');
 
   const theme = useTheme();
   useEffect(() => {
@@ -41,7 +44,7 @@ export default function NoticesCategoryList() {
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        sell
+        {t('NoticesPage.categoryBtn.1category')}
       </Button>
       <Button
         name="lost-found"
@@ -49,7 +52,7 @@ export default function NoticesCategoryList() {
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        lost/found
+        {t('NoticesPage.categoryBtn.2category')}
       </Button>
       <Button
         variant={categoryName === 'for-free' ? 'contained' : 'outlined'}
@@ -57,7 +60,7 @@ export default function NoticesCategoryList() {
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        in good hands
+        {t('NoticesPage.categoryBtn.3category')}
       </Button>
       {isLoggedIn && (
         <>
@@ -67,7 +70,7 @@ export default function NoticesCategoryList() {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
           >
-            favorite ads
+            {t('NoticesPage.categoryBtn.4category')}
           </Button>
           <Button
             variant={categoryName === 'own' ? 'contained' : 'outlined'}
@@ -75,7 +78,7 @@ export default function NoticesCategoryList() {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
           >
-            my ads
+            {t('NoticesPage.categoryBtn.5category')}
           </Button>
         </>
       )}
