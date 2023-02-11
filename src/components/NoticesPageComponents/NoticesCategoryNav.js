@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 
 import { getAuth } from 'redux/auth/authSelectors';
-import { Box, Button, Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import {
   fetchNotices,
   fetchAuthNotices,
 } from 'redux/notices/noticesOperations';
-import { ThreeCircles } from 'react-loader-spinner';
+
 import { useTheme } from '@mui/material';
 import { getNotices } from 'redux/notices/noticesSelectors';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,6 @@ export default function NoticesCategoryList() {
   const params = useParams();
   const { isLoggedIn, token } = useSelector(getAuth);
   const { categoryName } = params;
-  const { isLoading } = useSelector(getNotices);
   const { t } = useTranslation('common');
 
   const theme = useTheme();
@@ -37,7 +36,7 @@ export default function NoticesCategoryList() {
   };
 
   return (
-    <Container sx={{ mb: 6, position: 'relative' }}>
+    <Container sx={{ position: 'relative' }}>
       <Button
         name="sell"
         variant={categoryName === 'sell' ? 'contained' : 'outlined'}
@@ -82,7 +81,7 @@ export default function NoticesCategoryList() {
           </Button>
         </>
       )}
-      {isLoading && (
+      {/* {isLoading && (
         <Box
           sx={{
             position: 'absolute',
@@ -100,7 +99,7 @@ export default function NoticesCategoryList() {
             ariaLabel="three-circles-rotating"
           />
         </Box>
-      )}
+      )} */}
     </Container>
   );
 }
