@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import { AuthLink } from 'components/Header/AuthNav/AuthNav.styled';
 import { Box } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
+
 export const AuthWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -18,10 +20,26 @@ export const MobileAuthNavigation = styled(Box)({
   },
 });
 
-export const MobileAuthLink = styled(AuthLink)({
+export const MobileAuthLink = styled(NavLink)({
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'row',
+  alignItems: 'flex-start',
   fontSize: '14px',
   lineHeight: '19px',
+  textDecoration: 'none',
+  color: '#111111',
   '@media screen and (max-width: 320px)': {
     maxWidth: '100%',
+  },
+  '&.current': {
+    color: '#ffffff',
+  },
+});
+export const AuthBtn = styled(Button)({
+  color: '#ffffff',
+  '&:first-child.active': {
+    color: '#ffffff',
+    background: '#f59256',
   },
 });

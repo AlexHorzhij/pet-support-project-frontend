@@ -6,6 +6,7 @@ export const MobileNavigation = styled(Navigation)({
     display: 'flex',
     flexDirection: 'column',
     height: '100vw',
+    marginLeft: '0',
   },
   '@media screen and (min-width: 768px) and (max-width: 1279px)': {
     marginTop: '88px',
@@ -21,12 +22,10 @@ export const MobileNavList = styled(NavList)({
   listStyle: 'none',
 });
 
-
 export const MobileNavListItem = styled.li`
       margin-bottom: 40px;
   }
 `;
-
 
 export const MobileNavLink = styled(LinkNav)({
   fontFamily: 'Manrope',

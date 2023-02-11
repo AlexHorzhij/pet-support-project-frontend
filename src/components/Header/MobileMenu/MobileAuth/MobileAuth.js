@@ -15,14 +15,14 @@ export default function MobileAuth() {
   return (
     <AuthWrapper>
       <MobileAuthNavigation>
-        <Button variant="outlined">
-          <MobileAuthLink to="/login" onClick={close}>
-            { t('Login') }
+        <Button variant="contained">
+          <MobileAuthLink to="/login" onClick={close} className="current">
+            {t('Login')}
           </MobileAuthLink>
         </Button>
         <Button variant="outlined">
           <MobileAuthLink to="register" onClick={close}>
-            {t('Registration')} 
+            {t('Registration')}
           </MobileAuthLink>
         </Button>
       </MobileAuthNavigation>

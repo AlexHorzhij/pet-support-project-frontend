@@ -32,8 +32,15 @@ export const BtnClose = styled.button`
   border: none;
   padding: 0;
   line-height: 0;
+`;
+export const BurgerMenuHeader = styled.div`
+  display: flex;
+  align-items: center;
   @media screen and (min-width: 768px) {
-    top: 20px;
-    right: 30px;
+    align-items: center;
   }
+`;
+export const LangBurgerWrapper = styled.div`
+  position: absolute;
+  right: 64px;
 `;
