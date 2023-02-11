@@ -1,28 +1,28 @@
-import Grid from '@mui/material/Grid';
-import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Pagination, Typography, Grid } from '@mui/material';
+import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import { sortObjByDate, usePagination } from 'services';
+import { getUser } from 'redux/userData/userDataSelectors';
 import { getNotices } from 'redux/notices/noticesSelectors';
+
+import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { getAuth } from 'redux/auth/authSelectors';
-import { sortObjByDate } from 'services/sortObjByDate';
 import {
   removeNoticeFromUserById,
   setFavorite,
 } from 'redux/notices/noticesOperations';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Box, Pagination, Typography } from '@mui/material';
-import usePagination from 'services/pagination';
-import { getUser } from 'redux/userData/userDataSelectors';
 import { toast } from 'react-hot-toast';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
+
 export default function NoticesGallery() {
   const { items } = useSelector(getNotices);
   const { categoryName } = useParams();
-
   const { token } = useSelector(getAuth);
   const user = useSelector(getUser);
   const dispatch = useDispatch();
+
   const data = sortObjByDate(items, 'create_at');
 
   const newData = data.filter(value => {
@@ -87,7 +87,7 @@ export default function NoticesGallery() {
 
   // ===========================
   const [page, setPage] = useState(1);
-  const PER_PAGE = 8;
+  const PER_PAGE = 16;
 
   const count = Math.ceil(newData.length / PER_PAGE);
   const paginationData = usePagination(newData, PER_PAGE);

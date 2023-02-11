@@ -79,7 +79,6 @@ export default function NoticesCardItem({
           image={nophoto}
           style={{
             height: '288px',
-            width: '100%',
             position: 'relative',
             objectFit: 'cover',
           }}
@@ -87,8 +86,10 @@ export default function NoticesCardItem({
           <CardMedia
             image={avatarUrl}
             style={{
+              height: '100%',
+              width: '100%',
               objectFit: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: '50% 50%',
             }}
           />
           <CategoryLabel>{category}</CategoryLabel>
@@ -189,6 +190,7 @@ export default function NoticesCardItem({
             </Btn>
           ) : (
             <Btn
+              variant="outlined"
               id={_id}
               onClick={toggleModal}
               sx={{ width: '100%', color: 'primary.main' }}
