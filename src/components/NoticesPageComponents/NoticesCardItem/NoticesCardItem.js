@@ -49,7 +49,6 @@ export default function NoticesCardItem({
     avatarUrl,
     category,
     favorite,
-
   } = data;
 
   const age = birthdate && distanceBetweenDateAndNowWords(birthdate);
@@ -87,17 +86,20 @@ export default function NoticesCardItem({
           <CardMedia
             image={avatarUrl}
             style={{
-              height: '100%',
-              width: '100%',
+              // height: '100%',
+              // width: '100%',
               objectFit: 'cover',
-              backgroundPosition: '50% 50%',
+              backgroundPosition: 'center',
             }}
           />
           <CategoryLable>{category}</CategoryLable>
-          <AddToFavorite handleChange={handleChange}
+          <AddToFavorite
+            handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
-            id={_id} favorite={favorite}
-            right="50px" top="50px"
+            id={_id}
+            favorite={favorite}
+            right="50px"
+            top="50px"
             style={{ position: 'absolute', right: '50px', top: '50px' }}
           />
           {categoryName === 'own' && (
@@ -115,7 +117,6 @@ export default function NoticesCardItem({
               >
                 {' '}
                 <ModeIcon />
-
               </IconButton>
 
               <Dialog
@@ -142,7 +143,6 @@ export default function NoticesCardItem({
             pb: 2,
             display: 'flex',
             flexDirection: 'column',
-
           }}
         >
           <CardContent style={{ padding: '20px 16px 0px 16px' }}>
@@ -183,7 +183,6 @@ export default function NoticesCardItem({
               Delete
             </Btn>
           ) : (
-
             <Btn
               id={_id}
               onClick={toggleModal}
@@ -195,13 +194,11 @@ export default function NoticesCardItem({
           )}
         </Box>
       </NoticeCard>
-      {
-        modalIsShown && (
-          <Modal onModalClose={toggleModal}>
-            <LearnMoreModal onModalClose={toggleModal} data={data} />
-          </Modal>
-        )
-      }
+      {modalIsShown && (
+        <Modal onModalClose={toggleModal}>
+          <LearnMoreModal onModalClose={toggleModal} data={data} />
+        </Modal>
+      )}
     </>
   );
 }

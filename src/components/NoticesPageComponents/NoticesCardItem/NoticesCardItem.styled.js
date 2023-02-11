@@ -2,22 +2,22 @@ import styled from '@emotion/styled';
 import { List, ListItem, ListItemText, Card, Button } from '@mui/material';
 
 export const NoticeCard = styled(Card)`
-  width: 100%;
-  max-width: 450px;
-  margin: 50px 0 0 0;
+  max-width: 400px;
   padding-bottom: 0;
-  gap: 32px;
-
+  flex-grow: 1;
   @media (min-width: 767.99px) {
-    min-width: 336px;
-  }
-  @media (min-width: 1279.99px) {
-    /* width: 288px; */
-    min-width: 288px;
+    max-width: 450px;
   }
 `;
 
+// @media (min-width: 1279.99px) {
+//   /* width: 288px; */
+//   /* min-width: 288px; */
+// } */
+
 export const Btn = styled(Button)`
+  max-width: 248px;
+  align-self: center;
   &:hover {
     color: 'white';
   }
