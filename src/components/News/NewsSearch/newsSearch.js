@@ -15,7 +15,7 @@ export function NewsSearch({ onSubmit }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
   const { t } = useTranslation('common');
-  
+
   const handleClearSearch = (event) => {
     event.preventDefault()
     setSearchParams('')
@@ -59,13 +59,25 @@ export function NewsSearch({ onSubmit }) {
         <IconButton
           onClick={handleClearSearch}
           type="submit"
-          sx={{ p: '10px' }}
+          sx={{
+            p: '10px',
+            '&:hover': {
+              color: 'text.primary',
+              backgroundColor: 'secondary.main',
+            }
+          }}
           aria-label="close"
         >
           <CloseIcon />
         </IconButton>
       ) : (
-        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+        <IconButton type="submit" sx={{
+          p: '10px',
+          '&:hover': {
+            color: 'text.primary',
+            backgroundColor: 'secondary.main',
+          }
+        }} aria-label="search">
           <SearchIcon />
         </IconButton>
       )}

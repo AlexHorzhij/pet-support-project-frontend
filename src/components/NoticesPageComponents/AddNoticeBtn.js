@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
-import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
+import { NoticeAddForm } from 'components';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

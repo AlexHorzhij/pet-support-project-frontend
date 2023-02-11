@@ -71,7 +71,6 @@ export const removeNoticeFromUserById = createAsyncThunk(
 export const updateNotice = createAsyncThunk(
   'updateNotice',
   async ({ editID, formData }, { rejectWithValue }) => {
-    console.log('editID: ', editID);
     try {
       const updatedNotice = await patchNotice(editID, formData)
       return updatedNotice

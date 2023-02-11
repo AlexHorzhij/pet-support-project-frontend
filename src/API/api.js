@@ -35,6 +35,11 @@ export async function verify(verificationToken) {
   return data;
 }
 
+export async function resendVerification(email) {
+  const { data } = await instance.post('auth/verify', email);
+  return data;
+}
+
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
   setToken.set(data.token);
@@ -136,14 +141,12 @@ export async function removeNoticesById(id) {
 }
 
 export async function patchNotice(editID, formData) {
-  console.log('editID, dit ', editID);
   try {
     const { data } = await instance.patch(`notices/user/${editID}`, formData, {
       headers: {
         'Content-Type': `multipart/form-data;`,
       },
     });
-    console.log('data.result: ', data.result);
     return data.result;
   } catch (error) {
     throw error;

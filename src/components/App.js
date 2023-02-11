@@ -17,6 +17,8 @@ const NewsPage = lazy(() => import('../pages/NewsPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 const NoticePage = lazy(() => import('../pages/NoticePage'));
 const VerificationPage = lazy(() => import('../pages/VerificationPage'));
+const ResendEmailPage = lazy(() => import('../pages/ResendEmailPage'));
+const ResetPasswordPage = lazy(() => import('../pages/ResetPasswordPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +26,6 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      console.log(token);
       dispatch(fetchCurrentUser(token));
     }
   }, [dispatch, token]);
@@ -42,6 +43,11 @@ function App() {
               <Route
                 path="verification/:verificationToken"
                 element={<VerificationPage />}
+              />
+              <Route path="verification" element={<ResendEmailPage />} />
+              <Route
+                path="resetpassword/:verificationToken"
+                element={<ResetPasswordPage />}
               />
             </Route>
             <Route path="news" element={<NewsPage />} />

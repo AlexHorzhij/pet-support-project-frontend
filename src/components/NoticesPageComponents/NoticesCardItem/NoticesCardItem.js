@@ -19,7 +19,7 @@ import {
   ItemsList,
   ItemText,
   Title,
-  CategoryLable,
+  CategoryLabel,
   NoticeCard,
   Btn,
 } from './NoticesCardItem.styled';
@@ -27,7 +27,7 @@ import nophoto from 'assets/images/nophoto.gif';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
-import { NoticeAddForm } from 'components/NoticeAddForm/NoticeAddForm';
+import { NoticeAddForm } from 'components';
 
 export default function NoticesCardItem({
   data,
@@ -39,6 +39,7 @@ export default function NoticesCardItem({
   const [modalIsShown, setModalIsShown] = useState(false);
   const { t } = useTranslation('common');
   const { categoryName } = useParams();
+
   const {
     _id,
     title,
@@ -70,8 +71,8 @@ export default function NoticesCardItem({
         variant="notice"
         sx={{
           width: '280px',
-          borderRadius: '0 0 40px 40px',
           position: 'relative',
+          borderRadius: '0 0 40px 40px',
         }}
       >
         <CardMedia
@@ -86,13 +87,11 @@ export default function NoticesCardItem({
           <CardMedia
             image={avatarUrl}
             style={{
-              // height: '100%',
-              // width: '100%',
               objectFit: 'cover',
               backgroundPosition: 'center',
             }}
           />
-          <CategoryLable>{category}</CategoryLable>
+          <CategoryLabel>{category}</CategoryLabel>
           <AddToFavorite
             handleChange={handleChange}
             bg={'rgba(255, 255, 255, 0.6)'}
@@ -109,6 +108,7 @@ export default function NoticesCardItem({
                 variant="outlined"
                 sx={{
                   color: 'primary.main',
+                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
                   position: 'absolute',
                   right: '12px',
                   top: '70px',
@@ -174,10 +174,15 @@ export default function NoticesCardItem({
 
           {categoryName === 'own' ? (
             <Btn
+              variant="outlined"
               id={_id}
               onClick={deleteCard}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256', mb: '12px', mt: 'auto' }}
+              sx={{
+                width: '100%',
+                color: 'primary.main',
+                mb: '12px',
+                mt: 'auto',
+              }}
               endIcon={<DeleteOutlineIcon />}
             >
               Delete
@@ -186,8 +191,7 @@ export default function NoticesCardItem({
             <Btn
               id={_id}
               onClick={toggleModal}
-              variant="outlined"
-              sx={{ width: '100%', color: '#F59256' }}
+              sx={{ width: '100%', color: 'primary.main' }}
             >
               {t('NoticesPage.card.1btn')}
             </Btn>
