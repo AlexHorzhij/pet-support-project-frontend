@@ -38,7 +38,8 @@ export default function NoticesCardItem({
   const [isEditing, setIsEditing] = useState(false);
   const [modalIsShown, setModalIsShown] = useState(false);
   const { t } = useTranslation('common');
-  const { categoryName } = useParams();
+  const { categoryName } = useParams()
+
   const {
     _id,
     title,
