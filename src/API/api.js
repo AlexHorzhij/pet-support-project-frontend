@@ -35,6 +35,12 @@ export async function verify(verificationToken) {
   return data;
 }
 
+export async function resendVerification(email) {
+  const { data } = await instance.post('auth/verify', email);
+  console.log(data);
+  return data;
+}
+
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
   setToken.set(data.token);

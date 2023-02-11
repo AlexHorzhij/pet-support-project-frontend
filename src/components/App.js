@@ -17,6 +17,7 @@ const NewsPage = lazy(() => import('../pages/NewsPage'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriendsPage'));
 const NoticePage = lazy(() => import('../pages/NoticePage'));
 const VerificationPage = lazy(() => import('../pages/VerificationPage'));
+const ResendEmailPage = lazy(() => import('../pages/ResendEmailPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
                 path="verification/:verificationToken"
                 element={<VerificationPage />}
               />
+              <Route path="verification" element={<ResendEmailPage />} />
             </Route>
             <Route path="news" element={<NewsPage />} />
             <Route path="friends" element={<OurFriendsPage />} />

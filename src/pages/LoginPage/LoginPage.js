@@ -12,7 +12,7 @@ import {
 import { Modal } from 'components';
 
 function LoginPage() {
-  const [modalIsShown, setModalIsShown] = useState(true);
+  const [modalIsShown, setModalIsShown] = useState(false);
 
   const toggleModal = () => {
     setModalIsShown(prev => !prev);

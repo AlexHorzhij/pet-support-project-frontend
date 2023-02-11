@@ -45,7 +45,9 @@ export default function RemindPasswordModal({ onModalClose }) {
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
-      <HeaderText>Enter your email and we will help you!</HeaderText>
+      <HeaderText>
+        If you want to reset password,enter your email and we will help you!
+      </HeaderText>
       <Formik
         initialValues={{ email: '' }}
         validationSchema={schema}
@@ -64,7 +66,7 @@ export default function RemindPasswordModal({ onModalClose }) {
             </ErrorMessage>
           </Box>
           <FormButton variant="contained" type="submit">
-            {!isLoading ? 'Remind' : <LoaderWhite />}
+            {!isLoading ? 'Send email' : <LoaderWhite />}
           </FormButton>
         </Form>
       </Formik>

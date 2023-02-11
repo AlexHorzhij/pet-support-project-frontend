@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   registerUser,
   verifyUser,
+  resendVerificationEmail,
   loginUser,
   logoutUser,
   fetchCurrentUser,
@@ -37,10 +38,21 @@ export const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(verifyUser.fulfilled, (state, { payload }) => {
+      .addCase(verifyUser.fulfilled, state => {
         state.isLoading = false;
       })
       .addCase(verifyUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(resendVerificationEmail.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(resendVerificationEmail.fulfilled, state => {
+        state.isLoading = false;
+      })
+      .addCase(resendVerificationEmail.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
@@ -78,7 +90,6 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.isLoadingUser = false;
         state.userEmail = payload.user.email;
         state.isLoggedIn = true;
