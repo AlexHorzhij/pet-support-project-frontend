@@ -39,7 +39,7 @@ export const AuthItem = styled.li`
       margin-right: 20px;
     }
   }
-  &:first-child.active {
+  &:first-of-type.active {
     border-radius: 40px;
     color: #ffffff;
     background: #f59256;
@@ -59,7 +59,7 @@ export const AuthLink = styled(NavLink)`
   border: 2px solid #f59256;
   border-radius: 40px;
   text-decoration: none;
-  &:first-child.active {
+  &:first-of-type.active {
     border-radius: 40px;
     color: #ffffff;
     background: #f59256;

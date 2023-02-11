@@ -38,7 +38,7 @@ export const MobileAuthLink = styled(NavLink)({
 });
 export const AuthBtn = styled(Button)({
   color: '#ffffff',
-  '&:first-child.active': {
+  '&:first-of-type.active': {
     color: '#ffffff',
     background: '#f59256',
   },

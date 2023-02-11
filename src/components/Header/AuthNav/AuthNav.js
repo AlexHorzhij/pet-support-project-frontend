@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { AuthList, AuthItem, AuthLink } from './AuthNav.styled';
-import { useTranslation } from 'react-i18next';
 
 export default function AuthNav() {
   const [isActive, setisActive] = useState(true);

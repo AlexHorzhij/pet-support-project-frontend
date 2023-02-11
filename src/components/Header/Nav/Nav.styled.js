@@ -26,10 +26,6 @@ export const LinkNav = styled(NavLink)`
   &:focus {
     color: rgba(245, 146, 86, 1);
     text-decoration-line: underline;
-    &.Mui-selected {
-      color: rgba(245, 146, 86, 1);
-      text-decoration-line: underline;
-    }
   }
 `;
 
@@ -43,8 +39,8 @@ export const NavList = styled.ul`
 `;
 export const ListItem = styled.li`
       width: 132px;          
-      &:not(:first-child){
-        margin-left: 30px;
+      &:not(:first-of-type){
+        margin-left: 20px;
       }
       text-align: center
   }
