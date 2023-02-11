@@ -27,6 +27,7 @@ export default function NoticesCardItem({
   const [isEditing, setIsEditing] = useState(false)
   const [modalIsShown, setModalIsShown] = useState(false);
   const { t } = useTranslation('common');
+  const { categoryName } = useParams()
 
   const {
     _id, title, breed, location, birthdate,
@@ -134,7 +135,7 @@ export default function NoticesCardItem({
                 {price ? (
                   <ItemText>{price} $</ItemText>
                 ) : (
-                    <ItemText>{ t('NoticesPage.card.4lineFree')}</ItemText>
+                  <ItemText>{t('NoticesPage.card.4lineFree')}</ItemText>
                 )}
               </Li>
             </ItemsList>
@@ -156,7 +157,7 @@ export default function NoticesCardItem({
               variant="outlined"
               sx={{ width: '100%', color: '#F59256' }}
             >
-              { t('NoticesPage.card.1btn')}
+              {t('NoticesPage.card.1btn')}
             </Btn>
           )}
         </Box>
