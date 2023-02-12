@@ -5,12 +5,7 @@ export const NewsGrid = styled(Grid)(({ theme }) => ({
   marginBottom: '40px',
 
   [theme.breakpoints.up('md')]: {
-    // marginBottom: '100px',
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    marginLeft: '16px',
-    marginRight: '16px',
-    // marginBottom: '200px',
+    marginLeft: '0px',
+    marginRight: '0px',
   },
 }));
