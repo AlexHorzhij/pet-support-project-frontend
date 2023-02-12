@@ -43,7 +43,7 @@ export const ThemeOptions = {
       fontWeight: 700,
       lineHeight: 1.47,
       position: 'relative',
-      zIndex: '50',
+      zIndex: '3',
     },
     fontFamily: 'Manrope',
     fontSize: 16,
