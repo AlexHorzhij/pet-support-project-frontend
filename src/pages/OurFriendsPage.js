@@ -1,14 +1,11 @@
 import { OurFriendsList } from 'components';
 import { useEffect } from 'react';
-import { Title } from 'components/Title/Title';
 import { useDispatch } from 'react-redux';
 import { fetchFriends } from 'redux/friends/friendsOperation';
-import {
-  CustomContainer,
-  Main,
-} from 'components/OurFriendsPageComponents/OurFiendsPage.styled';
+import { CustomContainer } from 'components/OurFriendsPageComponents/OurFiendsPage.styled';
 import { ScrollUpBtn } from 'components';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '@mui/material';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();
@@ -20,8 +17,8 @@ const OurFriendsPage = () => {
 
   return (
     <main>
-      <CustomContainer sx={{mt: 8}} >
-        <Title text={t("OurFriendsPage.title")} />
+      <CustomContainer sx={{ mt: 8 }} >
+        <Typography variant='h2' sx={{ textAlign: 'center' }}>text={t("OurFriendsPage.title")}</Typography>
         <OurFriendsList />
         <ScrollUpBtn />
       </CustomContainer>
