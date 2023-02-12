@@ -7,11 +7,12 @@ import {
   CustomContainer,
   Main,
 } from 'components/OurFriendsPageComponents/OurFiendsPage.styled';
+import { ScrollUpBtn } from 'components';
 import { useTranslation } from 'react-i18next';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();
-  const {t} = useTranslation('common')
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     dispatch(fetchFriends());
@@ -22,6 +23,7 @@ const OurFriendsPage = () => {
       <CustomContainer>
         <Title text={t("OurFriendsPage.title")} />
         <OurFriendsList />
+        <ScrollUpBtn />
       </CustomContainer>
     </Main>
   );
