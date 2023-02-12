@@ -33,9 +33,9 @@ function LoginPage() {
             <Link to="/register">{t('Login.form.footer.link')}</Link>
           </Switcher>
           <Switcher>
-            Forgot your password?
+            {t('Login.form.footer.forgotPass')}
             <RemindButton variant="outlined" onClick={toggleModal}>
-              Remind
+              {t('Login.form.footer.forgotPassLink')}
             </RemindButton>
           </Switcher>
         </ContentWrapper>
