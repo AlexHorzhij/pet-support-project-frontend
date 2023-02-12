@@ -19,13 +19,13 @@ const OurFriendsPage = () => {
   }, [dispatch]);
 
   return (
-    <Main>
-      <CustomContainer>
+    <main>
+      <CustomContainer sx={{mt: 8}} >
         <Title text={t("OurFriendsPage.title")} />
         <OurFriendsList />
         <ScrollUpBtn />
       </CustomContainer>
-    </Main>
+    </main>
   );
 };
 

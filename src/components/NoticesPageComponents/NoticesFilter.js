@@ -42,6 +42,7 @@ export default function NoticesFilter() {
     dispatch(fetchNotices({ categoryName }));
   }
 
+  
   return (
     <Container>
       {
