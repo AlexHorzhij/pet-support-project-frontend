@@ -16,14 +16,14 @@ export default function Nav() {
     <>
       <Navigation>
         <NavList>
-          <ListItem>
+          {/* <ListItem>
             <LinkNav
               to="/"
               style={({ isActive }) => (isActive ? activeStyle : pasStyle)}
             >
               {t('Home')}
             </LinkNav>
-          </ListItem>
+          </ListItem> */}
           <ListItem>
             <LinkNav
               to="/news"

@@ -20,12 +20,7 @@ export default function MobileMarkup({ onClose }) {
 
   return (
     <MobileMenu>
-      <BurgerMenuHeader>
-        <Logo />
-        <LangBurgerWrapper>
-          <MobileMultiLanguage />
-        </LangBurgerWrapper>
-      </BurgerMenuHeader>
+      <Logo />
       <MobileMenuContainer>
         {isLoggedIn ? <MobileUserNav /> : <MobileAuth />}
         <MobileNav />

@@ -14,7 +14,6 @@ export const AuthNavigation = styled(Box)({
 export const AuthList = styled.ul`
   display: flex;
   align-items: center;
-  margin-left: 246px;
   margin-right: auto;
   @media screen and (max-width: 767px) {
     display: none;

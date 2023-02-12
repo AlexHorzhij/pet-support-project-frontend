@@ -20,4 +20,5 @@ export const NavWrapper = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  // marginLeft: '30px',
 });

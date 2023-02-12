@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 
 export const LogoWrapper = styled.div`
-  padding-left: 24px;
   font-weight: 700;
 `;
 

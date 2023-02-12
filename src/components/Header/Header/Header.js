@@ -20,8 +20,8 @@ export default function ApplicationBar() {
           <Logo />
           <Nav />
           <NavWrapper>
-            {isLoggedIn ? <UserNav /> : <AuthNav />}
             <MultiLanguage />
+            {isLoggedIn ? <UserNav /> : <AuthNav />}
             <MobileMenu />
           </NavWrapper>
         </Wrapper>

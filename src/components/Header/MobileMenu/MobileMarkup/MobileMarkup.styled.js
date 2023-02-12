@@ -15,6 +15,7 @@ export const MobileMenu = styled.div`
   display: flex;
   padding-top: 12px;
   padding-bottom: 12px;
+  padding-left: 24px;
   flex-direction: column;
   z-index: 99;
   overflow-y: auto;
