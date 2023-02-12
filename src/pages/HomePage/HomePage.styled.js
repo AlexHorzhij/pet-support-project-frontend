@@ -18,7 +18,10 @@ export const AdaptiveTypography = styled(Typography)(({ theme }) => ({
 }));
 
 export const HomeContainer = styled(Box)(({ theme }) => ({
-  width: '100%,',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
   height: '100vh',
   paddingTop: '118px',
   backgroundColor: theme.palette.background.default,
@@ -28,6 +31,7 @@ export const HomeContainer = styled(Box)(({ theme }) => ({
   backgroundPosition: 'bottom',
   backgroundAttachment: 'fixed',
   overflow: 'hidden',
+  zIndex: '-1',
 
   [theme.breakpoints.up('md')]: {
     paddingTop: '160px',
@@ -87,7 +91,7 @@ export const HeartImage = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     position: 'fixed',
     top: '170px',
-    right: '475px',
+    right: '480px',
     width: '94px',
     height: '90px',
     backgroundColor: 'transparent',

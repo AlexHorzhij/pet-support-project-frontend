@@ -32,7 +32,7 @@ export const StyledInput = styled(Field)(({ theme }) => ({
 
 export const ErrorText = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  top: '33px',
+  top: '37px',
   fontSize: '14px',
   left: '0',
   padding: '5px 20px',
@@ -40,7 +40,7 @@ export const ErrorText = styled(Box)(({ theme }) => ({
   zIndex: '5',
 
   [theme.breakpoints.up('md')]: {
-    top: '48px',
+    top: '50px',
   },
 }));
 
