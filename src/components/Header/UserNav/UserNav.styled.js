@@ -19,3 +19,7 @@ export const UserAuthLink = styled(AuthLink)({
   background: '#f59256',
   color: '#FFFFFF',
 });
+export const IconSpan = styled.span`
+  margin-right: 14px;
+  padding-top: 4px;
+`;

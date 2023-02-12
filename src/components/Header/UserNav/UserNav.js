@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthNavigation } from '../AuthNav/AuthNav.styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useTranslation } from 'react-i18next';
-import { UserAuthLink, UserAuthItem } from './UserNav.styled';
+import { UserAuthLink, UserAuthItem, IconSpan } from './UserNav.styled';
 
 export default function UserNav() {
   const { t } = useTranslation('common');
@@ -10,7 +10,9 @@ export default function UserNav() {
     <AuthNavigation>
       <UserAuthItem>
         <UserAuthLink to="/login">
-          <AccountCircleIcon />
+          <IconSpan>
+            <AccountCircleIcon />
+          </IconSpan>
           {t('Header.accountBtn')}
         </UserAuthLink>
       </UserAuthItem>
