@@ -9,14 +9,15 @@ import {
   NewsList,
   NoNewsItem,
   ScrollUpBtn,
+  
 } from 'components';
-import { Main, NewsContainer } from 'pages/NewsPage/NewsPage.styled';
+// import { Main, NewsContainer } from 'pages/NewsPage/NewsPage.styled';
 
 import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
 import { getNews } from 'redux/news/newsSelectors';
 import { sortObjByDate } from 'services/sortObjByDate';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@mui/material';
+import { Typography, Container } from '@mui/material';
 
 export default function NewsPage() {
   const [value, setValue] = useState('');
@@ -66,8 +67,8 @@ export default function NewsPage() {
   const sortedNews = sortObjByDate(news, 'date');
 
   return (
-    <Main>
-      <NewsContainer>
+
+      <Container component="main">
         <Typography variant="h2" sx={{ textAlign: 'center' }}>
           {t('NewsPage.title')}
         </Typography>
@@ -80,7 +81,6 @@ export default function NewsPage() {
           <NoNewsItem value={query} />
         )}
         <ScrollUpBtn />
-      </NewsContainer>
-    </Main>
+      </Container>
   );
 }
