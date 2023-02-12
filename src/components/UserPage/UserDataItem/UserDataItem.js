@@ -57,7 +57,7 @@ function UserDataItem({
     <UserDataItemBox>
       <UserDataItemtitle>
         <UserDataTitle>
-          {title !== null ? title : 'Enter your data'}:
+          { title }:
         </UserDataTitle>
       </UserDataItemtitle>
       <UserDataItemInput
