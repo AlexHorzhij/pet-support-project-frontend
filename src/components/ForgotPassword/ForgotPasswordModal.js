@@ -14,6 +14,7 @@ import * as yup from 'yup';
 import { getAuth } from 'redux/auth/authSelectors';
 import { LoaderWhite } from 'components/Loader/Loader';
 import { sendResetPasswordEmail } from 'redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
@@ -31,6 +32,7 @@ const schema = yup.object().shape({
 export default function ForgotPasswordModal({ onModalClose }) {
   const { isLoading } = useSelector(getAuth);
   const dispatch = useDispatch();
+  const {t} = useTranslation('common')
 
   const handleSubmit = ({ email }) => {
     dispatch(sendResetPasswordEmail({ email: email }));
@@ -43,7 +45,7 @@ export default function ForgotPasswordModal({ onModalClose }) {
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
       <HeaderText>
-        If you want to reset password,enter your email and we will help you!
+        {t('Login.form.footer.forgotMsg')}
       </HeaderText>
       <Formik
         initialValues={{ email: '' }}
@@ -55,7 +57,7 @@ export default function ForgotPasswordModal({ onModalClose }) {
             <StyledInput
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder={t('Login.form.emailPlaceholder')}
               disableunderline="true"
             />
             <ErrorMessage name="email">
@@ -63,7 +65,7 @@ export default function ForgotPasswordModal({ onModalClose }) {
             </ErrorMessage>
           </Box>
           <FormButton variant="contained" type="submit">
-            {!isLoading ? 'Send email' : <LoaderWhite />}
+            {!isLoading ? t('Login.form.sendEmail') : <LoaderWhite />}
           </FormButton>
         </Form>
       </Formik>
