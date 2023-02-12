@@ -9,8 +9,8 @@ export const NewsGrid = styled(Grid)(({ theme }) => ({
   },
 
   [theme.breakpoints.up('lg')]: {
-    marginLeft: '16px',
-    marginRight: '16px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
     // marginBottom: '200px',
   },
 }));
