@@ -8,7 +8,7 @@ export const StyledLogoutButton = styled(IconButton)(({ theme }) => ({
   alignSelf: 'start',
   padding: '0',
   marginTop: '10px',
-  marginRight: '10px',
+  marginRight: '50px',
 
   [theme.breakpoints.down('lg')]: {
     marginTop: '35px',
