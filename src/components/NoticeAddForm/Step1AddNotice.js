@@ -23,7 +23,7 @@ const schema = yup.object().shape({
   breed: yup
     .string()
     .min(2)
-    .max(16)
+    .max(24)
     .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
 });
 
