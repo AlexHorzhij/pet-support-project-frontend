@@ -15,7 +15,7 @@ export default function ApplicationBar() {
 
   return (
     <MenuProvider>
-      <Header>
+      <Header style={{ zIndex: 5 }}>
         <Wrapper>
           <Logo />
           <Nav />
