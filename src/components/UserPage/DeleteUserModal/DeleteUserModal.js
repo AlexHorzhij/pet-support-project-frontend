@@ -9,6 +9,7 @@ import {
 } from 'components/NoticesPageComponents/LearnMoreModal/LearnMoreModal.styled';
 import {
   BoxFlex,
+  Warning,
   Text,
   AgreementText,
   DeleteModalButton,
@@ -29,9 +30,10 @@ export default function DeleteUserModal({ onModalClose }) {
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
       <Text variant="h4">
+        <Warning>Warning!</Warning>
         If you delete your account, all of your data will be removed, including
-        your pets data, your ads, and your favorites. Are you sure you want to
-        continue?
+        your pets data, your ads, and your favorites. <br />
+        Are you sure you want to continue?
       </Text>
       <AgreementText
         control={
