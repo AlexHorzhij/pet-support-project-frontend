@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import { AppBar, Container, Box } from '@mui/material';
 
 export const Header = styled(AppBar)({
-  position: 'static',
+  position: 'relative',
   paddingTop: '12px',
   paddingBottom: '12px',
   color: `#111111`,
