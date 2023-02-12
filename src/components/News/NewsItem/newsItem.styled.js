@@ -1,34 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
-import { Box, Container, Card, CardActions, Link } from '@mui/material';
-
-export const Main = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
-  // paddingTop: '42px',
-  // marginTop: '42px',
-  paddingBottom: '64px',
-
-  [theme.breakpoints.up('md')]: {
-    // marginTop: '60px',
-  },
-}));
-
-export const NewsContainer = styled(Container)(({ theme }) => ({
-  maxWidth: '474px',
-  margin: '0 auto',
-  padding: '0 20px',
-
-  [theme.breakpoints.up('md')]: {
-    maxWidth: '768px',
-    padding: '0 32px',
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    maxWidth: '1280px',
-    padding: '0 16px',
-  },
-}));
+import { Box, Card, CardActions, Link } from '@mui/material';
 
 export const Rectangle = styled(Skeleton)(({ theme }) => ({
   height: '4px',

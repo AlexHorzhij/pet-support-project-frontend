@@ -6,7 +6,6 @@ import Link from '@mui/material/Link';
 import MultiClamp from 'react-multi-clamp';
 import { useTranslation } from 'react-i18next';
 
-
 import {
   NewsCard,
   Rectangle,
@@ -17,10 +16,9 @@ import {
 } from './newsItem.styled';
 import { transformDate } from 'services/transformNewsDate';
 
-
 export const NewsItem = ({ _id, title, description, date, url }) => {
   const publicationDate = transformDate(date);
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
   return (
     <Grid
@@ -31,8 +29,8 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
       lg={4}
       style={{
         position: 'relative',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
         paddingTop: '0px',
       }}
     >
@@ -40,7 +38,6 @@ export const NewsItem = ({ _id, title, description, date, url }) => {
       <NewsCard sx={{ height: '100%' }} variant="standart">
         {_id}
         <CardContent style={{ overflow: 'hidden', padding: '0px' }}>
-
           <NewsTitle variant="h5" component="div">
             <MultiClamp ellipsis="..." clamp={2}>
               {' '}
