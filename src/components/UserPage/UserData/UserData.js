@@ -152,6 +152,7 @@ function UserData() {
                         borderRadius: '50%',
                         width: '30px',
                         height: '30px',
+                        fontSize: '15px',
                       }}
                     >
                       {items.length}
