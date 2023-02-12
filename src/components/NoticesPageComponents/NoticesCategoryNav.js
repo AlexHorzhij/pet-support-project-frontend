@@ -32,7 +32,7 @@ export default function NoticesCategoryList() {
   };
 
   return (
-    <Container sx={{ position: 'relative', p: {sm: 0}, mb: 2 }}>
+    <Container sx={{ position: 'relative', p: {sm: 0} }}>
       <Button
         name="sell"
         variant={categoryName === 'sell' ? 'contained' : 'outlined'}

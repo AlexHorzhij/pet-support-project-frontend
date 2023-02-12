@@ -21,7 +21,7 @@ export default function NoticePage() {
     <Container component="main" >
       <NoticesFilter />
       <Container
-        style={{ display: 'flex', justifyContent: 'space-between', }}
+        sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, p: {sm: 0}}}
       >
         <div>
           <NoticesCategoryNav />
@@ -35,7 +35,7 @@ export default function NoticePage() {
           <ThreeCircles color={palette.primary.main} />
         </Container>
         :
-        < NoticesGallery />}
+        < NoticesGallery sx={{pt: 2}} />}
       <ScrollUpBtn />
     </Container >
   );
