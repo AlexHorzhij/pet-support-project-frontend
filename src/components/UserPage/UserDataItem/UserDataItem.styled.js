@@ -32,12 +32,18 @@ export const UserDataItemBox = styled(Box)({
   '&:not(:last-child)': {
     marginBottom: '3px',
   },
+  '@media screen and (max-width: 500px)': {
+    flexDirection: 'column',
+  },
+});
+export const ItemWrapper = styled(Box)({
+  display: 'flex',
 });
 
 export const UserDataItemtitle = styled(Box)(({ theme }) => ({
   marginRight: 'auto',
   [theme.breakpoints.down('md')]: {
-    width: '80px',
+    minWidth: '80px',
   },
 }));
 
@@ -53,6 +59,14 @@ export const UserDataItemInput = styledEmotion.input`
 					font-size:18px;
 					line-height:25px;
 					letter-spacing: 0.8px;
+
+
+
+					   @media (max-width: 500px) {
+    			margin-left: 0px;
+					margin-right: auto;
+					font-size:12px;
+  }
 
 					   @media (max-width: 767.98px) {
     			width: 100%;

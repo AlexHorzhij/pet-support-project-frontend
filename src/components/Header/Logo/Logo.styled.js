@@ -1,21 +1,20 @@
 import styled from '@emotion/styled';
-import { Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 export const LogoWrapper = styled.div`
   font-weight: 700;
 `;
-
-export const LogoInfo = styled(Typography)({
-  margin: '0',
-  padding: '0',
+export const LogoInfo = styled(NavLink)({
   fontFamily: 'Poppins',
   fontWeight: '700',
   fontSize: '28px',
   lineHeight: '1.7',
   letterSpacing: '0.07em',
+  textDecoration: 'none',
+  color: 'inherit',
   '@media screen and (min-width: 768px)': {
     fontSize: '32px',
-    lineHeight: '48px',
+    lineHeight: '1.5',
   },
 });
 

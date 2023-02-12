@@ -16,10 +16,14 @@
 			"btn": "Login",
 			"emailPlaceholder": "Email",
 			"footer": {
+				"forgotMsg": "If you want to reset password,enter your email and we will help you!",
+				"forgotPass": "Forgot your password?",
+				"forgotPassLink": "Remind",
 				"link": "Register",
 				"msg": "Don't have an account?"
 			},
-			"passwordPlaceholder": "Password"
+			"passwordPlaceholder": "Password",
+			"sendEmail": "Send email"
 		},
 		"title": "Login"
 	},

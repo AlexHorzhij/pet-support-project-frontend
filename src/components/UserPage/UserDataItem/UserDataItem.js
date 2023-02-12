@@ -9,6 +9,7 @@ import {
   UserDataItemtitle,
   DoneRoundedIconStyled,
   ModeEditOutlineRoundedIconStyled,
+  ItemWrapper,
 } from './UserDataItem.styled';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/userData/userDataOperations';
@@ -20,6 +21,7 @@ function UserDataItem({
   disabled = true,
   pattern,
   textMessage,
+  hidden,
 }) {
   const dispatch = useDispatch();
 
@@ -39,7 +41,7 @@ function UserDataItem({
   };
   const debouncedInputHandler = useDebouncedCallback(value => {
     let name;
-    if (inputName === 'birthday') {
+    if (inputName === 'birthday' || 'дата народження') {
       name = 'birthdate';
     } else {
       name = inputName;
@@ -56,52 +58,52 @@ function UserDataItem({
   return (
     <UserDataItemBox>
       <UserDataItemtitle>
-        <UserDataTitle>
-          { title }:
-        </UserDataTitle>
+        <UserDataTitle>{title}:</UserDataTitle>
       </UserDataItemtitle>
-      <UserDataItemInput
-        ref={inputRef}
-        style={{
-          borderColor: inputState ? 'transparent' : '#F59256',
-          backgroundColor: inputState ? 'transparent' : '#FDF7F2',
-        }}
-        disabled={inputState}
-        value={inputValue !== null ? inputValue : 'Enter your data'}
-        onChange={e => {
-          setInputValue(e.target.value);
-          debouncedInputHandler(e.target.value);
-        }}
-        onBlur={changeInputState}
-      />
-      {inputName !== 'email' ? (
-        <IconButton
-          onClick={changeInputState}
-          sx={{
-            backgroundColor: '#FDF7F2',
-            width: '32px',
-            height: '32px',
-            '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
+      <ItemWrapper>
+        <UserDataItemInput
+          ref={inputRef}
+          style={{
+            borderColor: inputState ? 'transparent' : '#F59256',
+            backgroundColor: inputState ? 'transparent' : '#FDF7F2',
           }}
-        >
-          {inputState ? (
-            <ModeEditOutlineRoundedIconStyled />
-          ) : (
-            <DoneRoundedIconStyled />
-          )}
-        </IconButton>
-      ) : (
-        <IconButton
-          disabled={true}
-          sx={{
-            backgroundColor: '#FDF7F2',
-            width: '32px',
-            height: '32px',
+          disabled={inputState}
+          value={inputValue !== null ? inputValue : 'Enter your data'}
+          onChange={e => {
+            setInputValue(e.target.value);
+            debouncedInputHandler(e.target.value);
           }}
-        >
-          <DoneRoundedIconStyled sx={{ color: 'transparent' }} />
-        </IconButton>
-      )}
+          onBlur={changeInputState}
+        />
+        {hidden !== true ? (
+          <IconButton
+            onClick={changeInputState}
+            sx={{
+              backgroundColor: '#FDF7F2',
+              width: '32px',
+              height: '32px',
+              '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
+            }}
+          >
+            {inputState ? (
+              <ModeEditOutlineRoundedIconStyled />
+            ) : (
+              <DoneRoundedIconStyled />
+            )}
+          </IconButton>
+        ) : (
+          <IconButton
+            disabled={true}
+            sx={{
+              backgroundColor: '#FDF7F2',
+              width: '32px',
+              height: '32px',
+            }}
+          >
+            <DoneRoundedIconStyled sx={{ color: 'transparent' }} />
+          </IconButton>
+        )}
+      </ItemWrapper>
     </UserDataItemBox>
   );
 }
