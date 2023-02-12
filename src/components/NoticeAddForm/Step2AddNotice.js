@@ -28,7 +28,8 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
     avatarUrl: yup.string(),
     comments: yup
       .string()
-      .max(100, 'Comment should be no longer than 100 characters'),
+      .min(8)
+      .max(120, 'Comment should be no longer than 100 characters'),
   };
   if (data.category === 'sell') {
     validateSchema.price = yup
@@ -93,7 +94,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
               Female
             </StyledLabel>
             <ErrorMessage component="div" name="sex">
-              {msg => <ErrorText style={{top: "-32px", left: "50px"}}>*{msg}</ErrorText>}
+              {msg => <ErrorText style={{ top: "-32px", left: "50px" }}>*{msg}</ErrorText>}
             </ErrorMessage>
           </Box>
 

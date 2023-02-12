@@ -26,7 +26,7 @@ export default function ScrollUpBtn() {
                 sx={{
                     borderRadius: '50%',
                     width: '60px', height: '60px', color: 'lightgray',
-                    position: 'fixed', right: 100, bottom: 80, zIndex: 1,
+                    position: 'fixed', right: 40, bottom: 80, zIndex: 1,
                     boxShadow: `inset 0 0 0 5px ${palette.primary.main}`,
                     transition: '0.4s',
                     transform: offset > 100 ? 'translateY(0)' : 'translateY(150px)',

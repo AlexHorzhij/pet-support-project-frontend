@@ -59,6 +59,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
       }
 
       for (const key in actualValue) {
+        if (key !== 'avatarUrl')
         actualValue[key] = actualValue[key].trim()
       }
 
