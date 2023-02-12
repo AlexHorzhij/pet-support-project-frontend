@@ -42,6 +42,8 @@ export const ThemeOptions = {
       fontSize: 68,
       fontWeight: 700,
       lineHeight: 1.47,
+      position: 'relative',
+      zIndex: '50',
     },
     fontFamily: 'Manrope',
     fontSize: 16,
