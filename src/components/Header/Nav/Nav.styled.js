@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
-  margin: 0;
+  margin-left: 50px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -26,21 +26,22 @@ export const LinkNav = styled(NavLink)`
   &:focus {
     color: rgba(245, 146, 86, 1);
     text-decoration-line: underline;
-    &.Mui-selected {
-      color: rgba(245, 146, 86, 1);
-      text-decoration-line: underline;
-    }
   }
 `;
 
 export const NavList = styled.ul`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 export const ListItem = styled.li`
-      margin-left: 80px;
+      width: 132px;          
+      &:not(:first-of-type){
+        margin-left: 20px;
+      }
+      text-align: center
   }
 `;

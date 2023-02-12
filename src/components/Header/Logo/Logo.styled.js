@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 
 export const LogoWrapper = styled.div`
-  padding-left: 24px;
   font-weight: 700;
 `;
 
 export const LogoInfo = styled(Typography)({
   margin: '0',
-  padding: 0,
+  padding: '0',
   fontFamily: 'Poppins',
   fontWeight: '700',
   fontSize: '28px',
