@@ -187,6 +187,7 @@
 			"4lineErrMsg": "Enter valid phone number range 10 to 15 digits",
 			"5line": "City",
 			"5lineErrMsg": "Location name should begin with capital letters, and devided by comma and space",
+			"deleteAcc": "Delete Account",
 			"editPhotoBtn": "Edit photo",
 			"logoutBtn": "LogOut",
 			"onUpdate": "Updating"
