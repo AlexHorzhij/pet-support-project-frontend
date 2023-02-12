@@ -36,7 +36,6 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
     avatarUrl: oldData?.avatarUrl || '',
     comments: oldData?.comments || '',
   });
-  console.log(data);
 
   useEffect(() => {
     if (oldData?.category === 'sell') {
@@ -49,31 +48,39 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, category: data.category }));
+
+    const actualValue = { ...data, ...newData, category: data.category }
+    setData(actualValue)
 
     if (final) {
-      if (data.category !== 'sell') {
-        setData(prev => {
-          const date = prev
-          delete date.price
-          return { ...date, price: 0 }})
+      const targetValue = {}
+      if (newData !== 'sell') {
+        delete actualValue.price
+      }
+
+      for (const key in actualValue) {
+        actualValue[key] = actualValue[key].trim()
+      }
+
+      for (const key in actualValue) {
+        if (actualValue[key]) {
+          targetValue[key] = actualValue[key]
+        }
       }
 
       const formData = new FormData();
-      for (let value in newData) {
-        formData.append(value, newData[value]);
+      for (let value in targetValue) {
+        formData.append(value, targetValue[value]);
       }
 
       if (editID) {
         dispatch(updateNotice({ editID, formData }))
       }
-
       if (!editID) {
         dispatch(addNewNotice(formData));
       }
 
       handleClose();
-
       return;
     }
 

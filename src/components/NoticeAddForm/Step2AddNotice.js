@@ -23,7 +23,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
       .string()
       .min(3)
       .max(40)
-      .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+      .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
     avatarUrl: yup.string(),
     comments: yup
@@ -44,7 +44,6 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const schema = yup.object().shape(validateSchema);
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('values: ', values);
     next(values, true);
     resetForm();
   };
