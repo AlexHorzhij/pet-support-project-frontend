@@ -6,6 +6,7 @@ import {
   loginUser,
   logoutUser,
   fetchCurrentUser,
+  deleteUser,
 } from './authOperations';
 
 const initialState = {
@@ -70,7 +71,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-
       .addCase(logoutUser.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -97,6 +97,20 @@ export const authSlice = createSlice({
       .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isLoggedIn = false;
+        state.error = payload;
+      })
+      .addCase(deleteUser.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteUser.fulfilled, state => {
+        state.isLoading = false;
+        state.isLoggedIn = false;
+        state.userEmail = null;
+        state.token = null;
+      })
+      .addCase(deleteUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
         state.error = payload;
       });
   },

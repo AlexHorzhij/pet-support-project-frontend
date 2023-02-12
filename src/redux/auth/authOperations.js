@@ -9,6 +9,7 @@ import {
   resetPassword,
   logout,
   fetchCurrent,
+  deleteAccount,
 } from '../../API/api';
 
 export const registerUser = createAsyncThunk(
@@ -154,6 +155,25 @@ export const fetchCurrentUser = createAsyncThunk(
         message: response.data.message,
       };
       await logout();
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  'deleteUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      const result = await deleteAccount();
+      console.log(result);
+      toast.success('Your account successfully deleted!');
+      return result;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error('Oops! Deleting went wrong, please, try again');
       return rejectWithValue(error);
     }
   }
