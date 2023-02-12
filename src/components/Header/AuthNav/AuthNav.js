@@ -8,7 +8,7 @@ export default function AuthNav() {
   const [isActive, setisActive] = useState(true);
   const toggle = () => setisActive(isActive => !isActive);
   const activeStyle = { color: '#ffffff', background: '#f59256' };
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   return (
     <AuthList>
       <AuthItem>
@@ -17,12 +17,12 @@ export default function AuthNav() {
           onClick={toggle}
           style={isActive ? activeStyle : undefined}
         >
-          {t('Login')}
+          {t('Header.auth.login')}
         </AuthLink>
       </AuthItem>
       <AuthItem>
         <AuthLink to="register" onClick={toggle}>
-          {t('Registration')}
+          {t('Header.auth.reg')}
         </AuthLink>
       </AuthItem>
     </AuthList>
