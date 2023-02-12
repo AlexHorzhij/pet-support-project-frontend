@@ -14,7 +14,7 @@ export const BoxWrapper = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '20px 18px',
-  width: '411px',
+
   marginLeft: '-30px',
   boxShadow: theme.palette.boxShadow.main,
 
