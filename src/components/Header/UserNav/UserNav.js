@@ -1,19 +1,19 @@
 import React from 'react';
 import { AuthNavigation } from '../AuthNav/AuthNav.styled';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Button } from '@mui/material';
-import { AuthLink } from '../AuthNav/AuthNav.styled';
 import { useTranslation } from 'react-i18next';
-
+import { UserAuthLink, UserAuthItem } from './UserNav.styled';
 
 export default function UserNav() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
   return (
     <AuthNavigation>
-      <Button variant="contained">
-        <AccountCircleIcon />
-        <AuthLink to="/login">{t('Header.accountBtn')}</AuthLink>
-      </Button>
+      <UserAuthItem>
+        <UserAuthLink to="/login">
+          <AccountCircleIcon />
+          {t('Header.accountBtn')}
+        </UserAuthLink>
+      </UserAuthItem>
     </AuthNavigation>
   );
 }
