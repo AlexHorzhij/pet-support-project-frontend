@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Pagination, Typography, Grid } from '@mui/material';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import { sortObjByDate, usePagination } from 'services';
 import { getUser } from 'redux/userData/userDataSelectors';
 import { getNotices } from 'redux/notices/noticesSelectors';
-
-import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { getAuth } from 'redux/auth/authSelectors';
 import {
   removeNoticeFromUserById,
   setFavorite,
 } from 'redux/notices/noticesOperations';
-import { toast } from 'react-hot-toast';
+import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
 
 export default function NoticesGallery() {
+  const [title, setTitle] = useState('');
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 16;
+
   const { items } = useSelector(getNotices);
   const { categoryName } = useParams();
   const { token } = useSelector(getAuth);
@@ -34,19 +37,6 @@ export default function NoticesGallery() {
     }
     return value;
   });
-
-  const handleChange = event => {
-    const favorite = event.target.checked;
-    const id = event.target.id;
-    if (!token) {
-      return toast.error(`Please authorize for using this option`);
-    }
-    const req = favorite ? 'post' : 'delete';
-    const newData = { id, req, categoryName };
-
-    dispatch(setFavorite(newData));
-  };
-  const [title, setTitle] = useState('');
 
   useEffect(() => {
     sceletonTitleHandler(categoryName);
@@ -85,15 +75,23 @@ export default function NoticesGallery() {
     }
   };
 
-  // ===========================
-  const [page, setPage] = useState(1);
-  const PER_PAGE = 16;
-
   const count = Math.ceil(newData.length / PER_PAGE);
   const paginationData = usePagination(newData, PER_PAGE);
   const handleChangePagination = (event, page) => {
     setPage(page);
     paginationData.jump(page);
+  };
+
+  const handleChange = event => {
+    const favorite = event.target.checked;
+    const id = event.target.id;
+    if (!token) {
+      return toast.error(`Please authorize for using this option`);
+    }
+    const req = favorite ? 'post' : 'delete';
+    const newData = { id, req, categoryName };
+
+    dispatch(setFavorite(newData));
   };
 
   const deleteCard = e => {
@@ -107,14 +105,8 @@ export default function NoticesGallery() {
         spacing={4}
         sx={{
           pb: 6,
-          // gap: '32px',
         }}
       >
-        {/* {error && <p>{error.data}</p>}
-      <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
-        {isLoading ? <Loader /> : ''}
-      </div> */}
-
         {newData.length > 0 ? (
           paginationData.currentData().map(item => {
             return (

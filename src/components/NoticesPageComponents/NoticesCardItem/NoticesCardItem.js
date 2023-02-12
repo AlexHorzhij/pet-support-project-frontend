@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-
+import { useParams } from 'react-router-dom';
+import nophoto from 'assets/images/nophoto.gif';
+import { useTranslation } from 'react-i18next';
 import ModeIcon from '@mui/icons-material/Mode';
-
 import {
   CardMedia,
   CardContent,
@@ -10,10 +11,14 @@ import {
   Dialog,
   DialogContent,
 } from '@mui/material';
-
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { AddToFavorite, Modal, LearnMoreModal } from 'components';
-import distanceBetweenDateAndNowWords from 'services/distanceBetweenDateAndNowWords';
+import {
+  AddToFavorite,
+  Modal,
+  LearnMoreModal,
+  NoticeAddForm,
+} from 'components';
+import { distanceBetweenDateAndNowWords } from 'services';
 import {
   Li,
   ItemsList,
@@ -23,11 +28,7 @@ import {
   NoticeCard,
   Btn,
 } from './NoticesCardItem.styled';
-import nophoto from 'assets/images/nophoto.gif';
-import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { DialogTitleStyled } from 'components/NoticeAddForm/NoticeAddForm.styled';
-import { NoticeAddForm } from 'components';
 
 export default function NoticesCardItem({
   data,
@@ -72,9 +73,9 @@ export default function NoticesCardItem({
       <NoticeCard
         variant="notice"
         sx={{
+          display: 'grid',
           width: '280px',
           position: 'relative',
-          borderRadius: '0 0 40px 40px',
         }}
       >
         <CardMedia
@@ -97,12 +98,17 @@ export default function NoticesCardItem({
           <CategoryLabel>{category}</CategoryLabel>
           <AddToFavorite
             handleChange={handleChange}
-            bg={'rgba(255, 255, 255, 0.6)'}
+            bg="background.fond"
             id={_id}
             favorite={favorite}
             right="50px"
             top="50px"
-            style={{ position: 'absolute', right: '50px', top: '50px' }}
+            style={{
+              position: 'absolute',
+              right: '50px',
+              top: '50px',
+              transition: 'background-color 1000ms linear',
+            }}
           />
           {categoryName === 'own' && (
             <div>
@@ -111,7 +117,7 @@ export default function NoticesCardItem({
                 variant="outlined"
                 sx={{
                   color: 'primary.main',
-                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                  backgroundColor: 'background.fond',
                   position: 'absolute',
                   right: '12px',
                   top: '70px',
@@ -148,7 +154,9 @@ export default function NoticesCardItem({
             flexDirection: 'column',
           }}
         >
-          <CardContent style={{ padding: '20px 16px 0px 16px' }}>
+          <CardContent
+            style={{ padding: '20px 16px 0px 16px', marginBottom: 'auto' }}
+          >
             <Title>{title}</Title>
             <ItemsList>
               <Li sx={{ height: '40px' }}>

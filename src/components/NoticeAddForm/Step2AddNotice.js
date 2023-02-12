@@ -23,7 +23,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
       .string()
       .min(3)
       .max(40)
-      .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+      .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
     avatarUrl: yup.string(),
     comments: yup
@@ -44,7 +44,6 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const schema = yup.object().shape(validateSchema);
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('values: ', values);
     next(values, true);
     resetForm();
   };
@@ -74,7 +73,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             Sex *
           </Typography>
 
-          <div
+          <Box sx={{ position: 'relative' }}
             style={{ display: 'flex' }}
             role="group"
             aria-label="my-radio-group"
@@ -82,25 +81,21 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             <StyledLabel>
               <StyledInputCheckBox
                 style={{ backgroundImage: `url(${MaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="male"
+                type="radio" name="sex" value="male"
               />
               Male
             </StyledLabel>
             <StyledLabel>
               <StyledInputCheckBox
                 style={{ backgroundImage: `url(${FemaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="female"
+                type="radio" name="sex" value="female"
               />
               Female
             </StyledLabel>
             <ErrorMessage component="div" name="sex">
-              {msg => <ErrorText>*{msg}</ErrorText>}
+              {msg => <ErrorText style={{top: "-32px", left: "50px"}}>*{msg}</ErrorText>}
             </ErrorMessage>
-          </div>
+          </Box>
 
           <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
             Location *

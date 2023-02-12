@@ -1,18 +1,30 @@
 import React from 'react';
-
-import { AuthNavigation, AuthBtn, AuthLink } from './AuthNav.styled';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { AuthList, AuthItem, AuthLink } from './AuthNav.styled';
+
 export default function AuthNav() {
-  const { t } = useTranslation('common');
+  const [isActive, setisActive] = useState(true);
+  const toggle = () => setisActive(isActive => !isActive);
+  const activeStyle = { color: '#ffffff', background: '#f59256' };
+  const { t } = useTranslation();
   return (
-    <AuthNavigation>
-      <AuthBtn variant="outlined">
-        <AuthLink to="/login">{ t('Header.auth.login')}</AuthLink>
-      </AuthBtn>
-      <AuthBtn variant="outlined">
-        <AuthLink to="register">{ t('Header.auth.reg')}</AuthLink>
-      </AuthBtn>
-    </AuthNavigation>
+    <AuthList>
+      <AuthItem>
+        <AuthLink
+          to="/login"
+          onClick={toggle}
+          style={isActive ? activeStyle : undefined}
+        >
+          {t('Login')}
+        </AuthLink>
+      </AuthItem>
+      <AuthItem>
+        <AuthLink to="register" onClick={toggle}>
+          {t('Registration')}
+        </AuthLink>
+      </AuthItem>
+    </AuthList>
   );
 }

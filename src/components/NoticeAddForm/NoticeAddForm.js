@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addNewNotice, updateNotice } from 'redux/notices/noticesOperations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
@@ -10,7 +10,7 @@ import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import React from 'react'
 
 
-export default function NoticeAddForm({ handleClose, oldData, editID })  {
+export default function NoticeAddForm({ handleClose, oldData, editID }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
@@ -37,26 +37,50 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
     comments: oldData?.comments || '',
   });
 
+  useEffect(() => {
+    if (oldData?.category === 'sell') {
+      setData(prev => ({ ...prev, price: oldData.price }))
+    }
+  }, [oldData])
+
   const handleNextStep = (newData, final = false) => {
     if (!data.category) {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, category: data.category }));
+
+    const actualValue = { ...data, ...newData, category: data.category }
+    setData(actualValue)
 
     if (final) {
+      const targetValue = {}
+      if (newData !== 'sell') {
+        delete actualValue.price
+      }
+
+      for (const key in actualValue) {
+        actualValue[key] = actualValue[key].trim()
+      }
+
+      for (const key in actualValue) {
+        if (actualValue[key]) {
+          targetValue[key] = actualValue[key]
+        }
+      }
+
       const formData = new FormData();
-      for (let value in newData) {
-        formData.append(value, newData[value]);
+      for (let value in targetValue) {
+        formData.append(value, targetValue[value]);
       }
 
       if (editID) {
         dispatch(updateNotice({ editID, formData }))
       }
-      dispatch(addNewNotice(formData));
+      if (!editID) {
+        dispatch(addNewNotice(formData));
+      }
 
       handleClose();
-
       return;
     }
 
@@ -95,6 +119,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID })  {
   ];
 
   const onClickCategory = async e => {
+    console.log('e.target.name: ', e.target.name);
     setData(prev => ({ ...prev, category: e.target.name }));
   };
 

@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-import { LoaderPage, NewsSearch, NewsList, NoNewsItem } from 'components';
+import {
+  LoaderPage,
+  NewsSearch,
+  NewsList,
+  NoNewsItem,
+  ScrollUpBtn,
+} from 'components';
 import { Main, NewsContainer } from 'pages/NewsPage/NewsPage.styled';
 
 import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
@@ -73,6 +79,7 @@ export default function NewsPage() {
         ) : (
           <NoNewsItem value={query} />
         )}
+        <ScrollUpBtn />
       </NewsContainer>
     </Main>
   );

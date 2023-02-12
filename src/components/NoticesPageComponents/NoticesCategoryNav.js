@@ -5,8 +5,10 @@ import { getAuth } from 'redux/auth/authSelectors';
 import { Button, Container } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-import { fetchNotices, fetchAuthNotices } from 'redux/notices/noticesOperations';
-
+import {
+  fetchNotices,
+  fetchAuthNotices,
+} from 'redux/notices/noticesOperations';
 
 export default function NoticesCategoryList() {
   const navigate = useNavigate();

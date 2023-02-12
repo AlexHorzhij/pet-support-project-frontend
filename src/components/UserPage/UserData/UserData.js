@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
@@ -14,17 +14,26 @@ import {
   PhotoCameraIconStyled,
   WrapperBox,
   LoaderWrapper,
+  StyledLink,
 } from './UserData.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, isLoadingUpdate } from 'redux/userData/userDataSelectors';
 import { updateUser } from 'redux/userData/userDataOperations';
 import { Loader } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import DeleteButton from 'components/UserPage/DeleteUser/DeleteButton';
+
+import { getNotices } from 'redux/notices/noticesSelectors';
+import { getAuth } from 'redux/auth/authSelectors';
+import { fetchAuthNotices } from 'redux/notices/noticesOperations';
 
 function UserData() {
+  const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const isBeingUpdated = useSelector(isLoadingUpdate);
+  const { items } = useSelector(getNotices);
+  console.log('items: ', items);
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     accept: {
@@ -47,6 +56,10 @@ function UserData() {
       dispatch(updateUser({ name: 'avatarUrl', value: acceptedFiles[0] }));
     }
   }, [dispatch, acceptedFiles]);
+  const categoryName = 'own';
+  useEffect(() => {
+    dispatch(fetchAuthNotices({ token, categoryName }));
+  }, [dispatch, token]);
 
   return (
     <>
@@ -56,7 +69,9 @@ function UserData() {
             {isBeingUpdated ? (
               <>
                 {isMobileScreens ? null : (
-                  <Typography sx={{ marginBottom: '5px' }}>{ t('User.card.onUpdate')}</Typography>
+                  <Typography sx={{ marginBottom: '5px' }}>
+                    {t('User.card.onUpdate')}
+                  </Typography>
                 )}
                 <Loader />
               </>
@@ -77,7 +92,9 @@ function UserData() {
                 <input {...getInputProps()} />
                 <StyledButton>
                   <PhotoCameraIconStyled />
-                  <Typography sx={{ fontSize: '12px' }}>{ t('User.card.editPhotoBtn')}</Typography>
+                  <Typography sx={{ fontSize: '12px' }}>
+                    {t('User.card.editPhotoBtn')}
+                  </Typography>
                 </StyledButton>
               </div>
             </div>
@@ -87,22 +104,16 @@ function UserData() {
               {user && (
                 <>
                   <UserDataItem
-                    title={t('User.card.1line')}
-                    value={user.name}
-                    pattern={namePattern}
-                    textMessage={t('User.card.1lineErrMsg')}
-                  />
-                  <UserDataItem
                     title={t('User.card.2line')}
                     value={user.email}
                     pattern={emailPattern}
                     textMessage={t('User.card.2lineErrMsg')}
                   />
                   <UserDataItem
-                    title={t('User.card.3line')}
+                    title={t('User.card.1line')}
                     value={user.name}
                     pattern={namePattern}
-                    textMessage={t('User.card.3lineErrMsg')}
+                    textMessage={t('User.card.1lineErrMsg')}
                   />
 
                   <UserDataItem
@@ -118,17 +129,41 @@ function UserData() {
                     textMessage={t('User.card.5lineErrMsg')}
                   />
                   <UserDataItem
-                    title={'Birthday'}
+                    title={t('User.card.3line')}
                     value={user.birthdate}
                     pattern={datePattern}
-                    textMessage={
-                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
-                    }
+                    textMessage={t('User.card.3lineErrMsg')}
                   />
                 </>
               )}
             </WrapperBox>
+            <Box sx={{ mt: '10px', mb: '10px' }}>
+              <StyledLink to="/notices/own">
+                {items.length > 0 && (
+                  <>
+                    My notices
+                    <span
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginLeft: '15px',
+                        backgroundColor: '#e7e7e7',
+                        padding: '5px',
+                        borderRadius: '50%',
+                        width: '30px',
+                        height: '30px',
+                        fontSize: '15px',
+                      }}
+                    >
+                      {items.length}
+                    </span>
+                  </>
+                )}
+              </StyledLink>
+            </Box>
             <Logout />
+            <DeleteButton />
           </WrapperBox>
         </BoxWrapper>
       )}

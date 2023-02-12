@@ -74,6 +74,11 @@ export async function logout() {
   return data;
 }
 
+export async function deleteAccount() {
+  const { data } = await instance.delete('user');
+  return data.result;
+}
+
 //======================== NOTICES  ==========================
 
 // ---------------------for all
@@ -153,7 +158,7 @@ export async function removeNoticesById(id) {
 
 export async function patchNotice(editID, formData) {
   console.log('editID: ', editID);
-  formDataEntries(formData)
+  formDataEntries(formData);
   try {
     const { data } = await instance.patch(`notices/user/${editID}`, formData, {
       headers: {

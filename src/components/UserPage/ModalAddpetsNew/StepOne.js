@@ -10,7 +10,17 @@ import {
   ModalTypography,
 } from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
 import { useTranslation } from 'react-i18next';
+import { parse, isDate } from 'date-fns';
+function parseDateString(originalValue) {
+  if (originalValue.length < 2) {
+    return;
+  }
+  const parsedDate = isDate(originalValue)
+    ? originalValue
+    : parse(originalValue, 'MM-dd-yyyy', new Date());
 
+  return parsedDate;
+}
 const min = '1990-01-01';
 const schema = yup.object().shape({
   name: yup
@@ -21,10 +31,8 @@ const schema = yup.object().shape({
     .required(),
   date: yup
     .date()
-    .max(
-      new Date(Date.now()),
-      `Input correct date MM.DD.YYYY no later than today`
-    )
+    .transform(parseDateString)
+    .max(new Date(Date.now()), `Input correct date no later than today`)
     .min(new Date(min), `Input correct  no erlier than 1990`)
     .required(),
   breed: yup
@@ -50,10 +58,10 @@ const StepOne = ({ next, data, onModalClose }) => {
     >
       <Form>
         <ModalGrid>
-          <ModalTypography>{t('ModalAddPetNew.1line.title') }*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.1line.title')}*</ModalTypography>
           <StyledInput
             name="name"
-            placeholder={ t('ModalAddPetNew.1line.placeholder')}
+            placeholder={t('ModalAddPetNew.1line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="name">
@@ -61,7 +69,7 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{ t('ModalAddPetNew.2line.title')}*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.2line.title')}*</ModalTypography>
           <StyledInput
             name="date"
             placeholder={t('ModalAddPetNew.2line.placeholder')}
@@ -72,10 +80,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>{ t('ModalAddPetNew.3line.title')}*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.3line.title')}*</ModalTypography>
           <StyledInput
             name="breed"
-            placeholder={t("ModalAddPetNew.3line.placeholder")}
+            placeholder={t('ModalAddPetNew.3line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="breed">

@@ -71,7 +71,7 @@ export const noticesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(setFavorite.pending, state => {
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(setFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
@@ -88,18 +88,17 @@ export const noticesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateNotice.pending, state => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(updateNotice.fulfilled, (state, { payload }) => {
+        console.log('payload._id', payload._id);
         state.isLoading = false;
-        const index = state.items.findIndex(
-          item => item._id === payload._id
-        );
-        state.items.splice(index, 1, payload)
+        const index = state.items.findIndex(item => item._id === payload._id);
+        state.items.splice(index, 1, payload);
       })
       .addCase(updateNotice.rejected, (state, { payload }) => {
-        state.isLoading = false
-        state.error = payload.error
-      })
+        state.isLoading = false;
+        state.error = payload.error;
+      });
   },
 });
