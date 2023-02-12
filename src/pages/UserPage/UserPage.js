@@ -11,6 +11,7 @@ import {
   AddPetIcon,
   PetDataBox,
   SceletonWrapper,
+  PetItemAndButtonWrapper,
 } from './UserPage.styled';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import { fetchUserData } from 'redux/userData/userDataOperations';
@@ -52,15 +53,17 @@ function UserPage() {
             <UserData />
           </Box>
           <PetDataBox>
-            <UserDataTypography variant="h3">
-              {t('User.title2')}
-            </UserDataTypography>
-            <UserDataIconButton onClick={handleCloseAddNotice}>
-              <AddPetTypography variant="h5" color="text.primary">
-                {t('User.addPetBtn')}
-              </AddPetTypography>
-              <AddPetIcon />
-            </UserDataIconButton>
+            <PetItemAndButtonWrapper>
+              <UserDataTypography variant="h3">
+                {t('User.title2')}
+              </UserDataTypography>
+              <UserDataIconButton onClick={handleCloseAddNotice}>
+                <AddPetTypography variant="h5" color="text.primary">
+                  {t('User.addPetBtn')}
+                </AddPetTypography>
+                <AddPetIcon />
+              </UserDataIconButton>
+            </PetItemAndButtonWrapper>
             {pets.length > 0 ? (
               <>
                 <PetsData />

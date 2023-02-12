@@ -42,7 +42,7 @@
 			"title": "Name Pet"
 		},
 		"2line": {
-			"placeholder": "Type date of birth DD.MM.YYYY",
+			"placeholder": "Type date of birth MM-DD-YYYY",
 			"title": "Date of birth"
 		},
 		"3line": {
@@ -196,5 +196,6 @@
 		},
 		"title": "My Information:",
 		"title2": "My pets:"
-	}
+	},
+	"homeTitle": "Take good care of your small pets"
 }
