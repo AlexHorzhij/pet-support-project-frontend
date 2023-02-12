@@ -8,6 +8,7 @@ import {
   NewsSearch,
   NewsList,
   NoNewsItem,
+  ScrollUpBtn
 } from 'components';
 import { Main, NewsContainer } from 'components/News/NewsItem/newsItem.styled';
 
@@ -72,9 +73,10 @@ export default function NewsPage() {
         {isLoading && <LoaderPage />}
         {news.length !== 0
           ? <NewsList news={sortedNews} />
-          : <NoNewsItem value={query} />}
-
+          : <NoNewsItem value={query} />
+        }
+        <ScrollUpBtn />
       </NewsContainer>
     </Main>
-  );
+)
 }
