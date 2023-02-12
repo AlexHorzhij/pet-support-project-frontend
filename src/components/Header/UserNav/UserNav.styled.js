@@ -16,4 +16,6 @@ export const UserAuthLink = styled(AuthLink)({
   display: 'flex',
   alignItems: 'center',
   letterSpacing: '0.04em',
+  background: '#f59256',
+  color: '#FFFFFF',
 });
