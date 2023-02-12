@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { formDataEntries } from 'services/formDataEntries';
 
 const BASE_URL = 'https://pet-support-project.onrender.com/api';
 
@@ -23,7 +24,7 @@ const setCurrentToken = token => {
   setToken.unset();
 };
 
-//======================== AUNTIFICATION  ==========================
+//======================== AUTHENTIFICATION  ==========================
 
 export async function register(signupData) {
   const { data } = await instance.post('auth/signup', signupData);
@@ -35,9 +36,24 @@ export async function verify(verificationToken) {
   return data;
 }
 
+export async function resendVerification(email) {
+  const { data } = await instance.post('auth/verify', email);
+  return data;
+}
+
 export async function login(signupData) {
   const { data } = await instance.post('auth/login', signupData);
   setToken.set(data.token);
+  return data;
+}
+
+export async function sendResetEmail(email) {
+  const { data } = await instance.post('auth/reset', email);
+  return data;
+}
+
+export async function resetPassword({ resetToken, body }) {
+  const { data } = await instance.patch(`auth/reset/${resetToken}`, body);
   return data;
 }
 
@@ -130,6 +146,22 @@ export async function removeNoticesById(id) {
   try {
     const { data } = await instance.delete(`notices/user/${id}`);
     return data.result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function patchNotice(editID, formData) {
+  console.log('editID: ', editID);
+  formDataEntries(formData)
+  try {
+    const { data } = await instance.patch(`notices/user/${editID}`, formData, {
+      headers: {
+        'Content-Type': `multipart/form-data;`,
+      },
+    });
+    console.log('data: ', data)
+    return data;
   } catch (error) {
     throw error;
   }

@@ -10,6 +10,7 @@ const palette = {
   background: {
     default: '#FDF7F2',
     paper: '#FFFFFF',
+    fond: 'rgba(255, 255, 255, 0.6)',
   },
   warning: {
     main: '#ff1800',
@@ -104,7 +105,7 @@ export const ThemeOptions = {
           style: {
             background: palette.secondary.main,
             boxShadow: '7px 4px 14px rgba(49, 21, 4, 0.07)',
-            borderRadius: '0px 0px 20px 20px',
+            borderRadius: '0px 0px 40px 40px',
           },
         },
       ],

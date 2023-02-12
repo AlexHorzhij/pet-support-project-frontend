@@ -6,6 +6,7 @@ import {
   removeNoticeFromUserById,
   addNewNotice,
   setFavorite,
+  updateNotice,
 } from './noticesOperations';
 
 const initialState = {
@@ -54,8 +55,6 @@ export const noticesSlice = createSlice({
         );
         state.items = newNoticeList;
         state.isLoading = false;
-
-        // state.items = state.items.filter(item => item.id !== payload.id);
       })
       .addCase(removeNoticeFromUserById.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -72,7 +71,7 @@ export const noticesSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(setFavorite.pending, state => {
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(setFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
@@ -87,6 +86,19 @@ export const noticesSlice = createSlice({
       })
       .addCase(setFavorite.rejected, state => {
         state.isLoading = false;
+      })
+      .addCase(updateNotice.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(updateNotice.fulfilled, (state, { payload }) => {
+        console.log('payload._id', payload._id);
+        state.isLoading = false;
+        const index = state.items.findIndex(item => item._id === payload._id);
+        state.items.splice(index, 1, payload);
+      })
+      .addCase(updateNotice.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload.error;
       });
   },
 });

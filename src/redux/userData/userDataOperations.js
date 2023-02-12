@@ -15,7 +15,6 @@ export const fetchUserData = createAsyncThunk(
     try {
       const userData = await requestUserData(auth.token);
       if (!userData) {
-        console.log('message');
       }
       return userData;
     } catch (error) {

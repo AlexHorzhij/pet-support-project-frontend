@@ -1,61 +1,92 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { addNewNotice, updateNotice } from 'redux/notices/noticesOperations';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
+import { Button, Container } from '@mui/material';
+
 import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
 import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
-import { addNewNotice } from 'redux/notices/noticesOperations';
-import { Button, Container } from '@mui/material';
-import { toast } from 'react-hot-toast';
+import React from 'react'
 
-export const NoticeAddForm = ({ handleClose }) => {
+
+export default function NoticeAddForm({ handleClose, oldData, editID }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
+  const { categoryName } = useParams()
+
+  const NOTICE_CATEGORY = {
+    'lost-found': 'lost/found',
+    'for-free': 'in good hands',
+    sell: 'sell',
+  };
 
   const dispatch = useDispatch();
   const [data, setData] = useState({
     // step-1:
-    category: '',
-    title: '',
-    name: '',
-    birthdate: '',
-    breed: '',
+    category: oldData?.category || NOTICE_CATEGORY[categoryName],
+    title: oldData?.title || '',
+    name: oldData?.name || '',
+    birthdate: oldData?.birthdate || '',
+    breed: oldData?.breed || '',
     // step-2:
-    sex: '',
-    location: '',
-    price: '',
-    avatarUrl: '',
-    description: '',
+    sex: oldData?.sex || '',
+    location: oldData?.location || '',
+    price: oldData?.price || '',
+    avatarUrl: oldData?.avatarUrl || '',
+    comments: oldData?.comments || '',
   });
-  console.log('data.category: ', data.category);
 
-  // const handleStatus = (_, newStatus) => {
-  //   if (newStatus !== null) {
-  //     setCategory(newStatus);
-  //   }
-  //   console.log(category);
-  // };
+  useEffect(() => {
+    if (oldData?.category === 'sell') {
+      setData(prev => ({ ...prev, price: oldData.price }))
+    }
+  }, [oldData])
 
   const handleNextStep = (newData, final = false) => {
     if (!data.category) {
       toast.error('choose category');
       return;
     }
-    setData(prev => ({ ...prev, ...newData, category: data.category }));
+
+    const actualValue = { ...data, ...newData, category: data.category }
+    setData(actualValue)
 
     if (final) {
-      const formData = new FormData();
-      for (let value in newData) {
-        formData.append(value, newData[value]);
+      const targetValue = {}
+      if (newData !== 'sell') {
+        delete actualValue.price
       }
 
-      dispatch(addNewNotice(formData));
+      for (const key in actualValue) {
+        actualValue[key] = actualValue[key].trim()
+      }
+
+      for (const key in actualValue) {
+        if (actualValue[key]) {
+          targetValue[key] = actualValue[key]
+        }
+      }
+
+      const formData = new FormData();
+      for (let value in targetValue) {
+        formData.append(value, targetValue[value]);
+      }
+
+      if (editID) {
+        dispatch(updateNotice({ editID, formData }))
+      }
+      if (!editID) {
+        dispatch(addNewNotice(formData));
+      }
 
       handleClose();
-
       return;
     }
 
     setCurrentStep(prev => prev + 1);
   };
+
   const fileHandler = prevData => {
     if (typeof prevData.avatarUrl !== 'string') {
       const reader = new FileReader();
@@ -88,6 +119,7 @@ export const NoticeAddForm = ({ handleClose }) => {
   ];
 
   const onClickCategory = async e => {
+    console.log('e.target.name: ', e.target.name);
     setData(prev => ({ ...prev, category: e.target.name }));
   };
 
@@ -123,21 +155,6 @@ export const NoticeAddForm = ({ handleClose }) => {
           </Button>
         </Container>
       )}
-      {/* {currentStep === 0 && (
-        <ToggleButtonGroup
-          color="primary"
-          value={category}
-          exclusive
-          name="category"
-          onChange={handleStatus}
-          aria-label="category"
-          sx={{ display: 'flex', flexWrap: 'wrap' }}
-        >
-          <ToggleButton value="sell">sell</ToggleButton>
-          <ToggleButton value="lost/found">lost/found</ToggleButton>
-          <ToggleButton value="in good hands">in good hands</ToggleButton>
-        </ToggleButtonGroup>
-      )} */}
       {steps[currentStep]}
     </>
   );

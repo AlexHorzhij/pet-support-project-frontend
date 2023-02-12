@@ -9,6 +9,18 @@ import {
   ModalGrid,
   ModalTypography,
 } from 'components/UserPage/ModalAddpetsNew/ModalAddPetsNew.styled';
+import { useTranslation } from 'react-i18next';
+import { parse, isDate } from 'date-fns';
+function parseDateString(originalValue) {
+  if (originalValue.length < 2) {
+    return;
+  }
+  const parsedDate = isDate(originalValue)
+    ? originalValue
+    : parse(originalValue, 'MM-dd-yyyy', new Date());
+
+  return parsedDate;
+}
 const min = '1990-01-01';
 const schema = yup.object().shape({
   name: yup
@@ -19,10 +31,8 @@ const schema = yup.object().shape({
     .required(),
   date: yup
     .date()
-    .max(
-      new Date(Date.now()),
-      `Input correct date MM.DD.YYYY no later than today`
-    )
+    .transform(parseDateString)
+    .max(new Date(Date.now()), `Input correct date no later than today`)
     .min(new Date(min), `Input correct  no erlier than 1990`)
     .required(),
   breed: yup
@@ -34,6 +44,7 @@ const schema = yup.object().shape({
 });
 
 const StepOne = ({ next, data, onModalClose }) => {
+  const { t } = useTranslation('common');
   const handleSubmit = async values => {
     next(values);
   };
@@ -47,10 +58,10 @@ const StepOne = ({ next, data, onModalClose }) => {
     >
       <Form>
         <ModalGrid>
-          <ModalTypography>Name pet*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.1line.title')}*</ModalTypography>
           <StyledInput
             name="name"
-            placeholder="Type pet name"
+            placeholder={t('ModalAddPetNew.1line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="name">
@@ -58,10 +69,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>Date of birth*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.2line.title')}*</ModalTypography>
           <StyledInput
             name="date"
-            placeholder="Type date of birth dd.MM.yyyy"
+            placeholder={t('ModalAddPetNew.2line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="date">
@@ -69,10 +80,10 @@ const StepOne = ({ next, data, onModalClose }) => {
           </ErrorMessage>
         </ModalGrid>
         <ModalGrid>
-          <ModalTypography>Breed*</ModalTypography>
+          <ModalTypography>{t('ModalAddPetNew.3line.title')}*</ModalTypography>
           <StyledInput
             name="breed"
-            placeholder="Type breed"
+            placeholder={t('ModalAddPetNew.3line.placeholder')}
             disableunderline="true"
           />
           <ErrorMessage component="div" name="breed">
@@ -81,10 +92,10 @@ const StepOne = ({ next, data, onModalClose }) => {
         </ModalGrid>
         <StepperBox>
           <FormButton onClick={onModalClose} variant="outlined">
-            Cancel
+            {t('ModalAddPetNew.cancelBtn')}
           </FormButton>
           <FormButton variant="contained" type="submit">
-            Next
+            {t('ModalAddPetNew.nextBtn')}
           </FormButton>
         </StepperBox>
       </Form>

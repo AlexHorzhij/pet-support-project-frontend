@@ -1,6 +1,11 @@
-import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import React, { useState } from 'react';
+import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { LoaderWhite } from 'components/Loader/Loader';
+import { getAuth } from 'redux/auth/authSelectors';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   StyledInput,
   ErrorText,
@@ -8,21 +13,10 @@ import {
   StyledIconButton,
 } from 'components/RegisterForm/Forms.styled';
 import { Box } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { resetUserPassword } from 'redux/auth/authOperations';
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .min(8)
-    .max(63)
-    .matches(
-      /^[^-n]+[a-zA-Z0-9.,!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/,
-      'Email must not contain the "-" as a first or last character'
-    )
-    .email()
-    .required(),
   password: yup
     .string()
     .min(7)
@@ -40,8 +34,10 @@ const schema = yup.object().shape({
     .required(),
 });
 
-const StepOne = ({ next, data }) => {
-  const { t } = useTranslation('common');
+const ResetPasswordForm = ({ confirmationToken }) => {
+  const { isLoading } = useSelector(getAuth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
 
@@ -55,33 +51,28 @@ const StepOne = ({ next, data }) => {
     event.preventDefault();
   };
 
-  const handleSubmit = values => {
-    next(values);
+  const onResendClick = ({ password }) => {
+    dispatch(
+      resetUserPassword({
+        body: { password: password },
+        resetToken: confirmationToken,
+      })
+    );
+    navigate('/login');
   };
 
   return (
     <Formik
-      initialValues={data}
+      initialValues={{ email: '' }}
       validationSchema={schema}
-      onSubmit={handleSubmit}
+      onSubmit={onResendClick}
     >
       <Form>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
-            type="email"
-            name="email"
-            placeholder={t('Registration.form.1linePlaceholder')}
-            disableunderline="true"
-          />
-          <ErrorMessage component="div" name="email">
-            {msg => <ErrorText>*{msg}</ErrorText>}
-          </ErrorMessage>
-        </Box>
-        <Box sx={{ position: 'relative' }}>
-          <StyledInput
             type={showPassword ? 'text' : 'password'}
             name="password"
-            placeholder={t('Registration.form.2linePlaceholder')}
+            placeholder="Password"
             disableunderline="true"
           />
           <StyledIconButton
@@ -100,7 +91,7 @@ const StepOne = ({ next, data }) => {
           <StyledInput
             type={showConfPassword ? 'text' : 'password'}
             name="confirmPassword"
-            placeholder={t('Registration.form.3linePassPlaceholder')}
+            placeholder="Confirm Password"
             disableunderline="true"
           />
           <StyledIconButton
@@ -115,12 +106,12 @@ const StepOne = ({ next, data }) => {
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
         </Box>
-        <FormButton variant="contained" type="submit">
-          {t('Registration.form.btn')}
+        <FormButton variant="contained" type="submit" sx={{ mt: 0 }}>
+          {!isLoading ? 'Resend' : <LoaderWhite />}
         </FormButton>
       </Form>
     </Formik>
   );
 };
 
-export default StepOne;
+export default ResetPasswordForm;

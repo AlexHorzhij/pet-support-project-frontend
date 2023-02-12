@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import {
-  StyledInput,
-  ErrorText,
-  FormButton,
-} from 'components/RegisterForm/Forms.styled';
-import { Typography, Grid, Box } from '@mui/material';
-import { StyledInputChechBox, StyledLabel } from './NoticeAddForm.styled';
-import MaleIcon from '../../assets/images/addNoticeSellIcons/male.svg';
-import FemaleIcon from '../../assets/images/addNoticeSellIcons/female.svg';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { TextField } from 'formik-material-ui';
 import Dropzone from 'react-dropzone';
-import {
-  DropZoneBox,
-  DropZonePreviewBox,
-  ModalMultiLineField,
-} from 'components/UserPage/ModalAddsPet/ModalAddsPet.styled';
+import { Typography, Grid, Box } from '@mui/material';
+
+import { StyledInput, ErrorText, FormButton, } from 'components/RegisterForm/Forms.styled';
+import { StyledInputCheckBox, StyledLabel } from './NoticeAddForm.styled';
+import { DropZoneBox, DropZonePreviewBox, ModalMultiLineField, } from 'components/UserPage/ModalAddsPet/ModalAddsPet.styled';
+
+import MaleIcon from 'assets/images/addNoticeSellIcons/male.svg';
+import FemaleIcon from 'assets/images/addNoticeSellIcons/female.svg';
 import addIconSVG from 'assets/images/myPets/addImage.svg';
 
-import { TextField } from 'formik-material-ui';
 
 export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
@@ -29,17 +23,13 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
       .string()
       .min(3)
       .max(40)
-      .matches(/^[A-Za-z,\u0400-\u04FF]*$/, 'String must contain only letters')
+      .matches(/^[a-zA-Z\s,\u0400-\u04FF]*$/, 'String must contain only letters')
       .required(),
     avatarUrl: yup.string(),
     comments: yup
       .string()
-      // .required()
       .max(100, 'Comment should be no longer than 100 characters'),
   };
-
-  console.log(data);
-
   if (data.category === 'sell') {
     validateSchema.price = yup
       .string()
@@ -70,7 +60,6 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
     });
   };
 
-  console.log('data.category: ', data.category);
 
   return (
     <Formik
@@ -84,33 +73,29 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             Sex *
           </Typography>
 
-          <div
+          <Box sx={{ position: 'relative' }}
             style={{ display: 'flex' }}
             role="group"
-            aria-labelledby="my-radio-group"
+            aria-label="my-radio-group"
           >
             <StyledLabel>
-              <StyledInputChechBox
+              <StyledInputCheckBox
                 style={{ backgroundImage: `url(${MaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="male"
+                type="radio" name="sex" value="male"
               />
               Male
             </StyledLabel>
             <StyledLabel>
-              <StyledInputChechBox
+              <StyledInputCheckBox
                 style={{ backgroundImage: `url(${FemaleIcon})` }}
-                type="radio"
-                name="sex"
-                value="female"
+                type="radio" name="sex" value="female"
               />
               Female
             </StyledLabel>
             <ErrorMessage component="div" name="sex">
-              {msg => <ErrorText>*{msg}</ErrorText>}
+              {msg => <ErrorText style={{top: "-32px", left: "50px"}}>*{msg}</ErrorText>}
             </ErrorMessage>
-          </div>
+          </Box>
 
           <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
             Location *
@@ -129,9 +114,8 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
           {data.category === 'sell' && (
             <>
               <Typography variant="h4">Price *</Typography>
-              <StyledInput
+              <StyledInput name="price"
                 sx={{ mt: 2, mb: 4 }}
-                name="price"
                 disableunderline="true"
                 placeholder="Type price"
               />
@@ -168,9 +152,8 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
                 ) : (
                   <DropZonePreviewBox>
                     {images.length > 0 && (
-                      <img
+                      <img alt="preview"
                         style={{ height: '100%', objectFit: 'cover' }}
-                        alt="preview"
                         src={images[0]?.src}
                       />
                     )}
@@ -184,13 +167,10 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
             <Typography variant="h4" sx={{ mb: 1 }}>
               Comments:
             </Typography>
-            <ModalMultiLineField
-              multiline={true}
-              rows={3.5}
+            <ModalMultiLineField name="comments"
               fullWidth
-              name="comments"
-              component={TextField}
-              label="Type comment"
+              multiline={true} rows={3.5}
+              component={TextField} label="Type comment"
             />
           </Grid>
 

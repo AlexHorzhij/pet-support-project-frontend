@@ -5,12 +5,12 @@ import { Box, Container, Card, CardActions, Link } from '@mui/material';
 
 export const Main = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  paddingTop: '42px',
-  marginTop: '49px',
+  // paddingTop: '42px',
+  // marginTop: '42px',
   paddingBottom: '64px',
 
   [theme.breakpoints.up('md')]: {
-    paddingTop: '64px',
+    // marginTop: '60px',
   },
 }));
 

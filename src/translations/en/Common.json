@@ -1,0 +1,201 @@
+{
+	"Header": {
+		"accountBtn": "Account",
+		"auth": {
+			"login": "Login",
+			"reg": "Registration"
+		},
+		"nav": {
+			"find": "Find pets",
+			"friends": "Our friends",
+			"news": "News"
+		}
+	},
+	"Login": {
+		"form": {
+			"btn": "Login",
+			"emailPlaceholder": "Email",
+			"footer": {
+				"link": "Register",
+				"msg": "Don't have an account?"
+			},
+			"passwordPlaceholder": "Password"
+		},
+		"title": "Login"
+	},
+	"MainPage": {
+		"title": "Take good care of your small pets"
+	},
+	"MobileMenu": {
+		"1link": "News",
+		"2link": "Find pet",
+		"3link": "Our Friends",
+		"auth": {
+			"1line": "Login",
+			"2line": "Register",
+			"accBtn": "Account"
+		}
+	},
+	"ModalAddPetNew": {
+		"1line": {
+			"placeholder": "Type pet name",
+			"title": "Name Pet"
+		},
+		"2line": {
+			"placeholder": "Type date of birth MM-DD-YYYY",
+			"title": "Date of birth"
+		},
+		"3line": {
+			"placeholder": "Type Breed",
+			"title": "Breed"
+		},
+		"4lineTitle": "Add photo and some comments",
+		"5line": {
+			"placeholder": "Type comment",
+			"title": "Comments"
+		},
+		"addTitle": "Add Pet",
+		"backBtn": "Back",
+		"cancelBtn": "Cancel",
+		"editTitle": "Edit Pet",
+		"finalBtn": "Done",
+		"nextBtn": "Next"
+	},
+	"NewsPage": {
+		"item": {
+			"readMoreBtn": "Read more"
+		},
+		"search": {
+			"input": {
+				"placeholder": "Search"
+			}
+		},
+		"title": "News"
+	},
+	"NoticesPage": {
+		"addBtn": "Add Pet",
+		"addModal": {
+			"1btn": "sell",
+			"1line": {
+				"label": "Title of ad:",
+				"placeholder": "Type title"
+			},
+			"2btn": "lost/found",
+			"2line": {
+				"label": "Name pet:"
+			},
+			"3btn": "in good hands",
+			"3line": {
+				"placeholder": "Type date of birth DD.MM.YYYY",
+				"title": "Date of birth"
+			},
+			"4line": {
+				"placeholder": "Type Breed",
+				"title": "Breed"
+			},
+			"5line": {
+				"label": "Location",
+				"placeholder": "Type location"
+			},
+			"6line": {
+				"label": "Price",
+				"placeholder": "Type price"
+			},
+			"7line": {
+				"label": "Load the pet's image:"
+			},
+			"8line": {
+				"label": "Comments",
+				"placeholder": "Type comments"
+			},
+			"backBtn": "Back",
+			"cancelBtn": "Cancel",
+			"finalBtn": "Done",
+			"nextBtn": "Next",
+			"title": "Add pet"
+		},
+		"card": {
+			"1btn": "Learn More",
+			"1line": "Place:",
+			"2btn": "Delete",
+			"2line": "Breed:",
+			"3line": "Age:",
+			"4line": "Price:",
+			"4lineFree": "free"
+		},
+		"categoryBtn": {
+			"1category": "sell",
+			"2category": "lost/found",
+			"3category": "in good hands",
+			"4category": "fovorite ads",
+			"5category": "my ads"
+		},
+		"noPetsMsg": "This section is temporary emrty, here will be shown all your advertisements",
+		"notAuthMsg": {
+			"1btn": "Sign Up",
+			"2btn": "Login",
+			"text": "To add a notice you should be registered and logged in! Press the button below with your paw!",
+			"title": "You are not authorized!"
+		},
+		"search": {
+			"placeholder": "Search"
+		},
+		"title": "Find your favorite pet"
+	},
+	"OurFriendsPage": {
+		"error": "We have not any friends on time",
+		"item": {
+			"address": "Address",
+			"email": "Email",
+			"phone": "Phone",
+			"time": "Time"
+		},
+		"title": "Our friends"
+	},
+	"Registration": {
+		"footer": {
+			"link": "Login",
+			"msg": "Already have an account?"
+		},
+		"form": {
+			"1linePlaceholder": "Email",
+			"2linePlaceholder": "Password",
+			"3linePassPlaceholder": "Confirm Password",
+			"4linePlaceholder": "Name",
+			"5linePlaceholder": "City, Region/Country",
+			"6linePlaceholder": "Mobile phone",
+			"backBtn": "Back",
+			"btn": "Next",
+			"finalBtn": "Register"
+		},
+		"title": "Registration"
+	},
+	"User": {
+		"addPetBtn": "Add Pet",
+		"card": {
+			"1line": "Name",
+			"1lineErrMsg": "Enter valid full name, at least 2 character",
+			"2line": "Email",
+			"2lineErrMsg": "Enter valid email",
+			"3line": "Birthday",
+			"3lineErrMsg": "Enter valid date of bitrh, valid format DD.MM.YYYY",
+			"4line": "Phone",
+			"4lineErrMsg": "Enter valid phone number range 10 to 15 digits",
+			"5line": "City",
+			"5lineErrMsg": "Location name should begin with capital letters, and devided by comma and space",
+			"editPhotoBtn": "Edit photo",
+			"logoutBtn": "LogOut",
+			"onUpdate": "Updating"
+		},
+		"nonePetsMsg": "Your pets will be shown here",
+		"petCard": {
+			"1line": "Name:",
+			"2line": "Date of birth:",
+			"3line": "Breed:",
+			"4line": "Description:"
+		},
+		"title": "My Information:",
+		"title2": "My pets:"
+	},
+	"homeTitle": "Take good care of your small pets"
+}

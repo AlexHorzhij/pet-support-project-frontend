@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 const OurFriendsPage = () => {
   const dispatch = useDispatch();
-  const {t} = useTranslation()
+  const {t} = useTranslation('common')
 
   useEffect(() => {
     dispatch(fetchFriends());
@@ -20,7 +20,7 @@ const OurFriendsPage = () => {
   return (
     <Main>
       <CustomContainer>
-        <Title text={t("friends")} />
+        <Title text={t("OurFriendsPage.title")} />
         <OurFriendsList />
       </CustomContainer>
     </Main>

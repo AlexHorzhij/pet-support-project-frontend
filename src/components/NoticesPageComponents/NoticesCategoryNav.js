@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-
 import { getAuth } from 'redux/auth/authSelectors';
-import { Box, Button, Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+
 import {
   fetchNotices,
   fetchAuthNotices,
 } from 'redux/notices/noticesOperations';
-import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme } from '@mui/material';
-import { getNotices } from 'redux/notices/noticesSelectors';
+
 export default function NoticesCategoryList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const { isLoggedIn, token } = useSelector(getAuth);
   const { categoryName } = params;
-  const { isLoading } = useSelector(getNotices);
+  const { t } = useTranslation('common');
 
-  const theme = useTheme();
   useEffect(() => {
     if (token) {
       dispatch(fetchAuthNotices({ token, categoryName }));
@@ -34,14 +32,14 @@ export default function NoticesCategoryList() {
   };
 
   return (
-    <Container sx={{ mb: 6, position: 'relative' }}>
+    <Container sx={{ position: 'relative' }}>
       <Button
         name="sell"
         variant={categoryName === 'sell' ? 'contained' : 'outlined'}
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        sell
+        {t('NoticesPage.categoryBtn.1category')}
       </Button>
       <Button
         name="lost-found"
@@ -49,7 +47,7 @@ export default function NoticesCategoryList() {
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        lost/found
+        {t('NoticesPage.categoryBtn.2category')}
       </Button>
       <Button
         variant={categoryName === 'for-free' ? 'contained' : 'outlined'}
@@ -57,7 +55,7 @@ export default function NoticesCategoryList() {
         sx={{ textTransform: 'lowercase' }}
         onClick={onClick}
       >
-        in good hands
+        {t('NoticesPage.categoryBtn.3category')}
       </Button>
       {isLoggedIn && (
         <>
@@ -67,7 +65,7 @@ export default function NoticesCategoryList() {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
           >
-            favorite ads
+            {t('NoticesPage.categoryBtn.4category')}
           </Button>
           <Button
             variant={categoryName === 'own' ? 'contained' : 'outlined'}
@@ -75,30 +73,9 @@ export default function NoticesCategoryList() {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClick}
           >
-            my ads
+            {t('NoticesPage.categoryBtn.5category')}
           </Button>
         </>
-      )}
-      {isLoading && (
-        <Box
-          sx={{
-            position: 'absolute',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            bottom: '-45px',
-
-            // transform: 'translate(-50%,-50%)',
-          }}
-        >
-          <ThreeCircles
-            height="40"
-            width="40"
-            color={theme.palette.primary.main}
-            visible={true}
-            ariaLabel="three-circles-rotating"
-          />
-        </Box>
       )}
     </Container>
   );

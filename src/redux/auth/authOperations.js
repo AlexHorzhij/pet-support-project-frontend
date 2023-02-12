@@ -1,39 +1,22 @@
-import CloseIcon from '@mui/icons-material/Close';
-import { Button } from '@mui/material';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { register, verify, login, logout, fetchCurrent } from '../../API/api';
+import {
+  register,
+  verify,
+  resendVerification,
+  login,
+  sendResetEmail,
+  resetPassword,
+  logout,
+  fetchCurrent,
+} from '../../API/api';
 
 export const registerUser = createAsyncThunk(
   'register',
   async (data, { rejectWithValue }) => {
     try {
       const user = await register(data);
-      toast(
-        t => (
-          <div style={{ position: 'relative' }}>
-            <p>
-              Successfully registered! You can log in after
-              <b> confirming your email</b>. Check your mailbox!
-              <br />
-              <Button
-                style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  right: '-30px',
-                  margin: '0',
-                }}
-                onClick={() => toast.dismiss(t.id)}
-              >
-                <CloseIcon />
-              </Button>
-            </p>
-          </div>
-        ),
-        {
-          duration: 30000,
-        }
-      );
+      toast.success('Successfully registered!');
       return user;
     } catch ({ response }) {
       const error = {
@@ -50,9 +33,7 @@ export const verifyUser = createAsyncThunk(
   'verify',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('Verification data-token', data);
       const res = await verify(data);
-      console.log('Verification result', res);
       toast.success('Verification successful!');
       return res;
     } catch ({ response }) {
@@ -60,8 +41,27 @@ export const verifyUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      console.log('Verification error', response.data.message);
       toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const resendVerificationEmail = createAsyncThunk(
+  'resendVerification',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await resendVerification(data);
+      toast.success('Verification email sent', {
+        duration: 10000,
+      });
+      return res;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error(`Oops! ${response.data.message}`);
       return rejectWithValue(error);
     }
   }
@@ -85,6 +85,45 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const sendResetPasswordEmail = createAsyncThunk(
+  'emailReset',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await sendResetEmail(data);
+      toast.success(
+        'We sent you an email with further instructions. Check your mailbox',
+        { duration: 10000 }
+      );
+      return res;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const resetUserPassword = createAsyncThunk(
+  'resetPassword',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await resetPassword(data);
+      toast.success('New password is set! Now you can login');
+      return res;
+    } catch ({ response }) {
+      const error = {
+        status: response.status,
+        message: response.data.message,
+      };
+      toast.error(`Oops! ${response.data.message}, please, try again`);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const logoutUser = createAsyncThunk(
   'logout',
   async (_, { rejectWithValue }) => {
@@ -97,7 +136,7 @@ export const logoutUser = createAsyncThunk(
         status: response.status,
         message: response.data.message,
       };
-      toast.error('Oops! Something went wrong, please, try again');
+      toast.error('Oops! Logging out went wrong, please, try again');
       return rejectWithValue(error);
     }
   }
@@ -105,17 +144,15 @@ export const logoutUser = createAsyncThunk(
 
 export const fetchCurrentUser = createAsyncThunk(
   'current',
-  async (_, { rejectWithValue, getState }) => {
+  async (token, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      const response = await fetchCurrent(auth.token);
+      const response = await fetchCurrent(token);
       return response;
     } catch ({ response }) {
       const error = {
         status: response.status,
         message: response.data.message,
       };
-      // toast.error('Oops! Something went wrong, please, login again');
       await logout();
       return rejectWithValue(error);
     }

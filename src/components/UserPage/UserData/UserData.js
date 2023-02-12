@@ -3,8 +3,7 @@ import { Box, Typography } from '@mui/material';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import Logout from '../Logout/Logout';
 import { useDropzone } from 'react-dropzone';
-import { ThreeCircles } from 'react-loader-spinner';
-import { useTheme, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import {
   BoxWrapper,
   BoxImageWrapper,
@@ -14,22 +13,33 @@ import {
   ImageBox,
   PhotoCameraIconStyled,
   WrapperBox,
+  LoaderWrapper,
+  StyledLink,
 } from './UserData.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, isLoadingUpdate } from 'redux/userData/userDataSelectors';
 import { updateUser } from 'redux/userData/userDataOperations';
+import { Loader } from 'components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
+
+import { getNotices } from 'redux/notices/noticesSelectors';
+import { getAuth } from 'redux/auth/authSelectors';
+import { fetchAuthNotices } from 'redux/notices/noticesOperations';
 
 function UserData() {
+  const { token } = useSelector(getAuth);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const isBeingUpdated = useSelector(isLoadingUpdate);
-  const theme = useTheme();
+  const { items } = useSelector(getNotices);
+  console.log('items: ', items);
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     accept: {
       'image/jpeg': ['.jpg', '.jpeg', '.png'],
     },
   });
+  const { t } = useTranslation('common');
 
   // ========================= regex Patterns ==========================
   const datePattern = /^[0-3][0-9].[0-3][0-9].(?:[0-9][0-9])?[0-9][0-9]$/;
@@ -45,38 +55,27 @@ function UserData() {
       dispatch(updateUser({ name: 'avatarUrl', value: acceptedFiles[0] }));
     }
   }, [dispatch, acceptedFiles]);
+  const categoryName = 'own';
+  useEffect(() => {
+    dispatch(fetchAuthNotices({ token, categoryName }));
+  }, [dispatch, token]);
 
   return (
     <>
       {user && (
         <BoxWrapper>
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
+          <LoaderWrapper>
             {isBeingUpdated ? (
               <>
                 {isMobileScreens ? null : (
-                  <Typography sx={{ marginBottom: '5px' }}>Updating</Typography>
+                  <Typography sx={{ marginBottom: '5px' }}>
+                    {t('User.card.onUpdate')}
+                  </Typography>
                 )}
-
-                <ThreeCircles
-                  height="30"
-                  width="30"
-                  color={theme.palette.primary.main}
-                  visible={true}
-                  ariaLabel="three-circles-rotating"
-                />
+                <Loader />
               </>
             ) : null}
-          </Box>
+          </LoaderWrapper>
           <BoxImageWrapper>
             <BoxImageBackdrop>
               <BoxImageContainer>
@@ -92,7 +91,9 @@ function UserData() {
                 <input {...getInputProps()} />
                 <StyledButton>
                   <PhotoCameraIconStyled />
-                  <Typography sx={{ fontSize: '12px' }}>Edit photo</Typography>
+                  <Typography sx={{ fontSize: '12px' }}>
+                    {t('User.card.editPhotoBtn')}
+                  </Typography>
                 </StyledButton>
               </div>
             </div>
@@ -102,44 +103,64 @@ function UserData() {
               {user && (
                 <>
                   <UserDataItem
-                    title={'Name'}
-                    value={user.name}
-                    pattern={namePattern}
-                    textMessage={'Enter valid full name, at least 2 cheracter'}
-                  />
-                  <UserDataItem
-                    title={'Email'}
+                    title={t('User.card.2line')}
                     value={user.email}
                     pattern={emailPattern}
-                    textMessage={'Enter valid email'}
+                    textMessage={t('User.card.2lineErrMsg')}
                   />
                   <UserDataItem
-                    title={'Birthday'}
-                    value={user.birthdate}
-                    pattern={datePattern}
-                    textMessage={
-                      'Enter valid date of bitrh, valid format DD.MM.YYYY'
-                    }
+                    title={t('User.card.1line')}
+                    value={user.name}
+                    pattern={namePattern}
+                    textMessage={t('User.card.1lineErrMsg')}
                   />
+
                   <UserDataItem
-                    title={'Phone'}
+                    title={t('User.card.4line')}
                     value={user.phone}
                     pattern={phonePattern}
-                    textMessage={
-                      'Enter valid phone number range 10 to 15 digits'
-                    }
+                    textMessage={t('User.card.4lineErrMsg')}
                   />
                   <UserDataItem
-                    title={'City'}
+                    title={t('User.card.5line')}
                     value={user.city}
                     pattern={locationPattern}
-                    textMessage={
-                      'Location name should begin with capital letters,and devided by comma and space'
-                    }
+                    textMessage={t('User.card.5lineErrMsg')}
+                  />
+                  <UserDataItem
+                    title={t('User.card.3line')}
+                    value={user.birthdate}
+                    pattern={datePattern}
+                    textMessage={t('User.card.3lineErrMsg')}
                   />
                 </>
               )}
             </WrapperBox>
+            <Box sx={{ mt: '10px', mb: '10px' }}>
+              <StyledLink to="/notices/own">
+                {items.length > 0 && (
+                  <>
+                    My notices
+                    <span
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginLeft: '15px',
+                        backgroundColor: '#e7e7e7',
+                        padding: '5px',
+                        borderRadius: '50%',
+                        width: '30px',
+                        height: '30px',
+                        fontSize: '15px',
+                      }}
+                    >
+                      {items.length}
+                    </span>
+                  </>
+                )}
+              </StyledLink>
+            </Box>
             <Logout />
           </WrapperBox>
         </BoxWrapper>

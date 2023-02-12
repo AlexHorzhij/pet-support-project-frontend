@@ -16,14 +16,6 @@ export default function Nav() {
     <>
       <Navigation>
         <NavList>
-          {/* <ListItem>
-            <LinkNav
-              to="/"
-              style={({ isActive }) => (isActive ? activeStyle : pasStyle)}
-            >
-              {t('Home')}
-            </LinkNav>
-          </ListItem> */}
           <ListItem>
             <LinkNav
               to="/news"

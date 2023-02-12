@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Container, Typography, IconButton, Box } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 export const UserDataContainer = styled(Container)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
@@ -24,7 +24,6 @@ export const UserDataContainer = styled(Container)(({ theme }) => ({
 }));
 
 export const UserDataTypography = styled(Typography)(({ theme }) => ({
-  marginLeft: '17px',
   fontSize: '28px',
   marginBottom: '24px',
   fontWeight: '500',
@@ -37,15 +36,13 @@ export const UserDataTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const AddPetTypography = styled(Typography)({
+export const AddPetTypography = styled(Typography)(({ theme }) => ({
   fontWeight: '500',
-});
+  color: theme.palette.text.primary,
+}));
 export const UserDataIconButton = styled(IconButton)({
   borderRadius: '10px',
-  position: 'absolute',
   padding: '5px',
-  top: '-10px',
-  right: '0',
 });
 export const AddPetIcon = styled(AddCircleIcon)({
   color: '#F59256',
@@ -56,11 +53,26 @@ export const PetDataBox = styled(Box)({
   position: 'relative',
   width: '100%',
 });
+export const PetItemAndButtonWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  alignItems: 'baseline',
+  justifyContent: 'space-between',
+
+  '@media screen and (max-width: 500px)': {
+    flexDirection: 'column',
+  },
+  [theme.breakpoints.down('sm')]: {
+    alignItems: 'center',
+  },
+}));
 export const SceletonWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
   justifyContent: 'center',
+  marginBottom: '30px',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '20px',
@@ -70,4 +82,9 @@ export const SceletonWrapper = styled(Box)(({ theme }) => ({
     fontSize: '20px',
     marginTop: '130px',
   },
+}));
+export const PetsPawIcon = styled(PetsOutlinedIcon)(({ theme }) => ({
+  marginTop: '30px',
+  fontSize: '100px',
+  color: theme.palette.text.secondary,
 }));

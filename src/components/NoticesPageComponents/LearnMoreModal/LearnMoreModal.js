@@ -11,7 +11,7 @@ import {
   ModalCloseButton,
   BoxFlex,
   Image,
-  CategoryLable,
+  CategoryLabel,
   Text,
   HeadText,
   OwnerContact,
@@ -22,7 +22,6 @@ import {
 import { setFavorite } from 'redux/notices/noticesOperations';
 
 export default function LearnMoreModal({ onModalClose, data }) {
-  console.log('data: ', data);
   const {
     _id,
     avatarUrl,
@@ -75,7 +74,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <Box style={{ position: 'relative' }}>
           {avatarUrl ? <Image image={avatarUrl} /> : <Image src={nophoto} />}
 
-          <CategoryLable>{category}</CategoryLable>
+          <CategoryLabel>{category}</CategoryLabel>
         </Box>
         <Box>
           <Typography variant="h3" sx={{ mb: 2, maxWidth: '300px' }}>

@@ -2,19 +2,22 @@ import styled from '@emotion/styled';
 import { List, ListItem, ListItemText, Card, Button } from '@mui/material';
 
 export const NoticeCard = styled(Card)`
-  width: 280px;
-  margin: 50px 0 0 0;
+  max-width: 400px;
   padding-bottom: 0;
-
+  flex-grow: 1;
   @media (min-width: 767.99px) {
-    width: 336px;
-  }
-  @media (min-width: 1279.99px) {
-    width: 288px;
+    max-width: 450px;
   }
 `;
 
+// @media (min-width: 1279.99px) {
+//   /* width: 288px; */
+//   /* min-width: 288px; */
+// } */
+
 export const Btn = styled(Button)`
+  max-width: 248px;
+  align-self: center;
   &:hover {
     color: 'white';
   }
@@ -38,7 +41,7 @@ export const ItemsList = styled(List)`
 export const ItemText = styled(ListItemText)`
   padding: 0;
   margin: 0;
-  width: 90px;
+  max-width: 120px;
 `;
 
 export const Title = styled.h2`
@@ -51,7 +54,7 @@ export const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-export const CategoryLable = styled.p`
+export const CategoryLabel = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;

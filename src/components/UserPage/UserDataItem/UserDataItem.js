@@ -56,7 +56,9 @@ function UserDataItem({
   return (
     <UserDataItemBox>
       <UserDataItemtitle>
-        <UserDataTitle>{title}:</UserDataTitle>
+        <UserDataTitle>
+          { title }:
+        </UserDataTitle>
       </UserDataItemtitle>
       <UserDataItemInput
         ref={inputRef}
@@ -65,28 +67,41 @@ function UserDataItem({
           backgroundColor: inputState ? 'transparent' : '#FDF7F2',
         }}
         disabled={inputState}
-        value={inputValue}
+        value={inputValue !== null ? inputValue : 'Enter your data'}
         onChange={e => {
           setInputValue(e.target.value);
           debouncedInputHandler(e.target.value);
         }}
         onBlur={changeInputState}
       />
-      <IconButton
-        onClick={changeInputState}
-        sx={{
-          backgroundColor: '#FDF7F2',
-          width: '32px',
-          height: '32px',
-          '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
-        }}
-      >
-        {inputState ? (
-          <ModeEditOutlineRoundedIconStyled />
-        ) : (
-          <DoneRoundedIconStyled />
-        )}
-      </IconButton>
+      {inputName !== 'email' ? (
+        <IconButton
+          onClick={changeInputState}
+          sx={{
+            backgroundColor: '#FDF7F2',
+            width: '32px',
+            height: '32px',
+            '&:hover': { backgroundColor: 'rgba(187, 187, 187, 0.9)' },
+          }}
+        >
+          {inputState ? (
+            <ModeEditOutlineRoundedIconStyled />
+          ) : (
+            <DoneRoundedIconStyled />
+          )}
+        </IconButton>
+      ) : (
+        <IconButton
+          disabled={true}
+          sx={{
+            backgroundColor: '#FDF7F2',
+            width: '32px',
+            height: '32px',
+          }}
+        >
+          <DoneRoundedIconStyled sx={{ color: 'transparent' }} />
+        </IconButton>
+      )}
     </UserDataItemBox>
   );
 }

@@ -1,39 +1,32 @@
-import Grid from '@mui/material/Grid';
-import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
-// import { Loader } from 'components/index';
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Pagination, Typography, Grid } from '@mui/material';
+import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import { sortObjByDate, usePagination } from 'services';
+import { getUser } from 'redux/userData/userDataSelectors';
 import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
-import { sortObjByDate } from 'services/sortObjByDate';
 import {
   removeNoticeFromUserById,
   setFavorite,
 } from 'redux/notices/noticesOperations';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Box, Pagination, Typography } from '@mui/material';
-import usePagination from 'services/pagination';
-import { getUser } from 'redux/userData/userDataSelectors';
-import { toast } from 'react-hot-toast';
-import { fetchUserData } from 'redux/userData/userDataOperations';
+import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
-export default function NoticesGallery() {
-  const {
-    items,
-    // isLoading,
-    // error,
-  } = useSelector(getNotices);
-  const { categoryName } = useParams();
 
+export default function NoticesGallery() {
+  const [title, setTitle] = useState('');
+  const [page, setPage] = useState(1);
+  const PER_PAGE = 16;
+
+  const { items } = useSelector(getNotices);
+  const { categoryName } = useParams();
   const { token } = useSelector(getAuth);
   const user = useSelector(getUser);
   const dispatch = useDispatch();
-  const data = sortObjByDate(items, 'create_at');
 
-  useEffect(() => {
-    dispatch(fetchUserData());
-  }, [dispatch]);
+  const data = sortObjByDate(items, 'create_at');
 
   const newData = data.filter(value => {
     if (categoryName === 'lost-found') {
@@ -45,20 +38,6 @@ export default function NoticesGallery() {
     return value;
   });
 
-  const handleChange = event => {
-    const favorite = event.target.checked;
-    const id = event.target.id;
-    if (!token) {
-      return toast.error(`Please authorize for using this option`);
-    }
-    const req = favorite ? 'post' : 'delete';
-    const newData = { id, req, categoryName };
-    console.log('id: ', id);
-
-    dispatch(setFavorite(newData));
-  };
-  const [title, setTitle] = useState('');
-
   useEffect(() => {
     sceletonTitleHandler(categoryName);
   }, [categoryName]);
@@ -67,27 +46,27 @@ export default function NoticesGallery() {
     switch (category) {
       case 'lost-found':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'sell':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'for-free':
         setTitle(
-          'This section is temporary emrty, you can add your advertisement here'
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'favorite':
         setTitle(
-          'This section is temporary emrty, you can add your favorite advertisements here'
+          'This section is temporary empty, you can add your favorite advertisements here'
         );
         break;
       case 'own':
         setTitle(
-          'This section is temporary emrty, here will be shown all your advertisements'
+          'This section is temporary empty, here will be shown all your advertisements'
         );
         break;
 
@@ -96,15 +75,23 @@ export default function NoticesGallery() {
     }
   };
 
-  // ===========================
-  const [page, setPage] = useState(1);
-  const PER_PAGE = 8;
-
   const count = Math.ceil(newData.length / PER_PAGE);
   const paginationData = usePagination(newData, PER_PAGE);
   const handleChangePagination = (event, page) => {
     setPage(page);
     paginationData.jump(page);
+  };
+
+  const handleChange = event => {
+    const favorite = event.target.checked;
+    const id = event.target.id;
+    if (!token) {
+      return toast.error(`Please authorize for using this option`);
+    }
+    const req = favorite ? 'post' : 'delete';
+    const newData = { id, req, categoryName };
+
+    dispatch(setFavorite(newData));
   };
 
   const deleteCard = e => {
@@ -113,12 +100,13 @@ export default function NoticesGallery() {
 
   return (
     <>
-      <Grid container sx={{ pb: 6 }}>
-        {/* {error && <p>{error.data}</p>}
-      <div style={{height: '30px', display: 'flex', justifyContent: 'center', width: '100%'}}>
-        {isLoading ? <Loader /> : ''}
-      </div> */}
-
+      <Grid
+        container
+        spacing={4}
+        sx={{
+          pb: 6,
+        }}
+      >
         {newData.length > 0 ? (
           paginationData.currentData().map(item => {
             return (
@@ -154,16 +142,18 @@ export default function NoticesGallery() {
           </Box>
         )}
       </Grid>
-      <Pagination
-        color="primary"
-        count={count}
-        size="large"
-        page={page}
-        variant="outlined"
-        shape="rounded"
-        onChange={handleChangePagination}
-        style={{ display: 'flex', justifyContent: 'center' }}
-      />
+      {newData.length > 0 && (
+        <Pagination
+          color="primary"
+          count={count}
+          size="large"
+          page={page}
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChangePagination}
+          style={{ display: 'flex', justifyContent: 'center' }}
+        />
+      )}
     </>
   );
 }

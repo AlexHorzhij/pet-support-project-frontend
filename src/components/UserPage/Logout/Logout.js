@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 function Logout() {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const onLogoutClick = () => {
     dispatch(logoutUser());
@@ -20,7 +20,7 @@ function Logout() {
   return (
     <StyledLogoutButton onClick={onLogoutClick}>
       <StyledLogoutIcon />
-      <StyledButtonTitle>{ t('LogOut')}</StyledButtonTitle>
+      <StyledButtonTitle>{ t('User.card.logoutBtn')}</StyledButtonTitle>
     </StyledLogoutButton>
   );
 }

@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import { IconButton, Box } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { ThreeCircles } from 'react-loader-spinner';
-
+import { Link } from 'react-router-dom';
 export const BoxWrapper = styled(Box)(({ theme }) => ({
   position: 'relative',
   boxSizing: 'border-box',
@@ -14,7 +14,7 @@ export const BoxWrapper = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   padding: '20px 18px',
-  width: '411px',
+
   marginLeft: '-30px',
   boxShadow: theme.palette.boxShadow.main,
 
@@ -43,6 +43,35 @@ export const BoxImageWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     marginBottom: '70px',
+  },
+}));
+export const LoaderWrapper = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '20px',
+  right: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+}));
+export const StyledLink = styled(Link)(({ theme }) => ({
+  fontSize: '20px',
+  maxWidth: '300px',
+  display: 'inline-flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  color: theme.palette.primary.main,
+  cursor: 'pointer',
+  fontWeight: '700',
+  lineHeight: '130%',
+  transition: 'color 350ms ease,backgroundColor 350ms ease ',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: '15px',
+  },
+
+  '&:hover, &:focus': {
+    color: theme.palette.text.secondary,
   },
 }));
 

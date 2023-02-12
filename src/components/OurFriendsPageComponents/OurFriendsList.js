@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 const OurFriendsList = () => {
   const { friends, error, isLoading } = useSelector(getFriends);
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   if (!!error) {
     return (
@@ -22,7 +22,7 @@ const OurFriendsList = () => {
     <>
       {isLoading && <Loader />}
       {friends.length === 0 && !isLoading ? (
-        <p>{ t('friendsError')}</p>
+        <p>{ t('OurFriendsPage.error')}</p>
       ) : (
         <ListGrid container component="ul">
           {friends.map(friend => (

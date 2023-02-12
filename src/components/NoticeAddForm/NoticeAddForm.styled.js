@@ -48,7 +48,7 @@ export const TypographyStyled = styled(Typography)(({ theme }) => ({
     fontSize: 24,
   },
 }));
-export const StyledInputChechBox = styled(Field)(({ theme }) => ({
+export const StyledInputCheckBox = styled(Field)(({ theme }) => ({
   boxSizing: 'border-box',
   padding: '5px',
   marginBottom: '10px',
