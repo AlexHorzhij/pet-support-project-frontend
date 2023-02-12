@@ -21,6 +21,7 @@ import { getUser, isLoadingUpdate } from 'redux/userData/userDataSelectors';
 import { updateUser } from 'redux/userData/userDataOperations';
 import { Loader } from 'components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import DeleteButton from 'components/UserPage/DeleteUser/DeleteButton';
 
 import { getNotices } from 'redux/notices/noticesSelectors';
 import { getAuth } from 'redux/auth/authSelectors';
@@ -162,6 +163,7 @@ function UserData() {
               </StyledLink>
             </Box>
             <Logout />
+            <DeleteButton />
           </WrapperBox>
         </BoxWrapper>
       )}

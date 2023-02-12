@@ -107,7 +107,7 @@ const ResetPasswordForm = ({ confirmationToken }) => {
           </ErrorMessage>
         </Box>
         <FormButton variant="contained" type="submit" sx={{ mt: 0 }}>
-          {!isLoading ? 'Resend' : <LoaderWhite />}
+          {!isLoading ? 'Reset' : <LoaderWhite />}
         </FormButton>
       </Form>
     </Formik>
