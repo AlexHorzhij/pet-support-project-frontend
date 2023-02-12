@@ -3,7 +3,7 @@ import { Navigation, NavList, ListItem, LinkNav } from './Nav.styled';
 import { useTranslation } from 'react-i18next';
 
 export default function Nav() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const activeStyle = {
     color: 'rgba(245, 146, 86, 1)',
     textDecoration: 'underline',
@@ -21,7 +21,7 @@ export default function Nav() {
               to="/news"
               style={({ isActive }) => (isActive ? activeStyle : pasStyle)}
             >
-              {t('News')}
+              {t('Header.nav.news')}
             </LinkNav>
           </ListItem>
           <ListItem>
@@ -29,7 +29,7 @@ export default function Nav() {
               to="/notices/sell"
               style={({ isActive }) => (isActive ? activeStyle : pasStyle)}
             >
-              {t('Find')}
+              {t('Header.nav.find')}
             </LinkNav>
           </ListItem>
           <ListItem>
@@ -37,7 +37,7 @@ export default function Nav() {
               to="/friends"
               style={({ isActive }) => (isActive ? activeStyle : pasStyle)}
             >
-              {t('friends')}
+              {t('Header.nav.friends')}
             </LinkNav>
           </ListItem>
         </NavList>
