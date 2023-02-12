@@ -33,7 +33,7 @@ function UserData() {
   const user = useSelector(getUser);
   const isBeingUpdated = useSelector(isLoadingUpdate);
   const { items } = useSelector(getNotices);
-  console.log('items: ', items);
+
   const isMobileScreens = useMediaQuery('(max-width: 415.98px)');
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     accept: {
@@ -104,6 +104,7 @@ function UserData() {
               {user && (
                 <>
                   <UserDataItem
+                    hidden={true}
                     title={t('User.card.2line')}
                     value={user.email}
                     pattern={emailPattern}
