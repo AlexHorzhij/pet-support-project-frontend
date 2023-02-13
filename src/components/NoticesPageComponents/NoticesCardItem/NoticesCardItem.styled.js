@@ -10,11 +10,6 @@ export const NoticeCard = styled(Card)`
   }
 `;
 
-// @media (min-width: 1279.99px) {
-//   /* width: 288px; */
-//   /* min-width: 288px; */
-// } */
-
 export const Btn = styled(Button)`
   max-width: 248px;
   align-self: center;
@@ -46,7 +41,6 @@ export const ItemText = styled(ListItemText)`
 
 export const Title = styled.h2`
   display: inline-flex;
-  height: 76px;
   align-self: start;
   font-weight: 700;
   font-size: 28px;
