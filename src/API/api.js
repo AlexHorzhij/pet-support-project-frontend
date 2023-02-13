@@ -157,7 +157,6 @@ export async function removeNoticesById(id) {
 }
 
 export async function patchNotice(editID, formData) {
-  console.log('editID: ', editID);
   formDataEntries(formData);
   try {
     const { data } = await instance.patch(`notices/user/${editID}`, formData, {

@@ -22,7 +22,6 @@ import { setFavorite } from 'redux/notices/noticesOperations';
 import { useTranslation } from 'react-i18next';
 import { DialogContent } from '@mui/material';
 
-
 export default function LearnMoreModal({ onModalClose, data }) {
   const {
     _id,
@@ -48,7 +47,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   const onFavoriteClick = () => {
     if (token) {
       const req = checked ? 'delete' : 'post';
-      const reqData = { id: _id, token: token, req: req };
+      const reqData = { id: _id, req: req };
       setChecked(prev => !prev);
       dispatch(setFavorite(reqData));
     } else {
@@ -84,19 +83,48 @@ export default function LearnMoreModal({ onModalClose, data }) {
             {title}
           </Typography>
           <Box sx={{ display: 'flex' }}>
-            <Box sx={{ width: '120px' }}>
-              {name && <HeadText variant="body2"> {t('LearnMoreModal.1line')}: </HeadText>}
-              {birthdate && <HeadText variant="body2">{t('LearnMoreModal.2line')}: </HeadText>}
-              {breed && <HeadText variant="body2">{t('LearnMoreModal.3line')}: </HeadText>}
-              {location && <HeadText variant="body2">{t('LearnMoreModal.4line')}: </HeadText>}
-              {sex && <HeadText variant="body2">{t('LearnMoreModal.5line')}: </HeadText>}
+            <Box sx={{ width: '130px' }}>
+              {name && (
+                <HeadText variant="body2">
+                  {' '}
+                  {t('LearnMoreModal.1line')}:{' '}
+                </HeadText>
+              )}
+              {birthdate && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.2line')}:{' '}
+                </HeadText>
+              )}
+              {breed && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.3line')}:{' '}
+                </HeadText>
+              )}
+              {location && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.4line')}:{' '}
+                </HeadText>
+              )}
+              {sex && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.5line')}:{' '}
+                </HeadText>
+              )}
               {owner !== null && owner.name && (
-                <HeadText variant="body2">{t('LearnMoreModal.6line')}: </HeadText>
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.6line')}:{' '}
+                </HeadText>
               )}
               {owner !== null && owner.phone && (
-                <HeadText variant="body2">{t('LearnMoreModal.7line')}: </HeadText>
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.7line')}:{' '}
+                </HeadText>
               )}
-              {price && <HeadText variant="body2">{t('LearnMoreModal.8line')}: </HeadText>}
+              {price && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.8line')}:{' '}
+                </HeadText>
+              )}
             </Box>
             <Box>
               {name && <Text>{name}</Text>}
@@ -134,8 +162,11 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <ContactButton variant="contained">
           <Contact>{t('LearnMoreModal.contactBtn')}</Contact>
         </ContactButton>
-        <AddFavoriteButton variant="outlined" onClick={onFavoriteClick}>
-          {checked ? t('LearnMoreModal.removeBtn') : t('LearnMoreModal.addToBtn')}
+        <AddFavouriteButton variant="outlined" onClick={onFavoriteClick}>
+          {checked
+            ? t('LearnMoreModal.removeBtn')
+            : t('LearnMoreModal.addToBtn')}
+
           <Checkbox
             sx={{
               width: '16px',
@@ -143,7 +174,6 @@ export default function LearnMoreModal({ onModalClose, data }) {
               ml: 1,
             }}
             inputProps={{ 'aria-label': 'favorite' }}
-            onChange={onFavoriteClick}
             icon={
               <Favorite
                 sx={{
