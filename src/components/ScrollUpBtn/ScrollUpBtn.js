@@ -28,7 +28,7 @@ export default function ScrollUpBtn() {
                     borderRadius: '50%',
                     width: '60px', height: '60px', color: 'lightgray',
                     position: 'fixed', right: 40, bottom: 50, zIndex: 1,
-                    boxShadow: `inset 0 0 0 5px ${palette.primary.main}`,
+                    boxShadow: `inset 0 0 0 5px ${palette.primary.light}`,
                     transition: '0.4s',
                     transform: offset > 100 ? 'translateY(0)' : 'translateY(120px)',
                     '&:hover': { color: 'primary.main' },

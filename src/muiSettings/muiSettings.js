@@ -1,14 +1,15 @@
 const palette = {
   type: 'light',
   primary: {
-    main: '#F59256',
+    main: '#483D8B',
+    light: '#6A5ACD'
   },
   secondary: {
     main: '#FFFFFF',
     contrastText: '#000000',
   },
   background: {
-    default: '#FDF7F2',
+    default: '#FFFAFA',
     paper: '#FFFFFF',
     fond: 'rgba(255, 255, 255, 0.6)',
   },
@@ -95,7 +96,7 @@ export const ThemeOptions = {
     },
   },
   shape: {
-    borderRadius: 40,
+    borderRadius: 15,
     borderRadius20: 20,
     borderRadius8: 8,
   },
