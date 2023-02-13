@@ -68,7 +68,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   };
 
   return (
-    <ModalCard>
+    <ModalCard >
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
