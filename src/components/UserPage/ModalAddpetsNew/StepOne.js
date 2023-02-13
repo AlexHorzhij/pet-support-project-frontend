@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { toast } from 'react-hot-toast';
 import {
   StyledInput,
   ErrorText,
@@ -12,7 +13,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { parse, isDate } from 'date-fns';
 
-
 function parseDateString(originalValue) {
   if (originalValue.length < 2) {
     return;
@@ -23,6 +23,7 @@ function parseDateString(originalValue) {
 
   return parsedDate;
 }
+
 const min = '1990-01-01';
 const schema = yup.object().shape({
   name: yup
@@ -48,6 +49,10 @@ const schema = yup.object().shape({
 const StepOne = ({ next, data, onModalClose }) => {
   const { t } = useTranslation('common');
   const handleSubmit = async values => {
+    if (values.date.length < 7) {
+      toast.error('Invalid date type', { duration: 3000 });
+      return;
+    }
     next(values);
   };
 
