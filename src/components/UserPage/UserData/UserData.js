@@ -142,7 +142,7 @@ function UserData() {
               <StyledLink to="/notices/own">
                 {items.length > 0 && (
                   <>
-                    My notices
+                    {t('User.card.6line')}
                     <span
                       style={{
                         display: 'flex',

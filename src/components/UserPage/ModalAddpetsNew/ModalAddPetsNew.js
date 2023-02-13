@@ -94,7 +94,7 @@ const ModalAddPetsNew = ({ onModalClose, isUpdateAction = false, petId }) => {
       <ModalHeadingWrapper>
         <BoxWidthMax>
           <AddPetTitle>
-            {isUpdateAction ? t('EditPet') : t('AddPet')}
+            {isUpdateAction ? t('ModalAddPetNew.editTitle') : t('ModalAddPetNew.addTitle')}
           </AddPetTitle>
         </BoxWidthMax>
 

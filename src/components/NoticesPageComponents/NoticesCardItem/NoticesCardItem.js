@@ -135,7 +135,7 @@ export default function NoticesCardItem({
                 onClose={handleCloseAddNotice}
               >
                 <DialogContent sx={{p: 8}}>
-                  <DialogTitleStyled>Edit pet</DialogTitleStyled>
+                  <DialogTitleStyled>{ t('ModalAddPetNew.editTitle')}</DialogTitleStyled>
                   <NoticeAddForm
                     handleClose={handleCloseAddNotice}
                     oldData={data}

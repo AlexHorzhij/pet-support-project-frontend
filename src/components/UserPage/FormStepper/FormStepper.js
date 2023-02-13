@@ -7,7 +7,7 @@ export const FormStepper = ({ children, onClose }) => {
   const stepsArray = React.Children.toArray(children);
   const [step, setStep] = useState(0);
   const currentStep = stepsArray[step];
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   return (
     <Form className="addForm">
@@ -16,7 +16,7 @@ export const FormStepper = ({ children, onClose }) => {
         {step === 0 && (
           <>
             <StepperButton onClick={onClose} variant="outlined">
-              { t('Cancel')}
+              { t('ModalAddPetNew.cancelBtn')}
             </StepperButton>
             <StepperButton
               variant={'contained'}
@@ -24,7 +24,7 @@ export const FormStepper = ({ children, onClose }) => {
                 step === 0 ? setStep(1) : setStep(0);
               }}
             >
-              { t('Next')}
+              { t('ModalAddPetNew.nextBtn')}
               
             </StepperButton>
           </>
@@ -37,10 +37,10 @@ export const FormStepper = ({ children, onClose }) => {
                 step === 0 ? setStep(1) : setStep(0);
               }}
             >
-              { t('Back')}
+              { t('ModalAddPetNew.backBtn')}
             </StepperButton>
             <StepperButton variant="contained" type="submit">
-              { t('Done')}
+              { t('ModalAddPetNew.finalBtn')}
             </StepperButton>
           </>
         )}

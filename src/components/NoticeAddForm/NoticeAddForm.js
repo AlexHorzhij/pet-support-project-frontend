@@ -8,12 +8,13 @@ import { Button, Container } from '@mui/material';
 import { Step1AddNotice } from 'components/NoticeAddForm/Step1AddNotice';
 import { Step2AddNotice } from 'components/NoticeAddForm/Step2AddNotice';
 import React from 'react'
-
+import { useTranslation } from 'react-i18next';
 
 export default function NoticeAddForm({ handleClose, oldData, editID }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const { categoryName } = useParams()
+  const { t } = useTranslation('common');
 
   const NOTICE_CATEGORY = {
     'lost-found': 'lost/found',
@@ -134,7 +135,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >
-            sell
+            {t('NoticesPage.addModal.1btn')}
           </Button>
           <Button
             name="lost/found"
@@ -142,7 +143,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >
-            lost/found
+            {t('NoticesPage.addModal.2btn')}
           </Button>
           <Button
             variant={
@@ -152,7 +153,7 @@ export default function NoticeAddForm({ handleClose, oldData, editID }) {
             sx={{ textTransform: 'lowercase' }}
             onClick={onClickCategory}
           >
-            in good hands
+            {t('NoticesPage.addModal.3btn')}
           </Button>
         </Container>
       )}

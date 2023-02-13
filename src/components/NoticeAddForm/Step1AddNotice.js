@@ -5,6 +5,7 @@ import { Grid, Box } from '@mui/material';
 
 import { StyledInput, ErrorText, FormButton } from 'components/RegisterForm/Forms.styled';
 import { TypographyStyled } from './NoticeAddForm.styled';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   title: yup.string().min(2).max(48).required(),
@@ -29,6 +30,7 @@ const schema = yup.object().shape({
 
 
 export const Step1AddNotice = ({ next, data, handleClose }) => {
+  const { t } = useTranslation('common');
 
   const handleSubmit = values => {
     next(values);
@@ -43,47 +45,47 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
       <Form>
 
         <TypographyStyled sx={{ mt: 2, mb: 1 }} variant="h4">
-          Title of ad: *
+          {t('NoticesPage.addModal.1line.label')} *
         </TypographyStyled>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
             style={{ mt: 2, mb: 4 }}
             name="title"
             disableunderline="true"
-            placeholder="Type title"
+            placeholder={t('NoticesPage.addModal.1line.placeholder')}
           />
           <ErrorMessage component="div" name="title">
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
         </Box>
-        <TypographyStyled sx={{ mb: 1 }} variant="h4">Name pet:</TypographyStyled>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">{t('NoticesPage.addModal.2line.label')}</TypographyStyled>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
             style={{ mt: 2, mb: 4 }}
             name="name"
-            placeholder="Type name"
+            placeholder={t('NoticesPage.addModal.2line.placeholder')}
           />
           <ErrorMessage component="div" name="name">
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
         </Box>
-        <TypographyStyled sx={{ mb: 1 }} variant="h4">Date of birth:</TypographyStyled>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">{t('NoticesPage.addModal.3line.label')}</TypographyStyled>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
             style={{ mt: 2, mb: 4 }}
             name="birthdate"
-            placeholder="Type date of birth MM.DD.YYYY"
+            placeholder={t('NoticesPage.addModal.3line.placeholder')}
           />
           <ErrorMessage component="div" name="birthdate">
             {msg => <ErrorText>*{msg}</ErrorText>}
           </ErrorMessage>
         </Box>
-        <TypographyStyled sx={{ mb: 1 }} variant="h4">Breed:</TypographyStyled>
+        <TypographyStyled sx={{ mb: 1 }} variant="h4">{t('NoticesPage.addModal.4line.label')}</TypographyStyled>
         <Box sx={{ position: 'relative' }}>
           <StyledInput
             style={{ mt: 2, mb: 4 }}
             name="breed"
-            placeholder="Type breed"
+            placeholder={t('NoticesPage.addModal.4line.placeholder')}
           />
           <ErrorMessage component="div" name="breed">
             {msg => <ErrorText>*{msg}</ErrorText>}
@@ -92,12 +94,12 @@ export const Step1AddNotice = ({ next, data, handleClose }) => {
         <Grid container spacing={4}>
           <Grid item xs={6}>
             <FormButton variant="contained" onClick={handleClose}>
-              Cancel
+              {t('NoticesPage.addModal.cancelBtn')}
             </FormButton>
           </Grid>
           <Grid item xs={6}>
             <FormButton variant="contained" type="submit">
-              Next
+              {t('NoticesPage.addModal.nextBtn')}
             </FormButton>
           </Grid>
         </Grid>

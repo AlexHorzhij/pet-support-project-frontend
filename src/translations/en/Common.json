@@ -11,6 +11,20 @@
 			"news": "News"
 		}
 	},
+	"LearnMoreModal": {
+		"1line": "Name",
+		"2line": "Birthday",
+		"3line": "Breed",
+		"4line": "Location",
+		"5line": "The sex",
+		"6line": "Owner",
+		"7line": "Phone",
+		"8line": "Price",
+		"9line": "Comments",
+		"addToBtn": "Add to",
+		"contactBtn": "Contact",
+		"removeBtn": "Remove from"
+	},
 	"Login": {
 		"form": {
 			"btn": "Login",
@@ -86,16 +100,17 @@
 			},
 			"2btn": "lost/found",
 			"2line": {
-				"label": "Name pet:"
+				"label": "Name pet:",
+				"placeholder": "Type pet name"
 			},
 			"3btn": "in good hands",
 			"3line": {
-				"placeholder": "Type date of birth DD.MM.YYYY",
-				"title": "Date of birth"
+				"label": "Date of birth",
+				"placeholder": "Type date of birth MM.DD.YYYY"
 			},
 			"4line": {
-				"placeholder": "Type Breed",
-				"title": "Breed"
+				"label": "Breed",
+				"placeholder": "Type Breed"
 			},
 			"5line": {
 				"label": "Location",
@@ -116,6 +131,11 @@
 			"cancelBtn": "Cancel",
 			"finalBtn": "Done",
 			"nextBtn": "Next",
+			"sex": {
+				"female": "Female",
+				"label": "Sex",
+				"male": "Male"
+			},
 			"title": "Add pet"
 		},
 		"card": {
@@ -174,7 +194,21 @@
 		},
 		"title": "Registration"
 	},
+	"ResendEmailPage": {
+		"inputPlaceholder": "Email",
+		"loginBtn": "Login",
+		"resendBtn": "Resend",
+		"title": "You can log in after confirming your email. Check your mailbox!",
+		"title2": "If you did not receive the letter, we can resend it"
+	},
 	"User": {
+		"DeleteModal": {
+			"cancelBtn": "Cancel",
+			"checkLabel": "Yes, I want to delete all my data",
+			"deleteBtn": "Delete",
+			"text": "If you delete your account, all of your data will be removed, including your pets data, your ads, and your favorites.\nAre you sure you want to continue?",
+			"warning": "Warning!"
+		},
 		"addPetBtn": "Add Pet",
 		"card": {
 			"1line": "Name",
@@ -187,6 +221,8 @@
 			"4lineErrMsg": "Enter valid phone number range 10 to 15 digits",
 			"5line": "City",
 			"5lineErrMsg": "Location name should begin with capital letters, and devided by comma and space",
+			"6line": "My notices",
+			"deleteAcc": "Delete Account",
 			"editPhotoBtn": "Edit photo",
 			"logoutBtn": "LogOut",
 			"onUpdate": "Updating"

@@ -4,6 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import { TextField } from 'formik-material-ui';
 import Dropzone from 'react-dropzone';
 import { Typography, Grid, Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { StyledInput, ErrorText, FormButton, } from 'components/RegisterForm/Forms.styled';
 import { StyledInputCheckBox, StyledLabel } from './NoticeAddForm.styled';
@@ -16,6 +17,7 @@ import addIconSVG from 'assets/images/myPets/addImage.svg';
 
 export const Step2AddNotice = ({ next, prev, data, preview }) => {
   const [images, setImages] = useState([]);
+  const { t } = useTranslation('common');
 
   const validateSchema = {
     sex: yup.string().oneOf(['male', 'female']).required(),
@@ -71,7 +73,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
       {({ values, setFieldValue }) => (
         <Form>
           <Typography sx={{ mb: 1 }} variant="h4">
-            Sex *
+            {t('NoticesPage.addModal.sex.label')} *
           </Typography>
 
           <Box sx={{ position: 'relative' }}
@@ -84,14 +86,14 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
                 style={{ backgroundImage: `url(${MaleIcon})` }}
                 type="radio" name="sex" value="male"
               />
-              Male
+              {t('NoticesPage.addModal.sex.male')}
             </StyledLabel>
             <StyledLabel>
               <StyledInputCheckBox
                 style={{ backgroundImage: `url(${FemaleIcon})` }}
                 type="radio" name="sex" value="female"
               />
-              Female
+              {t('NoticesPage.addModal.sex.female')}
             </StyledLabel>
             <ErrorMessage component="div" name="sex">
               {msg => <ErrorText style={{ top: "-32px", left: "50px" }}>*{msg}</ErrorText>}
@@ -99,14 +101,14 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
           </Box>
 
           <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
-            Location *
+            {t('NoticesPage.addModal.5line.label')} *
           </Typography>
           <Box sx={{ position: 'relative' }}>
             <StyledInput
               style={{ mt: 2, mb: 4 }}
               name="location"
               disableunderline="true"
-              placeholder="Type location"
+              placeholder={t('NoticesPage.addModal.5line.placeholder')}
             />
             <ErrorMessage component="div" name="location">
               {msg => <ErrorText>*{msg}</ErrorText>}
@@ -114,11 +116,11 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
           </Box>
           {data.category === 'sell' && (
             <>
-              <Typography variant="h4">Price *</Typography>
+              <Typography variant="h4">{t('NoticesPage.addModal.6line.label')} *</Typography>
               <StyledInput name="price"
                 sx={{ mt: 2, mb: 4 }}
                 disableunderline="true"
-                placeholder="Type price"
+                placeholder={t('Page.addModal.6line.placeholder')}
               />
               <ErrorMessage component="div" name="price">
                 {msg => <ErrorText>*{msg}</ErrorText>}
@@ -127,7 +129,7 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
           )}
 
           <Typography sx={{ mb: 1, mt: 2 }} variant="h4">
-            Load the pet’s image:
+            {t('NoticesPage.addModal.7line.label')}
           </Typography>
           <Dropzone
             sx={{ width: '100%' }}
@@ -166,24 +168,24 @@ export const Step2AddNotice = ({ next, prev, data, preview }) => {
 
           <Grid item md={6} sx={{ mt: '40px' }}>
             <Typography variant="h4" sx={{ mb: 1 }}>
-              Comments:
+              {t('NoticesPage.addModal.8line.label')}
             </Typography>
             <ModalMultiLineField name="comments"
               fullWidth
               multiline={true} rows={3.5}
-              component={TextField} label="Type comment"
+              component={TextField} label={t('NoticesPage.addModal.8line.placeholder')}
             />
           </Grid>
 
           <Grid container spacing={4}>
             <Grid item xs={6}>
               <FormButton variant="contained" onClick={() => prev(values)}>
-                Back
+                {t('NoticesPage.addModal.backBtn')}
               </FormButton>
             </Grid>
             <Grid item xs={6}>
               <FormButton variant="contained" type="submit">
-                Done
+                {t('NoticesPage.addModal.finalBtn')}
               </FormButton>
             </Grid>
           </Grid>

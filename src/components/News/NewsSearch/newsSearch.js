@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSearchParams } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,26 +11,41 @@ import { Divider } from '@mui/material';
 import { FormSearch } from './newsSearch.styled';
 import { useTranslation } from 'react-i18next';
 
-export function NewsSearch({ onSubmit, onClear }) {
+import { fetchNews, fetchSearchNews } from 'redux/news/newsOperations';
+
+
+export function NewsSearch() {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     event.preventDefault();
     setSearchParams({ search: event.target.value });
   }
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const form = event.target;
-    if (form.elements.search.value.trim() === '') {
-      toast.error('Enter search value');
+  const handleSearch = (event) => {
+      event.preventDefault();
+
+    if (search?.trim() === '') {
+      toast.error('Please, enter search value!');
       return;
     }
-    onSubmit(form.elements.search.value);
+
+    if (search.trim().length < 3 || search.includes('*')) {
+      toast.error('Please, enter no less 3 letters for a correct search!');
+      return;
+    }
+
+    dispatch(fetchSearchNews(search));
   };
 
+  const handleClearSearch = () => {
+    document.getElementById('searchForm').reset();
+    setSearchParams('')
+    dispatch(fetchNews());
+  }
   
   return (
     <FormSearch
@@ -41,7 +56,7 @@ export function NewsSearch({ onSubmit, onClear }) {
         alignItems: 'center',
         maxWidth: 400,
       }}
-      onSubmit={handleSubmit}
+      onSubmit={handleSearch}
       onChange={handleChange}
       id="searchForm"
     >
@@ -56,7 +71,7 @@ export function NewsSearch({ onSubmit, onClear }) {
       />
 
       {search !== '' && <IconButton
-                            onClick={onClear}
+                            onClick={handleClearSearch}
                             type="button"
                             sx={{
                               p: '10px',

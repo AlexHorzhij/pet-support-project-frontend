@@ -14,10 +14,12 @@ import {
   AgreementText,
   DeleteModalButton,
 } from './DeleteUserModal.styled';
+import { useTranslation } from 'react-i18next';
 
 export default function DeleteUserModal({ onModalClose }) {
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation('common');
 
   const onDeleteClick = () => {
     dispatch(deleteUser());
@@ -30,27 +32,25 @@ export default function DeleteUserModal({ onModalClose }) {
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
       <Text variant="h4">
-        <Warning>Warning!</Warning>
-        If you delete your account, all of your data will be removed, including
-        your pets data, your ads, and your favorites. <br />
-        Are you sure you want to continue?
+        <Warning>{t('User.DeleteModal.warning') }</Warning>
+        {t('User.DeleteModal.text') }
       </Text>
       <AgreementText
         control={
           <Checkbox checked={checked} onClick={() => setChecked(pr => !pr)} />
         }
-        label="Yes, I want to delete all my data"
+        label={t('User.DeleteModal.checkLabel') }
       />
       <BoxFlex>
         <DeleteModalButton variant="outlined" onClick={() => onModalClose()}>
-          Cancel
+          {t('User.DeleteModal.cancelBtn') }
         </DeleteModalButton>
         <DeleteModalButton
           variant="contained"
           onClick={() => onDeleteClick()}
           disabled={!checked}
         >
-          Delete
+          {t('User.DeleteModal.deleteBtn') }
         </DeleteModalButton>
       </BoxFlex>
     </ModalCard>
