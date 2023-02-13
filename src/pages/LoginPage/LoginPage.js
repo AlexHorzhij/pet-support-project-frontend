@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  ForgotPasswordModal,
-  Modal,
-  LoginForm
-} from 'components';
+import { ForgotPasswordModal, Modal, LoginForm } from 'components';
 import {
   AuthContainer,
   ContentWrapper,
@@ -11,15 +7,20 @@ import {
   Switcher,
   RemindButton,
 } from './LoginPage.styled';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function LoginPage() {
   const { t } = useTranslation('common');
   const [modalIsShown, setModalIsShown] = useState(false);
+  const navigate = useNavigate();
 
   const toggleModal = () => {
     setModalIsShown(prev => !prev);
+  };
+
+  const verifyNavigate = () => {
+    navigate('/verification');
   };
 
   return (
@@ -36,6 +37,12 @@ function LoginPage() {
             {t('Login.form.footer.forgotPass')}
             <RemindButton variant="outlined" onClick={toggleModal}>
               {t('Login.form.footer.forgotPassLink')}
+            </RemindButton>
+          </Switcher>
+          <Switcher>
+            {t('Login.form.footer.verify')}
+            <RemindButton variant="outlined" onClick={verifyNavigate}>
+              {t('Login.form.footer.verifyLink')}
             </RemindButton>
           </Switcher>
         </ContentWrapper>
