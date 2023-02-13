@@ -195,6 +195,13 @@
 		"title": "Registration"
 	},
 	"User": {
+		"DeleteModal": {
+			"cancelBtn": "Cancel",
+			"checkLabel": "Yes, I want to delete all my data",
+			"deleteBtn": "Delete",
+			"text": "If you delete your account, all of your data will be removed, including your pets data, your ads, and your favorites.\nAre you sure you want to continue?",
+			"warning": "Warning!"
+		},
 		"addPetBtn": "Add Pet",
 		"card": {
 			"1line": "Name",
@@ -207,6 +214,7 @@
 			"4lineErrMsg": "Enter valid phone number range 10 to 15 digits",
 			"5line": "City",
 			"5lineErrMsg": "Location name should begin with capital letters, and devided by comma and space",
+			"6line": "My notices",
 			"deleteAcc": "Delete Account",
 			"editPhotoBtn": "Edit photo",
 			"logoutBtn": "LogOut",
