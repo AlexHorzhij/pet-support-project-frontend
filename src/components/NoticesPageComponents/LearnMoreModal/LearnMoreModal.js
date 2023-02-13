@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { toast } from 'react-hot-toast';
 import {
-  ModalCard,
   ModalCloseButton,
   BoxFlex,
   Image,
@@ -16,7 +15,7 @@ import {
   HeadText,
   OwnerContact,
   ButtonsWrapper,
-  AddFavouriteButton,
+  AddFavoriteButton,
   ContactButton,
 } from './LearnMoreModal.styled';
 import { setFavorite } from 'redux/notices/noticesOperations';
@@ -135,7 +134,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <ContactButton variant="contained">
           <Contact>{t('LearnMoreModal.contactBtn')}</Contact>
         </ContactButton>
-        <AddFavouriteButton variant="outlined" onClick={onFavoriteClick}>
+        <AddFavoriteButton variant="outlined" onClick={onFavoriteClick}>
           {checked ? t('LearnMoreModal.removeBtn') : t('LearnMoreModal.addToBtn')}
           <Checkbox
             sx={{
@@ -163,7 +162,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
               />
             }
           />
-        </AddFavouriteButton>
+        </AddFavoriteButton>
       </ButtonsWrapper>
     </DialogContent>
   );
