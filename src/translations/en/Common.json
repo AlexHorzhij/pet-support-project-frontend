@@ -156,6 +156,9 @@
 			"4category": "favorite ads",
 			"5category": "my ads"
 		},
+		"noNoticesMsg": "This section is temporary empty, you can add your advertisement here",
+		"noNoticesMsg2": "This section is temporary empty, you can add your favorite advertisements here",
+		"noNoticesMsg3": "This section is temporary empty, here will be shown all your advertisements",
 		"noPetsMsg": "This section is temporary emrty, here will be shown all your advertisements",
 		"notAuthMsg": {
 			"1btn": "Sign Up",
