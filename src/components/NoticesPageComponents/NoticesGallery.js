@@ -14,12 +14,10 @@ import {
 } from 'redux/notices/noticesOperations';
 import NoticesCardItem from './NoticesCardItem/NoticesCardItem';
 import { SceletonWrapper } from 'pages/UserPage/UserPage.styled';
-import { useTranslation } from 'react-i18next';
 
 export default function NoticesGallery() {
   const [title, setTitle] = useState('');
   const [page, setPage] = useState(1);
-  const { t } = useTranslation('common');
   const PER_PAGE = 16;
 
   const { items } = useSelector(getNotices);
@@ -48,27 +46,27 @@ export default function NoticesGallery() {
     switch (category) {
       case 'lost-found':
         setTitle(
-          t('NoticesPage.noNoticesMsg')
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'sell':
         setTitle(
-          t('NoticesPage.noNoticesMsg')
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'for-free':
         setTitle(
-          t('NoticesPage.noNoticesMsg')
+          'This section is temporary empty, you can add your advertisement here'
         );
         break;
       case 'favorite':
         setTitle(
-          t('NoticesPage.noNoticesMsg2')
+          'This section is temporary empty, you can add your favorite advertisements here'
         );
         break;
       case 'own':
         setTitle(
-          t('NoticesPage.noNoticesMsg3')
+          'This section is temporary empty, here will be shown all your advertisements'
         );
         break;
 
