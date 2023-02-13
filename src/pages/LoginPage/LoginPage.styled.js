@@ -65,20 +65,21 @@ export const HeaderText = styled(Typography)(({ theme }) => ({
 }));
 
 export const Switcher = styled(Typography)(() => ({
-  marginTop: '40px',
+  marginTop: '20px',
   fontWeight: '400',
   fontSize: '12px',
   lineHeight: '1.3',
   textAlign: 'center',
 
   '&:last-child': {
-    marginTop: '20px',
+    marginTop: '10px',
   },
 }));
 
 export const RemindButton = styled(Button)(() => ({
   marginLeft: '10px',
   height: '25px',
+  minWidth: '80px',
   fontWeight: '400',
   fontSize: '12px',
   lineHeight: '1.3',

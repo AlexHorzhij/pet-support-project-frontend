@@ -34,7 +34,9 @@
 				"forgotPass": "Forgot your password?",
 				"forgotPassLink": "Remind",
 				"link": "Register",
-				"msg": "Don't have an account?"
+				"msg": "Don't have an account?",
+				"verify": "Your email not verified?",
+				"verifyLink": "verify"
 			},
 			"passwordPlaceholder": "Password",
 			"sendEmail": "Send email"
