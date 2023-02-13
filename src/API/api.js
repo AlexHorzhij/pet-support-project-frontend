@@ -81,7 +81,7 @@ export async function deleteAccount() {
 
 //======================== NOTICES  ==========================
 
-// ---------------------for all
+// ------- for all
 
 export async function requestPublicNotices(
   categoryName = 'sell',
@@ -98,7 +98,7 @@ export async function requestPublicNotices(
   }
 }
 
-// ------------------------- for register user
+// ------- for register user
 
 export async function getRegisterNotices(token, categoryName, search = null) {
   setToken.set(token);

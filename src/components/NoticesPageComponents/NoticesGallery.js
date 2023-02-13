@@ -132,9 +132,11 @@ export default function NoticesGallery() {
             );
           })
         ) : (
-          <Box sx={{ width: '100%' }}>
+          <Box sx={{ width: '100%', marginLeft: '32px' }}>
             <SceletonWrapper sx={{ marginBottom: '30px' }}>
-              <Typography sx={{ fontSize: '30px' }}>{title}</Typography>
+              <Typography sx={{ fontSize: '30px', textAlign: 'center' }}>
+                {title}
+              </Typography>
               <PetsOutlinedIcon
                 sx={{ marginTop: '30px', fontSize: '100px', color: 'grey' }}
               />
