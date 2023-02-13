@@ -47,7 +47,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   const onFavoriteClick = () => {
     if (token) {
       const req = checked ? 'delete' : 'post';
-      const reqData = { id: _id, token: token, req: req };
+      const reqData = { id: _id, req: req };
       setChecked(prev => !prev);
       dispatch(setFavorite(reqData));
     } else {
@@ -68,7 +68,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   };
 
   return (
-    <ModalCard >
+    <ModalCard>
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
@@ -173,7 +173,6 @@ export default function LearnMoreModal({ onModalClose, data }) {
               ml: 1,
             }}
             inputProps={{ 'aria-label': 'favorite' }}
-            onChange={onFavoriteClick}
             icon={
               <Favorite
                 sx={{
