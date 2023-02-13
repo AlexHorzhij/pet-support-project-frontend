@@ -194,6 +194,13 @@
 		},
 		"title": "Registration"
 	},
+	"ResendEmailPage": {
+		"inputPlaceholder": "Email",
+		"loginBtn": "Login",
+		"resendBtn": "Resend",
+		"title": "You can log in after confirming your email. Check your mailbox!",
+		"title2": "If you did not receive the letter, we can resend it"
+	},
 	"User": {
 		"DeleteModal": {
 			"cancelBtn": "Cancel",

@@ -17,6 +17,7 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { LoaderWhite } from 'components/Loader/Loader';
 import { getAuth } from 'redux/auth/authSelectors';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   email: yup
@@ -35,6 +36,7 @@ export default function ResendEmailPage() {
   const { isLoading } = useSelector(getAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation('common');
 
   const onResendClick = ({ email }) => {
     dispatch(resendVerificationEmail({ email: email }));
@@ -48,17 +50,17 @@ export default function ResendEmailPage() {
     <AuthContainer>
       <ContentWrapper>
         <Typography variant="h3" sx={{ mb: 3 }}>
-          You can log in after confirming your email. Check your mailbox!
+          {t('ResendEmailPage.title')}
         </Typography>
         <FormButton
           variant="contained"
           onClick={onLoginClick}
           sx={{ mt: 0, mb: 2 }}
         >
-          Login
+          {t('ResendEmailPage.loginBtn')}
         </FormButton>
         <Typography variant="h3" sx={{ mb: 5 }}>
-          If you did not receive the letter, we can resend it
+          {t('ResendEmailPage.title2')}
         </Typography>
         <Formik
           initialValues={{ email: '' }}
@@ -70,7 +72,7 @@ export default function ResendEmailPage() {
               <StyledInput
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={t('ResendEmailPage.inputPlaceholder')}
                 disableunderline="true"
               />
               <ErrorMessage name="email">
@@ -78,7 +80,7 @@ export default function ResendEmailPage() {
               </ErrorMessage>
             </Box>
             <FormButton variant="contained" type="submit" sx={{ mt: 0 }}>
-              {!isLoading ? 'Resend' : <LoaderWhite />}
+              {!isLoading ? t('ResendEmailPage.resendBtn') : <LoaderWhite />}
             </FormButton>
           </Form>
         </Formik>
