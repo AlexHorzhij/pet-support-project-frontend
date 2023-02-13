@@ -22,7 +22,6 @@ import {
 import { setFavorite } from 'redux/notices/noticesOperations';
 import { useTranslation } from 'react-i18next';
 
-
 export default function LearnMoreModal({ onModalClose, data }) {
   const {
     _id,
@@ -69,7 +68,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   };
 
   return (
-    <ModalCard>
+    <ModalCard >
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
@@ -84,19 +83,48 @@ export default function LearnMoreModal({ onModalClose, data }) {
             {title}
           </Typography>
           <Box sx={{ display: 'flex' }}>
-            <Box sx={{ width: '120px' }}>
-              {name && <HeadText variant="body2"> {t('LearnMoreModal.1line')}: </HeadText>}
-              {birthdate && <HeadText variant="body2">{t('LearnMoreModal.2line')}: </HeadText>}
-              {breed && <HeadText variant="body2">{t('LearnMoreModal.3line')}: </HeadText>}
-              {location && <HeadText variant="body2">{t('LearnMoreModal.4line')}: </HeadText>}
-              {sex && <HeadText variant="body2">{t('LearnMoreModal.5line')}: </HeadText>}
+            <Box sx={{ width: '130px' }}>
+              {name && (
+                <HeadText variant="body2">
+                  {' '}
+                  {t('LearnMoreModal.1line')}:{' '}
+                </HeadText>
+              )}
+              {birthdate && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.2line')}:{' '}
+                </HeadText>
+              )}
+              {breed && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.3line')}:{' '}
+                </HeadText>
+              )}
+              {location && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.4line')}:{' '}
+                </HeadText>
+              )}
+              {sex && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.5line')}:{' '}
+                </HeadText>
+              )}
               {owner !== null && owner.name && (
-                <HeadText variant="body2">{t('LearnMoreModal.6line')}: </HeadText>
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.6line')}:{' '}
+                </HeadText>
               )}
               {owner !== null && owner.phone && (
-                <HeadText variant="body2">{t('LearnMoreModal.7line')}: </HeadText>
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.7line')}:{' '}
+                </HeadText>
               )}
-              {price && <HeadText variant="body2">{t('LearnMoreModal.8line')}: </HeadText>}
+              {price && (
+                <HeadText variant="body2">
+                  {t('LearnMoreModal.8line')}:{' '}
+                </HeadText>
+              )}
             </Box>
             <Box>
               {name && <Text>{name}</Text>}
@@ -135,7 +163,9 @@ export default function LearnMoreModal({ onModalClose, data }) {
           <Contact>{t('LearnMoreModal.contactBtn')}</Contact>
         </ContactButton>
         <AddFavouriteButton variant="outlined" onClick={onFavoriteClick}>
-          {checked ? t('LearnMoreModal.removeBtn') : t('LearnMoreModal.addToBtn')}
+          {checked
+            ? t('LearnMoreModal.removeBtn')
+            : t('LearnMoreModal.addToBtn')}
           <Checkbox
             sx={{
               width: '16px',

@@ -21,11 +21,8 @@ const schema = yup.object().shape({
   phone: yup
     .string()
     .min(13)
-    .max(13)
-    .matches(
-      /^[+][3][8][0]+[0-9]*$/,
-      'Phone must contain only numbers and start with "+380"'
-    )
+    .max(13, 'Phone must be at most 13 characters, in format "+380000000000"')
+    .matches(/^[+][3][8][0]+[0-9]*$/, 'Phone must be in format "+380000000000"')
     .required(),
 });
 

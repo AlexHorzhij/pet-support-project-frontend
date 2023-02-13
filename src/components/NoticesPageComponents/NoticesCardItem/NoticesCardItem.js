@@ -14,7 +14,7 @@ import {
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {
   AddToFavorite,
-  Modal,
+  // Modal,
   LearnMoreModal,
   NoticeAddForm,
 } from 'components';
@@ -210,11 +210,17 @@ export default function NoticesCardItem({
           )}
         </Box>
       </NoticeCard>
-      {modalIsShown && (
-        <Modal onModalClose={toggleModal}>
-          <LearnMoreModal onModalClose={toggleModal} data={data} />
-        </Modal>
-      )}
+      
+      <Dialog
+        sx={{ backdropFilter: 'blur(5px)' }}
+        maxWidth="1200px"
+        open={modalIsShown}
+        onClose={toggleModal}
+      >
+        <DialogContent sx={{ p: 6 }}>
+          <LearnMoreModal onModalClose={toggleModal} data={data} style={{ width: '100px' }} />
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
