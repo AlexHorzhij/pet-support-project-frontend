@@ -91,7 +91,7 @@
 		"title": "Новини"
 	},
 	"NoticesPage": {
-		"addBtn": "Додати оголошення",
+		"addBtn": "Додати",
 		"addModal": {
 			"1btn": "продаж",
 			"1line": {
@@ -164,7 +164,7 @@
 		"search": {
 			"placeholder": "Пошук"
 		},
-		"title": "Знайдіть свого улюбленця"
+		"title": "Знайдіть свого друга"
 	},
 	"OurFriendsPage": {
 		"error": "Наразі друзі відсутні",
