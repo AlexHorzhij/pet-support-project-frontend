@@ -65,7 +65,7 @@ export const ItemGrid = styled(Grid)(({ theme }) => ({
 
   [theme.breakpoints.up('md')]: {
     maxWidth: '336px',
-    padding: '16px 12px 16px 8px',
+    padding: '16px 16px 16px 8px',
     borderRadius: theme.shape.borderRadius,
   },
 
@@ -137,6 +137,8 @@ export const ContactsItem = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     width: '170px',
     marginBottom: '8px',
+    maxWidth: '100%',
+    flexGrow: '1',
   },
 
   [theme.breakpoints.up('lg')]: {
