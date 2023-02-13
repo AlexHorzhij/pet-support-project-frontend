@@ -21,6 +21,7 @@ import {
 } from './LearnMoreModal.styled';
 import { setFavorite } from 'redux/notices/noticesOperations';
 import { useTranslation } from 'react-i18next';
+import { DialogContent } from '@mui/material';
 
 
 export default function LearnMoreModal({ onModalClose, data }) {
@@ -69,7 +70,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   };
 
   return (
-    <ModalCard >
+    <DialogContent sx={{ p: 6 }}>
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
@@ -164,6 +165,6 @@ export default function LearnMoreModal({ onModalClose, data }) {
           />
         </AddFavouriteButton>
       </ButtonsWrapper>
-    </ModalCard>
+    </DialogContent>
   );
 }

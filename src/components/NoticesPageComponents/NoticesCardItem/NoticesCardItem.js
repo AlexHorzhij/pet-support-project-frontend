@@ -212,16 +212,14 @@ export default function NoticesCardItem({
           )}
         </Box>
       </NoticeCard>
-      
+
       <Dialog
         sx={{ backdropFilter: 'blur(5px)' }}
         maxWidth="1200px"
         open={modalIsShown}
         onClose={toggleModal}
       >
-        <DialogContent sx={{ p: 6 }}>
-          <LearnMoreModal onModalClose={toggleModal} data={data} style={{ width: '100px' }} />
-        </DialogContent>
+        <LearnMoreModal onModalClose={toggleModal} data={data} style={{ width: '100px' }} />
       </Dialog>
     </>
   );
