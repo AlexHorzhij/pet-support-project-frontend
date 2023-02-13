@@ -162,7 +162,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
         <ContactButton variant="contained">
           <Contact>{t('LearnMoreModal.contactBtn')}</Contact>
         </ContactButton>
-        <AddFavouriteButton variant="outlined" onClick={onFavoriteClick}>
+        <AddFavoriteButton variant="outlined" onClick={onFavoriteClick}>
           {checked
             ? t('LearnMoreModal.removeBtn')
             : t('LearnMoreModal.addToBtn')}
