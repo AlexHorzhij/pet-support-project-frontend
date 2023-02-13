@@ -106,7 +106,7 @@ export const ButtonsWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const AddFavouriteButton = styled(Button)(({ theme }) => ({
+export const AddFavoriteButton = styled(Button)(({ theme }) => ({
   position: 'relative',
   fontSize: '16px',
 

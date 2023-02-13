@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/authSelectors';
 import { toast } from 'react-hot-toast';
 import {
-  ModalCard,
   ModalCloseButton,
   BoxFlex,
   Image,
@@ -16,11 +15,12 @@ import {
   HeadText,
   OwnerContact,
   ButtonsWrapper,
-  AddFavouriteButton,
+  AddFavoriteButton,
   ContactButton,
 } from './LearnMoreModal.styled';
 import { setFavorite } from 'redux/notices/noticesOperations';
 import { useTranslation } from 'react-i18next';
+import { DialogContent } from '@mui/material';
 
 export default function LearnMoreModal({ onModalClose, data }) {
   const {
@@ -68,7 +68,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
   };
 
   return (
-    <ModalCard>
+    <DialogContent sx={{ p: 6 }}>
       <ModalCloseButton onClick={onModalClose}>
         <CloseOutlinedIcon sx={{ fontSize: '30px' }} />
       </ModalCloseButton>
@@ -166,6 +166,7 @@ export default function LearnMoreModal({ onModalClose, data }) {
           {checked
             ? t('LearnMoreModal.removeBtn')
             : t('LearnMoreModal.addToBtn')}
+
           <Checkbox
             sx={{
               width: '16px',
@@ -191,8 +192,8 @@ export default function LearnMoreModal({ onModalClose, data }) {
               />
             }
           />
-        </AddFavouriteButton>
+        </AddFavoriteButton>
       </ButtonsWrapper>
-    </ModalCard>
+    </DialogContent>
   );
 }
