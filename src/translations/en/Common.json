@@ -11,6 +11,20 @@
 			"news": "News"
 		}
 	},
+	"LearnMoreModal": {
+		"1line": "Name",
+		"2line": "Birthday",
+		"3line": "Breed",
+		"4line": "Location",
+		"5line": "The sex",
+		"6line": "Owner",
+		"7line": "Phone",
+		"8line": "Price",
+		"9line": "Comments",
+		"addToBtn": "Add to",
+		"contactBtn": "Contact",
+		"removeBtn": "Remove from"
+	},
 	"Login": {
 		"form": {
 			"btn": "Login",
@@ -86,16 +100,17 @@
 			},
 			"2btn": "lost/found",
 			"2line": {
-				"label": "Name pet:"
+				"label": "Name pet:",
+				"placeholder": "Type pet name"
 			},
 			"3btn": "in good hands",
 			"3line": {
-				"placeholder": "Type date of birth DD.MM.YYYY",
-				"title": "Date of birth"
+				"label": "Date of birth",
+				"placeholder": "Type date of birth MM.DD.YYYY"
 			},
 			"4line": {
-				"placeholder": "Type Breed",
-				"title": "Breed"
+				"label": "Breed",
+				"placeholder": "Type Breed"
 			},
 			"5line": {
 				"label": "Location",
@@ -116,6 +131,11 @@
 			"cancelBtn": "Cancel",
 			"finalBtn": "Done",
 			"nextBtn": "Next",
+			"sex": {
+				"female": "Female",
+				"label": "Sex",
+				"male": "Male"
+			},
 			"title": "Add pet"
 		},
 		"card": {
