@@ -140,27 +140,23 @@ function UserData() {
             </WrapperBox>
             <Box sx={{ mt: '10px', mb: '10px' }}>
               <StyledLink to="/notices/own">
-                {items.length > 0 && (
-                  <>
-                    {t('User.card.6line')}
-                    <span
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginLeft: '15px',
-                        backgroundColor: '#e7e7e7',
-                        padding: '5px',
-                        borderRadius: '50%',
-                        width: '30px',
-                        height: '30px',
-                        fontSize: '15px',
-                      }}
-                    >
-                      {items.length}
-                    </span>
-                  </>
-                )}
+                {t('User.card.6line')}
+                <span
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginLeft: '15px',
+                    backgroundColor: '#e7e7e7',
+                    padding: '5px',
+                    borderRadius: '50%',
+                    width: '30px',
+                    height: '30px',
+                    fontSize: '15px',
+                  }}
+                >
+                  {items.length}
+                </span>
               </StyledLink>
             </Box>
             <Logout />
